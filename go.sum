@@ -1,0 +1,5 @@
+github.com/knqyf263/berkeleydb v0.0.0-20190428085630-694f4eceb567 h1:xnBGWKHKCa8v62mXHL+/CsF6iU5ZLmkYsPULSnZDWzI=
+github.com/knqyf263/berkeleydb v0.0.0-20190428085630-694f4eceb567/go.mod h1:bu1CcN4tUtoRcI/B/RFHhxMNKFHVq/c3SV+UTyduoXg=
+github.com/knqyf263/berkeleydb v0.0.0-20190501065933-fafe01fb9662 h1:UGS0RbPHwXJkq8tcba8OD0nvVUWLf2h7uUJznuHPPB0=
+github.com/knqyf263/berkeleydb v0.0.0-20190501065933-fafe01fb9662/go.mod h1:bu1CcN4tUtoRcI/B/RFHhxMNKFHVq/c3SV+UTyduoXg=
+golang.org/x/xerrors v0.0.0-20190410155217-1f06c39b4373/go.mod h1:I/5z698sn9Ka8TeJc9MKroUUfqBBauWjQqLJ2OPfmY0=
