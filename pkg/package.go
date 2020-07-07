@@ -20,6 +20,8 @@ type PackageInfo struct {
 	Size            int
 	License         string
 	Vendor          string
+	Summary         string
+	InstallTime     uint64
 	Modularitylabel string
 
 	BaseNames  []string
@@ -133,6 +135,26 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				return nil, xerrors.Errorf("failed to read binary (size): %w", err)
 			}
 			pkgInfo.Size = int(size)
+		case RPMTAG_SUMMARY:
+			// TODO: deal with Summary(<lang>) format
+			if ie.Info.Type != RPM_I18NSTRING_TYPE {
+				return nil, xerrors.New("invalid tag summary")
+			}
+			pkgInfo.Summary = string(bytes.TrimRight(ie.Data, "\x00"))
+			if pkgInfo.Summary == "(none)" {
+				pkgInfo.Summary = ""
+			}
+		case RPMTAG_INSTALLTIME:
+			if ie.Info.Type != RPM_INT32_TYPE {
+				return nil, xerrors.New("invalid tag install time")
+			}
+
+			var installtime int32
+			reader := bytes.NewReader(ie.Data)
+			if err := binary.Read(reader, binary.BigEndian, &installtime); err != nil {
+				return nil, xerrors.Errorf("failed to read binary (installtime): %w", err)
+			}
+			pkgInfo.InstallTime = uint64(installtime)
 		}
 
 	}
