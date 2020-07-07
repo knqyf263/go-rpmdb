@@ -8,21 +8,29 @@ import (
 )
 
 type PackageInfo struct {
-	Epoch   int
-	Name    string
-	Version string
-	Release string
-	Arch    string
+	Epoch       int
+	Name        string
+	Version     string
+	Release     string
+	Arch        string
+	Vendor      string
+	Summary     string
+	Size        uint32
+	InstallTime uint32
 }
 
 const (
 	// rpmTag_e
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/rpmtag.h#L28
-	RPMTAG_NAME    = 1000
-	RPMTAG_VERSION = 1001
-	RPMTAG_RELEASE = 1002
-	RPMTAG_EPOCH   = 1003
-	RPMTAG_ARCH    = 1022
+	RPMTAG_NAME        = 1000
+	RPMTAG_VERSION     = 1001
+	RPMTAG_RELEASE     = 1002
+	RPMTAG_EPOCH       = 1003
+	RPMTAG_SUMMARY     = 1004
+	RPMTAG_INSTALLTIME = 1008
+	RPMTAG_SIZE        = 1009
+	RPMTAG_VENDOR      = 1011
+	RPMTAG_ARCH        = 1022
 
 	//rpmTagType_e
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/rpmtag.h#L362
@@ -75,6 +83,28 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				return nil, xerrors.New("invalid tag arch")
 			}
 			pkgInfo.Arch = string(bytes.TrimRight(indexEntry.Data, "\x00"))
+		case RPMTAG_VENDOR:
+			if indexEntry.Info.Type != RPM_STRING_TYPE {
+				return nil, xerrors.New("invalid tag vendor")
+			}
+			pkgInfo.Vendor = string(bytes.TrimRight(indexEntry.Data, "\x00"))
+		case RPMTAG_SUMMARY:
+			if indexEntry.Info.Type != RPM_I18NSTRING_TYPE {
+				return nil, xerrors.New("invalid tag summary")
+			}
+			pkgInfo.Summary = string(bytes.TrimRight(indexEntry.Data, "\x00"))
+		case RPMTAG_INSTALLTIME:
+			if indexEntry.Info.Type != RPM_INT32_TYPE {
+				return nil, xerrors.New("invalid tag install time")
+			}
+			pkgInfo.InstallTime = binary.BigEndian.Uint32(indexEntry.Data)
+		case RPMTAG_SIZE:
+			if indexEntry.Info.Type != RPM_INT32_TYPE {
+				return nil, xerrors.New("invalid tag size")
+			}
+			pkgInfo.Size = binary.BigEndian.Uint32(indexEntry.Data)
+		default:
+
 		}
 	}
 	return pkgInfo, nil
