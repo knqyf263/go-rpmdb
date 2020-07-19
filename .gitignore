@@ -1,3 +1,6 @@
+cmd/rpmdb/*
+!cmd/rpmdb/main.go
+
 # Binaries for programs and plugins
 *.exe
 *.exe~

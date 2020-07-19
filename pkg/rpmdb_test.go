@@ -46,8 +46,7 @@ func TestPackageList(t *testing.T) {
 
 	for _, v := range vectors {
 		t.Run(path.Base(v.file), func(t *testing.T) {
-			db := DB{}
-			err := db.Open(v.file)
+			db, err := Open(v.file)
 			if err != nil {
 				t.Fatalf("Open() error: %v", err)
 			}
