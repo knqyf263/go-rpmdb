@@ -8,21 +8,29 @@ import (
 )
 
 type PackageInfo struct {
-	Epoch   int
-	Name    string
-	Version string
-	Release string
-	Arch    string
+	Epoch     int
+	Name      string
+	Version   string
+	Release   string
+	Arch      string
+	SourceRpm string
+	Size      int
+	License   string
+	Vendor    string
 }
 
 const (
 	// rpmTag_e
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/rpmtag.h#L28
-	RPMTAG_NAME    = 1000
-	RPMTAG_VERSION = 1001
-	RPMTAG_RELEASE = 1002
-	RPMTAG_EPOCH   = 1003
-	RPMTAG_ARCH    = 1022
+	RPMTAG_NAME      = 1000
+	RPMTAG_VERSION   = 1001
+	RPMTAG_RELEASE   = 1002
+	RPMTAG_EPOCH     = 1003
+	RPMTAG_ARCH      = 1022
+	RPMTAG_SOURCERPM = 1044
+	RPMTAG_SIZE      = 1009
+	RPMTAG_LICENSE   = 1014
+	RPMTAG_VENDOR    = 1011
 
 	//rpmTagType_e
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/rpmtag.h#L362
@@ -57,7 +65,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			var epoch int32
 			reader := bytes.NewReader(indexEntry.Data)
 			if err := binary.Read(reader, binary.BigEndian, &epoch); err != nil {
-				return nil, xerrors.Errorf("failed to read binary: %w", err)
+				return nil, xerrors.Errorf("failed to read binary (epoch): %w", err)
 			}
 			pkgInfo.Epoch = int(epoch)
 		case RPMTAG_VERSION:
@@ -75,7 +83,43 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				return nil, xerrors.New("invalid tag arch")
 			}
 			pkgInfo.Arch = string(bytes.TrimRight(indexEntry.Data, "\x00"))
+		case RPMTAG_SOURCERPM:
+			if indexEntry.Info.Type != RPM_STRING_TYPE {
+				return nil, xerrors.New("invalid tag sourcerpm")
+			}
+			pkgInfo.SourceRpm = string(bytes.TrimRight(indexEntry.Data, "\x00"))
+			if pkgInfo.SourceRpm == "(none)" {
+				pkgInfo.SourceRpm = ""
+			}
+		case RPMTAG_LICENSE:
+			if indexEntry.Info.Type != RPM_STRING_TYPE {
+				return nil, xerrors.New("invalid tag license")
+			}
+			pkgInfo.License = string(bytes.TrimRight(indexEntry.Data, "\x00"))
+			if pkgInfo.License == "(none)" {
+				pkgInfo.License = ""
+			}
+		case RPMTAG_VENDOR:
+			if indexEntry.Info.Type != RPM_STRING_TYPE {
+				return nil, xerrors.New("invalid tag vendor")
+			}
+			pkgInfo.Vendor = string(bytes.TrimRight(indexEntry.Data, "\x00"))
+			if pkgInfo.Vendor == "(none)" {
+				pkgInfo.Vendor = ""
+			}
+		case RPMTAG_SIZE:
+			if indexEntry.Info.Type != RPM_INT32_TYPE {
+				return nil, xerrors.New("invalid tag size")
+			}
+
+			var size int32
+			reader := bytes.NewReader(indexEntry.Data)
+			if err := binary.Read(reader, binary.BigEndian, &size); err != nil {
+				return nil, xerrors.Errorf("failed to read binary (size): %w", err)
+			}
+			pkgInfo.Size = int(size)
 		}
+
 	}
 	return pkgInfo, nil
 }

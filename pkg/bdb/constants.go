@@ -15,7 +15,7 @@ const (
 	HashPageType         PageType = 13
 	HashOffIndexPageType PageType = 3 // a.k.a HOFFPAGE
 
-	HashOffPageSize               = 12 // (in bytes)
+	HashOffPageSize = 12 // (in bytes)
 )
 
 type PageType = uint8
