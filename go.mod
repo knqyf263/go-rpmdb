@@ -1,4 +1,4 @@
-module github.com/wagoodman/go-rpmdb
+module github.com/anchore/go-rpmdb
 
 go 1.14
 
