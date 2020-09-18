@@ -1,7 +1,7 @@
 package rpmdb
 
 import (
-	"github.com/anchore/go-rpmdb/pkg/bdb"
+	"github.com/knqyf263/go-rpmdb/pkg/bdb"
 	"golang.org/x/xerrors"
 )
 
