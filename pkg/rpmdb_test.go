@@ -86,7 +86,7 @@ func TestPackageList(t *testing.T) {
 					t.Errorf("%d: Size: got %d, want %d", i, got.Size, want.Size)
 				}
 				if want.License != got.License {
-					t.Errorf("%d: Size: got %s, want %s", i, got.License, want.License)
+					t.Errorf("%d: License: got %s, want %s", i, got.License, want.License)
 				}
 			}
 		})
