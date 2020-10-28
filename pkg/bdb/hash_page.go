@@ -66,6 +66,9 @@ func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pa
 		if err != nil {
 			return nil, fmt.Errorf("failed to parse page=%d: %w", currentPageNo, err)
 		}
+		if currentPage.PageType != OverflowPageType {
+			continue
+		}
 
 		var hashValueBytes []byte
 		if currentPage.NextPageNo == 0 {
