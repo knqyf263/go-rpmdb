@@ -34,5 +34,6 @@ func run() error {
 		// ...
 	}
 	fmt.Printf("[Total Packages: %d]\n", len(pkgList))
+	return nil
 }
 ```
