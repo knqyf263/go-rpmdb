@@ -26,7 +26,7 @@ func ParseHashMetadataPage(data []byte) (*HashMetadataPage, error) {
 		return nil, fmt.Errorf("failed to unpack HashMetadataPage: %w", err)
 	}
 
-	return &metadata, nil
+	return &metadata, metadata.validate()
 }
 
 func (p *HashMetadataPage) validate() error {
