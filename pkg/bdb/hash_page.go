@@ -2,8 +2,8 @@ package bdb
 
 import (
 	"encoding/binary"
-	"fmt"
 	"github.com/go-restruct/restruct"
+	"golang.org/x/xerrors"
 	"io"
 	"os"
 )
@@ -25,7 +25,7 @@ func ParseHashPage(data []byte) (*HashPage, error) {
 
 	err := restruct.Unpack(data, binary.LittleEndian, &hashPage)
 	if err != nil {
-		return nil, fmt.Errorf("failed to unpack: %w", err)
+		return nil, xerrors.Errorf("failed to unpack: %w", err)
 	}
 
 	return &hashPage, nil
@@ -37,7 +37,7 @@ func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pa
 
 	// only HOFFPAGE page types have data of interest
 	if valuePageType != HashOffIndexPageType {
-		return nil, fmt.Errorf("only HOFFPAGE types supported (%+v)", valuePageType)
+		return nil, xerrors.Errorf("only HOFFPAGE types supported (%+v)", valuePageType)
 	}
 
 	hashOffPageEntryBuff := pageData[hashPageIndex : hashPageIndex+HashOffPageSize]
@@ -54,17 +54,17 @@ func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pa
 
 		_, err := db.Seek(int64(pageStart), io.SeekStart)
 		if err != nil {
-			return nil, fmt.Errorf("failed to seek to HashPageValueContent (page=%d): %w", currentPageNo, err)
+			return nil, xerrors.Errorf("failed to seek to HashPageValueContent (page=%d): %w", currentPageNo, err)
 		}
 
 		currentPageBuff, err := slice(db, int(pageSize))
 		if err != nil {
-			return nil, fmt.Errorf("failed to read page=%d: %w", currentPageNo, err)
+			return nil, xerrors.Errorf("failed to read page=%d: %w", currentPageNo, err)
 		}
 
 		currentPage, err := ParseHashPage(currentPageBuff)
 		if err != nil {
-			return nil, fmt.Errorf("failed to parse page=%d: %w", currentPageNo, err)
+			return nil, xerrors.Errorf("failed to parse page=%d: %w", currentPageNo, err)
 		}
 		if currentPage.PageType != OverflowPageType {
 			continue
@@ -89,7 +89,7 @@ func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pa
 func HashPageValueIndexes(data []byte, entries uint16) ([]uint16, error) {
 	var hashIndexValues = make([]uint16, 0)
 	if entries%2 != 0 {
-		return nil, fmt.Errorf("invalid hash index: entries should only come in pairs (%+v)", entries)
+		return nil, xerrors.Errorf("invalid hash index: entries should only come in pairs (%+v)", entries)
 	}
 
 	// Every entry is a 2-byte offset that points somewhere in the current database page.
@@ -113,10 +113,10 @@ func slice(reader io.Reader, n int) ([]byte, error) {
 	newBuff := make([]byte, n)
 	numRead, err := reader.Read(newBuff)
 	if err != nil {
-		return nil, fmt.Errorf("failed to read page: %w", err)
+		return nil, xerrors.Errorf("failed to read page: %w", err)
 	}
 	if numRead != n {
-		return nil, fmt.Errorf("short page size: %d!=%d", n, numRead)
+		return nil, xerrors.Errorf("short page size: %d!=%d", n, numRead)
 	}
 	return newBuff, nil
 }

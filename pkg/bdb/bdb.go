@@ -1,7 +1,7 @@
 package bdb
 
 import (
-	"fmt"
+	"golang.org/x/xerrors"
 	"io"
 	"os"
 )
@@ -37,12 +37,12 @@ func Open(path string) (*BerkeleyDB, error) {
 	metadataBuff := make([]byte, 512)
 	_, err = file.Read(metadataBuff)
 	if err != nil {
-		return nil, fmt.Errorf("failed to read metadata: %w", err)
+		return nil, xerrors.Errorf("failed to read metadata: %w", err)
 	}
 
 	_, err = file.Seek(0, io.SeekStart)
 	if err != nil {
-		return nil, fmt.Errorf("failed to seek db file: %w", err)
+		return nil, xerrors.Errorf("failed to seek db file: %w", err)
 	}
 
 	hashMetadata, err := ParseHashMetadataPage(metadataBuff)
@@ -51,7 +51,7 @@ func Open(path string) (*BerkeleyDB, error) {
 	}
 
 	if _, ok := validPageSizes[hashMetadata.PageSize]; !ok {
-		return nil, fmt.Errorf("unexpected page size: %+v", hashMetadata.PageSize)
+		return nil, xerrors.Errorf("unexpected page size: %+v", hashMetadata.PageSize)
 	}
 
 	return &BerkeleyDB{
@@ -67,8 +67,7 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 	go func() {
 		defer close(entries)
 
-		// the first content entry (idx=0) is the db metadata, skip to the first real entry and keep reading content values
-		for pageNum := uint32(1); pageNum <= db.HashMetadata.LastPageNo; pageNum++ {
+		for pageNum := uint32(0); pageNum <= db.HashMetadata.LastPageNo; pageNum++ {
 			pageData, err := slice(db.file, int(db.HashMetadata.PageSize))
 			if err != nil {
 				entries <- Entry{

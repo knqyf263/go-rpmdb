@@ -2,8 +2,8 @@ package bdb
 
 import (
 	"encoding/binary"
-	"fmt"
 	"github.com/go-restruct/restruct"
+	"golang.org/x/xerrors"
 )
 
 // source: https://github.com/berkeleydb/libdb/blob/5b7b02ae052442626af54c176335b67ecc613a30/src/dbinc/db_page.h#L73
@@ -31,7 +31,7 @@ func ParseGenericMetadataPage(data []byte) (*GenericMetadataPage, error) {
 
 	err := restruct.Unpack(data, binary.LittleEndian, &metadata)
 	if err != nil {
-		return nil, fmt.Errorf("failed to unpack GenericMetadataPage: %w", err)
+		return nil, xerrors.Errorf("failed to unpack GenericMetadataPage: %w", err)
 	}
 
 	return &metadata, metadata.validate()
@@ -39,7 +39,7 @@ func ParseGenericMetadataPage(data []byte) (*GenericMetadataPage, error) {
 
 func (p *GenericMetadataPage) validate() error {
 	if p.EncryptionAlg != NoEncryptionAlgorithm {
-		return fmt.Errorf("unexpected encryption algorithm: %+v", p.EncryptionAlg)
+		return xerrors.Errorf("unexpected encryption algorithm: %+v", p.EncryptionAlg)
 	}
 
 	return nil

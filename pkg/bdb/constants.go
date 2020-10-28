@@ -11,9 +11,10 @@ const (
 	PageHeaderSize = 26
 
 	// all page types supported
+	OverflowPageType     PageType = 7
 	HashMetadataPageType PageType = 8
 	HashPageType         PageType = 13
-	HashOffIndexPageType PageType = 3 // a.k.a HOFFPAGE
+	HashOffIndexPageType PageType = 3 // aka HOFFPAGE
 
 	HashOffPageSize = 12 // (in bytes)
 )

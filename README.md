@@ -12,13 +12,18 @@ import (
 )
 
 func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+func run() error {
 	db, err := rpmdb.Open("./Packages")
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 	pkgList, err := db.ListPackages()
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
 
 	fmt.Println("Packages:")
