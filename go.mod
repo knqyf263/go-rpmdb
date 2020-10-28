@@ -1,8 +1,8 @@
 module github.com/knqyf263/go-rpmdb
 
-go 1.12
+go 1.14
 
 require (
-	github.com/knqyf263/berkeleydb v0.0.0-20190501065933-fafe01fb9662
-	golang.org/x/xerrors v0.0.0-20190410155217-1f06c39b4373
+	github.com/go-restruct/restruct v0.0.0-20191227155143-5734170a48a1
+	golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 )

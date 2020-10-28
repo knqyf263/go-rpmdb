@@ -11,43 +11,42 @@ func TestPackageList(t *testing.T) {
 		pkgList []PackageInfo
 	}{
 		{
-			file:    "testdata/Packages_centos6_plain",
+			file:    "testdata/centos6-plain/Packages",
 			pkgList: CentOS6Plain,
 		},
 		{
-			file:    "testdata/Packages_centos6_dev_tools",
+			file:    "testdata/centos6-devtools/Packages",
 			pkgList: CentOS6DevTools,
 		},
 		{
-			file:    "testdata/Packages_centos6_many",
+			file:    "testdata/centos6-many/Packages",
 			pkgList: CentOS6Many,
 		},
 		{
-			file:    "testdata/Packages_centos7_plain",
+			file:    "testdata/centos7-plain/Packages",
 			pkgList: CentOS7Plain,
 		},
 		{
-			file:    "testdata/Packages_centos7_dev_tools",
+			file:    "testdata/centos7-devtools/Packages",
 			pkgList: CentOS7DevTools,
 		},
 		{
-			file:    "testdata/Packages_centos7_many",
+			file:    "testdata/centos7-many/Packages",
 			pkgList: CentOS7Many,
 		},
 		{
-			file:    "testdata/Packages_centos7_python35",
+			file:    "testdata/centos7-python35/Packages",
 			pkgList: CentOS7Python35,
 		},
 		{
-			file:    "testdata/Packages_centos7_httpd24",
+			file:    "testdata/centos7-httpd24/Packages",
 			pkgList: CentOS7Httpd24,
 		},
 	}
 
 	for _, v := range vectors {
 		t.Run(path.Base(v.file), func(t *testing.T) {
-			db := DB{}
-			err := db.Open(v.file)
+			db, err := Open(v.file)
 			if err != nil {
 				t.Fatalf("Open() error: %v", err)
 			}
@@ -76,6 +75,18 @@ func TestPackageList(t *testing.T) {
 				}
 				if want.Arch != got.Arch {
 					t.Errorf("%d: Arch: got %s, want %s", i, got.Arch, want.Arch)
+				}
+				if want.SourceRpm != got.SourceRpm {
+					t.Errorf("%d: SourceRpm: got %s, want %s", i, got.SourceRpm, want.SourceRpm)
+				}
+				if want.Vendor != got.Vendor {
+					t.Errorf("%d: Vendor: got %s, want %s", i, got.Vendor, want.Vendor)
+				}
+				if want.Size != got.Size {
+					t.Errorf("%d: Size: got %d, want %d", i, got.Size, want.Size)
+				}
+				if want.License != got.License {
+					t.Errorf("%d: License: got %s, want %s", i, got.License, want.License)
 				}
 			}
 		})

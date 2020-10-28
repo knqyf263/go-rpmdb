@@ -8,23 +8,19 @@ import (
 )
 
 func main() {
-	if err := run(); err != nil {
-		log.Fatal(err)
-	}
-}
-func run() error {
-	db := rpmdb.DB{}
-	err := db.Open("./Packages")
+	db, err := rpmdb.Open("./Packages")
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
 	pkgList, err := db.ListPackages()
 	if err != nil {
-		return err
+		log.Fatal(err)
 	}
 
+	fmt.Println("Packages:")
 	for _, pkg := range pkgList {
-		fmt.Printf("%+v\n", *pkg)
+		fmt.Printf("\t%+v\n", *pkg)
 	}
-	return nil
+	fmt.Printf("[Total Packages: %d]\n", len(pkgList))
 }
+
