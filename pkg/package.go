@@ -8,15 +8,16 @@ import (
 )
 
 type PackageInfo struct {
-	Epoch     int
-	Name      string
-	Version   string
-	Release   string
-	Arch      string
-	SourceRpm string
-	Size      int
-	License   string
-	Vendor    string
+	Epoch           int
+	Name            string
+	Version         string
+	Release         string
+	Arch            string
+	SourceRpm       string
+	Size            int
+	License         string
+	Vendor          string
+	Modularitylabel string
 }
 
 const (
@@ -31,6 +32,10 @@ const (
 	RPMTAG_SIZE      = 1009
 	RPMTAG_LICENSE   = 1014
 	RPMTAG_VENDOR    = 1011
+
+	// rpmTag_enhances
+	// https://github.com/rpm-software-management/rpm/blob/rpm-4.16.x/lib/rpmtag.h#L375
+	RPMTAG_MODULARITYLABEL = 5096
 
 	//rpmTagType_e
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/rpmtag.h#L362
@@ -49,9 +54,13 @@ const (
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/tagexts.c#L649
 func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 	pkgInfo := &PackageInfo{}
-
 	for _, indexEntry := range indexEntries {
 		switch indexEntry.Info.Tag {
+		case RPMTAG_MODULARITYLABEL:
+			if indexEntry.Info.Type != RPM_STRING_TYPE {
+				return nil, xerrors.New("invalid tag modularitylabel")
+			}
+			pkgInfo.Modularitylabel = string(bytes.TrimRight(indexEntry.Data, "\x00"))
 		case RPMTAG_NAME:
 			if indexEntry.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag name")
