@@ -34,7 +34,7 @@ const (
 	RPMTAG_VENDOR    = 1011
 
 	// rpmTag_enhances
-	// https://github.com/rpm-software-management/rpm/blob/rpm-4.16.x/lib/rpmtag.h#L375
+	// https://github.com/rpm-software-management/rpm/blob/rpm-4.16.3/lib/rpmtag.h#L375
 	RPMTAG_MODULARITYLABEL = 5096
 
 	//rpmTagType_e

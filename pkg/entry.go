@@ -91,7 +91,8 @@ func headerImport(data []byte) ([]indexEntry, error) {
 		for i, indexEntry := range indexEntries {
 			for _, newIndexEntry := range dribbleIndexEntries {
 				if indexEntry.Info.Tag == newIndexEntry.Info.Tag {
-					indexEntries = append(indexEntries[:i], indexEntries[i+1:]...)
+					indexEntries = deleteIndex(indexEntries, i)
+					break
 				}
 			}
 		}
@@ -100,6 +101,14 @@ func headerImport(data []byte) ([]indexEntry, error) {
 	}
 
 	return indexEntries, nil
+}
+
+func deleteIndex(indexEntries []indexEntry, i int) []indexEntry {
+	if len(indexEntries)-1 == i {
+		return indexEntries[:i]
+	}
+	return append(indexEntries[:i], indexEntries[i+1:]...)
+
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L42
