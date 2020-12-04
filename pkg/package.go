@@ -22,7 +22,7 @@ type PackageInfo struct {
 
 const (
 	// rpmTag_e
-	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/rpmtag.h#L28
+	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/rpmtag.h#L34
 	RPMTAG_NAME      = 1000
 	RPMTAG_VERSION   = 1001
 	RPMTAG_RELEASE   = 1002
@@ -34,11 +34,12 @@ const (
 	RPMTAG_VENDOR    = 1011
 
 	// rpmTag_enhances
-	// https://github.com/rpm-software-management/rpm/blob/rpm-4.16.3/lib/rpmtag.h#L375
+	// https://github.com/rpm-software-management/rpm/blob/rpm-4.16.0-release/lib/rpmtag.h#L375
 	RPMTAG_MODULARITYLABEL = 5096
 
-	//rpmTagType_e
-	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/rpmtag.h#L362
+	// rpmTagType_e
+	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/rpmtag.h#L431
+	RPM_MIN_TYPE          = 0
 	RPM_NULL_TYPE         = 0
 	RPM_CHAR_TYPE         = 1
 	RPM_INT8_TYPE         = 2
@@ -49,9 +50,10 @@ const (
 	RPM_BIN_TYPE          = 7
 	RPM_STRING_ARRAY_TYPE = 8
 	RPM_I18NSTRING_TYPE   = 9
+	RPM_MAX_TYPE          = 9
 )
 
-// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/tagexts.c#L649
+// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/tagexts.c#L752
 func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 	pkgInfo := &PackageInfo{}
 	for _, indexEntry := range indexEntries {
