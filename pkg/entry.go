@@ -212,6 +212,7 @@ func hdrblobVerifyInfo(blob *hdrblob) error {
 			return xerrors.New("")
 		}
 
+		// TODO:
 		/* Verify the data actually fits */
 		// len = dataLength(info.Type, ds + info.Offset,
 		// 		 info.count, 1, ds + blob.dl);
@@ -235,6 +236,7 @@ func hdrchkAlign(t uint32, offset int32) bool {
 }
 
 func hdrchkTagType(tag int32, t uint32) bool {
+	// TODO:
 	return false
 }
 
