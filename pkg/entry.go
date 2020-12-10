@@ -10,14 +10,8 @@ import (
 )
 
 const (
-	// REGION_TAG_COUNT is sizeof(entryInfo_s)
-	REGION_TAG_COUNT = 16
-
-	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/rpmtag.h#L34
-	RPMTAG_HEADERIMAGE      = 61
-	RPMTAG_HEADERSIGNATURES = 62
-	RPMTAG_HEADERIMMUTABLE  = 63
-	HEADER_I18NTABLE        = 100
+	REGION_TAG_COUNT = int32(unsafe.Sizeof(entryInfo{}))
+	REGION_TAG_TYPE  = RPM_BIN_TYPE
 
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L113
 	headerMaxbytes = 256 * 1024 * 1024
@@ -152,21 +146,18 @@ func hdrblobInit(data []byte) (*hdrblob, error) {
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L880
 func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
-	if blob.regionTag == 0 {
-		return regionSwab(data, blob.peList[1:], blob.dataStart, int(blob.dl)), nil
+	ril := blob.ril
+	if blob.peList[0].Offset == 0 {
+		ril = blob.il
 	}
 
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L917
-	indexEntries := regionSwab(data, blob.peList[1:blob.ril], blob.dataStart, int(blob.dl))
+	indexEntries := regionSwab(data, blob.peList[1:ril], blob.dataStart, int(blob.dl))
 	if blob.ril < int32(len(blob.peList)-1) {
-		dribbleIndexEntries := regionSwab(data, blob.peList[blob.ril:], blob.dataStart, int(blob.dl))
+		dribbleIndexEntries := regionSwab(data, blob.peList[ril:], blob.dataStart, int(blob.dl))
 		uniqTagMap := make(map[int32]indexEntry)
 
-		for _, indexEntry := range indexEntries {
-			uniqTagMap[indexEntry.Info.Tag] = indexEntry
-		}
-
-		for _, indexEntry := range dribbleIndexEntries {
+		for _, indexEntry := range append(indexEntries, dribbleIndexEntries...) {
 			uniqTagMap[indexEntry.Info.Tag] = indexEntry
 		}
 
@@ -188,7 +179,7 @@ func hdrblobVerifyInfo(blob *hdrblob) error {
 	if blob.regionTag != 0 {
 		peOffset = 1
 	}
-	typechk := (blob.regionTag == RPMTAG_HEADERIMMUTABLE || blob.regionTag == RPMTAG_HEADERIMAGE)
+	typechk := blob.regionTag == RPMTAG_HEADERIMMUTABLE || blob.regionTag == RPMTAG_HEADERIMAGE
 
 	for _, pe := range blob.peList[peOffset:] {
 		info := ei2h(pe)
@@ -212,7 +203,7 @@ func hdrblobVerifyInfo(blob *hdrblob) error {
 			return xerrors.New("")
 		}
 
-		// TODO:
+		// TODO: verify data length
 		/* Verify the data actually fits */
 		// len = dataLength(info.Type, ds + info.Offset,
 		// 		 info.count, 1, ds + blob.dl);
@@ -262,7 +253,7 @@ func hdrblobVerifyRegion(blob *hdrblob, data []byte) error {
 		return nil
 	}
 
-	if !(einfo.Type == RPM_BIN_TYPE && einfo.Count == REGION_TAG_COUNT) {
+	if !(einfo.Type == REGION_TAG_TYPE && einfo.Count == uint32(REGION_TAG_COUNT)) {
 		return xerrors.New("invalid region tag")
 	}
 
@@ -282,13 +273,13 @@ func hdrblobVerifyRegion(blob *hdrblob, data []byte) error {
 		einfo.Tag = RPMTAG_HEADERSIGNATURES
 	}
 
-	if !(einfo.Tag == regionTag && einfo.Type == RPM_BIN_TYPE && einfo.Count == REGION_TAG_COUNT) {
+	if !(einfo.Tag == regionTag && einfo.Type == REGION_TAG_TYPE && einfo.Count == uint32(REGION_TAG_COUNT)) {
 		return xerrors.New("invalid region trailer")
 	}
 
 	einfo = ei2h(trailer)
 	einfo.Offset = -einfo.Offset
-	blob.ril = einfo.Offset / REGION_TAG_COUNT
+	blob.ril = einfo.Offset / int32(unsafe.Sizeof(blob.peList[0]))
 	if (einfo.Offset%REGION_TAG_COUNT) != 0 || hdrchkRange(blob.il, blob.ril) || hdrchkRange(blob.dl, blob.rdl) {
 		return xerrors.New("invalid region size")
 	}
@@ -315,6 +306,9 @@ func ei2h(pe entryInfo) entryInfo {
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L498
 func regionSwab(data []byte, peList []entryInfo, dataStart int32, dl int) []indexEntry {
+	// TODO: Make use of dl and make sure dl is calculated properly.
+	// TODO: verify dataEnd
+	// TODO: refactoring same interface
 	indexEntries := make([]indexEntry, len(peList))
 	for i := 0; i < len(peList); i++ {
 		pe := peList[i]
@@ -328,7 +322,7 @@ func regionSwab(data []byte, peList []entryInfo, dataStart int32, dl int) []inde
 		}
 
 		start := dataStart + indexEntry.Info.Offset
-		if i < len(peList)-1 {
+		if i < len(peList)-1 && typeSizes[indexEntry.Info.Type] == -1 {
 			indexEntry.Length = int(Htonl(peList[i+1].Offset) - indexEntry.Info.Offset)
 		} else {
 			indexEntry.Length = dataLength(data[start:], indexEntry)
