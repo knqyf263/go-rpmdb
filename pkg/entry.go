@@ -146,12 +146,12 @@ func hdrblobInit(data []byte) (*hdrblob, error) {
 func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 	var indexEntries, dribbleIndexEntries []indexEntry
 	var err error
-	var rdlen uint32
+	var rdlen int32
 
 	entry := ei2h(blob.peList[0])
 	if entry.Tag >= RPMTAG_HEADERI18NTABLE {
 		/* An original v3 header, create a legacy region entry for it */
-		indexEntries, rdlen, err = regionSwab(data, 0, blob.peList, blob.dataStart, blob.dataEnd)
+		indexEntries, rdlen, err = regionSwab(data, blob.peList, 0, blob.dataStart, blob.dataEnd)
 		if err != nil {
 			return nil, xerrors.Errorf("failed to parse legacy index entries: %w", err)
 		}
@@ -163,7 +163,7 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 		}
 
 		// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L917
-		indexEntries, rdlen, err = regionSwab(data, 0, blob.peList[1:ril], blob.dataStart, blob.dataEnd)
+		indexEntries, rdlen, err = regionSwab(data, blob.peList[1:ril], 0, blob.dataStart, blob.dataEnd)
 		if err != nil {
 			return nil, xerrors.Errorf("failed to parse region entries: %w", err)
 		}
@@ -172,7 +172,7 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 		}
 
 		if blob.ril < int32(len(blob.peList)-1) {
-			dribbleIndexEntries, rdlen, err = regionSwab(data, rdlen, blob.peList[ril:], blob.dataStart, blob.dataEnd)
+			dribbleIndexEntries, rdlen, err = regionSwab(data, blob.peList[ril:], rdlen, blob.dataStart, blob.dataEnd)
 			if err != nil {
 				return nil, xerrors.Errorf("failed to parse dribble entries: %w", err)
 			}
@@ -193,10 +193,10 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 
 			indexEntries = ies
 		}
-		rdlen += uint32(REGION_TAG_COUNT)
+		rdlen += REGION_TAG_COUNT
 	}
 
-	if rdlen != uint32(blob.dl) {
+	if rdlen != blob.dl {
 		return nil, xerrors.Errorf("the calculated length (%d) is different from the data length (%d)", rdlen, blob.dl)
 	}
 	return indexEntries, nil
@@ -329,7 +329,7 @@ func ei2h(pe entryInfo) entryInfo {
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L498
-func regionSwab(data []byte, dl uint32, peList []entryInfo, dataStart, dataEnd int32) ([]indexEntry, uint32, error) {
+func regionSwab(data []byte, peList []entryInfo, dl, dataStart, dataEnd int32) ([]indexEntry, int32, error) {
 	indexEntries := make([]indexEntry, len(peList))
 	for i := 0; i < len(peList); i++ {
 		pe := peList[i]
@@ -353,7 +353,7 @@ func regionSwab(data []byte, dl uint32, peList []entryInfo, dataStart, dataEnd i
 		indexEntry.Data = data[start:end]
 		indexEntries[i] = indexEntry
 
-		dl += uint32(indexEntry.Length + alignDiff(indexEntry.Info.Type, dl))
+		dl += int32(indexEntry.Length + alignDiff(indexEntry.Info.Type, uint32(dl)))
 	}
 	return indexEntries, dl, nil
 }
