@@ -311,12 +311,6 @@ func regionSwab(data []byte, peList []entryInfo, dataStart, dataEnd int32) ([]in
 		pe := peList[i]
 		indexEntry := indexEntry{Info: ei2h(pe)}
 
-		// Unsupport RPM_STRING_ARRAY_TYPE and RPM_I18NSTRING_TYPE tag type
-		if indexEntry.Info.Type == RPM_STRING_ARRAY_TYPE ||
-			indexEntry.Info.Type == RPM_I18NSTRING_TYPE {
-			continue
-		}
-
 		start := dataStart + indexEntry.Info.Offset
 		if start >= dataEnd {
 			return nil, xerrors.New("invalid data offset")
