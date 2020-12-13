@@ -10,6 +10,7 @@ import (
 )
 
 const (
+	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L121-L122
 	REGION_TAG_COUNT = int32(unsafe.Sizeof(entryInfo{}))
 	REGION_TAG_TYPE  = RPM_BIN_TYPE
 
