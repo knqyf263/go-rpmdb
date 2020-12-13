@@ -234,7 +234,7 @@ func hdrblobVerifyInfo(blob *hdrblob, data []byte) error {
 			return xerrors.Errorf("invalid range info: %+v", info)
 		}
 
-		length := dataLength(data[blob.dataStart+info.Offset:], info.Type, info.Count, blob.dataEnd)
+		length := dataLength(data, info.Type, info.Count, blob.dataStart+info.Offset, blob.dataEnd)
 		end := info.Offset + int32(length)
 		if hdrchkRange(blob.dl, end) || length <= 0 {
 			return xerrors.Errorf("invalid data length info: %+v", info)
@@ -343,7 +343,7 @@ func regionSwab(data []byte, dl uint32, peList []entryInfo, dataStart, dataEnd i
 		if i < len(peList)-1 && typeSizes[indexEntry.Info.Type] == -1 {
 			indexEntry.Length = int(Htonl(peList[i+1].Offset) - indexEntry.Info.Offset)
 		} else {
-			indexEntry.Length = dataLength(data[start:], indexEntry.Info.Type, indexEntry.Info.Count, dataEnd)
+			indexEntry.Length = dataLength(data, indexEntry.Info.Type, indexEntry.Info.Count, start, dataEnd)
 		}
 		if indexEntry.Length < 0 {
 			return nil, 0, xerrors.New("invalid data length")
@@ -359,7 +359,7 @@ func regionSwab(data []byte, dl uint32, peList []entryInfo, dataStart, dataEnd i
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L440
-func dataLength(data []byte, t, count uint32, dataEnd int32) int {
+func dataLength(data []byte, t, count uint32, start, dataEnd int32) int {
 	var length int
 
 	switch t {
@@ -367,15 +367,15 @@ func dataLength(data []byte, t, count uint32, dataEnd int32) int {
 		if count != 1 {
 			return -1
 		}
-		length = strtaglen(data, 1, dataEnd)
+		length = strtaglen(data, 1, start, dataEnd)
 	case RPM_STRING_ARRAY_TYPE, RPM_I18NSTRING_TYPE:
-		length = strtaglen(data, count, dataEnd)
+		length = strtaglen(data, count, start, dataEnd)
 	default:
 		if typeSizes[t] == -1 {
 			return -1
 		}
 		length = typeSizes[t&0xf] * int(count)
-		if length < 0 {
+		if length < 0 || dataEnd > 0 && start+int32(length) > dataEnd {
 			return -1
 		}
 	}
@@ -395,15 +395,18 @@ func alignDiff(t, alignsize uint32) int {
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L408
-func strtaglen(data []byte, count uint32, dataEnd int32) int {
+func strtaglen(data []byte, count uint32, start, dataEnd int32) int {
 	var length int
-	if int32(len(data)) >= dataEnd {
+	if start >= dataEnd {
 		return -1
 	}
 
 	for c := count; c > 0; c-- {
-		length += bytes.IndexByte(data[length:], byte(0x00)) + 1
+		offset := start + int32(length)
+		if offset > int32(len(data)) {
+			return -1
+		}
+		length += bytes.IndexByte(data[offset:dataEnd], byte(0x00)) + 1
 	}
-
 	return length
 }
