@@ -129,11 +129,7 @@ func hdrblobInit(data []byte) (*hdrblob, error) {
 		blob.peList[i] = pe
 	}
 	if blob.pvlen >= headerMaxbytes {
-		return nil, xerrors.Errorf("blob size error: size(%d) BAD, 8 + 16 * il(%d) + dl(%d)", blob.pvlen, blob.il, blob.dl)
-	}
-
-	if len(blob.peList) == 0 {
-		return nil, xerrors.New("peList is empty")
+		return nil, xerrors.Errorf("blob size(%d) BAD, 8 + 16 * il(%d) + dl(%d)", blob.pvlen, blob.il, blob.dl)
 	}
 
 	if err := hdrblobVerifyRegion(&blob, data); err != nil {
@@ -238,7 +234,7 @@ func hdrblobVerifyRegion(blob *hdrblob, data []byte) error {
 	var einfo entryInfo
 	var regionTag int32
 
-	if blob.il < 1 {
+	if blob.il < 1 || len(blob.peList) == 0 {
 		return xerrors.New("region no tags error")
 	}
 
