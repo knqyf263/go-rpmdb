@@ -137,10 +137,10 @@ func hdrblobInit(data []byte) (*hdrblob, error) {
 	}
 
 	if err := hdrblobVerifyRegion(&blob, data); err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobVerifyRegion: %w", err)
+		return nil, xerrors.Errorf("failed to verify region in the header blob: %w", err)
 	}
 	if err := hdrblobVerifyInfo(&blob, data); err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobVerifyInfo: %w", err)
+		return nil, xerrors.Errorf("failed to verify info: %w", err)
 	}
 
 	return &blob, nil
