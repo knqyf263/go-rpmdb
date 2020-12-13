@@ -90,11 +90,11 @@ type hdrblob struct {
 func headerImport(data []byte) ([]indexEntry, error) {
 	blob, err := hdrblobInit(data)
 	if err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobInit error: %w", err)
+		return nil, xerrors.Errorf("failed to hdrblobInit: %w", err)
 	}
 	indexEntries, err := hdrblobImport(*blob, data)
 	if err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobImport error: %w", err)
+		return nil, xerrors.Errorf("failed to hdrblobImport: %w", err)
 	}
 	return indexEntries, nil
 }
@@ -131,14 +131,14 @@ func hdrblobInit(data []byte) (*hdrblob, error) {
 	}
 
 	if len(blob.peList) == 0 {
-		return nil, xerrors.New("peList is empty error")
+		return nil, xerrors.New("peList is empty")
 	}
 
 	if err := hdrblobVerifyRegion(&blob, data); err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobVerifyRegion error: %w", err)
+		return nil, xerrors.Errorf("failed to hdrblobVerifyRegion: %w", err)
 	}
-	if err := hdrblobVerifyInfo(&blob); err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobVerifyInfo error: %w", err)
+	if err := hdrblobVerifyInfo(&blob, data); err != nil {
+		return nil, xerrors.Errorf("failed to hdrblobVerifyInfo: %w", err)
 	}
 
 	return &blob, nil
@@ -152,9 +152,16 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 	}
 
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L917
-	indexEntries := regionSwab(data, blob.peList[1:ril], blob.dataStart, int(blob.dl))
+	indexEntries, err := regionSwab(data, blob.peList[1:ril], blob.dataStart, blob.dataEnd)
+	if err != nil {
+		return nil, xerrors.Errorf("failed to indexEntries regionSwab: %w", err)
+	}
 	if blob.ril < int32(len(blob.peList)-1) {
-		dribbleIndexEntries := regionSwab(data, blob.peList[ril:], blob.dataStart, int(blob.dl))
+		dribbleIndexEntries, err := regionSwab(data, blob.peList[ril:], blob.dataStart, blob.dataEnd)
+		if err != nil {
+			return nil, xerrors.Errorf("failed to dribbleIndexEntries regionSwab: %w", err)
+		}
+
 		uniqTagMap := make(map[int32]indexEntry)
 
 		for _, indexEntry := range append(indexEntries, dribbleIndexEntries...) {
@@ -172,44 +179,42 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L298-L303
-func hdrblobVerifyInfo(blob *hdrblob) error {
+func hdrblobVerifyInfo(blob *hdrblob, data []byte) error {
 	var end int32
 
 	peOffset := 0
 	if blob.regionTag != 0 {
 		peOffset = 1
 	}
-	typechk := blob.regionTag == RPMTAG_HEADERIMMUTABLE || blob.regionTag == RPMTAG_HEADERIMAGE
 
 	for _, pe := range blob.peList[peOffset:] {
 		info := ei2h(pe)
+
 		if end > info.Offset {
-			return xerrors.New("")
+			return xerrors.Errorf("invalid offset info: %+v", info)
 		}
 
 		if hdrchkTag(info.Tag) {
-			return xerrors.New("")
-		}
-		if hdrchkType(info.Type) {
-			return xerrors.New("")
-		}
-		if hdrchkAlign(info.Type, info.Offset) {
-			return xerrors.New("")
-		}
-		if hdrchkRange(blob.dl, info.Offset) {
-			return xerrors.New("")
-		}
-		if typechk && hdrchkTagType(info.Tag, info.Type) {
-			return xerrors.New("")
+			return xerrors.Errorf("invalid tag info: %+v", info)
 		}
 
-		// TODO: verify data length
-		/* Verify the data actually fits */
-		// len = dataLength(info.Type, ds + info.Offset,
-		// 		 info.count, 1, ds + blob.dl);
-		// end = info.offset + len;
-		// if (hdrchkRange(blob->dl, end) || len <= 0)
-		//     goto err;
+		if hdrchkType(info.Type) {
+			return xerrors.Errorf("invalid type info: %+v", info)
+		}
+
+		if hdrchkAlign(info.Type, info.Offset) {
+			return xerrors.Errorf("invalid align info: %+v", info)
+		}
+
+		if hdrchkRange(blob.dl, info.Offset) {
+			return xerrors.Errorf("invalid range info: %+v", info)
+		}
+
+		length := dataLength(data[blob.dataStart+info.Offset:], info.Type, info.Count, blob.dataEnd)
+		end := info.Offset + int32(length)
+		if hdrchkRange(blob.dl, end) || length <= 0 {
+			return xerrors.Errorf("invalid data length info: %+v", info)
+		}
 	}
 	return nil
 }
@@ -224,11 +229,6 @@ func hdrchkType(t uint32) bool {
 
 func hdrchkAlign(t uint32, offset int32) bool {
 	return offset&int32(typeAlign[t]-1) != 0
-}
-
-func hdrchkTagType(tag int32, t uint32) bool {
-	// TODO:
-	return false
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L1791
@@ -265,7 +265,7 @@ func hdrblobVerifyRegion(blob *hdrblob, data []byte) error {
 	var trailer entryInfo
 	regionEnd := blob.dataStart + einfo.Offset
 	if err := binary.Read(bytes.NewReader(data[regionEnd:regionEnd+REGION_TAG_COUNT]), binary.LittleEndian, &trailer); err != nil {
-		return xerrors.Errorf("failed to parse trailer error: %w", err)
+		return xerrors.Errorf("failed to parse trailer: %w", err)
 	}
 	blob.rdl = regionEnd + REGION_TAG_COUNT - blob.dataStart
 
@@ -305,10 +305,7 @@ func ei2h(pe entryInfo) entryInfo {
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L498
-func regionSwab(data []byte, peList []entryInfo, dataStart int32, dl int) []indexEntry {
-	// TODO: Make use of dl and make sure dl is calculated properly.
-	// TODO: verify dataEnd
-	// TODO: refactoring same interface
+func regionSwab(data []byte, peList []entryInfo, dataStart, dataEnd int32) ([]indexEntry, error) {
 	indexEntries := make([]indexEntry, len(peList))
 	for i := 0; i < len(peList); i++ {
 		pe := peList[i]
@@ -317,17 +314,20 @@ func regionSwab(data []byte, peList []entryInfo, dataStart int32, dl int) []inde
 		// Unsupport RPM_STRING_ARRAY_TYPE and RPM_I18NSTRING_TYPE tag type
 		if indexEntry.Info.Type == RPM_STRING_ARRAY_TYPE ||
 			indexEntry.Info.Type == RPM_I18NSTRING_TYPE {
-
 			continue
 		}
 
 		start := dataStart + indexEntry.Info.Offset
+		if start >= dataEnd {
+			return nil, xerrors.New("invalid data offset")
+		}
+
 		if i < len(peList)-1 && typeSizes[indexEntry.Info.Type] == -1 {
 			indexEntry.Length = int(Htonl(peList[i+1].Offset) - indexEntry.Info.Offset)
 		} else {
-			indexEntry.Length = dataLength(data[start:], indexEntry)
+			indexEntry.Length = dataLength(data[start:], indexEntry.Info.Type, indexEntry.Info.Count, dataEnd)
 			if indexEntry.Length < 0 {
-				continue
+				return nil, xerrors.New("invalid data length")
 			}
 		}
 
@@ -336,18 +336,41 @@ func regionSwab(data []byte, peList []entryInfo, dataStart int32, dl int) []inde
 
 		indexEntries[i] = indexEntry
 	}
-	return indexEntries
+	return indexEntries, nil
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L440
-func dataLength(data []byte, entry indexEntry) int {
-	switch entry.Info.Type {
+func dataLength(data []byte, t, count uint32, dataEnd int32) int {
+	var length int
+
+	switch t {
 	case RPM_STRING_TYPE:
-		if entry.Info.Count != 1 {
+		if count != 1 {
 			return -1
 		}
-		return bytes.IndexByte(data, byte(0x00))
+		length = strtaglen(data, 1, dataEnd)
+	case RPM_STRING_ARRAY_TYPE, RPM_I18NSTRING_TYPE:
+		length = strtaglen(data, count, dataEnd)
 	default:
-		return typeSizes[entry.Info.Type&0xf] * int(entry.Info.Count)
+		if typeSizes[t] == -1 {
+			return -1
+		}
+		length = typeSizes[t&0xf] * int(count)
+		if length < 0 {
+			return -1
+		}
 	}
+	return length
+}
+
+// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L408
+func strtaglen(data []byte, count uint32, dataEnd int32) int {
+	var length int
+	if int32(len(data)) >= dataEnd {
+		return -1
+	}
+	for c := count; c > 0; c-- {
+		length += bytes.IndexByte(data[length:], byte(0x00)) + 1
+	}
+	return length
 }
