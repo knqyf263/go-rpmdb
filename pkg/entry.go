@@ -388,7 +388,7 @@ func alignDiff(t, alignsize uint32) int {
 	if typesize > 1 {
 		diff := typesize - (int(alignsize) % typesize)
 		if diff != typesize {
-			return int(diff)
+			return diff
 		}
 	}
 	return 0
