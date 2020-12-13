@@ -18,8 +18,8 @@ const (
 	headerMaxbytes = 256 * 1024 * 1024
 )
 
-// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L52
 var (
+	// https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L52
 	typeSizes = [16]int{
 		0,  /*!< RPM_NULL_TYPE */
 		1,  /*!< RPM_CHAR_TYPE */
@@ -38,6 +38,7 @@ var (
 		0,
 		0,
 	}
+	// https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L27-L47
 	typeAlign = [16]int{
 		1, /*!< RPM_NULL_TYPE */
 		1, /*!< RPM_CHAR_TYPE */
@@ -87,7 +88,7 @@ type hdrblob struct {
 	rdl       int32
 }
 
-// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.11.3-release/lib/header.c#L789
+// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L2044
 func headerImport(data []byte) ([]indexEntry, error) {
 	blob, err := hdrblobInit(data)
 	if err != nil {
