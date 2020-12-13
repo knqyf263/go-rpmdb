@@ -92,11 +92,11 @@ type hdrblob struct {
 func headerImport(data []byte) ([]indexEntry, error) {
 	blob, err := hdrblobInit(data)
 	if err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobInit: %w", err)
+		return nil, xerrors.Errorf("failed to initialize header blob: %w", err)
 	}
 	indexEntries, err := hdrblobImport(*blob, data)
 	if err != nil {
-		return nil, xerrors.Errorf("failed to hdrblobImport: %w", err)
+		return nil, xerrors.Errorf("failed to import header blob: %w", err)
 	}
 	return indexEntries, nil
 }
@@ -153,7 +153,7 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 		/* An original v3 header, create a legacy region entry for it */
 		indexEntries, rdlen, err = regionSwab(data, 0, blob.peList, blob.dataStart, blob.dataEnd)
 		if err != nil {
-			return nil, xerrors.Errorf("failed to parse legacy indexEntries: %w", err)
+			return nil, xerrors.Errorf("failed to parse legacy index entries: %w", err)
 		}
 	} else {
 		/* Either a v4 header or an "upgraded" v3 header with a legacy region */
@@ -165,19 +165,19 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 		// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L917
 		indexEntries, rdlen, err = regionSwab(data, 0, blob.peList[1:ril], blob.dataStart, blob.dataEnd)
 		if err != nil {
-			return nil, xerrors.Errorf("failed to parse indexEntries: %w", err)
+			return nil, xerrors.Errorf("failed to parse region entries: %w", err)
 		}
 		if rdlen < 0 {
-			return nil, xerrors.New("invalid indexEntries rdlen")
+			return nil, xerrors.New("invalid region length")
 		}
 
 		if blob.ril < int32(len(blob.peList)-1) {
 			dribbleIndexEntries, rdlen, err = regionSwab(data, rdlen, blob.peList[ril:], blob.dataStart, blob.dataEnd)
 			if err != nil {
-				return nil, xerrors.Errorf("failed to dribbleIndexEntries: %w", err)
+				return nil, xerrors.Errorf("failed to parse dribble entries: %w", err)
 			}
 			if rdlen < 0 {
-				return nil, xerrors.New("invalid  dribbleIndexEntries rdlen")
+				return nil, xerrors.New("invalid length of dribble entries")
 			}
 
 			uniqTagMap := make(map[int32]indexEntry)
@@ -197,7 +197,7 @@ func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
 	}
 
 	if rdlen != uint32(blob.dl) {
-		return nil, xerrors.New("invalid rdlen")
+		return nil, xerrors.Errorf("the calculated length (%d) is different from the data length (%d)", rdlen, blob.dl)
 	}
 	return indexEntries, nil
 }
