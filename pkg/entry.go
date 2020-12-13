@@ -279,7 +279,7 @@ func hdrblobVerifyRegion(blob *hdrblob, data []byte) error {
 	einfo.Offset = -einfo.Offset
 	blob.ril = einfo.Offset / int32(unsafe.Sizeof(blob.peList[0]))
 	if (einfo.Offset%REGION_TAG_COUNT) != 0 || hdrchkRange(blob.il, blob.ril) || hdrchkRange(blob.dl, blob.rdl) {
-		return xerrors.New("invalid region size")
+		return xerrors.Errorf("invalid region size, region %d", regionTag)
 	}
 
 	blob.regionTag = regionTag
