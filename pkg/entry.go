@@ -383,11 +383,11 @@ func dataLength(data []byte, t, count uint32, start, dataEnd int32) int {
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L353
-func alignDiff(t, alignsize uint32) int {
-	typesize := typeSizes[t]
-	if typesize > 1 {
-		diff := typesize - (int(alignsize) % typesize)
-		if diff != typesize {
+func alignDiff(t, alignSize uint32) int {
+	typeSize := typeSizes[t]
+	if typeSize > 1 {
+		diff := typeSize - (int(alignSize) % typeSize)
+		if diff != typeSize {
 			return diff
 		}
 	}
