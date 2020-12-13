@@ -6,6 +6,7 @@ const (
 	RPMTAG_HEADERSIGNATURES = 62
 	RPMTAG_HEADERIMMUTABLE  = 63
 	HEADER_I18NTABLE        = 100
+	RPMTAG_HEADERI18NTABLE  = HEADER_I18NTABLE
 
 	// rpmTag_e
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/rpmtag.h#L34

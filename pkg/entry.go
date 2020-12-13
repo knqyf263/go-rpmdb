@@ -144,34 +144,60 @@ func hdrblobInit(data []byte) (*hdrblob, error) {
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L880
 func hdrblobImport(blob hdrblob, data []byte) ([]indexEntry, error) {
-	ril := blob.ril
-	if blob.peList[0].Offset == 0 {
-		ril = blob.il
-	}
+	var indexEntries, dribbleIndexEntries []indexEntry
+	var err error
+	var rdlen uint32
 
-	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L917
-	indexEntries, err := regionSwab(data, blob.peList[1:ril], blob.dataStart, blob.dataEnd)
-	if err != nil {
-		return nil, xerrors.Errorf("failed to indexEntries regionSwab: %w", err)
-	}
-	if blob.ril < int32(len(blob.peList)-1) {
-		dribbleIndexEntries, err := regionSwab(data, blob.peList[ril:], blob.dataStart, blob.dataEnd)
+	entry := ei2h(blob.peList[0])
+	if entry.Tag >= RPMTAG_HEADERI18NTABLE {
+		/* An original v3 header, create a legacy region entry for it */
+		indexEntries, rdlen, err = regionSwab(data, 0, blob.peList, blob.dataStart, blob.dataEnd)
 		if err != nil {
-			return nil, xerrors.Errorf("failed to dribbleIndexEntries regionSwab: %w", err)
+			return nil, xerrors.Errorf("failed to parse legacy indexEntries: %w", err)
+		}
+	} else {
+		/* Either a v4 header or an "upgraded" v3 header with a legacy region */
+		ril := blob.ril
+		if entry.Offset == 0 {
+			ril = blob.il
 		}
 
-		uniqTagMap := make(map[int32]indexEntry)
-
-		for _, indexEntry := range append(indexEntries, dribbleIndexEntries...) {
-			uniqTagMap[indexEntry.Info.Tag] = indexEntry
+		// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L917
+		indexEntries, rdlen, err = regionSwab(data, 0, blob.peList[1:ril], blob.dataStart, blob.dataEnd)
+		if err != nil {
+			return nil, xerrors.Errorf("failed to parse indexEntries: %w", err)
+		}
+		if rdlen < 0 {
+			return nil, xerrors.New("invalid indexEntries rdlen")
 		}
 
-		var ies []indexEntry
-		for _, indexEntry := range uniqTagMap {
-			ies = append(ies, indexEntry)
-		}
+		if blob.ril < int32(len(blob.peList)-1) {
+			dribbleIndexEntries, rdlen, err = regionSwab(data, rdlen, blob.peList[ril:], blob.dataStart, blob.dataEnd)
+			if err != nil {
+				return nil, xerrors.Errorf("failed to dribbleIndexEntries: %w", err)
+			}
+			if rdlen < 0 {
+				return nil, xerrors.New("invalid  dribbleIndexEntries rdlen")
+			}
 
-		return ies, nil
+			uniqTagMap := make(map[int32]indexEntry)
+
+			for _, indexEntry := range append(indexEntries, dribbleIndexEntries...) {
+				uniqTagMap[indexEntry.Info.Tag] = indexEntry
+			}
+
+			var ies []indexEntry
+			for _, indexEntry := range uniqTagMap {
+				ies = append(ies, indexEntry)
+			}
+
+			indexEntries = ies
+		}
+		rdlen += uint32(REGION_TAG_COUNT)
+	}
+
+	if rdlen != uint32(blob.dl) {
+		return nil, xerrors.New("invalid rdlen")
 	}
 	return indexEntries, nil
 }
@@ -303,7 +329,7 @@ func ei2h(pe entryInfo) entryInfo {
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L498
-func regionSwab(data []byte, peList []entryInfo, dataStart, dataEnd int32) ([]indexEntry, error) {
+func regionSwab(data []byte, dl uint32, peList []entryInfo, dataStart, dataEnd int32) ([]indexEntry, uint32, error) {
 	indexEntries := make([]indexEntry, len(peList))
 	for i := 0; i < len(peList); i++ {
 		pe := peList[i]
@@ -311,24 +337,25 @@ func regionSwab(data []byte, peList []entryInfo, dataStart, dataEnd int32) ([]in
 
 		start := dataStart + indexEntry.Info.Offset
 		if start >= dataEnd {
-			return nil, xerrors.New("invalid data offset")
+			return nil, 0, xerrors.New("invalid data offset")
 		}
 
 		if i < len(peList)-1 && typeSizes[indexEntry.Info.Type] == -1 {
 			indexEntry.Length = int(Htonl(peList[i+1].Offset) - indexEntry.Info.Offset)
 		} else {
 			indexEntry.Length = dataLength(data[start:], indexEntry.Info.Type, indexEntry.Info.Count, dataEnd)
-			if indexEntry.Length < 0 {
-				return nil, xerrors.New("invalid data length")
-			}
+		}
+		if indexEntry.Length < 0 {
+			return nil, 0, xerrors.New("invalid data length")
 		}
 
 		end := int(start) + indexEntry.Length
 		indexEntry.Data = data[start:end]
-
 		indexEntries[i] = indexEntry
+
+		dl += uint32(indexEntry.Length + alignDiff(indexEntry.Info.Type, dl))
 	}
-	return indexEntries, nil
+	return indexEntries, dl, nil
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L440
@@ -355,14 +382,28 @@ func dataLength(data []byte, t, count uint32, dataEnd int32) int {
 	return length
 }
 
+// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L353
+func alignDiff(t, alignsize uint32) int {
+	typesize := typeSizes[t]
+	if typesize > 1 {
+		diff := typesize - (int(alignsize) % typesize)
+		if diff != typesize {
+			return int(diff)
+		}
+	}
+	return 0
+}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L408
 func strtaglen(data []byte, count uint32, dataEnd int32) int {
 	var length int
 	if int32(len(data)) >= dataEnd {
 		return -1
 	}
+
 	for c := count; c > 0; c-- {
 		length += bytes.IndexByte(data[length:], byte(0x00)) + 1
 	}
+
 	return length
 }
