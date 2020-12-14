@@ -117,6 +117,10 @@ func hdrblobInit(data []byte) (*hdrblob, error) {
 	blob.pvlen = int32(unsafe.Sizeof(blob.il)) + int32(unsafe.Sizeof(blob.dl)) + blob.il*int32(unsafe.Sizeof(entryInfo{})) + blob.dl
 	blob.dataEnd = blob.dataStart + blob.dl
 
+	if blob.il < 1 {
+		return nil, xerrors.New("region no tags error")
+	}
+
 	blob.peList = make([]entryInfo, blob.il)
 	for i := 0; i < int(blob.il); i++ {
 		var pe entryInfo
@@ -259,10 +263,6 @@ func hdrchkAlign(t uint32, offset int32) bool {
 func hdrblobVerifyRegion(blob *hdrblob, data []byte) error {
 	var einfo entryInfo
 	var regionTag int32
-
-	if blob.il < 1 || len(blob.peList) == 0 {
-		return xerrors.New("region no tags error")
-	}
 
 	einfo = ei2h(blob.peList[0])
 
