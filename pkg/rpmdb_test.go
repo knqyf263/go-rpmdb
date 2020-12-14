@@ -42,6 +42,10 @@ func TestPackageList(t *testing.T) {
 			file:    "testdata/centos7-httpd24/Packages",
 			pkgList: CentOS7Httpd24,
 		},
+		{
+			file:    "testdata/centos8-modularitylabel/Packages",
+			pkgList: CentOS8Modularitylabel,
+		},
 	}
 
 	for _, v := range vectors {
@@ -87,6 +91,9 @@ func TestPackageList(t *testing.T) {
 				}
 				if want.License != got.License {
 					t.Errorf("%d: License: got %s, want %s", i, got.License, want.License)
+				}
+				if want.Modularitylabel != got.Modularitylabel {
+					t.Errorf("%d: Modularitylabel: got %s, want %s", i, got.Modularitylabel, want.Modularitylabel)
 				}
 			}
 		})
