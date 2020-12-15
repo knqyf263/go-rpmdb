@@ -1,11 +1,125 @@
 package rpmdb
 
 var (
+	// docker run --rm -it centos:5 bash
+	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\"\, \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/(none)/0/g"
+	CentOS5Plain = []*PackageInfo{
+		{0, "setup", "2.5.58", "9.el5", "noarch", "setup-2.5.58-9.el5.src.rpm", 381527, "public domain", "CentOS", ""},
+		{0, "basesystem", "8.0", "5.1.1.el5.centos", "noarch", "basesystem-8.0-5.1.1.el5.centos.src.rpm", 0, "public domain", "CentOS", ""},
+		{0, "cracklib-dicts", "2.8.9", "3.3", "x86_64", "cracklib-2.8.9-3.3.src.rpm", 8043753, "Artistic", "CentOS", ""},
+		{0, "tzdata", "2016c", "1.el5", "x86_64", "tzdata-2016c-1.el5.src.rpm", 1796593, "Public Domain", "CentOS", ""},
+		{0, "glibc", "2.5", "123.el5_11.3", "x86_64", "glibc-2.5-123.el5_11.3.src.rpm", 11690192, "LGPL", "CentOS", ""},
+		{0, "zlib", "1.2.3", "7.el5", "x86_64", "zlib-1.2.3-7.el5.src.rpm", 88976, "BSD", "CentOS", ""},
+		{0, "popt", "1.10.2.3", "36.el5_11", "x86_64", "rpm-4.4.2.3-36.el5_11.src.rpm", 142842, "GPLv2+", "CentOS", ""},
+		{0, "glib2", "2.12.3", "4.el5_3.1", "x86_64", "glib2-2.12.3-4.el5_3.1.src.rpm", 2429701, "LGPL", "CentOS", ""},
+		{0, "audit-libs", "1.8", "2.el5", "x86_64", "audit-1.8-2.el5.src.rpm", 156639, "LGPL", "CentOS", ""},
+		{0, "bash", "3.2", "33.el5_11.4", "x86_64", "bash-3.2-33.el5_11.4.src.rpm", 5235475, "GPLv2+", "CentOS", ""},
+		{0, "info", "4.8", "14.el5", "x86_64", "texinfo-4.8-14.el5.src.rpm", 285963, "GPL", "CentOS", ""},
+		{0, "readline", "5.1", "3.el5", "x86_64", "readline-5.1-3.el5.src.rpm", 384289, "GPL", "CentOS", ""},
+		{0, "nss", "3.19.1", "4.el5_11", "x86_64", "nss-3.19.1-4.el5_11.src.rpm", 3568632, "MPLv2.0", "CentOS", ""},
+		{0, "elfutils-libelf", "0.137", "3.el5", "x86_64", "elfutils-0.137-3.el5.src.rpm", 76000, "GPLv2 with exceptions", "CentOS", ""},
+		{0, "libattr", "2.4.32", "1.1", "x86_64", "attr-2.4.32-1.1.src.rpm", 15560, "LGPL", "CentOS", ""},
+		{0, "libstdc++", "4.1.2", "55.el5", "x86_64", "gcc-4.1.2-55.el5.src.rpm", 973680, "GPL", "CentOS", ""},
+		{0, "iproute", "2.6.18", "15.el5", "x86_64", "iproute-2.6.18-15.el5.src.rpm", 2165603, "GNU GPL", "CentOS", ""},
+		{0, "grep", "2.5.1", "55.el5", "x86_64", "grep-2.5.1-55.el5.src.rpm", 443427, "GPL", "CentOS", ""},
+		{0, "diffutils", "2.8.1", "16.el5", "x86_64", "diffutils-2.8.1-16.el5.src.rpm", 568548, "GPL", "CentOS", ""},
+		{0, "gawk", "3.1.5", "16.el5", "x86_64", "gawk-3.1.5-16.el5.src.rpm", 4384895, "GPL", "CentOS", ""},
+		{0, "less", "436", "9.el5", "x86_64", "less-436-9.el5.src.rpm", 191053, "GPL", "CentOS", ""},
+		{0, "procps", "3.2.7", "26.el5", "x86_64", "procps-3.2.7-26.el5.src.rpm", 413100, "GPL", "CentOS", ""},
+		{0, "crontabs", "1.10", "11.el5", "noarch", "crontabs-1.10-11.el5.src.rpm", 2056, "Public Domain", "CentOS", ""},
+		{0, "libxml2", "2.6.26", "2.1.25.el5_11", "x86_64", "libxml2-2.6.26-2.1.25.el5_11.src.rpm", 1646329, "MIT", "CentOS", ""},
+		{0, "sgpio", "1.2.0_10", "2.el5", "x86_64", "sgpio-1.2.0_10-2.el5.src.rpm", 15901, "GPLv2+", "CentOS", ""},
+		{0, "mingetty", "1.07", "5.2.2", "x86_64", "mingetty-1.07-5.2.2.src.rpm", 32432, "GPL", "CentOS", ""},
+		{0, "libcap", "1.10", "26", "x86_64", "libcap-1.10-26.src.rpm", 56330, "BSD-like and LGPL", "CentOS", ""},
+		{0, "keyutils-libs", "1.2", "1.el5", "x86_64", "keyutils-1.2-1.el5.src.rpm", 33608, "GPL/LGPL", "CentOS", ""},
+		{10, "centos-release", "5", "11.el5.centos", "x86_64", "centos-release-5-11.el5.centos.src.rpm", 45731, "GPL", "CentOS", ""},
+		{0, "python-libs", "2.4.3", "56.el5", "x86_64", "python-2.4.3-56.el5.src.rpm", 22018736, "PSF - see LICENSE", "CentOS", ""},
+		{0, "cracklib", "2.8.9", "3.3", "x86_64", "cracklib-2.8.9-3.3.src.rpm", 176409, "Artistic", "CentOS", ""},
+		{0, "device-mapper-event", "1.02.67", "2.el5_11.1", "x86_64", "device-mapper-1.02.67-2.el5_11.1.src.rpm", 32432, "GPL", "CentOS", ""},
+		{0, "net-tools", "1.60", "83.el5_10", "x86_64", "net-tools-1.60-83.el5_10.src.rpm", 798220, "GPL", "CentOS", ""},
+		{0, "libutempter", "1.1.4", "4.el5", "x86_64", "libutempter-1.1.4-4.el5.src.rpm", 40484, "LGPL", "CentOS", ""},
+		{2, "tar", "1.15.1", "32.el5_8", "x86_64", "tar-1.15.1-32.el5_8.src.rpm", 1671798, "GPL", "CentOS", ""},
+		{0, "SysVinit", "2.86", "17.el5", "x86_64", "SysVinit-2.86-17.el5.src.rpm", 226009, "GPL", "CentOS", ""},
+		{0, "e2fsprogs", "1.39", "37.el5", "x86_64", "e2fsprogs-1.39-37.el5.src.rpm", 1985776, "GPL", "CentOS", ""},
+		{0, "kpartx", "0.4.7", "64.el5_11", "x86_64", "device-mapper-multipath-0.4.7-64.el5_11.src.rpm", 983150, "GPL", "CentOS", ""},
+		{0, "device-mapper-multipath", "0.4.7", "64.el5_11", "x86_64", "device-mapper-multipath-0.4.7-64.el5_11.src.rpm", 7193153, "GPL", "CentOS", ""},
+		{0, "logrotate", "3.7.4", "14", "x86_64", "logrotate-3.7.4-14.src.rpm", 59821, "GPL", "CentOS", ""},
+		{0, "MAKEDEV", "3.23", "1.2", "x86_64", "MAKEDEV-3.23-1.2.src.rpm", 660343, "GPL", "CentOS", ""},
+		{0, "coreutils", "5.97", "34.el5_8.1", "x86_64", "coreutils-5.97-34.el5_8.1.src.rpm", 9045871, "GPLv2+", "CentOS", ""},
+		{0, "udev", "095", "14.33.el5_11", "x86_64", "udev-095-14.33.el5_11.src.rpm", 5627184, "GPL", "CentOS", ""},
+		{0, "module-init-tools", "3.3", "0.pre3.1.63.el5", "x86_64", "module-init-tools-3.3-0.pre3.1.63.el5.src.rpm", 907394, "GPL", "CentOS", ""},
+		{0, "mcstrans", "0.2.11", "3.el5", "x86_64", "mcstrans-0.2.11-3.el5.src.rpm", 23099, "GPL", "CentOS", ""},
+		{0, "initscripts", "8.45.45", "1.el5.centos", "x86_64", "initscripts-8.45.45-1.el5.centos.src.rpm", 5509410, "GPLv2 and GPLv2+", "CentOS", ""},
+		{0, "rpm-libs", "4.4.2.3", "36.el5_11", "x86_64", "rpm-4.4.2.3-36.el5_11.src.rpm", 2080256, "GPLv2+ and LGPLv2+ with exceptions", "CentOS", ""},
+		{30, "bind-libs", "9.3.6", "25.P1.el5_11.8", "x86_64", "bind-9.3.6-25.P1.el5_11.8.src.rpm", 2023624, "BSD-like", "CentOS", ""},
+		{0, "python-elementtree", "1.2.6", "5", "x86_64", "python-elementtree-1.2.6-5.src.rpm", 311637, "PSF", "CentOS", ""},
+		{0, "m2crypto", "0.16", "9.el5", "x86_64", "m2crypto-0.16-9.el5.src.rpm", 1829395, "BSDish", "CentOS", ""},
+		{0, "yum-metadata-parser", "1.1.2", "4.el5", "x86_64", "yum-metadata-parser-1.1.2-4.el5.src.rpm", 55883, "GPLv2", "CentOS", ""},
+		{0, "yum", "3.2.22", "40.el5.centos", "noarch", "yum-3.2.22-40.el5.centos.src.rpm", 3429595, "GPLv2+", "CentOS", ""},
+		{0, "libuser", "0.54.7", "3.el5", "x86_64", "libuser-0.54.7-3.el5.src.rpm", 1647843, "LGPL", "CentOS", ""},
+		{30, "bind-utils", "9.3.6", "25.P1.el5_11.8", "x86_64", "bind-9.3.6-25.P1.el5_11.8.src.rpm", 300911, "BSD-like", "CentOS", ""},
+		{2, "vim-minimal", "7.0.109", "7.2.el5", "x86_64", "vim-7.0.109-7.2.el5.src.rpm", 630565, "freeware", "CentOS", ""},
+		{0, "rootfiles", "8.1", "1.1.1", "noarch", "rootfiles-8.1-1.1.1.src.rpm", 620, "Public Domain", "CentOS", ""},
+		{0, "libgcc", "4.1.2", "55.el5", "x86_64", "gcc-4.1.2-55.el5.src.rpm", 84728, "GPL", "CentOS", ""},
+		{0, "filesystem", "2.4.0", "3.el5.centos", "x86_64", "filesystem-2.4.0-3.el5.centos.src.rpm", 0, "Public Domain", "CentOS", ""},
+		{0, "nash", "5.1.19.6", "82.el5", "x86_64", "mkinitrd-5.1.19.6-82.el5.src.rpm", 2455441, "GPL", "CentOS", ""},
+		{1, "termcap", "5.5", "1.20060701.1", "noarch", "termcap-5.5-1.20060701.1.src.rpm", 807103, "Public Domain", "CentOS", ""},
+		{0, "glibc-common", "2.5", "123.el5_11.3", "x86_64", "glibc-2.5-123.el5_11.3.src.rpm", 66738287, "LGPL", "CentOS", ""},
+		{3, "mktemp", "1.5", "24.el5", "x86_64", "mktemp-1.5-24.el5.src.rpm", 15432, "BSD", "CentOS", ""},
+		{0, "chkconfig", "1.3.30.2", "2.el5", "x86_64", "chkconfig-1.3.30.2-2.el5.src.rpm", 596588, "GPL", "CentOS", ""},
+		{0, "nspr", "4.10.8", "2.el5_11", "x86_64", "nspr-4.10.8-2.el5_11.src.rpm", 258472, "MPLv2.0", "CentOS", ""},
+		{0, "bzip2-libs", "1.0.3", "6.el5_5", "x86_64", "bzip2-1.0.3-6.el5_5.src.rpm", 65528, "BSD", "CentOS", ""},
+		{0, "libtermcap", "2.0.8", "46.1", "x86_64", "libtermcap-2.0.8-46.1.src.rpm", 13320, "LGPL", "CentOS", ""},
+		{0, "ncurses", "5.5", "24.20060715", "x86_64", "ncurses-5.5-24.20060715.src.rpm", 3022251, "distributable", "CentOS", ""},
+		{0, "libsepol", "1.15.2", "3.el5", "x86_64", "libsepol-1.15.2-3.el5.src.rpm", 245232, "LGPLv2+", "CentOS", ""},
+		{0, "sqlite", "3.3.6", "7", "x86_64", "sqlite-3.3.6-7.src.rpm", 411302, "Public Domain", "CentOS", ""},
+		{0, "sed", "4.1.5", "8.el5", "x86_64", "sed-4.1.5-8.el5.src.rpm", 335348, "GPL", "CentOS", ""},
+		{0, "expat", "1.95.8", "11.el5_8", "x86_64", "expat-1.95.8-11.el5_8.src.rpm", 173262, "BSD", "CentOS", ""},
+		{0, "libacl", "2.2.39", "8.el5", "x86_64", "acl-2.2.39-8.el5.src.rpm", 25624, "LGPL", "CentOS", ""},
+		{0, "db4", "4.3.29", "10.el5_5.2", "x86_64", "db4-4.3.29-10.el5_5.2.src.rpm", 2118874, "GPL", "CentOS", ""},
+		{0, "pcre", "6.6", "9.el5", "x86_64", "pcre-6.6-9.el5.src.rpm", 244957, "BSD", "CentOS", ""},
+		{0, "hmaccalc", "0.9.6", "4.el5", "x86_64", "hmaccalc-0.9.6-4.el5.src.rpm", 93006, "MIT", "CentOS", ""},
+		{0, "binutils", "2.17.50.0.6", "26.el5", "x86_64", "binutils-2.17.50.0.6-26.el5.src.rpm", 7416670, "GPL", "CentOS", ""},
+		{0, "cpio", "2.6", "26.el5", "x86_64", "cpio-2.6-26.el5.src.rpm", 285951, "GPL", "CentOS", ""},
+		{0, "gzip", "1.3.5", "13.el5.centos", "x86_64", "gzip-1.3.5-13.el5.centos.src.rpm", 181411, "GPL", "CentOS", ""},
+		{0, "iputils", "20020927", "46.el5", "x86_64", "iputils-20020927-46.el5.src.rpm", 284557, "BSD", "CentOS", ""},
+		{0, "libsysfs", "2.1.0", "1.el5", "x86_64", "sysfsutils-2.1.0-1.el5.src.rpm", 144141, "LGPL", "CentOS", ""},
+		{0, "cyrus-sasl-lib", "2.1.22", "7.el5_8.1", "x86_64", "cyrus-sasl-2.1.22-7.el5_8.1.src.rpm", 303193, "Freely Distributable", "CentOS", ""},
+		{0, "gdbm", "1.8.0", "28.el5", "x86_64", "gdbm-1.8.0-28.el5.src.rpm", 47658, "GPL", "CentOS", ""},
+		{0, "ethtool", "6", "4.el5", "x86_64", "ethtool-6-4.el5.src.rpm", 152180, "GPL", "CentOS", ""},
+		{0, "centos-release-notes", "5.11", "0", "x86_64", "centos-release-notes-5.11-0.src.rpm", 52622, "GPL", "CentOS", ""},
+		{0, "openssl", "0.9.8e", "39.el5_11", "x86_64", "openssl-0.9.8e-39.el5_11.src.rpm", 4171441, "BSDish", "CentOS", ""},
+		{0, "python", "2.4.3", "56.el5", "x86_64", "python-2.4.3-56.el5.src.rpm", 74377, "PSF - see LICENSE", "CentOS", ""},
+		{0, "iscsi-initiator-utils", "6.2.0.872", "16.el5", "x86_64", "iscsi-initiator-utils-6.2.0.872-16.el5.src.rpm", 3137545, "GPL", "CentOS", ""},
+		{0, "dmraid-events", "1.0.0.rc13", "65.el5", "x86_64", "dmraid-1.0.0.rc13-65.el5.src.rpm", 8788, "GPL", "CentOS", ""},
+		{2, "shadow-utils", "4.0.17", "23.el5", "x86_64", "shadow-utils-4.0.17-23.el5.src.rpm", 2785766, "BSD", "CentOS", ""},
+		{0, "psmisc", "22.2", "11", "x86_64", "psmisc-22.2-11.src.rpm", 162941, "BSD/GPL", "CentOS", ""},
+		{1, "findutils", "4.2.27", "6.el5", "x86_64", "findutils-4.2.27-6.el5.src.rpm", 686644, "GPL", "CentOS", ""},
+		{0, "e2fsprogs-libs", "1.39", "37.el5", "x86_64", "e2fsprogs-1.39-37.el5.src.rpm", 233240, "GPL", "CentOS", ""},
+		{0, "lvm2", "2.02.88", "13.el5", "x86_64", "lvm2-2.02.88-13.el5.src.rpm", 9619149, "GPL", "CentOS", ""},
+		{0, "dmraid", "1.0.0.rc13", "65.el5", "x86_64", "dmraid-1.0.0.rc13-65.el5.src.rpm", 1697084, "GPL", "CentOS", ""},
+		{0, "device-mapper", "1.02.67", "2.el5_11.1", "x86_64", "device-mapper-1.02.67-2.el5_11.1.src.rpm", 2173856, "GPL", "CentOS", ""},
+		{0, "libselinux", "1.33.4", "5.7.el5.centos", "x86_64", "libselinux-1.33.4-5.7.el5.centos.src.rpm", 92976, "Public domain (uncopyrighted)", "CentOS", ""},
+		{0, "krb5-libs", "1.6.1", "80.el5_11", "x86_64", "krb5-1.6.1-80.el5_11.src.rpm", 1467909, "MIT, freely distributable.", "CentOS", ""},
+		{0, "pam", "0.99.6.2", "14.el5_11", "x86_64", "pam-0.99.6.2-14.el5_11.src.rpm", 2590520, "GPL or BSD", "CentOS", ""},
+		{0, "util-linux", "2.13", "0.59.el5_8", "x86_64", "util-linux-2.13-0.59.el5_8.src.rpm", 4813548, "distributable", "CentOS", ""},
+		{0, "mkinitrd", "5.1.19.6", "82.el5", "x86_64", "mkinitrd-5.1.19.6-82.el5.src.rpm", 955929, "GPL", "CentOS", ""},
+		{0, "rsyslog", "3.22.1", "7.el5", "x86_64", "rsyslog-3.22.1-7.el5.src.rpm", 1277211, "GPLv3+", "CentOS", ""},
+		{0, "rpm", "4.4.2.3", "36.el5_11", "x86_64", "rpm-4.4.2.3-36.el5_11.src.rpm", 3754335, "GPLv2+", "CentOS", ""},
+		{0, "rpm-python", "4.4.2.3", "36.el5_11", "x86_64", "rpm-4.4.2.3-36.el5_11.src.rpm", 133812, "GPLv2+", "CentOS", ""},
+		{0, "python-iniparse", "0.2.3", "6.el5", "noarch", "python-iniparse-0.2.3-6.el5.src.rpm", 134606, "MIT", "CentOS", ""},
+		{0, "python-sqlite", "1.1.7", "1.2.1", "x86_64", "python-sqlite-1.1.7-1.2.1.src.rpm", 120728, "GPL", "CentOS", ""},
+		{0, "python-urlgrabber", "3.1.0", "6.el5", "noarch", "python-urlgrabber-3.1.0-6.el5.src.rpm", 478912, "LGPLv2+", "CentOS", ""},
+		{0, "yum-fastestmirror", "1.1.16", "21.el5.centos", "noarch", "yum-utils-1.1.16-21.el5.centos.src.rpm", 48064, "GPLv2+", "CentOS", ""},
+		{0, "openldap", "2.3.43", "29.el5_11", "x86_64", "openldap-2.3.43-29.el5_11.src.rpm", 618899, "OpenLDAP", "CentOS", ""},
+		{0, "passwd", "0.73", "2", "x86_64", "passwd-0.73-2.src.rpm", 27293, "BSD", "CentOS", ""},
+		{0, "libselinux-utils", "1.33.4", "5.7.el5.centos", "x86_64", "libselinux-1.33.4-5.7.el5.centos.src.rpm", 52008, "Public domain (uncopyrighted)", "CentOS", ""},
+	}
 
 	// docker run --rm -it centos:6 bash
 	// yum groupinstall -y "Development tools"
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/^{(none)/{0/g" | sed "s/(none)//g"
-	CentOS6DevTools = []PackageInfo{
+	CentOS6DevTools = []*PackageInfo{
 		{0, "iproute", "2.6.32", "57.el6", "x86_64", "iproute-2.6.32-57.el6.src.rpm", 963477, "GPLv2+ and Public Domain", "CentOS", ""},
 		{0, "setup", "2.8.14", "23.el6", "noarch", "setup-2.8.14-23.el6.src.rpm", 666669, "Public Domain", "CentOS", ""},
 		{0, "iputils", "20071127", "24.el6", "x86_64", "iputils-20071127-24.el6.src.rpm", 297243, "BSD with advertising and GPLv2+ and Rdisc", "CentOS", ""},
@@ -278,7 +392,7 @@ var (
 	// yum install -y ncurses-devel newt-devel numactl-devel pciutils-devel python-devel zlib-devel
 	// yum install -y net-tools bc
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/^{(none)/{0/g" | sed "s/(none)//g"
-	CentOS6Many = []PackageInfo{
+	CentOS6Many = []*PackageInfo{
 		{0, "iproute", "2.6.32", "57.el6", "x86_64", "iproute-2.6.32-57.el6.src.rpm", 963477, "GPLv2+ and Public Domain", "CentOS", ""},
 		{0, "setup", "2.8.14", "23.el6", "noarch", "setup-2.8.14-23.el6.src.rpm", 666669, "Public Domain", "CentOS", ""},
 		{0, "iputils", "20071127", "24.el6", "x86_64", "iputils-20071127-24.el6.src.rpm", 297243, "BSD with advertising and GPLv2+ and Rdisc", "CentOS", ""},
@@ -609,7 +723,7 @@ var (
 
 	// docker run --rm -it centos:6 bash
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\"\, \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/(none)/0/g"
-	CentOS6Plain = []PackageInfo{
+	CentOS6Plain = []*PackageInfo{
 		{0, "setup", "2.8.14", "23.el6", "noarch", "setup-2.8.14-23.el6.src.rpm", 666669, "Public Domain", "CentOS", ""},
 		{0, "basesystem", "10.0", "4.el6", "noarch", "basesystem-10.0-4.el6.src.rpm", 0, "Public Domain", "CentOS", ""},
 		{0, "tzdata", "2018e", "3.el6", "noarch", "tzdata-2018e-3.el6.src.rpm", 1961609, "Public Domain", "CentOS", ""},
@@ -744,7 +858,7 @@ var (
 	// docker run --rm -it centos:7 bash
 	// yum groupinstall -y "Development tools"
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/^{(none)/{0/g" | sed "s/(none)//g"
-	CentOS7DevTools = []PackageInfo{
+	CentOS7DevTools = []*PackageInfo{
 		{0, "libproxy", "0.4.11", "11.el7", "x86_64", "libproxy-0.4.11-11.el7.src.rpm", 164014, "LGPLv2+", "CentOS", ""},
 		{0, "tzdata", "2018e", "3.el7", "noarch", "tzdata-2018e-3.el7.src.rpm", 1966505, "Public Domain", "CentOS", ""},
 		{0, "gnutls", "3.3.29", "9.el7_6", "x86_64", "gnutls-3.3.29-9.el7_6.src.rpm", 2097819, "GPLv3+ and LGPLv2+", "CentOS", ""},
@@ -1013,7 +1127,7 @@ var (
 
 	// docker run --rm -it centos/httpd-24-centos7 bash
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/^{(none)/{0/g" | sed "s/(none)//g"
-	CentOS7Httpd24 = []PackageInfo{
+	CentOS7Httpd24 = []*PackageInfo{
 		{32, "bind-license", "9.9.4", "73.el7_6", "noarch", "bind-9.9.4-73.el7_6.src.rpm", 26831, "ISC", "CentOS", ""},
 		{0, "bash", "4.2.46", "31.el7", "x86_64", "bash-4.2.46-31.el7.src.rpm", 3667773, "GPLv3+", "CentOS", ""},
 		{0, "glibc-common", "2.17", "260.el7_6.3", "x86_64", "glibc-2.17-260.el7_6.3.src.rpm", 120499441, "LGPLv2+ and LGPLv2+ with exceptions and GPLv2+", "CentOS", ""},
@@ -1248,7 +1362,7 @@ var (
 	// yum install -y ncurses-devel newt-devel numactl-devel pciutils-devel python-devel zlib-devel
 	// yum install -y net-tools bc
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/^{(none)/{0/g" | sed "s/(none)//g"
-	CentOS7Many = []PackageInfo{
+	CentOS7Many = []*PackageInfo{
 		{0, "gnutls", "3.3.29", "9.el7_6", "x86_64", "gnutls-3.3.29-9.el7_6.src.rpm", 2097819, "GPLv3+ and LGPLv2+", "CentOS", ""},
 		{0, "nss-softokn-freebl", "3.36.0", "5.el7_5", "x86_64", "nss-softokn-3.36.0-5.el7_5.src.rpm", 565628, "MPLv2.0", "CentOS", ""},
 		{0, "openssh-clients", "7.4p1", "16.el7", "x86_64", "openssh-7.4p1-16.el7.src.rpm", 2651616, "BSD", "CentOS", ""},
@@ -1649,7 +1763,7 @@ var (
 
 	// docker run --rm -it centos:7 bash
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/(none)/0/g"
-	CentOS7Plain = []PackageInfo{
+	CentOS7Plain = []*PackageInfo{
 		{0, "tzdata", "2018e", "3.el7", "noarch", "tzdata-2018e-3.el7.src.rpm", 1966505, "Public Domain", "CentOS", ""},
 		{0, "nss-softokn-freebl", "3.36.0", "5.el7_5", "x86_64", "nss-softokn-3.36.0-5.el7_5.src.rpm", 565628, "MPLv2.0", "CentOS", ""},
 		{0, "ncurses", "5.9", "14.20130511.el7_4", "x86_64", "ncurses-5.9-14.20130511.el7_4.src.rpm", 439378, "MIT", "CentOS", ""},
@@ -1798,7 +1912,7 @@ var (
 
 	// docker run --rm -it centos/python-35-centos7 bash
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\"\},\n" | sed "s/^{(none)/{0/g" | sed "s/(none)//g"
-	CentOS7Python35 = []PackageInfo{
+	CentOS7Python35 = []*PackageInfo{
 		{0, "fontconfig-devel", "2.13.0", "4.3.el7", "x86_64", "fontconfig-2.13.0-4.3.el7.src.rpm", 111050, "MIT and Public Domain and UCD", "CentOS", ""},
 		{32, "bind-license", "9.9.4", "73.el7_6", "noarch", "bind-9.9.4-73.el7_6.src.rpm", 26831, "ISC", "CentOS", ""},
 		{0, "less", "458", "9.el7", "x86_64", "less-458-9.el7.src.rpm", 215376, "GPLv3+", "CentOS", ""},
@@ -2150,7 +2264,7 @@ var (
 	// yum groupinstall -y "Development tools"
 	// yum -y install nodejs podman-docker
 	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\", \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"%{MODULARITYLABEL}\"\},\n" | sed "s/^{(none)/{0/g" | sed "s/(none)//g"
-	CentOS8Modularitylabel = []PackageInfo{
+	CentOS8Modularitylabel = []*PackageInfo{
 		{0, "strace", "4.24", "9.el8", "x86_64", "strace-4.24-9.el8.src.rpm", 2176244, "LGPL-2.1+ and GPL-2.0+", "CentOS", ""},
 		{0, "libxcb", "1.13.1", "1.el8", "x86_64", "libxcb-1.13.1-1.el8.src.rpm", 1028472, "MIT", "CentOS", ""},
 		{0, "centos-gpg-keys", "8.2", "2.2004.0.1.el8", "noarch", "centos-release-8.2-2.2004.0.1.el8.src.rpm", 3370, "GPLv2", "CentOS", ""},
