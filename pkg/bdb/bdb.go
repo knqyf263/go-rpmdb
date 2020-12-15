@@ -1,9 +1,10 @@
 package bdb
 
 import (
-	"golang.org/x/xerrors"
 	"io"
 	"os"
+
+	"golang.org/x/xerrors"
 )
 
 var validPageSizes = map[uint32]struct{}{
@@ -93,7 +94,8 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 				return
 			}
 
-			if hashPageHeader.PageType != HashPageType {
+			if hashPageHeader.PageType != HashUnsortedPageType && // for RHEL/CentOS 5
+				hashPageHeader.PageType != HashPageType {
 				// skip over pages that do not have hash values
 				continue
 			}
