@@ -1,101 +1,79 @@
 package rpmdb
 
 import (
-	"path"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestPackageList(t *testing.T) {
-	vectors := []struct {
+	tests := []struct {
+		name    string
 		file    string // Test input file
-		pkgList []PackageInfo
+		pkgList []*PackageInfo
 	}{
 		{
+			name:    "CentOS5 plain",
+			file:    "testdata/centos5-plain/Packages",
+			pkgList: CentOS5Plain,
+		},
+		{
+			name:    "CentOS6 Plain",
 			file:    "testdata/centos6-plain/Packages",
 			pkgList: CentOS6Plain,
 		},
 		{
+			name:    "CentOS6 with Development tools",
 			file:    "testdata/centos6-devtools/Packages",
 			pkgList: CentOS6DevTools,
 		},
 		{
+			name:    "CentOS6 with many packages",
 			file:    "testdata/centos6-many/Packages",
 			pkgList: CentOS6Many,
 		},
 		{
+			name:    "CentOS7 Plain",
 			file:    "testdata/centos7-plain/Packages",
 			pkgList: CentOS7Plain,
 		},
 		{
+			name:    "CentOS7 with Development tools",
 			file:    "testdata/centos7-devtools/Packages",
 			pkgList: CentOS7DevTools,
 		},
 		{
+			name:    "CentOS7 with many packages",
 			file:    "testdata/centos7-many/Packages",
 			pkgList: CentOS7Many,
 		},
 		{
+			name:    "CentOS7 with Python 3.5",
 			file:    "testdata/centos7-python35/Packages",
 			pkgList: CentOS7Python35,
 		},
 		{
+			name:    "CentOS7 with httpd 2.4",
 			file:    "testdata/centos7-httpd24/Packages",
 			pkgList: CentOS7Httpd24,
 		},
 		{
+			name:    "CentOS8 with modules",
 			file:    "testdata/centos8-modularitylabel/Packages",
 			pkgList: CentOS8Modularitylabel,
 		},
 	}
 
-	for _, v := range vectors {
-		t.Run(path.Base(v.file), func(t *testing.T) {
-			db, err := Open(v.file)
-			if err != nil {
-				t.Fatalf("Open() error: %v", err)
-			}
-			pkgList, err := db.ListPackages()
-			if err != nil {
-				t.Fatalf("ListPackagges() error: %v", err)
-			}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			db, err := Open(tt.file)
+			require.NoError(t, err)
 
-			if len(pkgList) != len(v.pkgList) {
-				t.Errorf("pkg length: got %v, want %v", len(pkgList), len(v.pkgList))
-			}
+			got, err := db.ListPackages()
+			require.NoError(t, err)
 
-			for i, got := range pkgList {
-				want := v.pkgList[i]
-				if want.Epoch != got.Epoch {
-					t.Errorf("%d: Epoch: got %d, want %d", i, got.Epoch, want.Epoch)
-				}
-				if want.Name != got.Name {
-					t.Errorf("%d: Name: got %s, want %s", i, got.Name, want.Name)
-				}
-				if want.Version != got.Version {
-					t.Errorf("%d: Version: got %s, want %s", i, got.Version, want.Version)
-				}
-				if want.Release != got.Release {
-					t.Errorf("%d: Release: got %s, want %s", i, got.Release, want.Release)
-				}
-				if want.Arch != got.Arch {
-					t.Errorf("%d: Arch: got %s, want %s", i, got.Arch, want.Arch)
-				}
-				if want.SourceRpm != got.SourceRpm {
-					t.Errorf("%d: SourceRpm: got %s, want %s", i, got.SourceRpm, want.SourceRpm)
-				}
-				if want.Vendor != got.Vendor {
-					t.Errorf("%d: Vendor: got %s, want %s", i, got.Vendor, want.Vendor)
-				}
-				if want.Size != got.Size {
-					t.Errorf("%d: Size: got %d, want %d", i, got.Size, want.Size)
-				}
-				if want.License != got.License {
-					t.Errorf("%d: License: got %s, want %s", i, got.License, want.License)
-				}
-				if want.Modularitylabel != got.Modularitylabel {
-					t.Errorf("%d: Modularitylabel: got %s, want %s", i, got.Modularitylabel, want.Modularitylabel)
-				}
-			}
+			assert.ElementsMatch(t, tt.pkgList, got)
 		})
 	}
 }
