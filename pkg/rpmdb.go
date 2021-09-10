@@ -21,6 +21,20 @@ func Open(path string) (*RpmDB, error) {
 
 }
 
+func (d *RpmDB) Package(name string) (*PackageInfo, error) {
+	pkgs, err := d.ListPackages()
+	if err != nil {
+		return nil, xerrors.Errorf("unable to list packages: %w", err)
+	}
+
+	for _, pkg := range pkgs {
+		if pkg.Name == name {
+			return pkg, nil
+		}
+	}
+	return nil, xerrors.Errorf("%s is not installed", name)
+}
+
 func (d *RpmDB) ListPackages() ([]*PackageInfo, error) {
 	var pkgList []*PackageInfo
 
