@@ -19,8 +19,12 @@ func main() {
 
 	fmt.Println("Packages:")
 	for _, pkg := range pkgList {
+		// Suppress output
+		pkg.BaseNames = nil
+		pkg.DirIndexes = nil
+		pkg.DirNames = nil
+
 		fmt.Printf("\t%+v\n", *pkg)
 	}
 	fmt.Printf("[Total Packages: %d]\n", len(pkgList))
 }
-

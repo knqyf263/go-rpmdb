@@ -73,7 +73,102 @@ func TestPackageList(t *testing.T) {
 			got, err := db.ListPackages()
 			require.NoError(t, err)
 
-			assert.ElementsMatch(t, tt.pkgList, got)
+			// They are tested in another function.
+			for _, g := range got {
+				g.BaseNames = nil
+				g.DirIndexes = nil
+				g.DirNames = nil
+			}
+
+			assert.Equal(t, tt.pkgList, got)
+		})
+	}
+}
+
+func TestRpmDB_Package(t *testing.T) {
+	tests := []struct {
+		name               string
+		pkgName            string
+		file               string // Test input file
+		want               *PackageInfo
+		wantInstalledFiles []string
+		wantErr            string
+	}{
+		{
+			name:    "centos5 python",
+			pkgName: "python",
+			file:    "testdata/centos5-plain/Packages",
+			want: &PackageInfo{
+				Name:      "python",
+				Version:   "2.4.3",
+				Release:   "56.el5",
+				Arch:      "x86_64",
+				Size:      74377,
+				SourceRpm: "python-2.4.3-56.el5.src.rpm",
+				License:   "PSF - see LICENSE",
+				Vendor:    "CentOS",
+			},
+			wantInstalledFiles: CentOS5PythonInstalledFiles,
+		},
+		{
+			name:    "centos6 glibc",
+			pkgName: "glibc",
+			file:    "testdata/centos6-plain/Packages",
+			want: &PackageInfo{
+				Name:      "glibc",
+				Version:   "2.12",
+				Release:   "1.212.el6",
+				Arch:      "x86_64",
+				Size:      13117447,
+				SourceRpm: "glibc-2.12-1.212.el6.src.rpm",
+				License:   "LGPLv2+ and LGPLv2+ with exceptions and GPLv2+",
+				Vendor:    "CentOS",
+			},
+			wantInstalledFiles: CentOS6GlibcInstalledFiles,
+		},
+		{
+			name:    "centos8 nodejs",
+			pkgName: "nodejs",
+			file:    "testdata/centos8-modularitylabel/Packages",
+			want: &PackageInfo{
+				Epoch:           1,
+				Name:            "nodejs",
+				Version:         "10.21.0",
+				Release:         "3.module_el8.2.0+391+8da3adc6",
+				Arch:            "x86_64",
+				Size:            31483781,
+				SourceRpm:       "nodejs-10.21.0-3.module_el8.2.0+391+8da3adc6.src.rpm",
+				License:         "MIT and ASL 2.0 and ISC and BSD",
+				Vendor:          "CentOS",
+				Modularitylabel: "nodejs:10:8020020200707141642:6a468ee4",
+			},
+			wantInstalledFiles: CentOS8NodejsInstalledFiles,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			db, err := Open(tt.file)
+			require.NoError(t, err)
+
+			got, err := db.Package(tt.pkgName)
+			if tt.wantErr != "" {
+				require.Error(t, err)
+				assert.Contains(t, err.Error(), tt.wantErr)
+				return
+			}
+
+			assert.NoError(t, err)
+
+			gotInstalledFiles, err := got.InstalledFiles()
+			assert.NoError(t, err)
+			assert.Equal(t, tt.wantInstalledFiles, gotInstalledFiles)
+
+			// These fields are tested through InstalledFiles()
+			got.DirIndexes = nil
+			got.DirNames = nil
+			got.BaseNames = nil
+
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }
