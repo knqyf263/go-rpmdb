@@ -173,8 +173,12 @@ func stringArray(ie indexEntry) ([]string, error) {
 }
 
 func (p *PackageInfo) InstalledFiles() ([]string, error) {
+	if len(p.DirNames) == 0 || len(p.DirIndexes) == 0 || len(p.BaseNames) == 0 {
+		return nil, nil
+	}
+
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/tagexts.c#L68-L70
-	if len(p.DirIndexes) != len(p.BaseNames) || len(p.DirNames) < 1 || len(p.DirNames) > len(p.BaseNames) {
+	if len(p.DirIndexes) != len(p.BaseNames) || len(p.DirNames) > len(p.BaseNames) {
 		return nil, xerrors.Errorf("invalid rpm %s", p.Name)
 	}
 
