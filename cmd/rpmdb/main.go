@@ -8,7 +8,11 @@ import (
 )
 
 func main() {
-	db, err := rpmdb.Open("./Packages")
+	db, err := rpmdb.Open("./Packages.db")
+	if err != nil {
+		db, err = rpmdb.Open("./Packages")
+	}
+
 	if err != nil {
 		log.Fatal(err)
 	}

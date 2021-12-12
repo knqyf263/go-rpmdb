@@ -2785,6 +2785,46 @@ var (
 		{0, "ostree-libs", "2019.6", "2.el8", "x86_64", "ostree-2019.6-2.el8.src.rpm", 981292, "LGPLv2+", "CentOS", "", nil, nil, nil},
 	}
 
+	// docker run --rm -it registry.suse.com/bci/minimal:15.3 bash
+	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\"\, \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\", nil, nil, nil\},\n" | sed "s/(none)/0/g"
+	SLE15WithNDB = []*PackageInfo{
+		{0, "system-user-root", "20190513", "3.3.1", "noarch", "system-user-root-20190513-3.3.1.src.rpm", 186, "MIT", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "filesystem", "15.0", "11.3.2", "x86_64", "filesystem-15.0-11.3.2.src.rpm", 535, "MIT", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "glibc", "2.31", "9.3.2", "x86_64", "glibc-2.31-9.3.2.src.rpm", 6183407, "LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND GPL-2.0-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libpcre1", "8.45", "20.10.1", "x86_64", "pcre-8.45-20.10.1.src.rpm", 938295, "BSD-3-Clause", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libgmp10", "6.1.2", "4.6.1", "x86_64", "gmp-6.1.2-4.6.1.src.rpm", 711445, "LGPL-3.0-or-later OR GPL-2.0-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libgcc_s1", "11.2.1+git610", "1.3.9", "x86_64", "gcc11-11.2.1+git610-1.3.9.src.rpm", 101024, "GPL-3.0-or-later WITH GCC-exception-3.1", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libcap2", "2.26", "4.6.1", "x86_64", "libcap-2.26-4.6.1.src.rpm", 39224, "BSD-3-Clause or GPL-2.0", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libstdc++6", "11.2.1+git610", "1.3.9", "x86_64", "gcc11-11.2.1+git610-1.3.9.src.rpm", 2161776, "GPL-3.0-or-later WITH GCC-exception-3.1", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libncurses6", "6.1", "5.9.1", "x86_64", "ncurses-6.1-5.9.1.src.rpm", 1116008, "MIT", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "terminfo-base", "6.1", "5.9.1", "x86_64", "ncurses-6.1-5.9.1.src.rpm", 1179602, "MIT", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libattr1", "2.4.47", "2.19", "x86_64", "attr-2.4.47-2.19.src.rpm", 46233, "GPL-2.0-or-later AND LGPL-2.1-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libselinux1", "3.0", "1.31", "x86_64", "libselinux-3.0-1.31.src.rpm", 159424, "SUSE-Public-Domain", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libreadline7", "7.0", "19.6.1", "x86_64", "bash-4.4-19.6.1.src.rpm", 396195, "GPL-3.0-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "bash", "4.4", "19.6.1", "x86_64", "bash-4.4-19.6.1.src.rpm", 1114706, "GPL-3.0-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libacl1", "2.2.52", "4.3.1", "x86_64", "acl-2.2.52-4.3.1.src.rpm", 35424, "GPL-2.0+ and LGPL-2.1+", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "coreutils", "8.32", "3.2.1", "x86_64", "coreutils-8.32-3.2.1.src.rpm", 6488992, "GPL-3.0-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "sles-release", "15.3", "55.4.1", "x86_64", "sles-release-15.3-55.4.1.src.rpm", 342491, "MIT", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "ca-certificates-mozilla-prebuilt", "2.44", "21.1", "noarch", "ca-certificates-mozilla-prebuilt-2.44-21.1.src.rpm", 836576, "MPL-2.0", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libgpg-error0", "1.29", "1.8", "x86_64", "libgpg-error-1.29-1.8.src.rpm", 565983, "GPL-2.0-or-later AND LGPL-2.1-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libpopt0", "1.16", "3.22", "x86_64", "popt-1.16-3.22.src.rpm", 124686, "MIT", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "file-magic", "5.32", "7.14.1", "noarch", "file-5.32-7.14.1.src.rpm", 5916442, "BSD-2-Clause", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libbz2-1", "1.0.6", "5.11.1", "x86_64", "bzip2-1.0.6-5.11.1.src.rpm", 120168, "BSD-3-Clause", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "liblua5_3-5", "5.3.6", "3.6.1", "x86_64", "lua53-5.3.6-3.6.1.src.rpm", 237296, "MIT", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "liblzma5", "5.2.3", "4.3.1", "x86_64", "xz-5.2.3-4.3.1.src.rpm", 235576, "SUSE-Public-Domain", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libz1", "1.2.11", "3.21.1", "x86_64", "zlib-1.2.11-3.21.1.src.rpm", 110685, "Zlib", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libzstd1", "1.4.4", "1.6.1", "x86_64", "zstd-1.4.4-1.6.1.src.rpm", 682141, "BSD-3-Clause AND GPL-2.0-only", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libmagic1", "5.32", "7.14.1", "x86_64", "file-5.32-7.14.1.src.rpm", 138472, "BSD-2-Clause", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libdw1", "0.168", "4.5.3", "x86_64", "elfutils-0.168-4.5.3.src.rpm", 294456, "SUSE-GPL-2.0-with-OSI-exception", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libebl-plugins", "0.168", "4.5.3", "x86_64", "elfutils-0.168-4.5.3.src.rpm", 372800, "SUSE-GPL-2.0-with-OSI-exception", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libelf1", "0.168", "4.5.3", "x86_64", "elfutils-0.168-4.5.3.src.rpm", 96880, "SUSE-GPL-2.0-with-OSI-exception", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libcrypt1", "4.4.15", "2.51", "x86_64", "libxcrypt-4.4.15-2.51.src.rpm", 265241, "LGPL-2.1-or-later AND BSD-2-Clause AND BSD-3-Clause AND SUSE-Public-Domain", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "perl-base", "5.26.1", "15.87", "x86_64", "perl-5.26.1-15.87.src.rpm", 4299811, "Artistic-1.0 or GPL-2.0+", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "libgcrypt20", "1.8.2", "8.39.1", "x86_64", "libgcrypt-1.8.2-8.39.1.src.rpm", 1198761, "GPL-2.0+ AND LGPL-2.1+", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "rpm-config-SUSE", "1", "5.6.1", "noarch", "rpm-config-SUSE-1-5.6.1.src.rpm", 38001, "GPL-2.0-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+		{0, "rpm-ndb", "4.14.3", "40.1", "x86_64", "rpm-ndb-4.14.3-40.1.src.rpm", 3132579, "GPL-2.0-or-later", "SUSE LLC <https://www.suse.com/>", "", nil, nil, nil},
+	}
+
 	// rpm -ql python --dbpath /path/to/testdata/centos5-plain | awk '{printf "\"%s\",\n", $1}'
 	CentOS5PythonInstalledFiles = []string{
 		"/usr/bin/pydoc",

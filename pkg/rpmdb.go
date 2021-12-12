@@ -2,21 +2,33 @@ package rpmdb
 
 import (
 	"github.com/knqyf263/go-rpmdb/pkg/bdb"
+	dbi "github.com/knqyf263/go-rpmdb/pkg/db"
+	"github.com/knqyf263/go-rpmdb/pkg/ndb"
 	"golang.org/x/xerrors"
 )
 
 type RpmDB struct {
-	db *bdb.BerkeleyDB
+	db dbi.RpmDBInterface
 }
 
 func Open(path string) (*RpmDB, error) {
-	db, err := bdb.Open(path)
+
+	// NDB Open() returns nil, nil in case of DB format other than NDB
+	ndbh, err := ndb.Open(path)
+	if err != nil && !xerrors.Is(err, ndb.ErrorInvalidNDB) {
+		return nil, err
+	}
+	if ndbh != nil {
+		return &RpmDB{db: ndbh}, nil
+	}
+
+	odb, err := bdb.Open(path)
 	if err != nil {
 		return nil, err
 	}
 
 	return &RpmDB{
-		db: db,
+		db: odb,
 	}, nil
 
 }
