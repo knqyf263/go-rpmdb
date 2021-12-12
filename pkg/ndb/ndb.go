@@ -107,6 +107,11 @@ func Open(path string) (*RpmNDB, error) {
 		return nil, ErrorInvalidNDB
 	}
 
+	// Sanity check against excessive memory usage
+	if hdrBuff.SlotNPages > 2048 {
+		return nil, xerrors.Errorf("slot page limit exceeded: %x", hdrBuff.SlotNPages)
+	}
+
 	// the first two slots are actually the NDB Header
 	slots := make([]ndbSlotEntry, hdrBuff.SlotNPages*NDB_SlotEntriesPerPage-2)
 	err = binary.Read(file, binary.LittleEndian, &slots)
@@ -143,11 +148,17 @@ func (db *RpmNDB) Read() <-chan dbi.Entry {
 				continue
 			}
 			// Seek to Blob
-			db.file.Seek(int64(slot.BlkOffset)*NDB_BlobHeaderSize, io.SeekStart)
+			_, err := db.file.Seek(int64(slot.BlkOffset)*NDB_BlobHeaderSize, io.SeekStart)
+			if err != nil {
+				entries <- dbi.Entry{
+					Err: err,
+				}
+				return
+			}
 
 			// Read Blob Header
 			blobHeaderBuff := ndbBlobHeader{}
-			err := binary.Read(db.file, binary.LittleEndian, &blobHeaderBuff)
+			err = binary.Read(db.file, binary.LittleEndian, &blobHeaderBuff)
 			if err != nil {
 				entries <- dbi.Entry{
 					Err: err,
