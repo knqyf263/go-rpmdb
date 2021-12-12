@@ -157,12 +157,12 @@ func (db *RpmNDB) Read() <-chan dbi.Entry {
 			const NDB_BlobMagic = 'B' | 'l'<<8 | 'b'<<16 | 'S'<<24
 			if blobHeaderBuff.BlobMagic != NDB_BlobMagic {
 				entries <- dbi.Entry{
-					Err: xerrors.Errorf("Unexpected NDB blob Magic for pkg %d: %x", slot.PkgIndex, blobHeaderBuff.BlobMagic),
+					Err: xerrors.Errorf("unexpected NDB blob Magic for pkg %d: %x", slot.PkgIndex, blobHeaderBuff.BlobMagic),
 				}
 			}
 			if blobHeaderBuff.PkgIndex != slot.PkgIndex {
 				entries <- dbi.Entry{
-					Err: xerrors.Errorf("Failed to find NDB blob for pkg %d", slot.PkgIndex),
+					Err: xerrors.Errorf("failed to find NDB blob for pkg %d", slot.PkgIndex),
 				}
 			}
 			// ### check that BlkCnt == (BLOBHEAD_SIZE + bloblen + BLOBTAIL_SIZE + PKGDB_BLK_SIZE - 1) / PKGDB_BLK_SIZE)
