@@ -63,6 +63,11 @@ func TestPackageList(t *testing.T) {
 			file:    "testdata/centos8-modularitylabel/Packages",
 			pkgList: CentOS8Modularitylabel,
 		},
+		{
+			name:    "SLE15 with NDB style rpm database",
+			file:    "testdata/sle15-bci/Packages.db",
+			pkgList: SLE15WithNDB,
+		},
 	}
 
 	for _, tt := range tests {

@@ -4,6 +4,7 @@ import (
 	"io"
 	"os"
 
+	dbi "github.com/knqyf263/go-rpmdb/pkg/db"
 	"golang.org/x/xerrors"
 )
 
@@ -21,11 +22,6 @@ var validPageSizes = map[uint32]struct{}{
 type BerkeleyDB struct {
 	file         *os.File
 	HashMetadata *HashMetadataPage
-}
-
-type Entry struct {
-	Value []byte
-	Err   error
 }
 
 func Open(path string) (*BerkeleyDB, error) {
@@ -62,8 +58,8 @@ func Open(path string) (*BerkeleyDB, error) {
 
 }
 
-func (db *BerkeleyDB) Read() <-chan Entry {
-	entries := make(chan Entry)
+func (db *BerkeleyDB) Read() <-chan dbi.Entry {
+	entries := make(chan dbi.Entry)
 
 	go func() {
 		defer close(entries)
@@ -71,7 +67,7 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 		for pageNum := uint32(0); pageNum <= db.HashMetadata.LastPageNo; pageNum++ {
 			pageData, err := slice(db.file, int(db.HashMetadata.PageSize))
 			if err != nil {
-				entries <- Entry{
+				entries <- dbi.Entry{
 					Err: err,
 				}
 				return
@@ -80,7 +76,7 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 			// keep track of the start of the next page for the next iteration...
 			endOfPageOffset, err := db.file.Seek(0, io.SeekCurrent)
 			if err != nil {
-				entries <- Entry{
+				entries <- dbi.Entry{
 					Err: err,
 				}
 				return
@@ -88,7 +84,7 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 
 			hashPageHeader, err := ParseHashPage(pageData)
 			if err != nil {
-				entries <- Entry{
+				entries <- dbi.Entry{
 					Err: err,
 				}
 				return
@@ -102,7 +98,7 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 
 			hashPageIndexes, err := HashPageValueIndexes(pageData, hashPageHeader.NumEntries)
 			if err != nil {
-				entries <- Entry{
+				entries <- dbi.Entry{
 					Err: err,
 				}
 				return
@@ -125,7 +121,7 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 					db.HashMetadata.PageSize,
 				)
 
-				entries <- Entry{
+				entries <- dbi.Entry{
 					Value: valueContent,
 					Err:   err,
 				}
@@ -138,7 +134,7 @@ func (db *BerkeleyDB) Read() <-chan Entry {
 			// go back to the start of the next page for reading...
 			_, err = db.file.Seek(endOfPageOffset, io.SeekStart)
 			if err != nil {
-				entries <- Entry{
+				entries <- dbi.Entry{
 					Err: err,
 				}
 				return
