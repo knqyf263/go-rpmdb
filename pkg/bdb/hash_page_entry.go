@@ -1,8 +1,8 @@
 package bdb
 
 import (
+	"bytes"
 	"encoding/binary"
-	"github.com/go-restruct/restruct"
 	"golang.org/x/xerrors"
 )
 
@@ -17,7 +17,7 @@ type HashOffPageEntry struct {
 func ParseHashOffPageEntry(data []byte) (*HashOffPageEntry, error) {
 	var entry HashOffPageEntry
 
-	err := restruct.Unpack(data, binary.LittleEndian, &entry)
+	err := binary.Read(bytes.NewReader(data), binary.LittleEndian, &entry)
 	if err != nil {
 		return nil, xerrors.Errorf("failed to unpack HashOffPageEntry: %w", err)
 	}

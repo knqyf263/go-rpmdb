@@ -1,8 +1,8 @@
 package bdb
 
 import (
+	"bytes"
 	"encoding/binary"
-	"github.com/go-restruct/restruct"
 	"golang.org/x/xerrors"
 )
 
@@ -21,7 +21,7 @@ type HashMetadataPage struct {
 func ParseHashMetadataPage(data []byte) (*HashMetadataPage, error) {
 	var metadata HashMetadataPage
 
-	err := restruct.Unpack(data, binary.LittleEndian, &metadata)
+	err := binary.Read(bytes.NewReader(data), binary.LittleEndian, &metadata)
 	if err != nil {
 		return nil, xerrors.Errorf("failed to unpack HashMetadataPage: %w", err)
 	}
