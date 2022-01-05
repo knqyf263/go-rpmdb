@@ -1,8 +1,8 @@
 package bdb
 
 import (
+	"bytes"
 	"encoding/binary"
-	"github.com/go-restruct/restruct"
 	"golang.org/x/xerrors"
 	"io"
 	"os"
@@ -23,7 +23,7 @@ type HashPage struct {
 func ParseHashPage(data []byte) (*HashPage, error) {
 	var hashPage HashPage
 
-	err := restruct.Unpack(data, binary.LittleEndian, &hashPage)
+	err := binary.Read(bytes.NewReader(data), binary.LittleEndian, &hashPage)
 	if err != nil {
 		return nil, xerrors.Errorf("failed to unpack: %w", err)
 	}
