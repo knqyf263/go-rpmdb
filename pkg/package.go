@@ -27,6 +27,8 @@ type PackageInfo struct {
 	DirNames   []string
 }
 
+var defaultOsVendors = []string{"Amazon Linux", "Amazon.com", "CentOS", "Fedora Project", "Oracle America", "Red Hat, Inc."}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/tagexts.c#L752
 func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 	pkgInfo := &PackageInfo{}
@@ -177,6 +179,11 @@ func (p *PackageInfo) InstalledFiles() ([]string, error) {
 		return nil, nil
 	}
 
+	// check if the package is preinstalled on the system
+	if !stringInSlice(p.Vendor, defaultOsVendors) {
+		return nil, nil
+	}
+
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/tagexts.c#L68-L70
 	if len(p.DirIndexes) != len(p.BaseNames) || len(p.DirNames) > len(p.BaseNames) {
 		return nil, xerrors.Errorf("invalid rpm %s", p.Name)
@@ -190,4 +197,13 @@ func (p *PackageInfo) InstalledFiles() ([]string, error) {
 
 	return filePaths, nil
 
+}
+
+func stringInSlice(a string, list []string) bool {
+	for _, b := range list {
+		if b == a {
+			return true
+		}
+	}
+	return false
 }
