@@ -8,7 +8,10 @@ import (
 )
 
 func main() {
-	db, err := rpmdb.Open("./Packages.db")
+	db, err := rpmdb.Open("./rpmdb.sqlite")
+	if err != nil {
+		db, err = rpmdb.Open("./Packages.db")
+	}
 	if err != nil {
 		db, err = rpmdb.Open("./Packages")
 	}
