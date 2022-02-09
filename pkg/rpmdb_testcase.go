@@ -3333,4 +3333,13 @@ var (
 		"/usr/share/systemtap/tapset",
 		"/usr/share/systemtap/tapset/node.stp",
 	}
+
+	Mariner2CurlInstalledFiles = []string{
+		"/usr/bin/curl",
+		"/usr/bin/curl-config",
+		"/usr/share/licenses/curl",
+		"/usr/share/licenses/curl/COPYING",
+		"/usr/share/man/man1/curl-config.1.gz",
+		"/usr/share/man/man1/curl.1.gz",
+	}
 )
