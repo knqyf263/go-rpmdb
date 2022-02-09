@@ -18,7 +18,7 @@ type SQLite3 struct {
 
 var (
 	// https://www.sqlite.org/fileformat.html
-	SQLite3_HeaderMagic = []byte{0x53, 0x51, 0x4c, 0x69, 0x74, 0x65, 0x20, 0x66, 0x6f, 0x72, 0x6d, 0x61, 0x74, 0x20, 0x33, 0x00}
+	SQLite3_HeaderMagic = []byte("SQLite format 3\x00")
 	ErrorInvalidSQLite3 = xerrors.Errorf("invalid or unsupported SQLite3 format")
 )
 
