@@ -27,6 +27,7 @@ func Open(path string) (*SQLite3, error) {
 	if err != nil {
 		return nil, err
 	}
+	defer file.Close()
 
 	b := make([]byte, 16)
 	binary.Read(file, binary.LittleEndian, b)
