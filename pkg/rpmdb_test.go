@@ -68,6 +68,11 @@ func TestPackageList(t *testing.T) {
 			file:    "testdata/sle15-bci/Packages.db",
 			pkgList: SLE15WithNDB,
 		},
+		{
+			name:    "Fedora35 with SQLite3 style rpm database",
+			file:    "testdata/fedora35/rpmdb.sqlite",
+			pkgList: Fedora35WithSQLite3,
+		},
 	}
 
 	for _, tt := range tests {
