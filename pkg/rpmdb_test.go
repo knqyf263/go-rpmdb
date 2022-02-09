@@ -154,6 +154,23 @@ func TestRpmDB_Package(t *testing.T) {
 			},
 			wantInstalledFiles: CentOS8NodejsInstalledFiles,
 		},
+		{
+			name:    "CBL-Mariner 2.0 curl",
+			pkgName: "curl",
+			file:    "testdata/cbl-mariner-2.0/rpmdb.sqlite",
+			want: &PackageInfo{
+				Epoch:     0,
+				Name:      "curl",
+				Version:   "7.76.0",
+				Release:   "6.cm2",
+				Arch:      "x86_64",
+				Size:      326023,
+				SourceRpm: "curl-7.76.0-6.cm2.src.rpm",
+				License:   "MIT",
+				Vendor:    "Microsoft Corporation",
+			},
+			wantInstalledFiles: Mariner2CurlInstalledFiles,
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
