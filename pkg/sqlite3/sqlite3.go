@@ -30,7 +30,10 @@ func Open(path string) (*SQLite3, error) {
 	defer file.Close()
 
 	b := make([]byte, 16)
-	binary.Read(file, binary.LittleEndian, b)
+	if err = binary.Read(file, binary.LittleEndian, b); err != nil {
+		return nil, xerrors.Errorf("binary read error: %w", err)
+	}
+
 	if !bytes.Equal(b, SQLite3_HeaderMagic) {
 		return nil, ErrorInvalidSQLite3
 	}
