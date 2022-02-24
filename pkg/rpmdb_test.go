@@ -78,6 +78,11 @@ func TestPackageList(t *testing.T) {
 			file:    "testdata/fedora35/rpmdb.sqlite",
 			pkgList: Fedora35WithSQLite3,
 		},
+		{
+			name:    "Fedora35 plus MongoDB with SQLite3 style rpm database",
+			file:    "testdata/fedora35-plus-mongo/rpmdb.sqlite",
+			pkgList: Fedora35PlusMongoDBWithSQLite3,
+		},
 	}
 
 	for _, tt := range tests {
@@ -131,6 +136,8 @@ func TestRpmDB_Package(t *testing.T) {
 				SourceRpm: "python-2.4.3-56.el5.src.rpm",
 				License:   "PSF - see LICENSE",
 				Vendor:    "CentOS",
+				Summary:   "An interpreted, interactive, object-oriented programming language.",
+				PGP:       "",
 			},
 			wantInstalledFiles:     CentOS5PythonInstalledFiles,
 			wantInstalledFileNames: CentOS5PythonInstalledFileNames,
@@ -149,6 +156,8 @@ func TestRpmDB_Package(t *testing.T) {
 				License:         "LGPLv2+ and LGPLv2+ with exceptions and GPLv2+",
 				Vendor:          "CentOS",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
+				Summary:         "The GNU libc libraries",
+				PGP:             "RSA/SHA1, Wed Jun 20 11:36:27 2018, Key ID 0946fca2c105b9de",
 			},
 			wantInstalledFiles:     CentOS6GlibcInstalledFiles,
 			wantInstalledFileNames: CentOS6GlibcInstalledFileNames,
@@ -169,6 +178,8 @@ func TestRpmDB_Package(t *testing.T) {
 				Vendor:          "CentOS",
 				Modularitylabel: "nodejs:10:8020020200707141642:6a468ee4",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
+				Summary:         "JavaScript runtime",
+				PGP:             "RSA/SHA256, Tue Jul  7 16:08:24 2020, Key ID 05b555b38483c65d",
 			},
 			wantInstalledFiles:     CentOS8NodejsInstalledFiles,
 			wantInstalledFileNames: CentOS8NodejsInstalledFileNames,
@@ -187,6 +198,8 @@ func TestRpmDB_Package(t *testing.T) {
 				License:         "MIT",
 				Vendor:          "Microsoft Corporation",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
+				Summary:         "An URL retrieval utility and library",
+				PGP:             "RSA/SHA256, Thu Jan 27 09:02:11 2022, Key ID 0cd9fed33135ce90",
 			},
 			wantInstalledFiles:     Mariner2CurlInstalledFiles,
 			wantInstalledFileNames: Mariner2CurlInstalledFileNames,
