@@ -1,2 +1,5 @@
 centos*/**/*
 !centos*/Packages
+cbl-mariner-2.0/**/*
+!cbl-mariner-2.0/rpmdb.sqlite
+sle15-bci/Index.db
