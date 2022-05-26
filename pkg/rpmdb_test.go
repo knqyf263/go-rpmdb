@@ -105,12 +105,13 @@ func TestPackageList(t *testing.T) {
 
 func TestRpmDB_Package(t *testing.T) {
 	tests := []struct {
-		name               string
-		pkgName            string
-		file               string // Test input file
-		want               *PackageInfo
-		wantInstalledFiles []FileInfo
-		wantErr            string
+		name                   string
+		pkgName                string
+		file                   string // Test input file
+		want                   *PackageInfo
+		wantInstalledFiles     []FileInfo
+		wantInstalledFileNames []string
+		wantErr                string
 	}{
 		{
 			name:    "centos5 python",
@@ -126,7 +127,8 @@ func TestRpmDB_Package(t *testing.T) {
 				License:   "PSF - see LICENSE",
 				Vendor:    "CentOS",
 			},
-			wantInstalledFiles: CentOS5PythonInstalledFiles,
+			wantInstalledFiles:     CentOS5PythonInstalledFiles,
+			wantInstalledFileNames: CentOS5PythonInstalledFileNames,
 		},
 		{
 			name:    "centos6 glibc",
@@ -143,7 +145,8 @@ func TestRpmDB_Package(t *testing.T) {
 				Vendor:          "CentOS",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
 			},
-			wantInstalledFiles: CentOS6GlibcInstalledFiles,
+			wantInstalledFiles:     CentOS6GlibcInstalledFiles,
+			wantInstalledFileNames: CentOS6GlibcInstalledFileNames,
 		},
 		{
 			name:    "centos8 nodejs",
@@ -162,7 +165,8 @@ func TestRpmDB_Package(t *testing.T) {
 				Modularitylabel: "nodejs:10:8020020200707141642:6a468ee4",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
 			},
-			wantInstalledFiles: CentOS8NodejsInstalledFiles,
+			wantInstalledFiles:     CentOS8NodejsInstalledFiles,
+			wantInstalledFileNames: CentOS8NodejsInstalledFileNames,
 		},
 		{
 			name:    "CBL-Mariner 2.0 curl",
@@ -180,7 +184,8 @@ func TestRpmDB_Package(t *testing.T) {
 				Vendor:          "Microsoft Corporation",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
 			},
-			wantInstalledFiles: Mariner2CurlInstalledFiles,
+			wantInstalledFiles:     Mariner2CurlInstalledFiles,
+			wantInstalledFileNames: Mariner2CurlInstalledFileNames,
 		},
 	}
 	for _, tt := range tests {
@@ -200,6 +205,10 @@ func TestRpmDB_Package(t *testing.T) {
 			gotInstalledFiles, err := got.InstalledFiles()
 			assert.NoError(t, err)
 			assert.Equal(t, tt.wantInstalledFiles, gotInstalledFiles)
+
+			gotInstalledFileNames, err := got.InstalledFileNames()
+			assert.NoError(t, err)
+			assert.Equal(t, tt.wantInstalledFileNames, gotInstalledFileNames)
 
 			// These fields are tested through InstalledFiles() above
 			got.BaseNames = nil

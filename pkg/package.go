@@ -3,6 +3,7 @@ package rpmdb
 import (
 	"bytes"
 	"encoding/binary"
+	"path/filepath"
 	"strings"
 
 	"golang.org/x/xerrors"
@@ -241,7 +242,7 @@ func parseStringArray(data []byte) []string {
 	return elements
 }
 
-func (p *PackageInfo) InstalledFiles() ([]FileInfo, error) {
+func (p *PackageInfo) InstalledFileNames() ([]string, error) {
 	if len(p.DirNames) == 0 || len(p.DirIndexes) == 0 || len(p.BaseNames) == 0 {
 		return nil, nil
 	}
@@ -251,49 +252,60 @@ func (p *PackageInfo) InstalledFiles() ([]FileInfo, error) {
 		return nil, xerrors.Errorf("invalid rpm %s", p.Name)
 	}
 
-	// piece together a list of files and their metadata
+	var filePaths []string
+	for i, baseName := range p.BaseNames {
+		dir := p.DirNames[p.DirIndexes[i]]
+		filePaths = append(filePaths, filepath.Join(dir, baseName))
+	}
+	return filePaths, nil
+}
+
+func (p *PackageInfo) InstalledFiles() ([]FileInfo, error) {
+	fileNames, err := p.InstalledFileNames()
+	if err != nil {
+		return nil, err
+	}
+
 	var files []FileInfo
-	if p.DirNames != nil && p.DirIndexes != nil {
-		for i, file := range p.BaseNames {
-			var digest, username, groupname string
-			var mode uint16
-			var size, flags int32
+	for i, fileName := range fileNames {
+		var digest, username, groupname string
+		var mode uint16
+		var size, flags int32
 
-			if p.FileDigests != nil && len(p.FileDigests) > i {
-				digest = p.FileDigests[i]
-			}
-
-			if p.FileModes != nil && len(p.FileModes) > i {
-				mode = p.FileModes[i]
-			}
-
-			if p.FileSizes != nil && len(p.FileSizes) > i {
-				size = p.FileSizes[i]
-			}
-
-			if p.UserNames != nil && len(p.UserNames) > i {
-				username = p.UserNames[i]
-			}
-
-			if p.GroupNames != nil && len(p.GroupNames) > i {
-				groupname = p.GroupNames[i]
-			}
-
-			if p.FileFlags != nil && len(p.FileFlags) > i {
-				flags = p.FileFlags[i]
-			}
-
-			record := FileInfo{
-				Path:      p.DirNames[p.DirIndexes[i]] + file,
-				Mode:      mode,
-				Digest:    digest,
-				Size:      size,
-				Username:  username,
-				Groupname: groupname,
-				Flags:     FileFlags(flags),
-			}
-			files = append(files, record)
+		if p.FileDigests != nil && len(p.FileDigests) > i {
+			digest = p.FileDigests[i]
 		}
+
+		if p.FileModes != nil && len(p.FileModes) > i {
+			mode = p.FileModes[i]
+		}
+
+		if p.FileSizes != nil && len(p.FileSizes) > i {
+			size = p.FileSizes[i]
+		}
+
+		if p.UserNames != nil && len(p.UserNames) > i {
+			username = p.UserNames[i]
+		}
+
+		if p.GroupNames != nil && len(p.GroupNames) > i {
+			groupname = p.GroupNames[i]
+		}
+
+		if p.FileFlags != nil && len(p.FileFlags) > i {
+			flags = p.FileFlags[i]
+		}
+
+		record := FileInfo{
+			Path:      fileName,
+			Mode:      mode,
+			Digest:    digest,
+			Size:      size,
+			Username:  username,
+			Groupname: groupname,
+			Flags:     FileFlags(flags),
+		}
+		files = append(files, record)
 	}
 
 	return files, nil
