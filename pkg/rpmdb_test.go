@@ -153,7 +153,7 @@ func TestRpmDB_Package(t *testing.T) {
 			pkgName: "nodejs",
 			file:    "testdata/centos8-modularitylabel/Packages",
 			want: &PackageInfo{
-				Epoch:           1,
+				Epoch:           intRef(1),
 				Name:            "nodejs",
 				Version:         "10.21.0",
 				Release:         "3.module_el8.2.0+391+8da3adc6",
@@ -173,7 +173,6 @@ func TestRpmDB_Package(t *testing.T) {
 			pkgName: "curl",
 			file:    "testdata/cbl-mariner-2.0/rpmdb.sqlite",
 			want: &PackageInfo{
-				Epoch:           0,
 				Name:            "curl",
 				Version:         "7.76.0",
 				Release:         "6.cm2",
