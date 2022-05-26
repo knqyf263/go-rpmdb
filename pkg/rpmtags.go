@@ -14,20 +14,20 @@ const (
 	RPMTAG_VERSION        = 1001 /* s */
 	RPMTAG_RELEASE        = 1002 /* s */
 	RPMTAG_EPOCH          = 1003 /* i */
-	RPMTAG_ARCH           = 1022 /* s */
-	RPMTAG_SOURCERPM      = 1044 /* s */
 	RPMTAG_SIZE           = 1009 /* i */
-	RPMTAG_LICENSE        = 1014 /* s */
 	RPMTAG_VENDOR         = 1011 /* s */
-	RPMTAG_DIRINDEXES     = 1116 /* i[] */
-	RPMTAG_BASENAMES      = 1117 /* s[] */
-	RPMTAG_DIRNAMES       = 1118 /* s[] */
+	RPMTAG_LICENSE        = 1014 /* s */
+	RPMTAG_ARCH           = 1022 /* s */
 	RPMTAG_FILESIZES      = 1028 /* i[] */
 	RPMTAG_FILEMODES      = 1030 /* h[] , specifically []uint16 (ref https://github.com/rpm-software-management/rpm/blob/2153fa4ae51a84547129b8ebb3bb396e1737020e/lib/rpmtypes.h#L53 )*/
 	RPMTAG_FILEDIGESTS    = 1035 /* s[] */
 	RPMTAG_FILEFLAGS      = 1037 /* i[] */
 	RPMTAG_FILEUSERNAME   = 1039 /* s[] */
 	RPMTAG_FILEGROUPNAME  = 1040 /* s[] */
+	RPMTAG_SOURCERPM      = 1044 /* s */
+	RPMTAG_DIRINDEXES     = 1116 /* i[] */
+	RPMTAG_BASENAMES      = 1117 /* s[] */
+	RPMTAG_DIRNAMES       = 1118 /* s[] */
 	RPMTAG_FILEDIGESTALGO = 5011 /* i  */
 
 	// rpmTag_enhances

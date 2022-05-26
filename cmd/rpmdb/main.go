@@ -27,7 +27,15 @@ func run() error {
 	fmt.Println("Packages:")
 	for _, pkg := range pkgList {
 		// Suppress output
-		pkg.Files = nil
+		pkg.BaseNames = nil
+		pkg.DirIndexes = nil
+		pkg.DirNames = nil
+		pkg.FileSizes = nil
+		pkg.FileDigests = nil
+		pkg.FileModes = nil
+		pkg.FileFlags = nil
+		pkg.UserNames = nil
+		pkg.GroupNames = nil
 
 		fmt.Printf("\t%+v\n", *pkg)
 	}

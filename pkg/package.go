@@ -3,8 +3,9 @@ package rpmdb
 import (
 	"bytes"
 	"encoding/binary"
-	"golang.org/x/xerrors"
 	"strings"
+
+	"golang.org/x/xerrors"
 )
 
 type PackageInfo struct {
@@ -19,7 +20,15 @@ type PackageInfo struct {
 	Vendor          string
 	Modularitylabel string
 	DigestAlgorithm DigestAlgorithm
-	Files           []FileInfo
+	BaseNames       []string
+	DirIndexes      []int32
+	DirNames        []string
+	FileSizes       []int32
+	FileDigests     []string
+	FileModes       []uint16
+	FileFlags       []int32
+	UserNames       []string
+	GroupNames      []string
 }
 
 type FileInfo struct {
@@ -34,17 +43,6 @@ type FileInfo struct {
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/tagexts.c#L752
 func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
-	var baseNames []string
-	var dirIndexes []int32
-	var dirNames []string
-	var fileSizes []int32
-	var fileDigests []string
-	var fileModes []uint16
-	var fileFlags []int32
-	var userNames []string
-	var groupNames []string
-	var err error
-
 	pkgInfo := &PackageInfo{}
 	for _, ie := range indexEntries {
 		switch ie.Info.Tag {
@@ -53,20 +51,21 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				return nil, xerrors.New("invalid tag dir indexes")
 			}
 
-			dirIndexes, err = parseInt32Array(ie.Data, ie.Length)
+			dirIndexes, err := parseInt32Array(ie.Data, ie.Length)
 			if err != nil {
 				return nil, xerrors.Errorf("unable to read dir indexes: %w", err)
 			}
+			pkgInfo.DirIndexes = dirIndexes
 		case RPMTAG_DIRNAMES:
 			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
 				return nil, xerrors.New("invalid tag dir names")
 			}
-			dirNames = parseStringArray(ie.Data)
+			pkgInfo.DirNames = parseStringArray(ie.Data)
 		case RPMTAG_BASENAMES:
 			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
 				return nil, xerrors.New("invalid tag base names")
 			}
-			baseNames = parseStringArray(ie.Data)
+			pkgInfo.BaseNames = parseStringArray(ie.Data)
 		case RPMTAG_MODULARITYLABEL:
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag modularitylabel")
@@ -154,97 +153,48 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			if ie.Info.Type != RPM_INT32_TYPE {
 				return nil, xerrors.New("invalid tag file-sizes")
 			}
-			fileSizes, err = parseInt32Array(ie.Data, ie.Length)
+			fileSizes, err := parseInt32Array(ie.Data, ie.Length)
 			if err != nil {
 				return nil, xerrors.Errorf("failed to parse file-sizes: %w", err)
 			}
+			pkgInfo.FileSizes = fileSizes
 		case RPMTAG_FILEDIGESTS:
 			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
 				return nil, xerrors.New("invalid tag file-digests")
 			}
-			fileDigests = parseStringArray(ie.Data)
+			pkgInfo.FileDigests = parseStringArray(ie.Data)
 		case RPMTAG_FILEMODES:
 			// note: there is no distinction between int16, uint16, and []uint16
 			if ie.Info.Type != RPM_INT16_TYPE {
 				return nil, xerrors.New("invalid tag file-modes")
 			}
-			fileModes, err = uint16Array(ie.Data, ie.Length)
+			fileModes, err := uint16Array(ie.Data, ie.Length)
 			if err != nil {
 				return nil, xerrors.Errorf("failed to parse file-modes: %w", err)
 			}
+			pkgInfo.FileModes = fileModes
 		case RPMTAG_FILEFLAGS:
 			// note: there is no distinction between int32, uint32, and []uint32
 			if ie.Info.Type != RPM_INT32_TYPE {
 				return nil, xerrors.New("invalid tag file-flags")
 			}
-			fileFlags, err = parseInt32Array(ie.Data, ie.Length)
+			fileFlags, err := parseInt32Array(ie.Data, ie.Length)
 			if err != nil {
 				return nil, xerrors.Errorf("failed to parse file-flags: %w", err)
 			}
+			pkgInfo.FileFlags = fileFlags
 		case RPMTAG_FILEUSERNAME:
 			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
 				return nil, xerrors.New("invalid tag usernames")
 			}
-			userNames = parseStringArray(ie.Data)
+			pkgInfo.UserNames = parseStringArray(ie.Data)
 		case RPMTAG_FILEGROUPNAME:
 			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
 				return nil, xerrors.New("invalid tag groupnames")
 			}
-			groupNames = parseStringArray(ie.Data)
+			pkgInfo.GroupNames = parseStringArray(ie.Data)
 		}
 	}
-
-	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/tagexts.c#L68-L70
-	if len(dirIndexes) != len(baseNames) || len(dirNames) > len(baseNames) {
-		return nil, xerrors.Errorf("invalid rpm %s", pkgInfo.Name)
-	}
-
-	// piece together a list of files and their metadata
-	var files []FileInfo
-	if dirNames != nil && dirIndexes != nil {
-		for i, file := range baseNames {
-			var digest, username, groupname string
-			var mode uint16
-			var size, flags int32
-
-			if fileDigests != nil && len(fileDigests) > i {
-				digest = fileDigests[i]
-			}
-
-			if fileModes != nil && len(fileModes) > i {
-				mode = fileModes[i]
-			}
-
-			if fileSizes != nil && len(fileSizes) > i {
-				size = fileSizes[i]
-			}
-
-			if userNames != nil && len(userNames) > i {
-				username = userNames[i]
-			}
-
-			if groupNames != nil && len(groupNames) > i {
-				groupname = groupNames[i]
-			}
-
-			if fileFlags != nil && len(fileFlags) > i {
-				flags = fileFlags[i]
-			}
-
-			record := FileInfo{
-				Path:      dirNames[dirIndexes[i]] + file,
-				Mode:      mode,
-				Digest:    digest,
-				Size:      size,
-				Username:  username,
-				Groupname: groupname,
-				Flags:     FileFlags(flags),
-			}
-			files = append(files, record)
-		}
-	}
-
-	pkgInfo.Files = files
 
 	return pkgInfo, nil
 }
@@ -291,11 +241,60 @@ func parseStringArray(data []byte) []string {
 	return elements
 }
 
-func (p *PackageInfo) InstalledFiles() ([]string, error) {
-	var filePaths []string
-	for _, fileInfo := range p.Files {
-		filePaths = append(filePaths, fileInfo.Path)
+func (p *PackageInfo) InstalledFiles() ([]FileInfo, error) {
+	if len(p.DirNames) == 0 || len(p.DirIndexes) == 0 || len(p.BaseNames) == 0 {
+		return nil, nil
 	}
 
-	return filePaths, nil
+	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/tagexts.c#L68-L70
+	if len(p.DirIndexes) != len(p.BaseNames) || len(p.DirNames) > len(p.BaseNames) {
+		return nil, xerrors.Errorf("invalid rpm %s", p.Name)
+	}
+
+	// piece together a list of files and their metadata
+	var files []FileInfo
+	if p.DirNames != nil && p.DirIndexes != nil {
+		for i, file := range p.BaseNames {
+			var digest, username, groupname string
+			var mode uint16
+			var size, flags int32
+
+			if p.FileDigests != nil && len(p.FileDigests) > i {
+				digest = p.FileDigests[i]
+			}
+
+			if p.FileModes != nil && len(p.FileModes) > i {
+				mode = p.FileModes[i]
+			}
+
+			if p.FileSizes != nil && len(p.FileSizes) > i {
+				size = p.FileSizes[i]
+			}
+
+			if p.UserNames != nil && len(p.UserNames) > i {
+				username = p.UserNames[i]
+			}
+
+			if p.GroupNames != nil && len(p.GroupNames) > i {
+				groupname = p.GroupNames[i]
+			}
+
+			if p.FileFlags != nil && len(p.FileFlags) > i {
+				flags = p.FileFlags[i]
+			}
+
+			record := FileInfo{
+				Path:      p.DirNames[p.DirIndexes[i]] + file,
+				Mode:      mode,
+				Digest:    digest,
+				Size:      size,
+				Username:  username,
+				Groupname: groupname,
+				Flags:     FileFlags(flags),
+			}
+			files = append(files, record)
+		}
+	}
+
+	return files, nil
 }
