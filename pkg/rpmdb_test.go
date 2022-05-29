@@ -88,21 +88,30 @@ func TestPackageList(t *testing.T) {
 				g.BaseNames = nil
 				g.DirIndexes = nil
 				g.DirNames = nil
+				g.FileSizes = nil
+				g.FileDigests = nil
+				g.FileModes = nil
+				g.FileFlags = nil
+				g.UserNames = nil
+				g.GroupNames = nil
 			}
 
-			assert.Equal(t, tt.pkgList, got)
+			for i, p := range tt.pkgList {
+				assert.Equal(t, p, got[i])
+			}
 		})
 	}
 }
 
 func TestRpmDB_Package(t *testing.T) {
 	tests := []struct {
-		name               string
-		pkgName            string
-		file               string // Test input file
-		want               *PackageInfo
-		wantInstalledFiles []string
-		wantErr            string
+		name                   string
+		pkgName                string
+		file                   string // Test input file
+		want                   *PackageInfo
+		wantInstalledFiles     []FileInfo
+		wantInstalledFileNames []string
+		wantErr                string
 	}{
 		{
 			name:    "centos5 python",
@@ -118,23 +127,26 @@ func TestRpmDB_Package(t *testing.T) {
 				License:   "PSF - see LICENSE",
 				Vendor:    "CentOS",
 			},
-			wantInstalledFiles: CentOS5PythonInstalledFiles,
+			wantInstalledFiles:     CentOS5PythonInstalledFiles,
+			wantInstalledFileNames: CentOS5PythonInstalledFileNames,
 		},
 		{
 			name:    "centos6 glibc",
 			pkgName: "glibc",
 			file:    "testdata/centos6-plain/Packages",
 			want: &PackageInfo{
-				Name:      "glibc",
-				Version:   "2.12",
-				Release:   "1.212.el6",
-				Arch:      "x86_64",
-				Size:      13117447,
-				SourceRpm: "glibc-2.12-1.212.el6.src.rpm",
-				License:   "LGPLv2+ and LGPLv2+ with exceptions and GPLv2+",
-				Vendor:    "CentOS",
+				Name:            "glibc",
+				Version:         "2.12",
+				Release:         "1.212.el6",
+				Arch:            "x86_64",
+				Size:            13117447,
+				SourceRpm:       "glibc-2.12-1.212.el6.src.rpm",
+				License:         "LGPLv2+ and LGPLv2+ with exceptions and GPLv2+",
+				Vendor:          "CentOS",
+				DigestAlgorithm: PGPHASHALGO_SHA256,
 			},
-			wantInstalledFiles: CentOS6GlibcInstalledFiles,
+			wantInstalledFiles:     CentOS6GlibcInstalledFiles,
+			wantInstalledFileNames: CentOS6GlibcInstalledFileNames,
 		},
 		{
 			name:    "centos8 nodejs",
@@ -151,25 +163,29 @@ func TestRpmDB_Package(t *testing.T) {
 				License:         "MIT and ASL 2.0 and ISC and BSD",
 				Vendor:          "CentOS",
 				Modularitylabel: "nodejs:10:8020020200707141642:6a468ee4",
+				DigestAlgorithm: PGPHASHALGO_SHA256,
 			},
-			wantInstalledFiles: CentOS8NodejsInstalledFiles,
+			wantInstalledFiles:     CentOS8NodejsInstalledFiles,
+			wantInstalledFileNames: CentOS8NodejsInstalledFileNames,
 		},
 		{
 			name:    "CBL-Mariner 2.0 curl",
 			pkgName: "curl",
 			file:    "testdata/cbl-mariner-2.0/rpmdb.sqlite",
 			want: &PackageInfo{
-				Epoch:     0,
-				Name:      "curl",
-				Version:   "7.76.0",
-				Release:   "6.cm2",
-				Arch:      "x86_64",
-				Size:      326023,
-				SourceRpm: "curl-7.76.0-6.cm2.src.rpm",
-				License:   "MIT",
-				Vendor:    "Microsoft Corporation",
+				Epoch:           0,
+				Name:            "curl",
+				Version:         "7.76.0",
+				Release:         "6.cm2",
+				Arch:            "x86_64",
+				Size:            326023,
+				SourceRpm:       "curl-7.76.0-6.cm2.src.rpm",
+				License:         "MIT",
+				Vendor:          "Microsoft Corporation",
+				DigestAlgorithm: PGPHASHALGO_SHA256,
 			},
-			wantInstalledFiles: Mariner2CurlInstalledFiles,
+			wantInstalledFiles:     Mariner2CurlInstalledFiles,
+			wantInstalledFileNames: Mariner2CurlInstalledFileNames,
 		},
 	}
 	for _, tt := range tests {
@@ -190,10 +206,20 @@ func TestRpmDB_Package(t *testing.T) {
 			assert.NoError(t, err)
 			assert.Equal(t, tt.wantInstalledFiles, gotInstalledFiles)
 
-			// These fields are tested through InstalledFiles()
+			gotInstalledFileNames, err := got.InstalledFileNames()
+			assert.NoError(t, err)
+			assert.Equal(t, tt.wantInstalledFileNames, gotInstalledFileNames)
+
+			// These fields are tested through InstalledFiles() above
+			got.BaseNames = nil
 			got.DirIndexes = nil
 			got.DirNames = nil
-			got.BaseNames = nil
+			got.FileSizes = nil
+			got.FileDigests = nil
+			got.FileModes = nil
+			got.FileFlags = nil
+			got.UserNames = nil
+			got.GroupNames = nil
 
 			assert.Equal(t, tt.want, got)
 		})
