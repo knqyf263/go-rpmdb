@@ -64,6 +64,11 @@ func TestPackageList(t *testing.T) {
 			pkgList: CentOS8Modularitylabel,
 		},
 		{
+			name:    "RHEL UBI8 from s390x",
+			file:    "testdata/ubi8-s390x/Packages",
+			pkgList: UBI8s390x,
+		},
+		{
 			name:    "SLE15 with NDB style rpm database",
 			file:    "testdata/sle15-bci/Packages.db",
 			pkgList: SLE15WithNDB,

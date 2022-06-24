@@ -55,7 +55,6 @@ func Open(path string) (*BerkeleyDB, error) {
 		file:         file,
 		HashMetadata: hashMetadata,
 	}, nil
-
 }
 
 func (db *BerkeleyDB) Read() <-chan dbi.Entry {
@@ -82,7 +81,7 @@ func (db *BerkeleyDB) Read() <-chan dbi.Entry {
 				return
 			}
 
-			hashPageHeader, err := ParseHashPage(pageData)
+			hashPageHeader, err := ParseHashPage(pageData, db.HashMetadata.Swapped)
 			if err != nil {
 				entries <- dbi.Entry{
 					Err: err,
@@ -96,7 +95,7 @@ func (db *BerkeleyDB) Read() <-chan dbi.Entry {
 				continue
 			}
 
-			hashPageIndexes, err := HashPageValueIndexes(pageData, hashPageHeader.NumEntries)
+			hashPageIndexes, err := HashPageValueIndexes(pageData, hashPageHeader.NumEntries, db.HashMetadata.Swapped)
 			if err != nil {
 				entries <- dbi.Entry{
 					Err: err,
@@ -119,6 +118,7 @@ func (db *BerkeleyDB) Read() <-chan dbi.Entry {
 					pageData,
 					hashPageIndex,
 					db.HashMetadata.PageSize,
+					db.HashMetadata.Swapped,
 				)
 
 				entries <- dbi.Entry{
@@ -140,7 +140,6 @@ func (db *BerkeleyDB) Read() <-chan dbi.Entry {
 				return
 			}
 		}
-
 	}()
 
 	return entries
