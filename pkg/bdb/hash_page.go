@@ -23,12 +23,7 @@ type HashPage struct {
 
 func ParseHashPage(data []byte, swapped bool) (*HashPage, error) {
 	var hashPage HashPage
-
-	var order binary.ByteOrder = binary.LittleEndian
-	if swapped {
-		order = binary.BigEndian
-	}
-	err := binary.Read(bytes.NewReader(data), order, &hashPage)
+	err := binary.Read(bytes.NewReader(data), byteOrder(swapped), &hashPage)
 	if err != nil {
 		return nil, xerrors.Errorf("failed to unpack: %w", err)
 	}
@@ -92,10 +87,7 @@ func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pa
 }
 
 func HashPageValueIndexes(data []byte, entries uint16, swapped bool) ([]uint16, error) {
-	var order binary.ByteOrder = binary.LittleEndian
-	if swapped {
-		order = binary.BigEndian
-	}
+	order := byteOrder(swapped)
 	hashIndexValues := make([]uint16, 0)
 	if entries%2 != 0 {
 		return nil, xerrors.Errorf("invalid hash index: entries should only come in pairs (%+v)", entries)
