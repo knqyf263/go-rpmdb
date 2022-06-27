@@ -2833,7 +2833,7 @@ var (
 	}
 
 	// docker run --rm -it fedora:35 bash
-	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\"\, \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\", nil\},\n" | sed "s/(none)/0/g"
+	// rpm -qa --queryformat "\{%{EPOCH}, \"%{NAME}\", \"%{VERSION}\", \"%{RELEASE}\", \"%{ARCH}\"\, \"%{SOURCERPM}\", %{SIZE}, \"%{LICENSE}\", \"%{VENDOR}\", \"\", nil\},\n" | sed "s/(none)/0/g" | sed 's/"0"/""/g'
 	Fedora35WithSQLite3 = []*PackageInfo{
 		{intRef(), "libgcc", "11.2.1", "1.fc35", "x86_64", "gcc-11.2.1-1.fc35.src.rpm", 194980, "GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD", "Fedora Project", "", PGPHASHALGO_SHA256, nil, nil, nil, nil, nil, nil, nil, nil, nil},
 		{intRef(), "crypto-policies", "20210819", "1.gitd0fdcfb.fc35", "noarch", "crypto-policies-20210819-1.gitd0fdcfb.fc35.src.rpm", 86107, "LGPLv2+", "Fedora Project", "", PGPHASHALGO_SHA256, nil, nil, nil, nil, nil, nil, nil, nil, nil},
