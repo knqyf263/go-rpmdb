@@ -16,13 +16,8 @@ type HashOffPageEntry struct {
 }
 
 func ParseHashOffPageEntry(data []byte, swapped bool) (*HashOffPageEntry, error) {
-	var order binary.ByteOrder = binary.LittleEndian
-	if swapped {
-		order = binary.BigEndian
-	}
 	var entry HashOffPageEntry
-
-	err := binary.Read(bytes.NewReader(data), order, &entry)
+	err := binary.Read(bytes.NewReader(data), byteOrder(swapped), &entry)
 	if err != nil {
 		return nil, xerrors.Errorf("failed to unpack HashOffPageEntry: %w", err)
 	}
