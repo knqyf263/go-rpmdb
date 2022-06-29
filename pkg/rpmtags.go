@@ -29,6 +29,8 @@ const (
 	RPMTAG_BASENAMES      = 1117 /* s[] */
 	RPMTAG_DIRNAMES       = 1118 /* s[] */
 	RPMTAG_FILEDIGESTALGO = 5011 /* i  */
+	RPMTAG_SUMMARY        = 1004 /* s */
+	RPMTAG_PGP            = 259  /* b */
 
 	// rpmTag_enhances
 	// https://github.com/rpm-software-management/rpm/blob/rpm-4.16.0-release/lib/rpmtag.h#L375

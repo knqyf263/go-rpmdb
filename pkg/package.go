@@ -3,8 +3,10 @@ package rpmdb
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 	"path/filepath"
 	"strings"
+	"time"
 
 	"golang.org/x/xerrors"
 )
@@ -20,6 +22,8 @@ type PackageInfo struct {
 	License         string
 	Vendor          string
 	Modularitylabel string
+	Summary         string
+	PGP             string
 	DigestAlgorithm DigestAlgorithm
 	BaseNames       []string
 	DirIndexes      []int32
@@ -196,6 +200,121 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				return nil, xerrors.New("invalid tag groupnames")
 			}
 			pkgInfo.GroupNames = parseStringArray(ie.Data)
+		case RPMTAG_SUMMARY:
+			// some libraries have a string value instead of international string, so accounting for both
+			if ie.Info.Type != RPM_I18NSTRING_TYPE && ie.Info.Type != RPM_STRING_TYPE {
+				return nil, xerrors.New("invalid tag summary")
+			}
+			// since this is an international string, getting the first null terminated string
+			pkgInfo.Summary = string(bytes.Split(ie.Data, []byte{0})[0])
+		case RPMTAG_PGP:
+			type pgpSig struct {
+				_          [3]byte
+				Date       int32
+				KeyID      [8]byte
+				PubKeyAlgo uint8
+				HashAlgo   uint8
+			}
+
+			type textSig struct {
+				_          [2]byte
+				PubKeyAlgo uint8
+				HashAlgo   uint8
+				_          [4]byte
+				Date       int32
+				_          [4]byte
+				KeyID      [8]byte
+			}
+
+			type pgp4Sig struct {
+				_          [2]byte
+				PubKeyAlgo uint8
+				HashAlgo   uint8
+				_          [17]byte
+				KeyID      [8]byte
+				_          [2]byte
+				Date       int32
+			}
+
+			pubKeyLookup := map[uint8]string{
+				0x01: "RSA",
+			}
+			hashLookup := map[uint8]string{
+				0x02: "SHA1",
+				0x08: "SHA256",
+			}
+
+			if ie.Info.Type != RPM_BIN_TYPE {
+				return nil, xerrors.New("invalid PGP signature")
+			}
+
+			var tag, signatureType, version uint8
+			r := bytes.NewReader(ie.Data)
+			err := binary.Read(r, binary.BigEndian, &tag)
+			if err != nil {
+				return nil, err
+			}
+			err = binary.Read(r, binary.BigEndian, &signatureType)
+			if err != nil {
+				return nil, err
+			}
+			err = binary.Read(r, binary.BigEndian, &version)
+			if err != nil {
+				return nil, err
+			}
+
+			var pubKeyAlgo, hashAlgo, pkgDate string
+			var keyId [8]byte
+
+			switch signatureType {
+			case 0x01:
+				switch version {
+				case 0x1c:
+					sig := textSig{}
+					err = binary.Read(r, binary.BigEndian, &sig)
+					if err != nil {
+						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
+					}
+					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+					hashAlgo = hashLookup[sig.HashAlgo]
+					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+					keyId = sig.KeyID
+				default:
+					sig := pgpSig{}
+					err = binary.Read(r, binary.BigEndian, &sig)
+					if err != nil {
+						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
+					}
+					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+					hashAlgo = hashLookup[sig.HashAlgo]
+					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+					keyId = sig.KeyID
+				}
+			case 0x02:
+				switch version {
+				case 0x33:
+					sig := pgp4Sig{}
+					err = binary.Read(r, binary.BigEndian, &sig)
+					if err != nil {
+						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
+					}
+					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+					hashAlgo = hashLookup[sig.HashAlgo]
+					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+					keyId = sig.KeyID
+				default:
+					sig := pgpSig{}
+					err = binary.Read(r, binary.BigEndian, &sig)
+					if err != nil {
+						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
+					}
+					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+					hashAlgo = hashLookup[sig.HashAlgo]
+					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+					keyId = sig.KeyID
+				}
+			}
+			pkgInfo.PGP = fmt.Sprintf("%s/%s, %s, Key ID %x", pubKeyAlgo, hashAlgo, pkgDate, keyId)
 		}
 	}
 
@@ -208,7 +327,7 @@ const (
 )
 
 func parseInt32Array(data []byte, arraySize int) ([]int32, error) {
-	var length = arraySize / sizeOfInt32
+	length := arraySize / sizeOfInt32
 	values := make([]int32, length)
 	reader := bytes.NewReader(data)
 	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
@@ -227,7 +346,7 @@ func parseInt32(data []byte) (int, error) {
 }
 
 func uint16Array(data []byte, arraySize int) ([]uint16, error) {
-	var length = arraySize / sizeOfUInt16
+	length := arraySize / sizeOfUInt16
 	values := make([]uint16, length)
 	reader := bytes.NewReader(data)
 	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
