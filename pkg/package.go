@@ -356,11 +356,7 @@ func uint16Array(data []byte, arraySize int) ([]uint16, error) {
 }
 
 func parseStringArray(data []byte) []string {
-	elements := strings.Split(string(data), "\x00")
-	if len(elements) > 0 && elements[len(elements)-1] == "" {
-		return elements[:len(elements)-1]
-	}
-	return elements
+	return strings.Split(string(bytes.TrimRight(data, "\x00")), "\x00")
 }
 
 func (p *PackageInfo) InstalledFileNames() ([]string, error) {
