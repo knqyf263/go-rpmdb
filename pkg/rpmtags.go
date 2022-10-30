@@ -25,6 +25,8 @@ const (
 	RPMTAG_FILEUSERNAME   = 1039 /* s[] */
 	RPMTAG_FILEGROUPNAME  = 1040 /* s[] */
 	RPMTAG_SOURCERPM      = 1044 /* s */
+	RPMTAG_PROVIDENAME    = 1047 /* s[] */
+	RPMTAG_REQUIRENAME    = 1049 /* s[] */
 	RPMTAG_DIRINDEXES     = 1116 /* i[] */
 	RPMTAG_BASENAMES      = 1117 /* s[] */
 	RPMTAG_DIRNAMES       = 1118 /* s[] */
