@@ -3,6 +3,7 @@ package rpmdb
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 	"io"
 	"unsafe"
 
@@ -65,6 +66,24 @@ type entryInfo struct {
 	Type   uint32 /*!< Tag data type. */
 	Offset int32  /*!< Offset into data segment (ondisk only). */
 	Count  uint32 /*!< Number of tag elements. */
+}
+
+func (ei entryInfo) TagName() string {
+	tagname, ok := tagNames[ei.Tag]
+	if !ok {
+		tagname = fmt.Sprintf("tag#%v", ei.Tag)
+	}
+
+	return tagname
+}
+
+func (ei entryInfo) TypeName() string {
+	typename, ok := typeNames[ei.Tag]
+	if !ok {
+		typename = fmt.Sprintf("type#%v", ei.Tag)
+	}
+
+	return typename
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L88-L94
