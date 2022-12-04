@@ -63,15 +63,9 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			}
 			pkgInfo.DirIndexes = dirIndexes
 		case RPMTAG_DIRNAMES:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag dir names")
-			}
-			pkgInfo.DirNames = parseStringArray(ie.Data)
+			pkgInfo.DirNames, err = ie.ParseStringArray()
 		case RPMTAG_BASENAMES:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag base names")
-			}
-			pkgInfo.BaseNames = parseStringArray(ie.Data)
+			pkgInfo.BaseNames, err = ie.ParseStringArray()
 		case RPMTAG_MODULARITYLABEL:
 			pkgInfo.Modularitylabel, err = ie.ParseString()
 		case RPMTAG_NAME:
@@ -134,10 +128,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			}
 			pkgInfo.FileSizes = fileSizes
 		case RPMTAG_FILEDIGESTS:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag file-digests")
-			}
-			pkgInfo.FileDigests = parseStringArray(ie.Data)
+			pkgInfo.FileDigests, err = ie.ParseStringArray()
 		case RPMTAG_FILEMODES:
 			// note: there is no distinction between int16, uint16, and []uint16
 			if ie.Info.Type != RPM_INT16_TYPE {
@@ -159,15 +150,9 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			}
 			pkgInfo.FileFlags = fileFlags
 		case RPMTAG_FILEUSERNAME:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag usernames")
-			}
-			pkgInfo.UserNames = parseStringArray(ie.Data)
+			pkgInfo.UserNames, err = ie.ParseStringArray()
 		case RPMTAG_FILEGROUPNAME:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag groupnames")
-			}
-			pkgInfo.GroupNames = parseStringArray(ie.Data)
+			pkgInfo.GroupNames, err = ie.ParseStringArray()
 		case RPMTAG_SUMMARY:
 			// some libraries have a string value instead of international string, so accounting for both
 			if ie.Info.Type != RPM_I18NSTRING_TYPE && ie.Info.Type != RPM_STRING_TYPE {

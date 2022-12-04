@@ -111,6 +111,15 @@ func (ie indexEntry) ParseString() (string, error) {
 	return result, nil
 }
 
+func (ie indexEntry) ParseStringArray() ([]string, error) {
+	if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
+		return nil, xerrors.Errorf("invalid tag type for string array field: %v",
+					   ie.Info.TypeName())
+	}
+
+	return parseStringArray(ie.Data), nil
+}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L23
 type hdrblob struct {
 	peList    []entryInfo
