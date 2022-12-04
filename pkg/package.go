@@ -131,14 +131,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			pkgInfo.FileDigests, err = ie.ParseStringArray()
 		case RPMTAG_FILEMODES:
 			// note: there is no distinction between int16, uint16, and []uint16
-			if ie.Info.Type != RPM_INT16_TYPE {
-				return nil, xerrors.New("invalid tag file-modes")
-			}
-			fileModes, err := uint16Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse file-modes: %w", err)
-			}
-			pkgInfo.FileModes = fileModes
+			pkgInfo.FileModes, err = ie.ParseUint16Array()
 		case RPMTAG_FILEFLAGS:
 			// note: there is no distinction between int32, uint32, and []uint32
 			if ie.Info.Type != RPM_INT32_TYPE {

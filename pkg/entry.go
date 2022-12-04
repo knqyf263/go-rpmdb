@@ -120,6 +120,16 @@ func (ie indexEntry) ParseStringArray() ([]string, error) {
 	return parseStringArray(ie.Data), nil
 }
 
+func (ie indexEntry) ParseUint16Array() ([]uint16, error) {
+	if ie.Info.Type != RPM_INT16_TYPE {
+		return nil, xerrors.Errorf("invalid tag type for int16 array field: %v",
+					   ie.Info.TypeName())
+	}
+
+	return uint16Array(ie.Data, ie.Length)
+
+}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L23
 type hdrblob struct {
 	peList    []entryInfo
