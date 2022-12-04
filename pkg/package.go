@@ -5,7 +5,6 @@ import (
 	"encoding/binary"
 	"fmt"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"golang.org/x/xerrors"
@@ -137,11 +136,6 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 	return pkgInfo, nil
 }
 
-const (
-	sizeOfInt32  = 4
-	sizeOfUInt16 = 2
-)
-
 func parsePGPSignature(ie indexEntry) (string, error) {
 	type pgpSig struct {
 		_          [3]byte
@@ -254,43 +248,6 @@ func parsePGPSignature(ie indexEntry) (string, error) {
 			     pubKeyAlgo, hashAlgo, pkgDate, keyId)
 
 	return result, nil
-}
-
-func parseInt32Array(data []byte, arraySize int) ([]int32, error) {
-	length := arraySize / sizeOfInt32
-	values := make([]int32, length)
-	reader := bytes.NewReader(data)
-	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
-		return nil, xerrors.Errorf("failed to read binary: %w", err)
-	}
-	return values, nil
-}
-
-func parseInt32(data []byte) (int, error) {
-	var value int32
-	reader := bytes.NewReader(data)
-	if err := binary.Read(reader, binary.BigEndian, &value); err != nil {
-		return 0, xerrors.Errorf("failed to read binary: %w", err)
-	}
-	return int(value), nil
-}
-
-func uint16Array(data []byte, arraySize int) ([]uint16, error) {
-	length := arraySize / sizeOfUInt16
-	values := make([]uint16, length)
-	reader := bytes.NewReader(data)
-	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
-		return nil, xerrors.Errorf("failed to read binary: %w", err)
-	}
-	return values, nil
-}
-
-func parseString(data []byte) string {
-	return string(bytes.TrimRight(data, "\x00"))
-}
-
-func parseStringArray(data []byte) []string {
-	return strings.Split(string(bytes.TrimRight(data, "\x00")), "\x00")
 }
 
 func (p *PackageInfo) InstalledFileNames() ([]string, error) {

@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
+	"strings"
 	"unsafe"
 
 	"golang.org/x/xerrors"
@@ -94,12 +95,17 @@ type indexEntry struct {
 	Data   []byte
 }
 
+const (
+	sizeOfInt32  = 4
+	sizeOfUInt16 = 2
+)
+
 func (ie indexEntry) ParseString() (string, error) {
 	if ie.Info.Type != RPM_STRING_TYPE {
 		return "", xerrors.Errorf("invalid tag type for string field: %v", ie.Info.TypeName())
 	}
 
-	result := parseString(ie.Data)
+	result := string(bytes.TrimRight(ie.Data, "\x00"))
 
 	switch (ie.Info.Tag) {
 	case RPMTAG_SOURCERPM, RPMTAG_LICENSE, RPMTAG_VENDOR:
@@ -129,17 +135,17 @@ func (ie indexEntry) ParseStringArray() ([]string, error) {
 					   ie.Info.TypeName())
 	}
 
-	return parseStringArray(ie.Data), nil
+	return strings.Split(string(bytes.TrimRight(ie.Data, "\x00")), "\x00"), nil
 }
 
 func (ie indexEntry) ParseUint16Array() ([]uint16, error) {
-	if ie.Info.Type != RPM_INT16_TYPE {
-		return nil, xerrors.Errorf("invalid tag type for int16 array field: %v",
-					   ie.Info.TypeName())
+	length := ie.Length / sizeOfUInt16
+	values := make([]uint16, length)
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
+		return nil, xerrors.Errorf("failed to read binary: %w", err)
 	}
-
-	return uint16Array(ie.Data, ie.Length)
-
+	return values, nil
 }
 
 func (ie indexEntry) ParseInt32() (int, error) {
@@ -148,7 +154,12 @@ func (ie indexEntry) ParseInt32() (int, error) {
 					 ie.Info.TypeName())
 	}
 
-	return parseInt32(ie.Data)
+	var value int32
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &value); err != nil {
+		return 0, xerrors.Errorf("failed to read binary: %w", err)
+	}
+	return int(value), nil
 }
 
 func (ie indexEntry) ParseInt32Array() ([]int32, error) {
@@ -157,8 +168,25 @@ func (ie indexEntry) ParseInt32Array() ([]int32, error) {
 					   ie.Info.TypeName())
 	}
 
-	return parseInt32Array(ie.Data, ie.Length)
+	length := ie.Length / sizeOfInt32
+	values := make([]int32, length)
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
+		return nil, xerrors.Errorf("failed to read binary: %w", err)
+	}
+	return values, nil
 }
+
+func (ie indexEntry) ParseInt64() (int, error) {
+	var value int64
+
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &value); err != nil {
+		return 0, xerrors.Errorf("failed to read binary: %w", err)
+	}
+	return int(value), nil
+}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L23
 type hdrblob struct {
 	peList    []entryInfo
