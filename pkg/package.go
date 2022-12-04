@@ -109,12 +109,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 		case RPMTAG_FILEGROUPNAME:
 			pkgInfo.GroupNames, err = ie.ParseStringArray()
 		case RPMTAG_SUMMARY:
-			// some libraries have a string value instead of international string, so accounting for both
-			if ie.Info.Type != RPM_I18NSTRING_TYPE && ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag summary")
-			}
-			// since this is an international string, getting the first null terminated string
-			pkgInfo.Summary = string(bytes.Split(ie.Data, []byte{0})[0])
+			pkgInfo.Summary, err = ie.ParseI18nString()
 		case RPMTAG_PGP:
 			pkgInfo.PGP, err = parsePGPSignature(ie)
 			if err != nil {

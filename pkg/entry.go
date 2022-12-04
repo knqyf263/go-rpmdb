@@ -111,6 +111,18 @@ func (ie indexEntry) ParseString() (string, error) {
 	return result, nil
 }
 
+func (ie indexEntry) ParseI18nString() (string, error) {
+	// some libraries have a string value instead of international string,
+	// so accounting for both
+	if ie.Info.Type != RPM_I18NSTRING_TYPE && ie.Info.Type != RPM_STRING_TYPE {
+		return "", xerrors.Errorf("invalid tag type for international string field: %v",
+					  ie.Info.TypeName())
+	}
+
+	// since this is an international string, getting the first null terminated string
+	return string(bytes.Split(ie.Data, []byte{0})[0]), nil
+}
+
 func (ie indexEntry) ParseStringArray() ([]string, error) {
 	if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
 		return nil, xerrors.Errorf("invalid tag type for string array field: %v",
@@ -147,7 +159,6 @@ func (ie indexEntry) ParseInt32Array() ([]int32, error) {
 
 	return parseInt32Array(ie.Data, ie.Length)
 }
-
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L23
 type hdrblob struct {
 	peList    []entryInfo
