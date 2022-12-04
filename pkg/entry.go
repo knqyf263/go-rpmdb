@@ -3,7 +3,9 @@ package rpmdb
 import (
 	"bytes"
 	"encoding/binary"
+	"fmt"
 	"io"
+	"strings"
 	"unsafe"
 
 	"golang.org/x/xerrors"
@@ -67,12 +69,122 @@ type entryInfo struct {
 	Count  uint32 /*!< Number of tag elements. */
 }
 
+func (ei entryInfo) TagName() string {
+	tagname, ok := tagNames[ei.Tag]
+	if !ok {
+		tagname = fmt.Sprintf("tag#%v", ei.Tag)
+	}
+
+	return tagname
+}
+
+func (ei entryInfo) TypeName() string {
+	typename, ok := typeNames[ei.Tag]
+	if !ok {
+		typename = fmt.Sprintf("type#%v", ei.Tag)
+	}
+
+	return typename
+}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header.c#L88-L94
 type indexEntry struct {
 	Info   entryInfo
 	Length int
 	Rdlen  int
 	Data   []byte
+}
+
+const (
+	sizeOfInt32  = 4
+	sizeOfUInt16 = 2
+)
+
+func (ie indexEntry) ParseString() (string, error) {
+	if ie.Info.Type != RPM_STRING_TYPE {
+		return "", xerrors.Errorf("invalid tag type for string field: %v", ie.Info.TypeName())
+	}
+
+	result := string(bytes.TrimRight(ie.Data, "\x00"))
+
+	switch (ie.Info.Tag) {
+	case RPMTAG_SOURCERPM, RPMTAG_LICENSE, RPMTAG_VENDOR:
+		if result == "(none)" {
+			result = ""
+		}
+	}
+
+	return result, nil
+}
+
+func (ie indexEntry) ParseI18nString() (string, error) {
+	// some libraries have a string value instead of international string,
+	// so accounting for both
+	if ie.Info.Type != RPM_I18NSTRING_TYPE && ie.Info.Type != RPM_STRING_TYPE {
+		return "", xerrors.Errorf("invalid tag type for international string field: %v",
+					  ie.Info.TypeName())
+	}
+
+	// since this is an international string, getting the first null terminated string
+	return string(bytes.Split(ie.Data, []byte{0})[0]), nil
+}
+
+func (ie indexEntry) ParseStringArray() ([]string, error) {
+	if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
+		return nil, xerrors.Errorf("invalid tag type for string array field: %v",
+					   ie.Info.TypeName())
+	}
+
+	return strings.Split(string(bytes.TrimRight(ie.Data, "\x00")), "\x00"), nil
+}
+
+func (ie indexEntry) ParseUint16Array() ([]uint16, error) {
+	length := ie.Length / sizeOfUInt16
+	values := make([]uint16, length)
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
+		return nil, xerrors.Errorf("failed to read binary: %w", err)
+	}
+	return values, nil
+}
+
+func (ie indexEntry) ParseInt32() (int, error) {
+	if ie.Info.Type != RPM_INT32_TYPE {
+		return 0, xerrors.Errorf("invalid tag type for int32 field: %v",
+					 ie.Info.TypeName())
+	}
+
+	var value int32
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &value); err != nil {
+		return 0, xerrors.Errorf("failed to read binary: %w", err)
+	}
+	return int(value), nil
+}
+
+func (ie indexEntry) ParseInt32Array() ([]int32, error) {
+	if ie.Info.Type != RPM_INT32_TYPE {
+		return nil, xerrors.Errorf("invalid tag type for int32 array field: %v",
+					   ie.Info.TypeName())
+	}
+
+	length := ie.Length / sizeOfInt32
+	values := make([]int32, length)
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
+		return nil, xerrors.Errorf("failed to read binary: %w", err)
+	}
+	return values, nil
+}
+
+func (ie indexEntry) ParseInt64() (int, error) {
+	var value int64
+
+	reader := bytes.NewReader(ie.Data)
+	if err := binary.Read(reader, binary.BigEndian, &value); err != nil {
+		return 0, xerrors.Errorf("failed to read binary: %w", err)
+	}
+	return int(value), nil
 }
 
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L23

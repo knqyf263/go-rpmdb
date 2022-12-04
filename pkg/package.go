@@ -5,7 +5,6 @@ import (
 	"encoding/binary"
 	"fmt"
 	"path/filepath"
-	"strings"
 	"time"
 
 	"golang.org/x/xerrors"
@@ -50,313 +49,205 @@ type FileInfo struct {
 func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 	pkgInfo := &PackageInfo{}
 	for _, ie := range indexEntries {
+		var err error
 		switch ie.Info.Tag {
-		case RPMTAG_DIRINDEXES:
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag dir indexes")
-			}
-
-			dirIndexes, err := parseInt32Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("unable to read dir indexes: %w", err)
-			}
-			pkgInfo.DirIndexes = dirIndexes
-		case RPMTAG_DIRNAMES:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag dir names")
-			}
-			pkgInfo.DirNames = parseStringArray(ie.Data)
-		case RPMTAG_BASENAMES:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag base names")
-			}
-			pkgInfo.BaseNames = parseStringArray(ie.Data)
+		// RPM_STRING_TYPE
 		case RPMTAG_MODULARITYLABEL:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag modularitylabel")
-			}
-			pkgInfo.Modularitylabel = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.Modularitylabel, err = ie.ParseString()
 		case RPMTAG_NAME:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag name")
-			}
-			pkgInfo.Name = string(bytes.TrimRight(ie.Data, "\x00"))
-		case RPMTAG_EPOCH:
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag epoch")
-			}
+			pkgInfo.Name, err = ie.ParseString()
+		case RPMTAG_VERSION:
+			pkgInfo.Version, err = ie.ParseString()
+		case RPMTAG_RELEASE:
+			pkgInfo.Release, err = ie.ParseString()
+		case RPMTAG_ARCH:
+			pkgInfo.Arch, err = ie.ParseString()
+		case RPMTAG_SOURCERPM:
+			pkgInfo.SourceRpm, err = ie.ParseString()
+		case RPMTAG_LICENSE:
+			pkgInfo.License, err = ie.ParseString()
+		case RPMTAG_VENDOR:
+			pkgInfo.Vendor, err = ie.ParseString()
 
+		// RPM_I18NSTRING_TYPE
+		case RPMTAG_SUMMARY:
+			pkgInfo.Summary, err = ie.ParseI18nString()
+
+		// RPM_STRING_ARRAY_TYPE
+		case RPMTAG_DIRNAMES:
+			pkgInfo.DirNames, err = ie.ParseStringArray()
+		case RPMTAG_BASENAMES:
+			pkgInfo.BaseNames, err = ie.ParseStringArray()
+		case RPMTAG_FILEDIGESTS:
+			pkgInfo.FileDigests, err = ie.ParseStringArray()
+		case RPMTAG_FILEUSERNAME:
+			pkgInfo.UserNames, err = ie.ParseStringArray()
+		case RPMTAG_FILEGROUPNAME:
+			pkgInfo.GroupNames, err = ie.ParseStringArray()
+
+		// note: there is no distinction between int16, uint16, and []uint16
+		// RPM_INT16_TYPE (array variant)
+		case RPMTAG_FILEMODES:
+			pkgInfo.FileModes, err = ie.ParseUint16Array()
+
+		// note: there is no distinction between int32, uint32, and []uint32
+		// RPM_INT32_TYPE (scalar variant)
+		case RPMTAG_SIZE:
+			pkgInfo.Size, err = ie.ParseInt32()
+
+		// RPM_INT32_TYPE (array variant)
+		case RPMTAG_DIRINDEXES:
+			pkgInfo.DirIndexes, err = ie.ParseInt32Array()
+		case RPMTAG_FILESIZES:
+			pkgInfo.FileSizes, err = ie.ParseInt32Array()
+		case RPMTAG_FILEFLAGS:
+			pkgInfo.FileFlags, err = ie.ParseInt32Array()
+
+		// Special handling
+		case RPMTAG_EPOCH:
 			if ie.Data != nil {
-				value, err := parseInt32(ie.Data)
+				value, err := ie.ParseInt32()
 				if err != nil {
-					return nil, xerrors.Errorf("failed to parse epoch: %w", err)
+					break
 				}
 				pkgInfo.Epoch = &value
 			}
-		case RPMTAG_VERSION:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag version")
-			}
-			pkgInfo.Version = string(bytes.TrimRight(ie.Data, "\x00"))
-		case RPMTAG_RELEASE:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag release")
-			}
-			pkgInfo.Release = string(bytes.TrimRight(ie.Data, "\x00"))
-		case RPMTAG_ARCH:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag arch")
-			}
-			pkgInfo.Arch = string(bytes.TrimRight(ie.Data, "\x00"))
-		case RPMTAG_SOURCERPM:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag sourcerpm")
-			}
-			pkgInfo.SourceRpm = string(bytes.TrimRight(ie.Data, "\x00"))
-			if pkgInfo.SourceRpm == "(none)" {
-				pkgInfo.SourceRpm = ""
-			}
-		case RPMTAG_LICENSE:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag license")
-			}
-			pkgInfo.License = string(bytes.TrimRight(ie.Data, "\x00"))
-			if pkgInfo.License == "(none)" {
-				pkgInfo.License = ""
-			}
-		case RPMTAG_VENDOR:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag vendor")
-			}
-			pkgInfo.Vendor = string(bytes.TrimRight(ie.Data, "\x00"))
-			if pkgInfo.Vendor == "(none)" {
-				pkgInfo.Vendor = ""
-			}
-		case RPMTAG_SIZE:
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag size")
-			}
-
-			size, err := parseInt32(ie.Data)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse size: %w", err)
-			}
-			pkgInfo.Size = size
 		case RPMTAG_FILEDIGESTALGO:
-			// note: all digests within a package entry only supports a single digest algorithm (there may be future support for
-			// algorithm noted for each file entry, but currently unimplemented: https://github.com/rpm-software-management/rpm/blob/0b75075a8d006c8f792d33a57eae7da6b66a4591/lib/rpmtag.h#L256)
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag digest algo")
-			}
-
-			digestAlgorithm, err := parseInt32(ie.Data)
+			// note: all digests within a package entry only supports a single
+			// digest algorithm (there may be future support for algorithm noted for
+			// each file entry, but currently unimplemented:
+			// https://github.com/rpm-software-management/rpm/blob/0b75075a8d006c8f792d33a57eae7da6b66a4591/lib/rpmtag.h#L256)
+			digestAlgorithm, err := ie.ParseInt32()
 			if err != nil {
-				return nil, xerrors.Errorf("failed to parse digest algo: %w", err)
+				break
 			}
 
 			pkgInfo.DigestAlgorithm = DigestAlgorithm(digestAlgorithm)
-		case RPMTAG_FILESIZES:
-			// note: there is no distinction between int32, uint32, and []uint32
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag file-sizes")
-			}
-			fileSizes, err := parseInt32Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse file-sizes: %w", err)
-			}
-			pkgInfo.FileSizes = fileSizes
-		case RPMTAG_FILEDIGESTS:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag file-digests")
-			}
-			pkgInfo.FileDigests = parseStringArray(ie.Data)
-		case RPMTAG_FILEMODES:
-			// note: there is no distinction between int16, uint16, and []uint16
-			if ie.Info.Type != RPM_INT16_TYPE {
-				return nil, xerrors.New("invalid tag file-modes")
-			}
-			fileModes, err := uint16Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse file-modes: %w", err)
-			}
-			pkgInfo.FileModes = fileModes
-		case RPMTAG_FILEFLAGS:
-			// note: there is no distinction between int32, uint32, and []uint32
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag file-flags")
-			}
-			fileFlags, err := parseInt32Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse file-flags: %w", err)
-			}
-			pkgInfo.FileFlags = fileFlags
-		case RPMTAG_FILEUSERNAME:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag usernames")
-			}
-			pkgInfo.UserNames = parseStringArray(ie.Data)
-		case RPMTAG_FILEGROUPNAME:
-			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
-				return nil, xerrors.New("invalid tag groupnames")
-			}
-			pkgInfo.GroupNames = parseStringArray(ie.Data)
-		case RPMTAG_SUMMARY:
-			// some libraries have a string value instead of international string, so accounting for both
-			if ie.Info.Type != RPM_I18NSTRING_TYPE && ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag summary")
-			}
-			// since this is an international string, getting the first null terminated string
-			pkgInfo.Summary = string(bytes.Split(ie.Data, []byte{0})[0])
 		case RPMTAG_PGP:
-			type pgpSig struct {
-				_          [3]byte
-				Date       int32
-				KeyID      [8]byte
-				PubKeyAlgo uint8
-				HashAlgo   uint8
-			}
+			pkgInfo.PGP, err = parsePGPSignature(ie)
+		}
 
-			type textSig struct {
-				_          [2]byte
-				PubKeyAlgo uint8
-				HashAlgo   uint8
-				_          [4]byte
-				Date       int32
-				_          [4]byte
-				KeyID      [8]byte
-			}
-
-			type pgp4Sig struct {
-				_          [2]byte
-				PubKeyAlgo uint8
-				HashAlgo   uint8
-				_          [17]byte
-				KeyID      [8]byte
-				_          [2]byte
-				Date       int32
-			}
-
-			pubKeyLookup := map[uint8]string{
-				0x01: "RSA",
-			}
-			hashLookup := map[uint8]string{
-				0x02: "SHA1",
-				0x08: "SHA256",
-			}
-
-			if ie.Info.Type != RPM_BIN_TYPE {
-				return nil, xerrors.New("invalid PGP signature")
-			}
-
-			var tag, signatureType, version uint8
-			r := bytes.NewReader(ie.Data)
-			err := binary.Read(r, binary.BigEndian, &tag)
-			if err != nil {
-				return nil, err
-			}
-			err = binary.Read(r, binary.BigEndian, &signatureType)
-			if err != nil {
-				return nil, err
-			}
-			err = binary.Read(r, binary.BigEndian, &version)
-			if err != nil {
-				return nil, err
-			}
-
-			var pubKeyAlgo, hashAlgo, pkgDate string
-			var keyId [8]byte
-
-			switch signatureType {
-			case 0x01:
-				switch version {
-				case 0x1c:
-					sig := textSig{}
-					err = binary.Read(r, binary.BigEndian, &sig)
-					if err != nil {
-						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
-					}
-					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-					hashAlgo = hashLookup[sig.HashAlgo]
-					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-					keyId = sig.KeyID
-				default:
-					sig := pgpSig{}
-					err = binary.Read(r, binary.BigEndian, &sig)
-					if err != nil {
-						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
-					}
-					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-					hashAlgo = hashLookup[sig.HashAlgo]
-					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-					keyId = sig.KeyID
-				}
-			case 0x02:
-				switch version {
-				case 0x33:
-					sig := pgp4Sig{}
-					err = binary.Read(r, binary.BigEndian, &sig)
-					if err != nil {
-						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
-					}
-					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-					hashAlgo = hashLookup[sig.HashAlgo]
-					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-					keyId = sig.KeyID
-				default:
-					sig := pgpSig{}
-					err = binary.Read(r, binary.BigEndian, &sig)
-					if err != nil {
-						return nil, xerrors.Errorf("invalid PGP signature on decode: %w", err)
-					}
-					pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-					hashAlgo = hashLookup[sig.HashAlgo]
-					pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-					keyId = sig.KeyID
-				}
-			}
-			pkgInfo.PGP = fmt.Sprintf("%s/%s, %s, Key ID %x", pubKeyAlgo, hashAlgo, pkgDate, keyId)
+		if err != nil {
+			return nil, xerrors.Errorf("error while parsing %v: %w",
+						   ie.Info.TagName(), err)
 		}
 	}
 
 	return pkgInfo, nil
 }
 
-const (
-	sizeOfInt32  = 4
-	sizeOfUInt16 = 2
-)
-
-func parseInt32Array(data []byte, arraySize int) ([]int32, error) {
-	length := arraySize / sizeOfInt32
-	values := make([]int32, length)
-	reader := bytes.NewReader(data)
-	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
-		return nil, xerrors.Errorf("failed to read binary: %w", err)
+func parsePGPSignature(ie indexEntry) (string, error) {
+	type pgpSig struct {
+		_          [3]byte
+		Date       int32
+		KeyID      [8]byte
+		PubKeyAlgo uint8
+		HashAlgo   uint8
 	}
-	return values, nil
-}
 
-func parseInt32(data []byte) (int, error) {
-	var value int32
-	reader := bytes.NewReader(data)
-	if err := binary.Read(reader, binary.BigEndian, &value); err != nil {
-		return 0, xerrors.Errorf("failed to read binary: %w", err)
+	type textSig struct {
+		_          [2]byte
+		PubKeyAlgo uint8
+		HashAlgo   uint8
+		_          [4]byte
+		Date       int32
+		_          [4]byte
+		KeyID      [8]byte
 	}
-	return int(value), nil
-}
 
-func uint16Array(data []byte, arraySize int) ([]uint16, error) {
-	length := arraySize / sizeOfUInt16
-	values := make([]uint16, length)
-	reader := bytes.NewReader(data)
-	if err := binary.Read(reader, binary.BigEndian, &values); err != nil {
-		return nil, xerrors.Errorf("failed to read binary: %w", err)
+	type pgp4Sig struct {
+		_          [2]byte
+		PubKeyAlgo uint8
+		HashAlgo   uint8
+		_          [17]byte
+		KeyID      [8]byte
+		_          [2]byte
+		Date       int32
 	}
-	return values, nil
-}
 
-func parseStringArray(data []byte) []string {
-	return strings.Split(string(bytes.TrimRight(data, "\x00")), "\x00")
+	pubKeyLookup := map[uint8]string{
+		0x01: "RSA",
+	}
+	hashLookup := map[uint8]string{
+		0x02: "SHA1",
+		0x08: "SHA256",
+	}
+
+	if ie.Info.Type != RPM_BIN_TYPE {
+		return "", xerrors.New("invalid PGP signature")
+	}
+
+	var tag, signatureType, version uint8
+	r := bytes.NewReader(ie.Data)
+	err := binary.Read(r, binary.BigEndian, &tag)
+	if err != nil {
+		return "", err
+	}
+	err = binary.Read(r, binary.BigEndian, &signatureType)
+	if err != nil {
+		return "", err
+	}
+	err = binary.Read(r, binary.BigEndian, &version)
+	if err != nil {
+		return "", err
+	}
+
+	var pubKeyAlgo, hashAlgo, pkgDate string
+	var keyId [8]byte
+
+	switch signatureType {
+	case 0x01:
+		switch version {
+		case 0x1c:
+			sig := textSig{}
+			err = binary.Read(r, binary.BigEndian, &sig)
+			if err != nil {
+				return "", xerrors.Errorf("invalid PGP signature on decode: %w", err)
+			}
+			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+			hashAlgo = hashLookup[sig.HashAlgo]
+			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+			keyId = sig.KeyID
+		default:
+			sig := pgpSig{}
+			err = binary.Read(r, binary.BigEndian, &sig)
+			if err != nil {
+				return "", xerrors.Errorf("invalid PGP signature on decode: %w", err)
+			}
+			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+			hashAlgo = hashLookup[sig.HashAlgo]
+			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+			keyId = sig.KeyID
+		}
+	case 0x02:
+		switch version {
+		case 0x33:
+			sig := pgp4Sig{}
+			err = binary.Read(r, binary.BigEndian, &sig)
+			if err != nil {
+				return "", xerrors.Errorf("invalid PGP signature on decode: %w", err)
+			}
+			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+			hashAlgo = hashLookup[sig.HashAlgo]
+			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+			keyId = sig.KeyID
+		default:
+			sig := pgpSig{}
+			err = binary.Read(r, binary.BigEndian, &sig)
+			if err != nil {
+				return "", xerrors.Errorf("invalid PGP signature on decode: %w", err)
+			}
+			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+			hashAlgo = hashLookup[sig.HashAlgo]
+			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+			keyId = sig.KeyID
+		}
+	}
+
+	result := fmt.Sprintf("%s/%s, %s, Key ID %x",
+			     pubKeyAlgo, hashAlgo, pkgDate, keyId)
+
+	return result, nil
 }
 
 func (p *PackageInfo) InstalledFileNames() ([]string, error) {
