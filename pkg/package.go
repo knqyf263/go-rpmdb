@@ -53,15 +53,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 		var err error
 		switch ie.Info.Tag {
 		case RPMTAG_DIRINDEXES:
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag dir indexes")
-			}
-
-			dirIndexes, err := parseInt32Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("unable to read dir indexes: %w", err)
-			}
-			pkgInfo.DirIndexes = dirIndexes
+			pkgInfo.DirIndexes, err = ie.ParseInt32Array()
 		case RPMTAG_DIRNAMES:
 			pkgInfo.DirNames, err = ie.ParseStringArray()
 		case RPMTAG_BASENAMES:
@@ -103,14 +95,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			pkgInfo.DigestAlgorithm = DigestAlgorithm(digestAlgorithm)
 		case RPMTAG_FILESIZES:
 			// note: there is no distinction between int32, uint32, and []uint32
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag file-sizes")
-			}
-			fileSizes, err := parseInt32Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse file-sizes: %w", err)
-			}
-			pkgInfo.FileSizes = fileSizes
+			pkgInfo.FileSizes, err = ie.ParseInt32Array()
 		case RPMTAG_FILEDIGESTS:
 			pkgInfo.FileDigests, err = ie.ParseStringArray()
 		case RPMTAG_FILEMODES:
@@ -118,14 +103,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			pkgInfo.FileModes, err = ie.ParseUint16Array()
 		case RPMTAG_FILEFLAGS:
 			// note: there is no distinction between int32, uint32, and []uint32
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag file-flags")
-			}
-			fileFlags, err := parseInt32Array(ie.Data, ie.Length)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse file-flags: %w", err)
-			}
-			pkgInfo.FileFlags = fileFlags
+			pkgInfo.FileFlags, err = ie.ParseInt32Array()
 		case RPMTAG_FILEUSERNAME:
 			pkgInfo.UserNames, err = ie.ParseStringArray()
 		case RPMTAG_FILEGROUPNAME:

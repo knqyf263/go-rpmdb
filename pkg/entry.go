@@ -139,6 +139,15 @@ func (ie indexEntry) ParseInt32() (int, error) {
 	return parseInt32(ie.Data)
 }
 
+func (ie indexEntry) ParseInt32Array() ([]int32, error) {
+	if ie.Info.Type != RPM_INT32_TYPE {
+		return nil, xerrors.Errorf("invalid tag type for int32 array field: %v",
+					   ie.Info.TypeName())
+	}
+
+	return parseInt32Array(ie.Data, ie.Length)
+}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L23
 type hdrblob struct {
 	peList    []entryInfo
