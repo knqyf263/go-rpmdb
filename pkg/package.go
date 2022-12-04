@@ -71,14 +71,10 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 		case RPMTAG_NAME:
 			pkgInfo.Name, err = ie.ParseString()
 		case RPMTAG_EPOCH:
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag epoch")
-			}
-
 			if ie.Data != nil {
-				value, err := parseInt32(ie.Data)
+				value, err := ie.ParseInt32()
 				if err != nil {
-					return nil, xerrors.Errorf("failed to parse epoch: %w", err)
+					break
 				}
 				pkgInfo.Epoch = &value
 			}
@@ -95,25 +91,13 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 		case RPMTAG_VENDOR:
 			pkgInfo.Vendor, err = ie.ParseString()
 		case RPMTAG_SIZE:
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag size")
-			}
-
-			size, err := parseInt32(ie.Data)
-			if err != nil {
-				return nil, xerrors.Errorf("failed to parse size: %w", err)
-			}
-			pkgInfo.Size = size
+			pkgInfo.Size, err = ie.ParseInt32()
 		case RPMTAG_FILEDIGESTALGO:
 			// note: all digests within a package entry only supports a single digest algorithm (there may be future support for
 			// algorithm noted for each file entry, but currently unimplemented: https://github.com/rpm-software-management/rpm/blob/0b75075a8d006c8f792d33a57eae7da6b66a4591/lib/rpmtag.h#L256)
-			if ie.Info.Type != RPM_INT32_TYPE {
-				return nil, xerrors.New("invalid tag digest algo")
-			}
-
-			digestAlgorithm, err := parseInt32(ie.Data)
+			digestAlgorithm, err := ie.ParseInt32()
 			if err != nil {
-				return nil, xerrors.Errorf("failed to parse digest algo: %w", err)
+				break
 			}
 
 			pkgInfo.DigestAlgorithm = DigestAlgorithm(digestAlgorithm)
