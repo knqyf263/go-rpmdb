@@ -76,12 +76,12 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag modularitylabel")
 			}
-			pkgInfo.Modularitylabel = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.Modularitylabel = parseString(ie.Data)
 		case RPMTAG_NAME:
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag name")
 			}
-			pkgInfo.Name = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.Name = parseString(ie.Data)
 		case RPMTAG_EPOCH:
 			if ie.Info.Type != RPM_INT32_TYPE {
 				return nil, xerrors.New("invalid tag epoch")
@@ -98,22 +98,22 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag version")
 			}
-			pkgInfo.Version = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.Version = parseString(ie.Data)
 		case RPMTAG_RELEASE:
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag release")
 			}
-			pkgInfo.Release = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.Release = parseString(ie.Data)
 		case RPMTAG_ARCH:
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag arch")
 			}
-			pkgInfo.Arch = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.Arch = parseString(ie.Data)
 		case RPMTAG_SOURCERPM:
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag sourcerpm")
 			}
-			pkgInfo.SourceRpm = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.SourceRpm = parseString(ie.Data)
 			if pkgInfo.SourceRpm == "(none)" {
 				pkgInfo.SourceRpm = ""
 			}
@@ -121,7 +121,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag license")
 			}
-			pkgInfo.License = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.License = parseString(ie.Data)
 			if pkgInfo.License == "(none)" {
 				pkgInfo.License = ""
 			}
@@ -129,7 +129,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag vendor")
 			}
-			pkgInfo.Vendor = string(bytes.TrimRight(ie.Data, "\x00"))
+			pkgInfo.Vendor = parseString(ie.Data)
 			if pkgInfo.Vendor == "(none)" {
 				pkgInfo.Vendor = ""
 			}
@@ -365,6 +365,10 @@ func uint16Array(data []byte, arraySize int) ([]uint16, error) {
 		return nil, xerrors.Errorf("failed to read binary: %w", err)
 	}
 	return values, nil
+}
+
+func parseString(data []byte) string {
+	return string(bytes.TrimRight(data, "\x00"))
 }
 
 func parseStringArray(data []byte) []string {
