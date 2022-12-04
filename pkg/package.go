@@ -214,6 +214,11 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				return nil, err
 			}
 		}
+
+		if err != nil {
+			return nil, xerrors.Errorf("error while parsing %v: %w",
+						   ie.Info.TagName(), err)
+		}
 	}
 
 	return pkgInfo, nil
