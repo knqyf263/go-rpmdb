@@ -112,9 +112,6 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			pkgInfo.Summary, err = ie.ParseI18nString()
 		case RPMTAG_PGP:
 			pkgInfo.PGP, err = parsePGPSignature(ie)
-			if err != nil {
-				return nil, err
-			}
 		}
 
 		if err != nil {
