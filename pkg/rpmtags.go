@@ -11,10 +11,13 @@ const (
 
 	// rpmTag_e
 	// ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/rpmtag.h#L34
+	RPMTAG_PGP            = 259  /* b */
+
 	RPMTAG_NAME           = 1000 /* s */
 	RPMTAG_VERSION        = 1001 /* s */
 	RPMTAG_RELEASE        = 1002 /* s */
 	RPMTAG_EPOCH          = 1003 /* i */
+	RPMTAG_SUMMARY        = 1004 /* s */
 	RPMTAG_SIZE           = 1009 /* i */
 	RPMTAG_VENDOR         = 1011 /* s */
 	RPMTAG_LICENSE        = 1014 /* s */
@@ -30,8 +33,6 @@ const (
 	RPMTAG_BASENAMES      = 1117 /* s[] */
 	RPMTAG_DIRNAMES       = 1118 /* s[] */
 	RPMTAG_FILEDIGESTALGO = 5011 /* i  */
-	RPMTAG_SUMMARY        = 1004 /* s */
-	RPMTAG_PGP            = 259  /* b */
 
 	// rpmTag_enhances
 	// https://github.com/rpm-software-management/rpm/blob/rpm-4.16.0-release/lib/rpmtag.h#L375
