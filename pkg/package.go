@@ -52,24 +52,11 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 	for _, ie := range indexEntries {
 		var err error
 		switch ie.Info.Tag {
-		case RPMTAG_DIRINDEXES:
-			pkgInfo.DirIndexes, err = ie.ParseInt32Array()
-		case RPMTAG_DIRNAMES:
-			pkgInfo.DirNames, err = ie.ParseStringArray()
-		case RPMTAG_BASENAMES:
-			pkgInfo.BaseNames, err = ie.ParseStringArray()
+		// RPM_STRING_TYPE
 		case RPMTAG_MODULARITYLABEL:
 			pkgInfo.Modularitylabel, err = ie.ParseString()
 		case RPMTAG_NAME:
 			pkgInfo.Name, err = ie.ParseString()
-		case RPMTAG_EPOCH:
-			if ie.Data != nil {
-				value, err := ie.ParseInt32()
-				if err != nil {
-					break
-				}
-				pkgInfo.Epoch = &value
-			}
 		case RPMTAG_VERSION:
 			pkgInfo.Version, err = ie.ParseString()
 		case RPMTAG_RELEASE:
@@ -82,34 +69,61 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			pkgInfo.License, err = ie.ParseString()
 		case RPMTAG_VENDOR:
 			pkgInfo.Vendor, err = ie.ParseString()
+
+		// RPM_I18NSTRING_TYPE
+		case RPMTAG_SUMMARY:
+			pkgInfo.Summary, err = ie.ParseI18nString()
+
+		// RPM_STRING_ARRAY_TYPE
+		case RPMTAG_DIRNAMES:
+			pkgInfo.DirNames, err = ie.ParseStringArray()
+		case RPMTAG_BASENAMES:
+			pkgInfo.BaseNames, err = ie.ParseStringArray()
+		case RPMTAG_FILEDIGESTS:
+			pkgInfo.FileDigests, err = ie.ParseStringArray()
+		case RPMTAG_FILEUSERNAME:
+			pkgInfo.UserNames, err = ie.ParseStringArray()
+		case RPMTAG_FILEGROUPNAME:
+			pkgInfo.GroupNames, err = ie.ParseStringArray()
+
+		// note: there is no distinction between int16, uint16, and []uint16
+		// RPM_INT16_TYPE (array variant)
+		case RPMTAG_FILEMODES:
+			pkgInfo.FileModes, err = ie.ParseUint16Array()
+
+		// note: there is no distinction between int32, uint32, and []uint32
+		// RPM_INT32_TYPE (scalar variant)
 		case RPMTAG_SIZE:
 			pkgInfo.Size, err = ie.ParseInt32()
+
+		// RPM_INT32_TYPE (array variant)
+		case RPMTAG_DIRINDEXES:
+			pkgInfo.DirIndexes, err = ie.ParseInt32Array()
+		case RPMTAG_FILESIZES:
+			pkgInfo.FileSizes, err = ie.ParseInt32Array()
+		case RPMTAG_FILEFLAGS:
+			pkgInfo.FileFlags, err = ie.ParseInt32Array()
+
+		// Special handling
+		case RPMTAG_EPOCH:
+			if ie.Data != nil {
+				value, err := ie.ParseInt32()
+				if err != nil {
+					break
+				}
+				pkgInfo.Epoch = &value
+			}
 		case RPMTAG_FILEDIGESTALGO:
-			// note: all digests within a package entry only supports a single digest algorithm (there may be future support for
-			// algorithm noted for each file entry, but currently unimplemented: https://github.com/rpm-software-management/rpm/blob/0b75075a8d006c8f792d33a57eae7da6b66a4591/lib/rpmtag.h#L256)
+			// note: all digests within a package entry only supports a single
+			// digest algorithm (there may be future support for algorithm noted for
+			// each file entry, but currently unimplemented:
+			// https://github.com/rpm-software-management/rpm/blob/0b75075a8d006c8f792d33a57eae7da6b66a4591/lib/rpmtag.h#L256)
 			digestAlgorithm, err := ie.ParseInt32()
 			if err != nil {
 				break
 			}
 
 			pkgInfo.DigestAlgorithm = DigestAlgorithm(digestAlgorithm)
-		case RPMTAG_FILESIZES:
-			// note: there is no distinction between int32, uint32, and []uint32
-			pkgInfo.FileSizes, err = ie.ParseInt32Array()
-		case RPMTAG_FILEDIGESTS:
-			pkgInfo.FileDigests, err = ie.ParseStringArray()
-		case RPMTAG_FILEMODES:
-			// note: there is no distinction between int16, uint16, and []uint16
-			pkgInfo.FileModes, err = ie.ParseUint16Array()
-		case RPMTAG_FILEFLAGS:
-			// note: there is no distinction between int32, uint32, and []uint32
-			pkgInfo.FileFlags, err = ie.ParseInt32Array()
-		case RPMTAG_FILEUSERNAME:
-			pkgInfo.UserNames, err = ie.ParseStringArray()
-		case RPMTAG_FILEGROUPNAME:
-			pkgInfo.GroupNames, err = ie.ParseStringArray()
-		case RPMTAG_SUMMARY:
-			pkgInfo.Summary, err = ie.ParseI18nString()
 		case RPMTAG_PGP:
 			pkgInfo.PGP, err = parsePGPSignature(ie)
 		}
