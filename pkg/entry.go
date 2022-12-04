@@ -94,6 +94,23 @@ type indexEntry struct {
 	Data   []byte
 }
 
+func (ie indexEntry) ParseString() (string, error) {
+	if ie.Info.Type != RPM_STRING_TYPE {
+		return "", xerrors.Errorf("invalid tag type for string field: %v", ie.Info.TypeName())
+	}
+
+	result := parseString(ie.Data)
+
+	switch (ie.Info.Tag) {
+	case RPMTAG_SOURCERPM, RPMTAG_LICENSE, RPMTAG_VENDOR:
+		if result == "(none)" {
+			result = ""
+		}
+	}
+
+	return result, nil
+}
+
 // ref. https://github.com/rpm-software-management/rpm/blob/rpm-4.14.3-release/lib/header_internal.h#L23
 type hdrblob struct {
 	peList    []entryInfo

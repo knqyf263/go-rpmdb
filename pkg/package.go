@@ -73,15 +73,9 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			}
 			pkgInfo.BaseNames = parseStringArray(ie.Data)
 		case RPMTAG_MODULARITYLABEL:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag modularitylabel")
-			}
-			pkgInfo.Modularitylabel = parseString(ie.Data)
+			pkgInfo.Modularitylabel, err = ie.ParseString()
 		case RPMTAG_NAME:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag name")
-			}
-			pkgInfo.Name = parseString(ie.Data)
+			pkgInfo.Name, err = ie.ParseString()
 		case RPMTAG_EPOCH:
 			if ie.Info.Type != RPM_INT32_TYPE {
 				return nil, xerrors.New("invalid tag epoch")
@@ -95,44 +89,17 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				pkgInfo.Epoch = &value
 			}
 		case RPMTAG_VERSION:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag version")
-			}
-			pkgInfo.Version = parseString(ie.Data)
+			pkgInfo.Version, err = ie.ParseString()
 		case RPMTAG_RELEASE:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag release")
-			}
-			pkgInfo.Release = parseString(ie.Data)
+			pkgInfo.Release, err = ie.ParseString()
 		case RPMTAG_ARCH:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag arch")
-			}
-			pkgInfo.Arch = parseString(ie.Data)
+			pkgInfo.Arch, err = ie.ParseString()
 		case RPMTAG_SOURCERPM:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag sourcerpm")
-			}
-			pkgInfo.SourceRpm = parseString(ie.Data)
-			if pkgInfo.SourceRpm == "(none)" {
-				pkgInfo.SourceRpm = ""
-			}
+			pkgInfo.SourceRpm, err = ie.ParseString()
 		case RPMTAG_LICENSE:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag license")
-			}
-			pkgInfo.License = parseString(ie.Data)
-			if pkgInfo.License == "(none)" {
-				pkgInfo.License = ""
-			}
+			pkgInfo.License, err = ie.ParseString()
 		case RPMTAG_VENDOR:
-			if ie.Info.Type != RPM_STRING_TYPE {
-				return nil, xerrors.New("invalid tag vendor")
-			}
-			pkgInfo.Vendor = parseString(ie.Data)
-			if pkgInfo.Vendor == "(none)" {
-				pkgInfo.Vendor = ""
-			}
+			pkgInfo.Vendor, err = ie.ParseString()
 		case RPMTAG_SIZE:
 			if ie.Info.Type != RPM_INT32_TYPE {
 				return nil, xerrors.New("invalid tag size")
