@@ -47,7 +47,7 @@ func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pa
 		return nil, err
 	}
 
-	var hashValue []byte
+	hashValue := make([]byte, 16000, 64000)
 
 	for currentPageNo := entry.PageNo; currentPageNo != 0; {
 		pageStart := pageSize * currentPageNo
