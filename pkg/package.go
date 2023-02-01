@@ -34,6 +34,9 @@ type PackageInfo struct {
 	FileFlags       []int32
 	UserNames       []string
 	GroupNames      []string
+
+	Provides []string
+	Requires []string
 }
 
 type FileInfo struct {
@@ -116,6 +119,16 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			if pkgInfo.SourceRpm == "(none)" {
 				pkgInfo.SourceRpm = ""
 			}
+		case RPMTAG_PROVIDENAME:
+			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
+				return nil, xerrors.New("invalid tag providename")
+			}
+			pkgInfo.Provides = parseStringArray(ie.Data)
+		case RPMTAG_REQUIRENAME:
+			if ie.Info.Type != RPM_STRING_ARRAY_TYPE {
+				return nil, xerrors.New("invalid tag requirename")
+			}
+			pkgInfo.Requires = parseStringArray(ie.Data)
 		case RPMTAG_LICENSE:
 			if ie.Info.Type != RPM_STRING_TYPE {
 				return nil, xerrors.New("invalid tag license")
