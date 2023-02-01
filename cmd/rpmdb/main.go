@@ -7,7 +7,7 @@ import (
 	multierror "github.com/hashicorp/go-multierror"
 	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
 
-	_ "modernc.org/sqlite"
+	_ "github.com/glebarez/go-sqlite"
 )
 
 func main() {
