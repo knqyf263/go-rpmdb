@@ -62,6 +62,13 @@ func (db *SQLite3) Read() <-chan dbi.Entry {
 			}
 		}
 
+		if rows == nil {
+			entries <- dbi.Entry{
+				Err: xerrors.Errorf("query failed to return rows: %w", err),
+			}
+			return
+		}
+
 		for rows.Next() {
 			var blob string
 			if err := rows.Scan(&blob); err != nil {
