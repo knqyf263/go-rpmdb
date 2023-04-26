@@ -25,6 +25,7 @@ type PackageInfo struct {
 	Summary         string
 	PGP             string
 	DigestAlgorithm DigestAlgorithm
+	InstallTime     int
 	BaseNames       []string
 	DirIndexes      []int32
 	DirNames        []string
@@ -220,6 +221,15 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			}
 			// since this is an international string, getting the first null terminated string
 			pkgInfo.Summary = string(bytes.Split(ie.Data, []byte{0})[0])
+		case RPMTAG_INSTALLTIME:
+			if ie.Info.Type != RPM_INT32_TYPE {
+				return nil, xerrors.New("invalid tag installtime")
+			}
+			installTime, err := parseInt32(ie.Data)
+			if err != nil {
+				return nil, xerrors.Errorf("failed to parse installtime: %w", err)
+			}
+			pkgInfo.InstallTime = installTime
 		case RPMTAG_PGP:
 			type pgpSig struct {
 				_          [3]byte

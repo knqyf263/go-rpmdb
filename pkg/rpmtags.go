@@ -14,6 +14,7 @@ const (
 	RPMTAG_VERSION        = 1001 /* s */
 	RPMTAG_RELEASE        = 1002 /* s */
 	RPMTAG_EPOCH          = 1003 /* i */
+	RPMTAG_INSTALLTIME    = 1008 /* i */
 	RPMTAG_SIZE           = 1009 /* i */
 	RPMTAG_VENDOR         = 1011 /* s */
 	RPMTAG_LICENSE        = 1014 /* s */
