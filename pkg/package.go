@@ -3,6 +3,7 @@ package rpmdb
 import (
 	"bytes"
 	"encoding/binary"
+	"encoding/hex"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -24,6 +25,7 @@ type PackageInfo struct {
 	Modularitylabel string
 	Summary         string
 	PGP             string
+	PackageDigest   string
 	DigestAlgorithm DigestAlgorithm
 	BaseNames       []string
 	DirIndexes      []int32
@@ -220,6 +222,10 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			}
 			// since this is an international string, getting the first null terminated string
 			pkgInfo.Summary = string(bytes.Split(ie.Data, []byte{0})[0])
+		case RPMTAG_SIGMD5:
+			// It is just string that we need to encode to hex
+			digest := bytes.TrimRight(ie.Data, "\x00")
+			pkgInfo.PackageDigest = hex.EncodeToString(digest)
 		case RPMTAG_PGP:
 			type pgpSig struct {
 				_          [3]byte
