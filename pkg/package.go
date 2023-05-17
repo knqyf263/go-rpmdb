@@ -3,6 +3,7 @@ package rpmdb
 import (
 	"bytes"
 	"encoding/binary"
+	"encoding/hex"
 	"fmt"
 	"path/filepath"
 	"strings"
@@ -24,6 +25,7 @@ type PackageInfo struct {
 	Modularitylabel string
 	Summary         string
 	PGP             string
+	SigMD5          string
 	DigestAlgorithm DigestAlgorithm
 	InstallTime     int
 	BaseNames       []string
@@ -230,6 +232,10 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 				return nil, xerrors.Errorf("failed to parse installtime: %w", err)
 			}
 			pkgInfo.InstallTime = installTime
+		case RPMTAG_SIGMD5:
+			// It is just string that we need to encode to hex
+			digest := bytes.TrimRight(ie.Data, "\x00")
+			pkgInfo.SigMD5 = hex.EncodeToString(digest)
 		case RPMTAG_PGP:
 			type pgpSig struct {
 				_          [3]byte
