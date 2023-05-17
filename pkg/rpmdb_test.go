@@ -18,72 +18,72 @@ func TestPackageList(t *testing.T) {
 		{
 			name:    "CentOS5 plain",
 			file:    "testdata/centos5-plain/Packages",
-			pkgList: CentOS5Plain,
+			pkgList: CentOS5Plain(),
 		},
 		{
 			name:    "CentOS6 Plain",
 			file:    "testdata/centos6-plain/Packages",
-			pkgList: CentOS6Plain,
+			pkgList: CentOS6Plain(),
 		},
 		{
 			name:    "CentOS6 with Development tools",
 			file:    "testdata/centos6-devtools/Packages",
-			pkgList: CentOS6DevTools,
+			pkgList: CentOS6DevTools(),
 		},
 		{
 			name:    "CentOS6 with many packages",
 			file:    "testdata/centos6-many/Packages",
-			pkgList: CentOS6Many,
+			pkgList: CentOS6Many(),
 		},
 		{
 			name:    "CentOS7 Plain",
 			file:    "testdata/centos7-plain/Packages",
-			pkgList: CentOS7Plain,
+			pkgList: CentOS7Plain(),
 		},
 		{
 			name:    "CentOS7 with Development tools",
 			file:    "testdata/centos7-devtools/Packages",
-			pkgList: CentOS7DevTools,
+			pkgList: CentOS7DevTools(),
 		},
 		{
 			name:    "CentOS7 with many packages",
 			file:    "testdata/centos7-many/Packages",
-			pkgList: CentOS7Many,
+			pkgList: CentOS7Many(),
 		},
 		{
 			name:    "CentOS7 with Python 3.5",
 			file:    "testdata/centos7-python35/Packages",
-			pkgList: CentOS7Python35,
+			pkgList: CentOS7Python35(),
 		},
 		{
 			name:    "CentOS7 with httpd 2.4",
 			file:    "testdata/centos7-httpd24/Packages",
-			pkgList: CentOS7Httpd24,
+			pkgList: CentOS7Httpd24(),
 		},
 		{
 			name:    "CentOS8 with modules",
 			file:    "testdata/centos8-modularitylabel/Packages",
-			pkgList: CentOS8Modularitylabel,
+			pkgList: CentOS8Modularitylabel(),
 		},
 		{
 			name:    "RHEL UBI8 from s390x",
 			file:    "testdata/ubi8-s390x/Packages",
-			pkgList: UBI8s390x,
+			pkgList: UBI8s390x(),
 		},
 		{
 			name:    "SLE15 with NDB style rpm database",
 			file:    "testdata/sle15-bci/Packages.db",
-			pkgList: SLE15WithNDB,
+			pkgList: SLE15WithNDB(),
 		},
 		{
 			name:    "Fedora35 with SQLite3 style rpm database",
 			file:    "testdata/fedora35/rpmdb.sqlite",
-			pkgList: Fedora35WithSQLite3,
+			pkgList: Fedora35WithSQLite3(),
 		},
 		{
 			name:    "Fedora35 plus MongoDB with SQLite3 style rpm database",
 			file:    "testdata/fedora35-plus-mongo/rpmdb.sqlite",
-			pkgList: Fedora35PlusMongoDBWithSQLite3,
+			pkgList: Fedora35PlusMongoDBWithSQLite3(),
 		},
 	}
 
@@ -97,6 +97,9 @@ func TestPackageList(t *testing.T) {
 
 			// They are tested in another function.
 			for _, g := range got {
+				g.PGP = ""
+				g.DigestAlgorithm = 0
+				g.InstallTime = 0
 				g.BaseNames = nil
 				g.DirIndexes = nil
 				g.DirNames = nil
@@ -132,16 +135,17 @@ func TestRpmDB_Package(t *testing.T) {
 			pkgName: "python",
 			file:    "testdata/centos5-plain/Packages",
 			want: &PackageInfo{
-				Name:      "python",
-				Version:   "2.4.3",
-				Release:   "56.el5",
-				Arch:      "x86_64",
-				Size:      74377,
-				SourceRpm: "python-2.4.3-56.el5.src.rpm",
-				License:   "PSF - see LICENSE",
-				Vendor:    "CentOS",
-				Summary:   "An interpreted, interactive, object-oriented programming language.",
-				PGP:       "",
+				Name:        "python",
+				Version:     "2.4.3",
+				Release:     "56.el5",
+				Arch:        "x86_64",
+				Size:        74377,
+				SourceRpm:   "python-2.4.3-56.el5.src.rpm",
+				License:     "PSF - see LICENSE",
+				Vendor:      "CentOS",
+				Summary:     "An interpreted, interactive, object-oriented programming language.",
+				PGP:         "",
+				InstallTime: 1459411575,
 				Provides: []string{
 					"Distutils",
 					"python(abi)",
@@ -183,9 +187,10 @@ func TestRpmDB_Package(t *testing.T) {
 				SourceRpm:       "glibc-2.12-1.212.el6.src.rpm",
 				License:         "LGPLv2+ and LGPLv2+ with exceptions and GPLv2+",
 				Vendor:          "CentOS",
-				DigestAlgorithm: PGPHASHALGO_SHA256,
 				Summary:         "The GNU libc libraries",
+				DigestAlgorithm: PGPHASHALGO_SHA256,
 				PGP:             "RSA/SHA1, Wed Jun 20 11:36:27 2018, Key ID 0946fca2c105b9de",
+				InstallTime:     1538857091,
 				Provides: []string{
 					"ANSI_X3.110.so()(64bit)",
 					"ARMSCII-8.so()(64bit)",
@@ -583,9 +588,10 @@ func TestRpmDB_Package(t *testing.T) {
 				License:         "MIT and ASL 2.0 and ISC and BSD",
 				Vendor:          "CentOS",
 				Modularitylabel: "nodejs:10:8020020200707141642:6a468ee4",
-				DigestAlgorithm: PGPHASHALGO_SHA256,
 				Summary:         "JavaScript runtime",
 				PGP:             "RSA/SHA256, Tue Jul  7 16:08:24 2020, Key ID 05b555b38483c65d",
+				DigestAlgorithm: PGPHASHALGO_SHA256,
+				InstallTime:     1606911097,
 				Provides: []string{
 					"bundled(brotli)",
 					"bundled(c-ares)",
@@ -677,9 +683,10 @@ func TestRpmDB_Package(t *testing.T) {
 				SourceRpm:       "curl-7.76.0-6.cm2.src.rpm",
 				License:         "MIT",
 				Vendor:          "Microsoft Corporation",
-				DigestAlgorithm: PGPHASHALGO_SHA256,
 				Summary:         "An URL retrieval utility and library",
+				DigestAlgorithm: PGPHASHALGO_SHA256,
 				PGP:             "RSA/SHA256, Thu Jan 27 09:02:11 2022, Key ID 0cd9fed33135ce90",
+				InstallTime:     1643279454,
 				Provides: []string{
 					"curl",
 					"curl(x86-64)",
