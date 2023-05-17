@@ -25,7 +25,7 @@ type PackageInfo struct {
 	Modularitylabel string
 	Summary         string
 	PGP             string
-	PackageDigest   string
+	SigMD5          string
 	DigestAlgorithm DigestAlgorithm
 	InstallTime     int
 	BaseNames       []string
@@ -235,7 +235,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 		case RPMTAG_SIGMD5:
 			// It is just string that we need to encode to hex
 			digest := bytes.TrimRight(ie.Data, "\x00")
-			pkgInfo.PackageDigest = hex.EncodeToString(digest)
+			pkgInfo.SigMD5 = hex.EncodeToString(digest)
 		case RPMTAG_PGP:
 			type pgpSig struct {
 				_          [3]byte
