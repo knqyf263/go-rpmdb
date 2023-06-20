@@ -1,10 +1,12 @@
 package dbi
 
+import "context"
+
 type Entry struct {
 	Value []byte
 	Err   error
 }
 
 type RpmDBInterface interface {
-	Read() <-chan Entry
+	Read(ctx context.Context) <-chan Entry
 }

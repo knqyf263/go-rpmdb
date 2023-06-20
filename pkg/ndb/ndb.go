@@ -22,13 +22,14 @@ SOFTWARE.
 package ndb
 
 import (
+	"context"
 	"encoding/binary"
 	"fmt"
 	"io"
 	"os"
 	"unsafe"
 
-	dbi "github.com/knqyf263/go-rpmdb/pkg/db"
+	dbi "github.com/jfrog/go-rpmdb/pkg/db"
 	"golang.org/x/xerrors"
 )
 
@@ -126,7 +127,7 @@ func Open(path string) (*RpmNDB, error) {
 	}, nil
 }
 
-func (db *RpmNDB) Read() <-chan dbi.Entry {
+func (db *RpmNDB) Read(ctx context.Context) <-chan dbi.Entry {
 	entries := make(chan dbi.Entry)
 
 	go func() {

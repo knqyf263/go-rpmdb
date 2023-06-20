@@ -1,10 +1,11 @@
 package bdb
 
 import (
+	"context"
 	"io"
 	"os"
 
-	dbi "github.com/knqyf263/go-rpmdb/pkg/db"
+	dbi "github.com/jfrog/go-rpmdb/pkg/db"
 	"golang.org/x/xerrors"
 )
 
@@ -57,7 +58,7 @@ func Open(path string) (*BerkeleyDB, error) {
 	}, nil
 }
 
-func (db *BerkeleyDB) Read() <-chan dbi.Entry {
+func (db *BerkeleyDB) Read(ctx context.Context) <-chan dbi.Entry {
 	entries := make(chan dbi.Entry)
 
 	go func() {
@@ -113,7 +114,7 @@ func (db *BerkeleyDB) Read() <-chan dbi.Entry {
 				}
 
 				// Traverse the page to concatenate the data that may span multiple pages.
-				valueContent, err := HashPageValueContent(
+				valueContent, err := HashPageValueContent(ctx,
 					db.file,
 					pageData,
 					hashPageIndex,

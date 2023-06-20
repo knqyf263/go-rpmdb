@@ -1,10 +1,11 @@
 package rpmdb
 
 import (
-	"github.com/knqyf263/go-rpmdb/pkg/bdb"
-	dbi "github.com/knqyf263/go-rpmdb/pkg/db"
-	"github.com/knqyf263/go-rpmdb/pkg/ndb"
-	"github.com/knqyf263/go-rpmdb/pkg/sqlite3"
+	"context"
+	"github.com/jfrog/go-rpmdb/pkg/bdb"
+	dbi "github.com/jfrog/go-rpmdb/pkg/db"
+	"github.com/jfrog/go-rpmdb/pkg/ndb"
+	"github.com/jfrog/go-rpmdb/pkg/sqlite3"
 	"golang.org/x/xerrors"
 )
 
@@ -42,8 +43,8 @@ func Open(path string) (*RpmDB, error) {
 
 }
 
-func (d *RpmDB) Package(name string) (*PackageInfo, error) {
-	pkgs, err := d.ListPackages()
+func (d *RpmDB) PackageWithContext(ctx context.Context, name string) (*PackageInfo, error) {
+	pkgs, err := d.ListPackagesWithContext(ctx)
 	if err != nil {
 		return nil, xerrors.Errorf("unable to list packages: %w", err)
 	}
@@ -56,10 +57,14 @@ func (d *RpmDB) Package(name string) (*PackageInfo, error) {
 	return nil, xerrors.Errorf("%s is not installed", name)
 }
 
-func (d *RpmDB) ListPackages() ([]*PackageInfo, error) {
+func (d *RpmDB) Package(name string) (*PackageInfo, error) {
+	return d.PackageWithContext(context.TODO(), name)
+}
+
+func (d *RpmDB) ListPackagesWithContext(ctx context.Context) ([]*PackageInfo, error) {
 	var pkgList []*PackageInfo
 
-	for entry := range d.db.Read() {
+	for entry := range d.db.Read(ctx) {
 		if entry.Err != nil {
 			return nil, entry.Err
 		}
@@ -76,4 +81,8 @@ func (d *RpmDB) ListPackages() ([]*PackageInfo, error) {
 	}
 
 	return pkgList, nil
+}
+
+func (d *RpmDB) ListPackages() ([]*PackageInfo, error) {
+	return d.ListPackagesWithContext(context.TODO())
 }

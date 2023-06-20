@@ -2,11 +2,12 @@ package sqlite3
 
 import (
 	"bytes"
+	"context"
 	"database/sql"
 	"encoding/binary"
 	"os"
 
-	dbi "github.com/knqyf263/go-rpmdb/pkg/db"
+	dbi "github.com/jfrog/go-rpmdb/pkg/db"
 	"golang.org/x/xerrors"
 )
 
@@ -44,13 +45,13 @@ func Open(path string) (*SQLite3, error) {
 	return &SQLite3{db}, nil
 }
 
-func (db *SQLite3) Read() <-chan dbi.Entry {
+func (db *SQLite3) Read(ctx context.Context) <-chan dbi.Entry {
 	entries := make(chan dbi.Entry)
 
 	go func() {
 		defer close(entries)
 
-		rows, err := db.Query("SELECT blob FROM Packages")
+		rows, err := db.QueryContext(ctx, "SELECT blob FROM Packages")
 		if err != nil {
 			entries <- dbi.Entry{
 				Err: xerrors.Errorf("failed to SELECT query: %w", err),
