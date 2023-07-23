@@ -1,7 +1,7 @@
 # go-rpmdb
 Library for enumerating packages in an RPM DB `Packages` file (without bindings).
 
-```
+```go
 package main
 
 import (
