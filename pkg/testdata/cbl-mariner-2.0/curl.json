@@ -1,0 +1,114 @@
+{
+  "Epoch": null,
+  "Name": "curl",
+  "Version": "7.76.0",
+  "Release": "6.cm2",
+  "Arch": "x86_64",
+  "SourceRpm": "curl-7.76.0-6.cm2.src.rpm",
+  "Size": 326023,
+  "License": "MIT",
+  "Vendor": "Microsoft Corporation",
+  "Modularitylabel": "",
+  "Summary": "An URL retrieval utility and library",
+  "PGP": "RSA/SHA256, Thu Jan 27 09:02:11 2022, Key ID 0cd9fed33135ce90",
+  "SigMD5": "b5f5369ae91df3672fa3338669ec5ca2",
+  "DigestAlgorithm": 8,
+  "InstallTime": 1643279454,
+  "BaseNames": [
+    "curl",
+    "curl-config",
+    "curl",
+    "COPYING",
+    "curl-config.1.gz",
+    "curl.1.gz"
+  ],
+  "DirIndexes": [
+    0,
+    0,
+    1,
+    2,
+    3,
+    3
+  ],
+  "DirNames": [
+    "/usr/bin/",
+    "/usr/share/licenses/",
+    "/usr/share/licenses/curl/",
+    "/usr/share/man/man1/"
+  ],
+  "FileSizes": [
+    267672,
+    7515,
+    0,
+    1088,
+    1763,
+    47985
+  ],
+  "FileDigests": [
+    "7ef6b3fd854d4ed189dd0aab2ffcf5e6bd58018ff69b97e1b86e1df7b86f3df0",
+    "f044fcec45baaaaa7f2de43646719812a1fc75eb3582ae4c9bfc2fd0aa873afc",
+    "",
+    "6fd1a1c008b5ef4c4741dd188c3f8af6944c14c25afa881eb064f98fb98358e7",
+    "e9346781b9d38f416138255182c0ff5818f09adaaf38f08abfd545fa149f77b6",
+    "6a937dea68ab20b8bf9d376bb68fcfe06608a4ddb7d7725986c7ad7451817912"
+  ],
+  "FileModes": [
+    33261,
+    33261,
+    16877,
+    33188,
+    33188,
+    33188
+  ],
+  "FileFlags": [
+    0,
+    0,
+    0,
+    128,
+    2,
+    2
+  ],
+  "UserNames": [
+    "root",
+    "root",
+    "root",
+    "root",
+    "root",
+    "root"
+  ],
+  "GroupNames": [
+    "root",
+    "root",
+    "root",
+    "root",
+    "root",
+    "root"
+  ],
+  "Provides": [
+    "curl",
+    "curl(x86-64)"
+  ],
+  "Requires": [
+    "/bin/sh",
+    "/sbin/ldconfig",
+    "/sbin/ldconfig",
+    "curl-libs",
+    "krb5",
+    "libc.so.6()(64bit)",
+    "libc.so.6(GLIBC_2.14)(64bit)",
+    "libc.so.6(GLIBC_2.2.5)(64bit)",
+    "libc.so.6(GLIBC_2.3)(64bit)",
+    "libc.so.6(GLIBC_2.3.4)(64bit)",
+    "libc.so.6(GLIBC_2.33)(64bit)",
+    "libc.so.6(GLIBC_2.34)(64bit)",
+    "libc.so.6(GLIBC_2.4)(64bit)",
+    "libc.so.6(GLIBC_2.7)(64bit)",
+    "libcurl.so.4()(64bit)",
+    "libssh2",
+    "libz.so.1()(64bit)",
+    "openssl",
+    "rpmlib(CompressedFileNames)",
+    "rpmlib(FileDigests)",
+    "rpmlib(PayloadFilesHavePrefix)"
+  ]
+}

@@ -1,0 +1,142 @@
+¶libgcc¶11.3.1¶3.fc35¶x86_64¶gcc-11.3.1-3.fc35.src.rpm¶198604¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Fedora Project¶GCC version 11 shared support library¶98ca8d32dc57cfb151c5c37ab855be4b
+¶crypto-policies¶20210819¶1.gitd0fdcfb.fc35¶noarch¶crypto-policies-20210819-1.gitd0fdcfb.fc35.src.rpm¶86107¶LGPLv2+¶Fedora Project¶System-wide crypto policies¶8b615ce53d4afc9bd0c8d2fce41c7a3b
+¶tzdata¶2022f¶1.fc35¶noarch¶tzdata-2022f-1.fc35.src.rpm¶1692496¶Public Domain¶Fedora Project¶Timezone data¶7fa06fb2a35557b70b96f8e7c88f57c2
+¶fedora-release-identity-container¶35¶39¶noarch¶fedora-release-35-39.src.rpm¶1512¶MIT¶Fedora Project¶Package providing the identity for Fedora Container Base Image¶64f1ad646d7c68c3fdc4ba758b5ce0b3
+2¶vim-data¶9.0.915¶1.fc35¶noarch¶vim-9.0.915-1.fc35.src.rpm¶18058¶Vim and MIT¶Fedora Project¶Shared data for Vi and Vim¶b1a37a0a24b7738b0a4cb4cce821cdac
+¶pcre2-syntax¶10.40¶1.fc35¶noarch¶pcre2-10.40-1.fc35.src.rpm¶234324¶BSD¶Fedora Project¶Documentation for PCRE2 regular expressions¶ddd064442cfbcfdff8aed1322d3a94a8
+¶libreport-filesystem¶2.17.4¶1.fc35¶noarch¶libreport-2.17.4-1.fc35.src.rpm¶0¶GPLv2+¶Fedora Project¶Filesystem layout for libreport¶92be55cdcab7d3d1ef19dedede139696
+¶dnf-data¶4.14.0¶1.fc35¶noarch¶dnf-4.14.0-1.fc35.src.rpm¶39071¶GPLv2+¶Fedora Project¶Common data and configuration files for DNF¶9fc1d09a02fb64b7e52d8be987e82b6f
+¶fedora-gpg-keys¶35¶4¶noarch¶fedora-repos-35-4.src.rpm¶121879¶MIT¶Fedora Project¶Fedora RPM keys¶7028d7c258565a1f0efb1b130ebc9bb3
+¶fedora-release-container¶35¶39¶noarch¶fedora-release-35-39.src.rpm¶0¶MIT¶Fedora Project¶Base package for Fedora container specific default configurations¶2b4e0a2984ca8157cf5e26e8b1b69530
+¶fedora-repos¶35¶4¶noarch¶fedora-repos-35-4.src.rpm¶4597¶MIT¶Fedora Project¶Fedora package repositories¶93f9a8727e507ef666486ba6841ed4b8
+¶fedora-release-common¶35¶39¶noarch¶fedora-release-35-39.src.rpm¶17997¶MIT¶Fedora Project¶Fedora release files¶3cfa6067d5358b7e3ff9a5fd6837e35e
+¶setup¶2.14.1¶1.fc35¶noarch¶setup-2.14.1-1.fc35.src.rpm¶735847¶Public Domain¶Fedora Project¶A set of system configuration and setup files¶d8d2fd9a05a3372107e2079b00889f0c
+¶filesystem¶3.14¶7.fc35¶x86_64¶filesystem-3.14-7.fc35.src.rpm¶106¶Public Domain¶Fedora Project¶The basic directory layout for a Linux system¶1c0ec91e10e7d2346448d02ce12c4d47
+¶basesystem¶11¶12.fc35¶noarch¶basesystem-11-12.fc35.src.rpm¶0¶Public Domain¶Fedora Project¶The skeleton package which defines a simple Fedora system¶af618e2cf6a1583a176bb5e45b0a5068
+¶coreutils-common¶8.32¶36.fc35¶x86_64¶coreutils-8.32-36.fc35.src.rpm¶10880304¶GPLv3+¶Fedora Project¶coreutils common optional components¶3cd0205ee9c236351484384013cbfceb
+¶python-setuptools-wheel¶57.4.0¶1.fc35¶noarch¶python-setuptools-57.4.0-1.fc35.src.rpm¶596568¶MIT and (BSD or ASL 2.0)¶Fedora Project¶The setuptools wheel¶d607a75ddbf395abbf12517f48ab08b5
+¶publicsuffix-list-dafsa¶20210518¶2.fc35¶noarch¶publicsuffix-list-20210518-2.fc35.src.rpm¶68815¶MPLv2.0¶Fedora Project¶Cross-vendor public domain suffix database in DAFSA form¶66e8314a663c969e724c10861c660788
+¶ncurses-base¶6.2¶8.20210508.fc35¶noarch¶ncurses-6.2-8.20210508.fc35.src.rpm¶307293¶MIT¶Fedora Project¶Descriptions of common terminals¶6fc56839d735263a9cfc0886c8d62377
+¶ncurses-libs¶6.2¶8.20210508.fc35¶x86_64¶ncurses-6.2-8.20210508.fc35.src.rpm¶996375¶MIT¶Fedora Project¶Ncurses libraries¶2f994f573415c7206570f1717dcf626b
+¶bash¶5.1.8¶3.fc35¶x86_64¶bash-5.1.8-3.fc35.src.rpm¶7739660¶GPLv3+¶Fedora Project¶The GNU Bourne Again shell¶1db541afa1eaf0dc0dbfc6471df30ba0
+¶glibc-common¶2.34¶49.fc35¶x86_64¶glibc-2.34-49.fc35.src.rpm¶1090073¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Fedora Project¶Common binaries and locale data for glibc¶7a7c2c6edede591aabe031f43241d738
+¶glibc-minimal-langpack¶2.34¶49.fc35¶x86_64¶glibc-2.34-49.fc35.src.rpm¶0¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Fedora Project¶Minimal language packs for glibc.¶236a9035d7815f313965c530e6e49917
+¶glibc¶2.34¶49.fc35¶x86_64¶glibc-2.34-49.fc35.src.rpm¶6222211¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Fedora Project¶The GNU libc libraries¶86155b0c676c0693b11dfaaed9c6f7fe
+¶zlib¶1.2.11¶32.fc35¶x86_64¶zlib-1.2.11-32.fc35.src.rpm¶203457¶zlib and Boost¶Fedora Project¶Compression and decompression library¶134ac4fd0dde84b30df841b83c220c43
+¶bzip2-libs¶1.0.8¶9.fc35¶x86_64¶bzip2-1.0.8-9.fc35.src.rpm¶78660¶BSD¶Fedora Project¶Libraries for applications using bzip2¶0d16644a1c137a65208e4cf440c4d832
+¶xz-libs¶5.2.5¶9.fc35¶x86_64¶xz-5.2.5-9.fc35.src.rpm¶181453¶Public Domain¶Fedora Project¶Libraries for decoding LZMA compression¶3017ab7b18c5b34be8323ec4ef15a391
+¶libzstd¶1.5.2¶2.fc35¶x86_64¶zstd-1.5.2-2.fc35.src.rpm¶738491¶BSD and GPLv2¶Fedora Project¶Zstd shared library¶87c187b8b74545fe0659201de396df7c
+¶sqlite-libs¶3.36.0¶3.fc35¶x86_64¶sqlite-3.36.0-3.fc35.src.rpm¶1334505¶Public Domain¶Fedora Project¶Shared library for the sqlite3 embeddable SQL database engine.¶eebb4534e82961cc46ef159d4072bca8
+1¶gmp¶6.2.0¶7.fc35¶x86_64¶gmp-6.2.0-7.fc35.src.rpm¶809478¶LGPLv3+ or GPLv2+¶Fedora Project¶GNU arbitrary precision library¶90e5db3d624adbdb7d59835ab68fb865
+¶libcap¶2.48¶3.fc35¶x86_64¶libcap-2.48-3.fc35.src.rpm¶180511¶BSD or GPLv2¶Fedora Project¶Library for getting and setting POSIX.1e capabilities¶fa377911e225ceb086daf490d0c94ab7
+¶popt¶1.18¶6.fc35¶x86_64¶popt-1.18-6.fc35.src.rpm¶130256¶MIT¶Fedora Project¶C library for parsing command line parameters¶43cab6097d127d0d309a21fb5e811d4c
+¶libgpg-error¶1.43¶1.fc35¶x86_64¶libgpg-error-1.43-1.fc35.src.rpm¶851181¶LGPLv2+¶Fedora Project¶Library for error values used by GnuPG components¶2acf9c28449a9ab3cbe56c5109f5b957
+¶libxml2¶2.9.14¶1.fc35¶x86_64¶libxml2-2.9.14-1.fc35.src.rpm¶1962374¶MIT¶Fedora Project¶Library providing XML and HTML support¶369da80caee127762492d3f9bc42fe15
+¶libcom_err¶1.46.3¶1.fc35¶x86_64¶e2fsprogs-1.46.3-1.fc35.src.rpm¶68441¶MIT¶Fedora Project¶Common error description library¶eb56b897164901257a96b54c9f5442f7
+¶libstdc++¶11.3.1¶3.fc35¶x86_64¶gcc-11.3.1-3.fc35.src.rpm¶2481262¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Fedora Project¶GNU Standard C++ Library¶5d6528110510d377ad7bbaec6174ff96
+¶libxcrypt¶4.4.33¶3.fc35¶x86_64¶libxcrypt-4.4.33-3.fc35.src.rpm¶277337¶LGPL-2.1-or-later AND BSD-3-Clause AND BSD-2-Clause AND BSD-2-Clause-FreeBSD AND 0BSD AND CC0-1.0 AND LicenseRef-Fedora-Public-Domain¶Fedora Project¶Extended crypt library for descrypt, md5crypt, bcrypt, and others¶f445a177b467446011894c17468f78c3
+¶lua-libs¶5.4.4¶3.fc35¶x86_64¶lua-5.4.4-3.fc35.src.rpm¶553630¶MIT¶Fedora Project¶Libraries for lua¶d1b5161f0c00d637f6afb836193d1103
+¶file-libs¶5.40¶9.fc35¶x86_64¶file-5.40-9.fc35.src.rpm¶8529778¶BSD¶Fedora Project¶Libraries for applications using libmagic¶5cefc7d6d4ee8e91b61b7dbef6f9626d
+¶elfutils-libelf¶0.187¶4.fc35¶x86_64¶elfutils-0.187-4.fc35.src.rpm¶1027121¶GPLv2+ or LGPLv3+¶Fedora Project¶Library to read and write ELF files¶ce8289ecddb734b340e5d163fe3a4df5
+¶libattr¶2.5.1¶3.fc35¶x86_64¶attr-2.5.1-3.fc35.src.rpm¶29341¶LGPLv2+¶Fedora Project¶Dynamic library for extended attribute support¶a17b4483f4a01b5eb6d01f41842da285
+¶libacl¶2.3.1¶2.fc35¶x86_64¶acl-2.3.1-2.fc35.src.rpm¶41090¶LGPLv2+¶Fedora Project¶Dynamic library for access control list support¶7f91f200578996693fbd6ba53b745348
+¶libffi¶3.1¶29.fc35¶x86_64¶libffi-3.1-29.fc35.src.rpm¶56872¶MIT¶Fedora Project¶A portable foreign function interface library¶b4412b95f19fdc9fc212a6219d9bd508
+¶p11-kit¶0.23.22¶4.fc35¶x86_64¶p11-kit-0.23.22-4.fc35.src.rpm¶1659536¶BSD¶Fedora Project¶Library for loading and sharing PKCS#11 modules¶2e7cda635f37cded07d6b2c83065ba9a
+¶libunistring¶0.9.10¶14.fc35¶x86_64¶libunistring-0.9.10-14.fc35.src.rpm¶1642923¶GPLv2+ or LGPLv3+¶Fedora Project¶GNU Unicode string library¶fb4cd52955e96d4fe989ece3153119fa
+¶libidn2¶2.3.4¶1.fc35¶x86_64¶libidn2-2.3.4-1.fc35.src.rpm¶523657¶(GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later¶Fedora Project¶Library to support IDNA2008 internationalized domain names¶4f3fae22502560ccc9f1c3479c7247da
+¶readline¶8.1¶3.fc35¶x86_64¶readline-8.1-3.fc35.src.rpm¶492684¶GPLv3+¶Fedora Project¶A library for editing typed command lines¶aaf61524862c6beeb77380c15d658a93
+¶libuuid¶2.37.4¶1.fc35¶x86_64¶util-linux-2.37.4-1.fc35.src.rpm¶34389¶BSD¶Fedora Project¶Universally unique ID library¶f5b027f1cda706fb4b19fd96f22e8578
+¶libassuan¶2.5.5¶3.fc35¶x86_64¶libassuan-2.5.5-3.fc35.src.rpm¶171069¶LGPLv2+ and GPLv3+¶Fedora Project¶GnuPG IPC library¶d4a9b9e1572325bf831fd6a85f2dc939
+¶json-c¶0.15¶2.fc35¶x86_64¶json-c-0.15-2.fc35.src.rpm¶79583¶MIT¶Fedora Project¶JSON implementation in C¶a8a4268ee30918be55244041058454dc
+¶keyutils-libs¶1.6.1¶3.fc35¶x86_64¶keyutils-1.6.1-3.fc35.src.rpm¶55801¶GPLv2+ and LGPLv2+¶Fedora Project¶Key utilities library¶535a1f1ca9e121cd9574c95b07820bb7
+¶libsigsegv¶2.13¶3.fc35¶x86_64¶libsigsegv-2.13-3.fc35.src.rpm¶50250¶GPLv2+¶Fedora Project¶Library for handling page faults in user mode¶f9aa2f7104c70b331c044360a70664f4
+¶libtasn1¶4.16.0¶6.fc35¶x86_64¶libtasn1-4.16.0-6.fc35.src.rpm¶183868¶GPLv3+ and LGPLv2+¶Fedora Project¶The ASN.1 library used in GNUTLS¶de5f598de38a61b7288a400c1398b8e3
+¶pcre¶8.45¶1.fc35¶x86_64¶pcre-8.45-1.fc35.src.rpm¶539220¶BSD¶Fedora Project¶Perl-compatible regular expression library¶5514c5f24b4d2325f93065903618e59e
+¶grep¶3.6¶4.fc35¶x86_64¶grep-3.6-4.fc35.src.rpm¶857744¶GPLv3+¶Fedora Project¶Pattern matching utilities¶156e66ef6b4acfcc051a5c68590478c1
+¶expat¶2.5.0¶1.fc35¶x86_64¶expat-2.5.0-1.fc35.src.rpm¶309693¶MIT¶Fedora Project¶An XML parser library¶1c75ca92b8455ec647a4cd2f987ec02c
+1¶gdbm-libs¶1.22¶1.fc35¶x86_64¶gdbm-1.22-1.fc35.src.rpm¶128594¶GPLv3+¶Fedora Project¶Libraries files for gdbm¶44c8f9a2f908cd026db026cff5bcb9dc
+¶libsepol¶3.3¶2.fc35¶x86_64¶libsepol-3.3-2.fc35.src.rpm¶755891¶LGPLv2+¶Fedora Project¶SELinux binary policy manipulation library¶2315ac21f0edf70323532a17badac156
+¶libsmartcols¶2.37.4¶1.fc35¶x86_64¶util-linux-2.37.4-1.fc35.src.rpm¶135379¶LGPLv2+¶Fedora Project¶Formatting library for ls-like programs.¶2d46924a9ddc8ab88d9004d8657b5c75
+¶libcomps¶0.1.18¶1.fc35¶x86_64¶libcomps-0.1.18-1.fc35.src.rpm¶214999¶GPLv2+¶Fedora Project¶Comps XML file manipulation library¶8b7103efef0dde4c254212396768bdc6
+¶libpsl¶0.21.1¶4.fc35¶x86_64¶libpsl-0.21.1-4.fc35.src.rpm¶78520¶MIT¶Fedora Project¶C library for the Publix Suffix List¶418fc994aecd296a0e9f3a900a46f7c5
+¶mpdecimal¶2.5.1¶2.fc35¶x86_64¶mpdecimal-2.5.1-2.fc35.src.rpm¶246955¶BSD¶Fedora Project¶Library for general decimal arithmetic¶5a959017ea843dc9cd834137e17dcbc5
+¶libgcrypt¶1.9.4¶1.fc35¶x86_64¶libgcrypt-1.9.4-1.fc35.src.rpm¶1392828¶LGPLv2+¶Fedora Project¶A general-purpose cryptography library¶3de42e7502c099e402c6eff1fd477153
+¶libksba¶1.6.2¶1.fc35¶x86_64¶libksba-1.6.2-1.fc35.src.rpm¶405914¶(LGPLv3+ or GPLv2+) and GPLv3+¶Fedora Project¶CMS and X.509 library¶77929c4fcb3626827d05f3589c75c60c
+¶mpfr¶4.1.0¶8.fc35¶x86_64¶mpfr-4.1.0-8.fc35.src.rpm¶802431¶LGPLv3+¶Fedora Project¶C library for multiple-precision floating-point computations¶de62fb0bd1ab4954a5a3e601e4f95b58
+¶gawk¶5.1.0¶4.fc35¶x86_64¶gawk-5.1.0-4.fc35.src.rpm¶1684030¶GPLv3+ and GPLv2+ and LGPLv2+ and BSD¶Fedora Project¶The GNU version of the AWK text processing utility¶4c2057f0c12df0632024f9b90f075c28
+¶nettle¶3.8¶1.fc35¶x86_64¶nettle-3.8-1.fc35.src.rpm¶780590¶LGPLv3+ or GPLv2+¶Fedora Project¶A low-level cryptographic library¶6125479c4c053d578040d75fc156bab8
+¶libbrotli¶1.0.9¶6.fc35¶x86_64¶brotli-1.0.9-6.fc35.src.rpm¶784274¶MIT¶Fedora Project¶Library for brotli lossless compression algorithm¶d45caad095b8be733739ddc36bbf1a3b
+¶libdb¶5.3.28¶50.fc35¶x86_64¶libdb-5.3.28-50.fc35.src.rpm¶1922782¶BSD and LGPLv2 and Sleepycat¶Fedora Project¶The Berkeley DB database library for C¶035be9f77c8bd1ff1d600a3712c99e9b
+¶libeconf¶0.4.0¶2.fc35¶x86_64¶libeconf-0.4.0-2.fc35.src.rpm¶46171¶MIT¶Fedora Project¶Enhanced config file parser library¶1d425d5dc6879bacad175542465b0706
+¶libnghttp2¶1.45.1¶1.fc35¶x86_64¶nghttp2-1.45.1-1.fc35.src.rpm¶162468¶MIT¶Fedora Project¶A library implementing the HTTP/2 protocol¶0d6fd9b7c3f410856cb296843f1840b7
+¶libverto¶0.3.2¶2.fc35¶x86_64¶libverto-0.3.2-2.fc35.src.rpm¶30277¶MIT¶Fedora Project¶Main loop abstraction library¶cbb25f656c2c22c557ee83ad0d80dfb1
+¶libyaml¶0.2.5¶6.fc35¶x86_64¶libyaml-0.2.5-6.fc35.src.rpm¶138211¶MIT¶Fedora Project¶YAML 1.1 parser and emitter written in C¶f9ff1a0ffc3d4cc9ecaa76ba39afeb4d
+¶lz4-libs¶1.9.3¶3.fc35¶x86_64¶lz4-1.9.3-3.fc35.src.rpm¶145387¶GPLv2+ and BSD¶Fedora Project¶Libaries for lz4¶35f02696af287b52c0a8ccd356299a79
+¶npth¶1.6¶7.fc35¶x86_64¶npth-1.6-7.fc35.src.rpm¶50531¶LGPLv2+¶Fedora Project¶The New GNU Portable Threads library¶bdf927678bcfaadeba6fa20b62f90734
+¶alternatives¶1.21¶1.fc35¶x86_64¶chkconfig-1.21-1.fc35.src.rpm¶63854¶GPLv2¶Fedora Project¶A tool to maintain symbolic links determining default commands¶ff8198c9447a200f2f1b441fb53d2c83
+¶p11-kit-trust¶0.23.22¶4.fc35¶x86_64¶p11-kit-0.23.22-4.fc35.src.rpm¶451087¶BSD¶Fedora Project¶System trust module from p11-kit¶70a611a55f6a52dbf5e6966daff44ae9
+¶gnutls¶3.7.8¶3.fc35¶x86_64¶gnutls-3.7.8-3.fc35.src.rpm¶3251421¶GPLv3+ and LGPLv2+¶Fedora Project¶A TLS protocol implementation¶cd0af749a4d63344cd698a78987c2fa9
+¶libcap-ng¶0.8.2¶8.fc35¶x86_64¶libcap-ng-0.8.2-8.fc35.src.rpm¶75012¶LGPLv2+¶Fedora Project¶Alternate posix capabilities library¶41da9333ecb5667832c9b2a40e9e2323
+¶audit-libs¶3.0.9¶1.fc35¶x86_64¶audit-3.0.9-1.fc35.src.rpm¶307185¶LGPLv2+¶Fedora Project¶Dynamic library for libaudit¶f0eb42574e55f6a25acee628e7f408b1
+¶libgomp¶11.3.1¶3.fc35¶x86_64¶gcc-11.3.1-3.fc35.src.rpm¶412856¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Fedora Project¶GCC OpenMP v4.5 shared support library¶11cbc7b339926f57ba94eac11002e553
+¶pcre2¶10.40¶1.fc35¶x86_64¶pcre2-10.40-1.fc35.src.rpm¶652098¶BSD¶Fedora Project¶Perl-compatible regular expression library¶08d4020badeeb0575368cbf0a6d60762
+¶libselinux¶3.3¶1.fc35¶x86_64¶libselinux-3.3-1.fc35.src.rpm¶169365¶Public Domain¶Fedora Project¶SELinux library and simple utilities¶70515806983a64a7e56cc2c0fa15b3f1
+¶sed¶4.8¶8.fc35¶x86_64¶sed-4.8-8.fc35.src.rpm¶813479¶GPLv3+¶Fedora Project¶A GNU stream text editor¶18a95fcfe58463e71717b520d2412a8a
+1¶openssl-libs¶1.1.1q¶1.fc35¶x86_64¶openssl-1.1.1q-1.fc35.src.rpm¶3856652¶OpenSSL and ASL 2.0¶Fedora Project¶A general purpose cryptography library with TLS implementation¶9e6df58b1e1690d8ae9c180e3edcc08b
+¶coreutils¶8.32¶36.fc35¶x86_64¶coreutils-8.32-36.fc35.src.rpm¶6033722¶GPLv3+¶Fedora Project¶A set of basic GNU tools commonly used in shell scripts¶05d7fe038755f466cadead05045c655b
+¶ca-certificates¶2022.2.54¶1.2.fc35¶noarch¶ca-certificates-2022.2.54-1.2.fc35.src.rpm¶2344765¶Public Domain¶Fedora Project¶The Mozilla CA root certificate bundle¶39d27e0c1f0f76b687b589640fec05d9
+¶krb5-libs¶1.19.2¶9.fc35¶x86_64¶krb5-1.19.2-9.fc35.src.rpm¶2198950¶MIT¶Fedora Project¶The non-admin shared libraries used by Kerberos 5¶ab440d1feeac9a8cda4643084e20ea43
+¶libtirpc¶1.3.2¶1.fc35¶x86_64¶libtirpc-1.3.2-1.fc35.src.rpm¶208122¶SISSL and BSD¶Fedora Project¶Transport Independent RPC Library¶774bb16f7bceb07e236edd74893c3da2
+¶libnsl2¶1.3.0¶4.fc35¶x86_64¶libnsl2-1.3.0-4.fc35.src.rpm¶130270¶BSD and LGPLv2+¶Fedora Project¶Public client interface library for NIS(YP) and NIS+¶ec90470cea464c30c21887ef0b6b5f78
+¶libfsverity¶1.4¶6.fc35¶x86_64¶fsverity-utils-1.4-6.fc35.src.rpm¶29672¶BSD¶Fedora Project¶Development package for fsverity-utils¶ca39a98e52bfd390757594501bfe9158
+¶zchunk-libs¶1.2.3¶1.fc35¶x86_64¶zchunk-1.2.3-1.fc35.src.rpm¶104018¶BSD and MIT¶Fedora Project¶Zchunk library¶a441b755d82c9ed0d63841a019c52840
+¶cyrus-sasl-lib¶2.1.27¶14.fc35¶x86_64¶cyrus-sasl-2.1.27-14.fc35.src.rpm¶2409632¶BSD with advertising¶Fedora Project¶Shared libraries needed by applications which use Cyrus SASL¶8ffb3db1f0911937d30a6bf8dab936e2
+¶openldap¶2.4.59¶3.fc35¶x86_64¶openldap-2.4.59-3.fc35.src.rpm¶718501¶OpenLDAP¶Fedora Project¶LDAP support libraries¶0e77658e50841dafd342dee9da801f8c
+¶gnupg2¶2.3.4¶2.fc35¶x86_64¶gnupg2-2.3.4-2.fc35.src.rpm¶9262068¶GPLv3+¶Fedora Project¶Utility for secure communication and data storage¶f889193102331d35d3e703b2e75af873
+¶gpgme¶1.15.1¶6.fc35¶x86_64¶gpgme-1.15.1-6.fc35.src.rpm¶573957¶LGPLv2+¶Fedora Project¶GnuPG Made Easy - high level crypto API¶55d1815dcc9dd566a95999a31334702c
+¶python-pip-wheel¶21.2.3¶4.fc35¶noarch¶python-pip-21.2.3-4.fc35.src.rpm¶1220638¶MIT and Python and ASL 2.0 and BSD and ISC and LGPLv2 and MPLv2.0 and (ASL 2.0 or BSD)¶Fedora Project¶The pip wheel¶af8fd2c05e3b0764b53c3eb21b3f430f
+¶python3¶3.10.8¶3.fc35¶x86_64¶python3.10-3.10.8-3.fc35.src.rpm¶33132¶Python¶Fedora Project¶Python 3.10 interpreter¶f827c843058622a413e94baecd7076f5
+¶python3-libs¶3.10.8¶3.fc35¶x86_64¶python3.10-3.10.8-3.fc35.src.rpm¶33080032¶Python¶Fedora Project¶Python runtime libraries¶53dd6eef93177c033b26639e4b025993
+¶python3-libcomps¶0.1.18¶1.fc35¶x86_64¶libcomps-0.1.18-1.fc35.src.rpm¶146971¶GPLv2+¶Fedora Project¶Python 3 bindings for libcomps library¶9344fc5a5274824bbb2cebd5e7341c23
+¶python3-gpg¶1.15.1¶6.fc35¶x86_64¶gpgme-1.15.1-6.fc35.src.rpm¶1394334¶LGPLv2+¶Fedora Project¶gpgme bindings for Python 3¶87da740b4d4cd47f726b5876769db9df
+¶gzip¶1.10¶6.fc35¶x86_64¶gzip-1.10-6.fc35.src.rpm¶357289¶GPLv3+ and GFDL¶Fedora Project¶GNU data compression program¶df54592fa790d5d483854c7f92441d68
+¶cracklib¶2.9.6¶27.fc35¶x86_64¶cracklib-2.9.6-27.fc35.src.rpm¶251474¶LGPLv2+¶Fedora Project¶A password-checking library¶be873d814043808a88cd6ac0b984d7cd
+¶libpwquality¶1.4.4¶6.fc35¶x86_64¶libpwquality-1.4.4-6.fc35.src.rpm¶415452¶BSD or GPLv2+¶Fedora Project¶A library for password generation and password quality checking¶2c4c69665af0cbea0ea4405af255304d
+¶pam¶1.5.2¶8.fc35¶x86_64¶pam-1.5.2-8.fc35.src.rpm¶1954157¶BSD and GPLv2+¶Fedora Project¶An extensible library which provides authentication for applications¶116e871181a817ff0dd1ce037cfc7a47
+¶libblkid¶2.37.4¶1.fc35¶x86_64¶util-linux-2.37.4-1.fc35.src.rpm¶230753¶LGPLv2+¶Fedora Project¶Block device ID library¶71cc31b85c8cb80de2a5f103089fa040
+¶libmount¶2.37.4¶1.fc35¶x86_64¶util-linux-2.37.4-1.fc35.src.rpm¶311117¶LGPLv2+¶Fedora Project¶Device mounting library¶aa6091a17f0ae6f463354f30a25cf7a8
+¶glib2¶2.70.5¶1.fc35¶x86_64¶glib2-2.70.5-1.fc35.src.rpm¶13588286¶LGPLv2+¶Fedora Project¶A library of handy utility functions¶8bdfced36f2a817d67b645725df521e2
+¶libarchive¶3.5.3¶1.fc35¶x86_64¶libarchive-3.5.3-1.fc35.src.rpm¶907342¶BSD¶Fedora Project¶A library for handling streaming archive formats¶a311d4f4a85998fa33f625e7c50bb7f0
+¶libsemanage¶3.3¶1.fc35¶x86_64¶libsemanage-3.3-1.fc35.src.rpm¶303824¶LGPLv2+¶Fedora Project¶SELinux binary policy manipulation library¶1bf5012ddec7e2232047c99fd9746df4
+2¶shadow-utils¶4.9¶12.fc35¶x86_64¶shadow-utils-4.9-12.fc35.src.rpm¶3841245¶BSD and GPLv2+¶Fedora Project¶Utilities for managing accounts and shadow password files¶06e95fb73a00e350dfd194ad92711018
+2¶vim-minimal¶9.0.915¶1.fc35¶x86_64¶vim-9.0.915-1.fc35.src.rpm¶1675541¶Vim and MIT¶Fedora Project¶A minimal version of the VIM editor¶4392702e6e449bfcf049830d3d374725
+¶elfutils-default-yama-scope¶0.187¶4.fc35¶noarch¶elfutils-0.187-4.fc35.src.rpm¶1810¶GPLv2+ or LGPLv3+¶Fedora Project¶Default yama attach scope sysctl setting¶c1512433596d4c1d3250d6cecbb0fce8
+¶elfutils-libs¶0.187¶4.fc35¶x86_64¶elfutils-0.187-4.fc35.src.rpm¶682549¶GPLv2+ or LGPLv3+¶Fedora Project¶Libraries to handle compiled objects¶b7ddd83ecff96747e25282d3dc677583
+¶libssh-config¶0.9.6¶1.fc35¶noarch¶libssh-0.9.6-1.fc35.src.rpm¶277¶LGPLv2+¶Fedora Project¶Configuration files for libssh¶197f4d57cb353d8586957553e84c8980
+¶libssh¶0.9.6¶1.fc35¶x86_64¶libssh-0.9.6-1.fc35.src.rpm¶513049¶LGPLv2+¶Fedora Project¶A library implementing the SSH protocol¶89d0f0ed09d6da4ba2ab98275c98f173
+¶libcurl¶7.79.1¶7.fc35¶x86_64¶curl-7.79.1-7.fc35.src.rpm¶679958¶MIT¶Fedora Project¶A library for getting files from web servers¶62e4e32156a0a184e98b4ab309c1aba2
+¶tpm2-tss¶3.1.0¶3.fc35¶x86_64¶tpm2-tss-3.1.0-3.fc35.src.rpm¶2227128¶BSD and TCGL¶Fedora Project¶TPM2.0 Software Stack¶37a74040701bebdccc86ea28632895c4
+¶ima-evm-utils¶1.3.2¶4.fc35¶x86_64¶ima-evm-utils-1.3.2-4.fc35.src.rpm¶140622¶GPLv2¶Fedora Project¶IMA/EVM support utilities¶eb13b44f8f9b8049cac9baa6e3cb70a3
+¶curl¶7.79.1¶7.fc35¶x86_64¶curl-7.79.1-7.fc35.src.rpm¶723092¶MIT¶Fedora Project¶A utility for getting files from remote servers (FTP, HTTP, and others)¶4daa11c464defaa641cdb57ba016a78f
+¶rpm¶4.17.1¶3.fc35¶x86_64¶rpm-4.17.1-3.fc35.src.rpm¶2943525¶GPLv2+¶Fedora Project¶The RPM package management system¶a3220c148ee15c4d83b4a8421fb03dce
+¶rpm-libs¶4.17.1¶3.fc35¶x86_64¶rpm-4.17.1-3.fc35.src.rpm¶773188¶GPLv2+ and LGPLv2+ with exceptions¶Fedora Project¶Libraries for manipulating RPM packages¶d19f8cb8fc060221d7f86304d3140e1e
+¶libmodulemd¶2.14.0¶1.fc35¶x86_64¶libmodulemd-2.14.0-1.fc35.src.rpm¶736677¶MIT¶Fedora Project¶Module metadata manipulation library¶ccb5cd06a276f59ec90ad39f81193d74
+¶libsolv¶0.7.22¶1.fc35¶x86_64¶libsolv-0.7.22-1.fc35.src.rpm¶906410¶BSD¶Fedora Project¶Package dependency solver¶0598eec6252455952d8f39b5a158bedc
+¶rpm-build-libs¶4.17.1¶3.fc35¶x86_64¶rpm-4.17.1-3.fc35.src.rpm¶198566¶GPLv2+ and LGPLv2+ with exceptions¶Fedora Project¶Libraries for building RPM packages¶0bac7507f9b73d3f22fcdecd27d296c6
+¶rpm-sign-libs¶4.17.1¶3.fc35¶x86_64¶rpm-4.17.1-3.fc35.src.rpm¶39980¶GPLv2+ and LGPLv2+ with exceptions¶Fedora Project¶Libraries for signing RPM packages¶c97369075d12932ed9b8c8d6f7f678cc
+¶python3-rpm¶4.17.1¶3.fc35¶x86_64¶rpm-4.17.1-3.fc35.src.rpm¶378571¶GPLv2+¶Fedora Project¶Python 3 bindings for apps which will manipulate RPM packages¶71070c800b90fd9e2b41f966b7f990b7
+¶librepo¶1.14.4¶1.fc35¶x86_64¶librepo-1.14.4-1.fc35.src.rpm¶237900¶LGPLv2+¶Fedora Project¶Repodata downloading library¶51599664d729d3eb424acaa2995fb3e2
+¶libdnf¶0.68.0¶1.fc35¶x86_64¶libdnf-0.68.0-1.fc35.src.rpm¶2117541¶LGPLv2+¶Fedora Project¶Library providing simplified C and Python API to libsolv¶415c12378b4f1c794803e8dda83c0180
+¶python3-libdnf¶0.68.0¶1.fc35¶x86_64¶libdnf-0.68.0-1.fc35.src.rpm¶3767694¶LGPLv2+¶Fedora Project¶Python 3 bindings for the libdnf library.¶454419e05a2ca6628835606b36261353
+¶python3-hawkey¶0.68.0¶1.fc35¶x86_64¶libdnf-0.68.0-1.fc35.src.rpm¶310243¶LGPLv2+¶Fedora Project¶Python 3 bindings for the hawkey library¶5fbdb55c183e3e5d3a007c15c7cf8b88
+¶python3-dnf¶4.14.0¶1.fc35¶noarch¶dnf-4.14.0-1.fc35.src.rpm¶1911716¶GPLv2+¶Fedora Project¶Python 3 interface to DNF¶73b420ce8932f3ebdb2c233238a98929
+¶dnf¶4.14.0¶1.fc35¶noarch¶dnf-4.14.0-1.fc35.src.rpm¶2422647¶GPLv2+¶Fedora Project¶Package manager¶a61556ad16f27e322ef9f7c8b815bc6a
+¶yum¶4.14.0¶1.fc35¶noarch¶dnf-4.14.0-1.fc35.src.rpm¶22191¶GPLv2+¶Fedora Project¶Package manager¶f6c39ef823b0700cc131951e1d96f9a7
+¶sudo¶1.9.7p2¶2.fc35¶x86_64¶sudo-1.9.7p2-2.fc35.src.rpm¶4324216¶ISC¶Fedora Project¶Allows restricted root access for specified users¶b5f88dba9550cee464dc45d595a98c09
+2¶tar¶1.34¶2.fc35¶x86_64¶tar-1.34-2.fc35.src.rpm¶3156278¶GPLv3+¶Fedora Project¶GNU file archiving program¶052b560465e9eebf3c4f7986aa10ee0b
+¶fedora-repos-modular¶35¶4¶noarch¶fedora-repos-35-4.src.rpm¶4042¶MIT¶Fedora Project¶Fedora modular package repositories¶eba9749d6a0887dfdd94e8af15371176
+¶rootfiles¶8.1¶30.fc35¶noarch¶rootfiles-8.1-30.fc35.src.rpm¶817¶Public Domain¶Fedora Project¶The basic required files for the root user's directory¶2a5798670386c2b0ac45b20d55599029
+¶gpg-pubkey¶9867c58f¶601c49ca¶¶(none)¶0¶pubkey¶¶Fedora (35) <fedora-35-primary@fedoraproject.org> public key¶(none)
+1¶openssl¶1.1.1q¶1.fc35¶x86_64¶openssl-1.1.1q-1.fc35.src.rpm¶1198668¶OpenSSL and ASL 2.0¶Fedora Project¶Utilities from the general purpose cryptography library with TLS implementation¶be120bb2f63264330b83a0ad0673591f
+¶mongodb-org-shell¶5.0.9¶1.el8¶x86_64¶mongodb-org-database-5.0.9-1.el8.src.rpm¶58465553¶SSPL¶¶MongoDB shell client¶500fa1e55d5679de5a7e133cae01ca39
+0¶mongocli¶1.25.0¶1¶x86_64¶mongocli-1.25.0-1.src.rpm¶26181632¶Apache 2.0¶MongoDB Inc.¶MongoDB Command Line Interface (mongocli) is a tool for managing your MongoDB cloud services, like MongoDB Atlas, MongoDB Cloud Manager, and MongoDB Ops Manager.¶d27e4376bba413f3d1cf741b7fba314f

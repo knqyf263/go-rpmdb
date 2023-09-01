@@ -1,0 +1,182 @@
+[
+  {
+    "Path": "/usr/bin/node",
+    "Mode": 33261,
+    "Digest": "0e44a5172db8e85fee77112996ab01a342e44fa3e70dc47b120c4ad38a289e20",
+    "Size": 32712,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/lib/.build-id",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 4096
+  },
+  {
+    "Path": "/usr/lib/.build-id/f7",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 4096
+  },
+  {
+    "Path": "/usr/lib/.build-id/f7/75f6f571b13306cacabf3767874e8f3be20b03",
+    "Mode": 41471,
+    "Digest": "",
+    "Size": 24,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 4096
+  },
+  {
+    "Path": "/usr/lib/dtrace",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/lib/dtrace/node.d",
+    "Mode": 33188,
+    "Digest": "d906e0911430bf83c3ddd5ffaaa2ff680ef5177122f86acfce97830f216f56c0",
+    "Size": 12324,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/lib/node_modules",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/lib/rpm/fileattrs/nodejs_native.attr",
+    "Mode": 33188,
+    "Digest": "991876f5bd2383feac22a58397641096d62045629f6e107cb9d211e626d7e226",
+    "Size": 119,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/lib/rpm/nodejs_native.req",
+    "Mode": 33261,
+    "Digest": "17f18c69032f70ff184115e150c617dd493f129442efc8dd739d5bb497b9db57",
+    "Size": 44,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/doc/nodejs",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/doc/nodejs/AUTHORS",
+    "Mode": 33188,
+    "Digest": "0256b9506e09617996e51c60c29be48769c0cc8d226784034b9cde766a4889db",
+    "Size": 134448,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/doc/nodejs/CHANGELOG.md",
+    "Mode": 33188,
+    "Digest": "5cebf121fcd5dd4fcadb47e0d72adbcc72dd95ef3aa98441e4ce872a67e41bd2",
+    "Size": 55152,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/doc/nodejs/GOVERNANCE.md",
+    "Mode": 33188,
+    "Digest": "01e0b236caeed1a1a98d7ae5fee2c439fe43514ddbfb0c21370e86c3557d52c5",
+    "Size": 7561,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/doc/nodejs/README.md",
+    "Mode": 33188,
+    "Digest": "cd95e19dfd0e392d8271a15eb2375b8cb38f7d23f473120fbd8e10079f9bb84e",
+    "Size": 35345,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/doc/nodejs/onboarding.md",
+    "Mode": 33188,
+    "Digest": "1634b0464b89f2bdd334688a46b237b62298499becc919b50efc23e9f4f60e4c",
+    "Size": 13273,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/man/man1/node.1.gz",
+    "Mode": 33188,
+    "Digest": "de3f7735a02ac11a943df46ffdea72bc1ee930c0fa1c3300d79b108298ba0349",
+    "Size": 7684,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/node",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/systemtap",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/systemtap/tapset",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/systemtap/tapset/node.stp",
+    "Mode": 33188,
+    "Digest": "1df168860f170690b202271d7f604514e64831523db62e7bae3f9a85cbbd7bf4",
+    "Size": 3495,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  }
+]
