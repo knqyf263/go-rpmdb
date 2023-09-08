@@ -131,6 +131,7 @@ func (db *RpmNDB) Read() <-chan dbi.Entry {
 
 	go func() {
 		defer close(entries)
+		defer db.file.Close()
 
 		const NDB_BlobHeaderSize = int64(unsafe.Sizeof(ndbBlobHeader{}))
 
