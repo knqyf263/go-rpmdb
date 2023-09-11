@@ -57,12 +57,15 @@ func Open(path string) (*BerkeleyDB, error) {
 	}, nil
 }
 
+func (db *BerkeleyDB) Close() error {
+	return db.file.Close()
+}
+
 func (db *BerkeleyDB) Read() <-chan dbi.Entry {
 	entries := make(chan dbi.Entry)
 
 	go func() {
 		defer close(entries)
-		defer db.file.Close()
 
 		for pageNum := uint32(0); pageNum <= db.HashMetadata.LastPageNo; pageNum++ {
 			pageData, err := slice(db.file, int(db.HashMetadata.PageSize))

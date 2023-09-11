@@ -757,6 +757,9 @@ func TestRpmDB_Package(t *testing.T) {
 			got.GroupNames = nil
 
 			assert.Equal(t, tt.want, got)
+
+			err = db.Close()
+			require.NoError(t, err)
 		})
 	}
 }
