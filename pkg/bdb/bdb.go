@@ -57,6 +57,10 @@ func Open(path string) (*BerkeleyDB, error) {
 	}, nil
 }
 
+func (db *BerkeleyDB) Close() error {
+	return db.file.Close()
+}
+
 func (db *BerkeleyDB) Read() <-chan dbi.Entry {
 	entries := make(chan dbi.Entry)
 
