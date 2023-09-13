@@ -1,0 +1,110 @@
+[
+  {
+    "Path": "/usr/bin/pydoc",
+    "Mode": 41471,
+    "Digest": "",
+    "Size": 8,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/bin/pydoc3",
+    "Mode": 41471,
+    "Digest": "",
+    "Size": 9,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/bin/pydoc3.10",
+    "Mode": 33261,
+    "Digest": "b6c30777f4a7e690350bab6dd427b6a9bc5ecd49905c6511bba0cf6c9dec6e6c",
+    "Size": 79,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/bin/python3",
+    "Mode": 41471,
+    "Digest": "",
+    "Size": 10,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/bin/python3.10",
+    "Mode": 33261,
+    "Digest": "fd16544e65a5456ebaeea4cc8c1fed053cd323c164da20b9bd17cf41110a25fa",
+    "Size": 15952,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/lib/.build-id",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 4096
+  },
+  {
+    "Path": "/usr/lib/.build-id/96",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 4096
+  },
+  {
+    "Path": "/usr/lib/.build-id/96/e8ddd82f3b8790a0a78c3a1e99a5f998bfa345",
+    "Mode": 41471,
+    "Digest": "",
+    "Size": 30,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 4096
+  },
+  {
+    "Path": "/usr/share/doc/python3",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/doc/python3/README.rst",
+    "Mode": 33188,
+    "Digest": "63edf5f17fa181345cc05427588155a2f50329cdb5e20c2dc6f0e2294f4fbd08",
+    "Size": 10138,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/man/man1/python3.1.gz",
+    "Mode": 41471,
+    "Digest": "",
+    "Size": 15,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/man/man1/python3.10.1.gz",
+    "Mode": 33188,
+    "Digest": "79810c77d3afc1aff6641aa82a4dda3bf43f29c040b77c3c2b1230d47dd30129",
+    "Size": 6891,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  }
+]

@@ -1,4 +1,6 @@
 # go-rpmdb
+[![Go Reference](https://pkg.go.dev/badge/github.com/knqyf263/go-rpmdb.svg)](https://pkg.go.dev/github.com/knqyf263/go-rpmdb)
+
 Library for enumerating packages in an RPM DB `Packages` file (without bindings).
 
 ```go
@@ -37,3 +39,7 @@ func run() error {
 	return nil
 }
 ```
+
+## License
+
+[MIT License](LICENSE)

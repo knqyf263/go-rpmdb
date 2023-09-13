@@ -1,0 +1,419 @@
+¶crypto-policies¶20220428¶1.gitdfb10ea.amzn2023.0.2¶noarch¶crypto-policies-20220428-1.gitdfb10ea.amzn2023.0.2.src.rpm¶118598¶LGPLv2+¶Amazon Linux¶System-wide crypto policies¶19ca3a7af91cf8e06beb8dcc33700aa5
+¶ncurses-base¶6.2¶4.20200222.amzn2023.0.4¶noarch¶ncurses-6.2-4.20200222.amzn2023.0.4.src.rpm¶292349¶MIT¶Amazon Linux¶Descriptions of common terminals¶3ff67a741029991bef676920b0dd1658
+¶amazon-linux-repo-cdn¶2023.1.20230825¶0.amzn2023¶noarch¶system-release-2023.1.20230825-0.amzn2023.src.rpm¶934¶MIT¶Amazon Linux¶Access to Amazon Linux repositories via CloudFront¶db5a07207987aba035fb9b877cb0d4ba
+¶setup¶2.13.7¶3.amzn2023.0.2¶noarch¶setup-2.13.7-3.amzn2023.0.2.src.rpm¶726441¶Public Domain¶Amazon Linux¶A set of system configuration and setup files¶58896e384e18004945ec23396a5f952e
+¶basesystem¶11¶11.amzn2023.0.2¶noarch¶basesystem-11-11.amzn2023.0.2.src.rpm¶0¶Public Domain¶Amazon Linux¶The skeleton package which defines a simple  system¶915ff954671698f3f9a336369fa1e118
+¶glibc-minimal-langpack¶2.34¶52.amzn2023.0.3¶x86_64¶glibc-2.34-52.amzn2023.0.3.src.rpm¶0¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Amazon Linux¶Minimal language packs for glibc.¶2e3090c0ba0847d138830f7d6427a648
+¶glibc¶2.34¶52.amzn2023.0.3¶x86_64¶glibc-2.34-52.amzn2023.0.3.src.rpm¶6220675¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Amazon Linux¶The GNU libc libraries¶49e1b8a623962859ccc3e4c325b70e32
+¶xz-libs¶5.2.5¶9.amzn2023.0.2¶x86_64¶xz-5.2.5-9.amzn2023.0.2.src.rpm¶181645¶Public Domain¶Amazon Linux¶Libraries for decoding LZMA compression¶9d0f63a2723d8c91aa10c0c0fa1a28fa
+¶libzstd¶1.5.2¶1.amzn2023.0.3¶x86_64¶zstd-1.5.2-1.amzn2023.0.3.src.rpm¶762867¶BSD and GPLv2¶Amazon Linux¶Zstd shared library¶7275cff47cbba0c37be58752cea6ecf7
+¶libcap¶2.48¶2.amzn2023.0.3¶x86_64¶libcap-2.48-2.amzn2023.0.3.src.rpm¶182543¶BSD or GPLv2¶Amazon Linux¶Library for getting and setting POSIX.1e capabilities¶a44f949eedf76d55630829f5755134fa
+¶libxml2¶2.10.4¶1.amzn2023.0.1¶x86_64¶libxml2-2.10.4-1.amzn2023.0.1.src.rpm¶1896208¶MIT¶Amazon Linux¶Library providing XML and HTML support¶41f28a391bd17dd42951ac70eeba0f21
+¶lua-libs¶5.4.4¶3.amzn2023.0.2¶x86_64¶lua-5.4.4-3.amzn2023.0.2.src.rpm¶556062¶MIT¶Amazon Linux¶Libraries for lua¶7868cc323e2121ec963fd472070d637c
+¶elfutils-libelf¶0.188¶3.amzn2023.0.2¶x86_64¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶1032848¶GPLv2+ or LGPLv3+¶Amazon Linux¶Library to read and write ELF files¶88cddd597dee7e0fd6b2748dd9d35150
+¶libuuid¶2.37.4¶1.amzn2023.0.3¶x86_64¶util-linux-2.37.4-1.amzn2023.0.3.src.rpm¶34597¶BSD¶Amazon Linux¶Universally unique ID library¶00154dc847a0ddb3fc8dc6a8f58f6d55
+¶readline¶8.1¶2.amzn2023.0.2¶x86_64¶readline-8.1-2.amzn2023.0.2.src.rpm¶493156¶GPLv3+¶Amazon Linux¶A library for editing typed command lines¶6a27ecf4da6a2cadf5a6ce9ff5bf5ccc
+¶libassuan¶2.5.5¶1.amzn2023.0.2¶x86_64¶libassuan-2.5.5-1.amzn2023.0.2.src.rpm¶171261¶LGPLv2+ and GPLv3+¶Amazon Linux¶GnuPG IPC library¶6e8381178b7d6de7bacf60f20ddeff86
+¶libattr¶2.5.1¶3.amzn2023.0.2¶x86_64¶attr-2.5.1-3.amzn2023.0.2.src.rpm¶29549¶LGPLv2+¶Amazon Linux¶Dynamic library for extended attribute support¶23e22ad10551b174fac4c384667f83d2
+¶expat¶2.5.0¶1.amzn2023.0.2¶x86_64¶expat-2.5.0-1.amzn2023.0.2.src.rpm¶311061¶MIT¶Amazon Linux¶An XML parser library¶9e47442c25d5a66fc89778d9f7b602a5
+¶libcomps¶0.1.18¶1.amzn2023.0.2¶x86_64¶libcomps-0.1.18-1.amzn2023.0.2.src.rpm¶215215¶GPLv2+¶Amazon Linux¶Comps XML file manipulation library¶1c691d5de257d63cc423e59d2c2e0e20
+¶libgcrypt¶1.10.1¶7.amzn2023.0.1¶x86_64¶libgcrypt-1.10.1-7.amzn2023.0.1.src.rpm¶1421545¶LGPLv2+¶Amazon Linux¶A general-purpose cryptography library¶22c64fe8c483ea26b7ced92d96742c26
+¶keyutils-libs¶1.6.3¶1.amzn2023¶x86_64¶keyutils-1.6.3-1.amzn2023.src.rpm¶56011¶GPLv2+ and LGPLv2+¶Amazon Linux¶Key utilities library¶86b6b459228a6584b61b6193a48af4f9
+¶libverto¶0.3.2¶1.amzn2023.0.2¶x86_64¶libverto-0.3.2-1.amzn2023.0.2.src.rpm¶30485¶MIT¶Amazon Linux¶Main loop abstraction library¶96e24a28982037eecfb948c568006ac0
+¶json-c¶0.14¶8.amzn2023.0.2¶x86_64¶json-c-0.14-8.amzn2023.0.2.src.rpm¶78354¶MIT¶Amazon Linux¶JSON implementation in C¶b3def96c967f78bbd5ae834143e000e0
+¶libunistring¶0.9.10¶10.amzn2023.0.2¶x86_64¶libunistring-0.9.10-10.amzn2023.0.2.src.rpm¶1647203¶GPLV2+ or LGPLv3+¶Amazon Linux¶GNU Unicode string library¶31746158d4a9f73c965b10c4785b7ee2
+¶lz4-libs¶1.9.4¶1.amzn2023.0.2¶x86_64¶lz4-1.9.4-1.amzn2023.0.2.src.rpm¶170123¶GPLv2+ and BSD¶Amazon Linux¶Libaries for lz4¶4d687fafd85619ced42de91f2c20bdeb
+¶libcap-ng¶0.8.2¶4.amzn2023.0.2¶x86_64¶libcap-ng-0.8.2-4.amzn2023.0.2.src.rpm¶75492¶LGPLv2+¶Amazon Linux¶Alternate posix capabilities library¶bae47059c00e7ec6b0bd2ef7d109c567
+¶libsigsegv¶2.13¶2.amzn2023.0.2¶x86_64¶libsigsegv-2.13-2.amzn2023.0.2.src.rpm¶50474¶GPLv2+¶Amazon Linux¶Library for handling page faults in user mode¶f90959f3fab0b3b25753cc047a1bd3f5
+¶alternatives¶1.15¶2.amzn2023.0.2¶x86_64¶chkconfig-1.15-2.amzn2023.0.2.src.rpm¶63897¶GPLv2¶Amazon Linux¶A tool to maintain symbolic links determining default commands¶ae9e7189dd33660caa47ccbecfde2d36
+¶npth¶1.6¶6.amzn2023.0.2¶x86_64¶npth-1.6-6.amzn2023.0.2.src.rpm¶50731¶LGPLv2+¶Amazon Linux¶The New GNU Portable Threads library¶eb837ce03778bfc2fb9d52603dcea488
+¶gpgme¶1.15.1¶6.amzn2023.0.3¶x86_64¶gpgme-1.15.1-6.amzn2023.0.3.src.rpm¶578493¶LGPLv2+¶Amazon Linux¶GnuPG Made Easy - high level crypto API¶34a06a676462923d82b5be36e316b23a
+¶libtasn1¶4.19.0¶1.amzn2023.0.1¶x86_64¶libtasn1-4.19.0-1.amzn2023.0.1.src.rpm¶184404¶GPLv3+ and LGPLv2+¶Amazon Linux¶The ASN.1 library used in GNUTLS¶1e419925a83edf7c2e8fb3e1f3882b2c
+¶elfutils-default-yama-scope¶0.188¶3.amzn2023.0.2¶noarch¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶1810¶GPLv2+ or LGPLv3+¶Amazon Linux¶Default yama attach scope sysctl setting¶74b74120a2668211a11059a6abed22fd
+¶python3-setuptools-wheel¶59.6.0¶2.amzn2023.0.4¶noarch¶python-setuptools-59.6.0-2.amzn2023.0.4.src.rpm¶600851¶MIT and (BSD or ASL 2.0)¶Amazon Linux¶The setuptools wheel¶582cb5837abb6767593326dc206d728a
+¶pcre2¶10.40¶1.amzn2023.0.3¶x86_64¶pcre2-10.40-1.amzn2023.0.3.src.rpm¶662258¶BSD¶Amazon Linux¶Perl-compatible regular expression library¶c1925c3b81abeb08c35c6a8216085af0
+¶coreutils-single¶8.32¶30.amzn2023.0.3¶x86_64¶coreutils-8.32-30.amzn2023.0.3.src.rpm¶1404825¶GPLv3+¶Amazon Linux¶coreutils multicall binary¶140136e58dbf5da07d81b7a7142ad7e2
+¶libblkid¶2.37.4¶1.amzn2023.0.3¶x86_64¶util-linux-2.37.4-1.amzn2023.0.3.src.rpm¶235065¶LGPLv2+¶Amazon Linux¶Block device ID library¶d45489082a040d00ca029a9e151dc8fe
+¶grep¶3.8¶1.amzn2023.0.4¶x86_64¶grep-3.8-1.amzn2023.0.4.src.rpm¶1014365¶GPLv3+¶Amazon Linux¶Pattern matching utilities¶50f205611ed8743c0affa240ccb37318
+1¶openssl-libs¶3.0.8¶1.amzn2023.0.4¶x86_64¶openssl-3.0.8-1.amzn2023.0.4.src.rpm¶6806522¶ASL 2.0¶Amazon Linux¶A general purpose cryptography library with TLS implementation¶7f183461d18796c26b4646b1a90f269d
+¶krb5-libs¶1.20.1¶8.amzn2023.0.2¶x86_64¶krb5-1.20.1-8.amzn2023.0.2.src.rpm¶2190880¶MIT¶Amazon Linux¶The non-admin shared libraries used by Kerberos 5¶b672b717efe8ef3a72a723baeab356aa
+¶curl-minimal¶8.0.1¶1.amzn2023.0.1¶x86_64¶curl-8.0.1-1.amzn2023.0.1.src.rpm¶274062¶MIT¶Amazon Linux¶Conservatively configured build of curl for minimal installations¶65014b4c9df21b06c97307c7c0024e1a
+¶libarchive¶3.5.3¶2.amzn2023.0.3¶x86_64¶libarchive-3.5.3-2.amzn2023.0.3.src.rpm¶923998¶BSD¶Amazon Linux¶A library for handling streaming archive formats¶efa022482879e8f72aaa50cce90cc9e7
+¶rpm¶4.16.1.3¶12.amzn2023.0.6¶x86_64¶rpm-4.16.1.3-12.amzn2023.0.6.src.rpm¶2752678¶GPLv2+¶Amazon Linux¶The RPM package management system¶af8c10a45dc0f6248e298810135b8f83
+¶libsolv¶0.7.22¶1.amzn2023.0.2¶x86_64¶libsolv-0.7.22-1.amzn2023.0.2.src.rpm¶886202¶BSD¶Amazon Linux¶Package dependency solver¶3fea7a1ec696b19570ed339bcde9631a
+¶rpm-sign-libs¶4.16.1.3¶12.amzn2023.0.6¶x86_64¶rpm-4.16.1.3-12.amzn2023.0.6.src.rpm¶28380¶GPLv2+ and LGPLv2+ with exceptions¶Amazon Linux¶Libraries for signing RPM packages¶a8f602a33761f7ed17dba82abc32cb18
+¶python3-pip-wheel¶21.3.1¶2.amzn2023.0.5¶noarch¶python-pip-21.3.1-2.amzn2023.0.5.src.rpm¶1232317¶MIT and Python and ASL 2.0 and BSD and ISC and LGPLv2 and MPLv2.0 and (ASL 2.0 or BSD)¶Amazon Linux¶The pip wheel¶4f2b5c8a420601ab543654ff28621885
+¶python3-libs¶3.9.16¶1.amzn2023.0.3¶x86_64¶python3.9-3.9.16-1.amzn2023.0.3.src.rpm¶32523215¶Python¶Amazon Linux¶Python runtime libraries¶c21d4c5262d382f4746202442b432431
+¶python3-hawkey¶0.67.0¶1.amzn2023.0.5¶x86_64¶libdnf-0.67.0-1.amzn2023.0.5.src.rpm¶322192¶LGPLv2+¶Amazon Linux¶Python 3 bindings for the hawkey library¶5d788398ac94e48ae149c9b92f404552
+¶python3-gpg¶1.15.1¶6.amzn2023.0.3¶x86_64¶gpgme-1.15.1-6.amzn2023.0.3.src.rpm¶1575570¶LGPLv2+¶Amazon Linux¶gpgme bindings for Python 3¶b2181da6afbcb1dead7ba8898dc919d7
+¶libreport-filesystem¶2.15.2¶2.amzn2023.0.2¶noarch¶libreport-2.15.2-2.amzn2023.0.2.src.rpm¶0¶GPLv2+¶Amazon Linux¶Filesystem layout for libreport¶bc5ac4279fc295a26acbfef290111b4c
+¶python3-dnf¶4.12.0¶2.amzn2023.0.4¶noarch¶dnf-4.12.0-2.amzn2023.0.4.src.rpm¶2301037¶GPLv2+¶Amazon Linux¶Python 3 interface to DNF¶c8d805426a082afdff5062a126c7590e
+¶yum¶4.12.0¶2.amzn2023.0.4¶noarch¶dnf-4.12.0-2.amzn2023.0.4.src.rpm¶22114¶GPLv2+¶Amazon Linux¶Package manager¶20ccdea4e10f8e270fab619ebc4ffcb4
+¶libgcc¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶198652¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶GCC version 11 shared support library¶67ce8d2a3174f96099a66e5b23019d13
+¶tzdata¶2023c¶1.amzn2023.0.1¶noarch¶tzdata-2023c-1.amzn2023.0.1.src.rpm¶1712794¶Public Domain¶Amazon Linux¶Timezone data¶0fefb2184584bde15362fd32a913c2d2
+¶ncurses-libs¶6.2¶4.20200222.amzn2023.0.4¶x86_64¶ncurses-6.2-4.20200222.amzn2023.0.4.src.rpm¶998567¶MIT¶Amazon Linux¶Ncurses libraries¶3b9fa3bd677cab0484adbe6d21f82599
+¶system-release¶2023.1.20230825¶0.amzn2023¶noarch¶system-release-2023.1.20230825-0.amzn2023.src.rpm¶16887¶MIT¶Amazon Linux¶Amazon Linux release files¶706137772b7da7e97a956acfbe2e021a
+¶filesystem¶3.14¶5.amzn2023.0.3¶x86_64¶filesystem-3.14-5.amzn2023.0.3.src.rpm¶106¶Public Domain¶Amazon Linux¶The basic directory layout for a Linux system¶e593dcf1392774bb54af702b7a009bc4
+¶bash¶5.2.15¶1.amzn2023.0.2¶x86_64¶bash-5.2.15-1.amzn2023.0.2.src.rpm¶8570199¶GPLv3+¶Amazon Linux¶The GNU Bourne Again shell¶144ee817d5c32bbb5bb56a607c90c514
+¶glibc-common¶2.34¶52.amzn2023.0.3¶x86_64¶glibc-2.34-52.amzn2023.0.3.src.rpm¶1090193¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Amazon Linux¶Common binaries and locale data for glibc¶001d7e974b08ea9e428b21e3cddad502
+¶zlib¶1.2.11¶33.amzn2023.0.4¶x86_64¶zlib-1.2.11-33.amzn2023.0.4.src.rpm¶207785¶zlib and Boost¶Amazon Linux¶Compression and decompression library¶faba07cd1b6c68be009f7d5bf7e02370
+¶bzip2-libs¶1.0.8¶6.amzn2023.0.2¶x86_64¶bzip2-1.0.8-6.amzn2023.0.2.src.rpm¶82972¶BSD¶Amazon Linux¶Libraries for applications using bzip2¶f156c2f980d1f09928d6ad75f356a626
+¶sqlite-libs¶3.40.0¶1.amzn2023.0.3¶x86_64¶sqlite-3.40.0-1.amzn2023.0.3.src.rpm¶1399058¶Public Domain¶Amazon Linux¶Shared library for the sqlite3 embeddable SQL database engine.¶93042c8e21dcbf93509c18848c25e9d3
+¶popt¶1.18¶6.amzn2023.0.2¶x86_64¶popt-1.18-6.amzn2023.0.2.src.rpm¶130464¶MIT¶Amazon Linux¶C library for parsing command line parameters¶2091f03ff2347445052710e5edd36771
+¶libgpg-error¶1.42¶1.amzn2023.0.2¶x86_64¶libgpg-error-1.42-1.amzn2023.0.2.src.rpm¶841368¶LGPLv2+¶Amazon Linux¶Library for error values used by GnuPG components¶ee94ec5be9ba2d61621246ca3bf51993
+¶file-libs¶5.39¶7.amzn2023.0.2¶x86_64¶file-5.39-7.amzn2023.0.2.src.rpm¶8086314¶BSD¶Amazon Linux¶Libraries for applications using libmagic¶7fd22ad990aaafe0605bc246722e20a5
+¶libstdc++¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶2590545¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶GNU Standard C++ Library¶38d03c7850061b205e52f807cbaa00d9
+¶libffi¶3.1¶28.amzn2023.0.2¶x86_64¶libffi-3.1-28.amzn2023.0.2.src.rpm¶57056¶MIT¶Amazon Linux¶A portable foreign function interface library¶b89e1ac0464781b722f6385ba9a22d50
+¶p11-kit¶0.24.1¶2.amzn2023.0.2¶x86_64¶p11-kit-0.24.1-2.amzn2023.0.2.src.rpm¶1669043¶BSD¶Amazon Linux¶Library for loading and sharing PKCS#11 modules¶6c1f3f79864fd8f680ef8240d4bd9a3e
+1¶gmp¶6.2.1¶2.amzn2023.0.2¶x86_64¶gmp-6.2.1-2.amzn2023.0.2.src.rpm¶839143¶LGPLv3+ or GPLv2+¶Amazon Linux¶GNU arbitrary precision library¶2dbf7dc9bec84fc1b965b364b210974e
+¶libacl¶2.3.1¶2.amzn2023.0.2¶x86_64¶acl-2.3.1-2.amzn2023.0.2.src.rpm¶41314¶LGPLv2+¶Amazon Linux¶Dynamic library for access control list support¶245b433be5b8ad3da05f61fd853112ec
+¶libsmartcols¶2.37.4¶1.amzn2023.0.3¶x86_64¶util-linux-2.37.4-1.amzn2023.0.3.src.rpm¶135579¶LGPLv2+¶Amazon Linux¶Formatting library for ls-like programs.¶1b701e94ba198b46b302a3c6c0e74dc4
+¶mpfr¶4.1.0¶7.amzn2023.0.2¶x86_64¶mpfr-4.1.0-7.amzn2023.0.2.src.rpm¶810863¶LGPLv3+¶Amazon Linux¶C library for multiple-precision floating-point computations¶2543fb0ffa0023bd89120074d71209e1
+¶libxcrypt¶4.4.33¶7.amzn2023¶x86_64¶libxcrypt-4.4.33-7.amzn2023.src.rpm¶277537¶LGPL-2.1-or-later AND BSD-3-Clause AND BSD-2-Clause AND BSD-2-Clause-FreeBSD AND 0BSD AND CC0-1.0 AND LicenseRef-Fedora-Public-Domain¶Amazon Linux¶Extended crypt library for descrypt, md5crypt, bcrypt, and others¶ed0336de8c8bee5144ac295841f081f2
+¶libsepol¶3.4¶3.amzn2023.0.3¶x86_64¶libsepol-3.4-3.amzn2023.0.3.src.rpm¶789155¶LGPLv2+¶Amazon Linux¶SELinux binary policy manipulation library¶41528342c45381edd61889ccb6fa675d
+¶libcom_err¶1.46.5¶2.amzn2023.0.2¶x86_64¶e2fsprogs-1.46.5-2.amzn2023.0.2.src.rpm¶69161¶MIT¶Amazon Linux¶Common error description library¶897adcdd700c7abc2bee42c1ba196864
+¶libyaml¶0.2.5¶5.amzn2023.0.2¶x86_64¶libyaml-0.2.5-5.amzn2023.0.2.src.rpm¶142483¶MIT¶Amazon Linux¶YAML 1.1 parser and emitter written in C¶4522c57f3ffd5e5a3e6b164d19c1b4ec
+¶libidn2¶2.3.2¶1.amzn2023.0.2¶x86_64¶libidn2-2.3.2-1.amzn2023.0.2.src.rpm¶291936¶(GPLv2+ or LGPLv3+) and GPLv3+¶Amazon Linux¶Library to support IDNA2008 internationalized domain names¶43b060b7b1c2d5f632bd3a88617a6d46
+¶libgomp¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶412700¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶GCC OpenMP v4.5 shared support library¶e39278731f381164dbdf55904a26b9f9
+¶audit-libs¶3.0.6¶1.amzn2023.0.2¶x86_64¶audit-3.0.6-1.amzn2023.0.2.src.rpm¶311662¶LGPLv2+¶Amazon Linux¶Dynamic library for libaudit¶0d6d37c340271e7d221c0c6637662c77
+¶gawk¶5.1.0¶3.amzn2023.0.3¶x86_64¶gawk-5.1.0-3.amzn2023.0.3.src.rpm¶1691414¶GPLv3+ and GPLv2+ and LGPLv2+ and BSD¶Amazon Linux¶The GNU version of the AWK text processing utility¶36b951e5ed1586efbdd29eab43d9a28f
+¶libnghttp2¶1.55.1¶1.amzn2023.0.1¶x86_64¶nghttp2-1.55.1-1.amzn2023.0.1.src.rpm¶170988¶MIT¶Amazon Linux¶A library implementing the HTTP/2 protocol¶55cadcbf39b2a65dc37b8d8c21cbcb44
+¶gnupg2-minimal¶2.3.7¶1.amzn2023.0.4¶x86_64¶gnupg2-2.3.7-1.amzn2023.0.4.src.rpm¶938606¶GPLv3+¶Amazon Linux¶Absolute minimal GPG needed for RPM signature verification¶0deae357eae0a3e8f4932c851608f890
+1¶gdbm-libs¶1.19¶2.amzn2023.0.2¶x86_64¶gdbm-1.19-2.amzn2023.0.2.src.rpm¶116522¶GPLv3+¶Amazon Linux¶Libraries files for gdbm¶87545e160dd61356cccf720cb7ae5b82
+¶p11-kit-trust¶0.24.1¶2.amzn2023.0.2¶x86_64¶p11-kit-0.24.1-2.amzn2023.0.2.src.rpm¶451623¶BSD¶Amazon Linux¶System trust module from p11-kit¶9ab43e4a43f9f07fceb797edbf75b0d8
+¶elfutils-libs¶0.188¶3.amzn2023.0.2¶x86_64¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶687149¶GPLv2+ or LGPLv3+¶Amazon Linux¶Libraries to handle compiled objects¶5e5816df99c85b83fa2d9cd166f99eee
+¶pcre2-syntax¶10.40¶1.amzn2023.0.3¶noarch¶pcre2-10.40-1.amzn2023.0.3.src.rpm¶234436¶BSD¶Amazon Linux¶Documentation for PCRE2 regular expressions¶04216c727b57435b2dd7f8c8d641f988
+¶libselinux¶3.4¶5.amzn2023.0.2¶x86_64¶libselinux-3.4-5.amzn2023.0.2.src.rpm¶177941¶Public Domain¶Amazon Linux¶SELinux library and simple utilities¶d35dc4d8c738aa76daea02cbef18f53b
+¶sed¶4.8¶7.amzn2023.0.2¶x86_64¶sed-4.8-7.amzn2023.0.2.src.rpm¶813711¶GPLv3+¶Amazon Linux¶A GNU stream text editor¶c7b634a65222bedd59a8cf1434e7d105
+¶libmount¶2.37.4¶1.amzn2023.0.3¶x86_64¶util-linux-2.37.4-1.amzn2023.0.3.src.rpm¶315405¶LGPLv2+¶Amazon Linux¶Device mounting library¶5e952040a3938b5ca0e9aa0ef2cae66a
+¶ca-certificates¶2023.2.60¶1.0.amzn2023.0.3¶noarch¶ca-certificates-2023.2.60-1.0.amzn2023.0.3.src.rpm¶2380030¶Public Domain¶Amazon Linux¶The Mozilla CA root certificate bundle¶22597ba2f63a1232d34ac8f3784a774f
+¶glib2¶2.74.7¶688.amzn2023.0.1¶x86_64¶glib2-2.74.7-688.amzn2023.0.1.src.rpm¶14035431¶LGPLv2+¶Amazon Linux¶A library of handy utility functions¶ab344c0ea07deb41cbfc68749a728571
+¶libcurl-minimal¶8.0.1¶1.amzn2023.0.1¶x86_64¶curl-8.0.1-1.amzn2023.0.1.src.rpm¶559246¶MIT¶Amazon Linux¶Conservatively configured build of libcurl for minimal installations¶a0edebba5a659923f925b6819b8d1e16
+¶librepo¶1.14.2¶1.amzn2023.0.4¶x86_64¶librepo-1.14.2-1.amzn2023.0.4.src.rpm¶225718¶LGPLv2+¶Amazon Linux¶Repodata downloading library¶0d420bae335bc9c7193de0e63e5822d7
+¶rpm-libs¶4.16.1.3¶12.amzn2023.0.6¶x86_64¶rpm-4.16.1.3-12.amzn2023.0.6.src.rpm¶771356¶GPLv2+ and LGPLv2+ with exceptions¶Amazon Linux¶Libraries for manipulating RPM packages¶3eed42d74b9197a59adfbee63b906e61
+¶libmodulemd¶2.13.0¶2.amzn2023.0.2¶x86_64¶libmodulemd-2.13.0-2.amzn2023.0.2.src.rpm¶734170¶MIT¶Amazon Linux¶Module metadata manipulation library¶e09caecbd5143c057c3a63ed8fee8b08
+¶libdnf¶0.67.0¶1.amzn2023.0.5¶x86_64¶libdnf-0.67.0-1.amzn2023.0.5.src.rpm¶2113605¶LGPLv2+¶Amazon Linux¶Library providing simplified C and Python API to libsolv¶fbc72d14e92b342fc94d224d04200cc9
+¶rpm-build-libs¶4.16.1.3¶12.amzn2023.0.6¶x86_64¶rpm-4.16.1.3-12.amzn2023.0.6.src.rpm¶199590¶GPLv2+ and LGPLv2+ with exceptions¶Amazon Linux¶Libraries for building RPM packages¶0febf3fc808979967293ddc51783656f
+¶python3¶3.9.16¶1.amzn2023.0.3¶x86_64¶python3.9-3.9.16-1.amzn2023.0.3.src.rpm¶33316¶Python¶Amazon Linux¶Python 3.9 interpreter¶9a8a3542507b160f4754482545c72f17
+¶python3-libdnf¶0.67.0¶1.amzn2023.0.5¶x86_64¶libdnf-0.67.0-1.amzn2023.0.5.src.rpm¶4143004¶LGPLv2+¶Amazon Linux¶Python 3 bindings for the libdnf library.¶3866e2648f63524ffc5205207fe4758e
+¶python3-libcomps¶0.1.18¶1.amzn2023.0.2¶x86_64¶libcomps-0.1.18-1.amzn2023.0.2.src.rpm¶147397¶GPLv2+¶Amazon Linux¶Python 3 bindings for libcomps library¶128afa6e1c6fb20c36509efeb1096fa9
+¶python3-rpm¶4.16.1.3¶12.amzn2023.0.6¶x86_64¶rpm-4.16.1.3-12.amzn2023.0.6.src.rpm¶387474¶GPLv2+¶Amazon Linux¶Python 3 bindings for apps which will manipulate RPM packages¶ede30ed48d85b223e635c310eececde3
+¶dnf-data¶4.12.0¶2.amzn2023.0.4¶noarch¶dnf-4.12.0-2.amzn2023.0.4.src.rpm¶38898¶GPLv2+¶Amazon Linux¶Common data and configuration files for DNF¶069a24376b4e714717ff71d5add37eb8
+¶dnf¶4.12.0¶2.amzn2023.0.4¶noarch¶dnf-4.12.0-2.amzn2023.0.4.src.rpm¶2274989¶GPLv2+¶Amazon Linux¶Package manager¶11a37d301cef56e2d0a4e7ecdba620a3
+¶gpg-pubkey¶d832c631¶63977702¶¶(none)¶0¶pubkey¶¶Amazon Linux <amazon-linux@amazon.com> public key¶(none)
+¶elfutils-debuginfod-client¶0.188¶3.amzn2023.0.2¶x86_64¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶66784¶GPLv3+ and (GPLv2+ or LGPLv3+)¶Amazon Linux¶Library and command line client for build-id HTTP ELF/DWARF server¶5c9da172e9b759f734b1a63b138df939
+¶systemd-libs¶252.4¶1161.amzn2023.0.4¶x86_64¶systemd-252.4-1161.amzn2023.0.4.src.rpm¶1812712¶LGPLv2+ and MIT¶Amazon Linux¶systemd libraries¶35986d36b5ecaa4c6ad80edd4482450d
+¶nspr¶4.35.0¶5.amzn2023.0.2¶x86_64¶nss-3.90.0-3.amzn2023.0.2.src.rpm¶323808¶MPLv2.0¶Amazon Linux¶Netscape Portable Runtime¶a2d3747479daac2e3ec5581be94f8a10
+2¶libpng¶1.6.37¶10.amzn2023.0.2¶x86_64¶libpng-1.6.37-10.amzn2023.0.2.src.rpm¶256815¶zlib¶Amazon Linux¶A library of functions for manipulating PNG image format files¶445797af933effa4216d3bc48bdc1b25
+¶boost-system¶1.75.0¶4.amzn2023.0.2¶x86_64¶boost-1.75.0-4.amzn2023.0.2.src.rpm¶16953¶Boost and MIT and Python¶Amazon Linux¶Run-time component of boost system support library¶5b2c78c4d5e629c28beb51e8b3ef0037
+1¶findutils¶4.8.0¶2.amzn2023.0.2¶x86_64¶findutils-4.8.0-2.amzn2023.0.2.src.rpm¶1758638¶GPLv3+¶Amazon Linux¶The GNU versions of find utilities (find and xargs)¶43df8a4c58c10b28ee7f2fe9ba646ca2
+¶nss-util¶3.90.0¶3.amzn2023.0.2¶x86_64¶nss-3.90.0-3.amzn2023.0.2.src.rpm¶235032¶MPLv2.0¶Amazon Linux¶Network Security Services Utilities Library¶cb41a671745284c0ade5de81e61f077d
+1¶fonts-filesystem¶2.0.5¶5.amzn2023.0.2¶noarch¶fonts-rpm-macros-2.0.5-5.amzn2023.0.2.src.rpm¶0¶MIT¶Amazon Linux¶Directories used by font packages¶ecf3d56caf176e2c20c96e75633db500
+¶urw-base35-fonts-common¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶38280¶AGPLv3 and GPLv2+¶Amazon Linux¶Common files of the (URW)++ Level 2 Core Font Set¶a0c5294bd2f330e4299305dcb7cb49b9
+¶file¶5.39¶7.amzn2023.0.2¶x86_64¶file-5.39-7.amzn2023.0.2.src.rpm¶103328¶BSD¶Amazon Linux¶Utility for determining file types¶d44b504d375b3e2d322ba1e4897eaa4c
+¶libjpeg-turbo¶2.1.4¶2.amzn2023.0.2¶x86_64¶libjpeg-turbo-2.1.4-2.amzn2023.0.2.src.rpm¶689437¶IJG¶Amazon Linux¶A MMX/SSE2/SIMD accelerated library for manipulating JPEG image files¶76e5939bcd1a037dd2782954ba8df43c
+¶libmpc¶1.2.1¶2.amzn2023.0.2¶x86_64¶libmpc-1.2.1-2.amzn2023.0.2.src.rpm¶138733¶LGPLv3+¶Amazon Linux¶C library for multiple precision complex arithmetic¶fc6d751d9022ab58faf8dccf1e7b21c3
+¶apr¶1.7.2¶2.amzn2023.0.2¶x86_64¶apr-1.7.2-2.amzn2023.0.2.src.rpm¶304149¶ASL 2.0 and BSD with advertising and ISC and BSD¶Amazon Linux¶Apache Portable Runtime library¶ea5a559509121e9e547c9abad8892b94
+¶apr-util-openssl¶1.6.3¶1.amzn2023.0.1¶x86_64¶apr-util-1.6.3-1.amzn2023.0.1.src.rpm¶24407¶ASL 2.0¶Amazon Linux¶APR utility library OpenSSL crypto support¶6fb0566c11c914fd6af48e13531c9f17
+¶apr-util¶1.6.3¶1.amzn2023.0.1¶x86_64¶apr-util-1.6.3-1.amzn2023.0.1.src.rpm¶222471¶ASL 2.0¶Amazon Linux¶Apache Portable Runtime Utility library¶c7129de56eca896d00e6c3752eb185bb
+¶gzip¶1.12¶1.amzn2023.0.1¶x86_64¶gzip-1.12-1.amzn2023.0.1.src.rpm¶385309¶GPLv3+ and GFDL¶Amazon Linux¶The GNU data compression program¶de0bf421d9e5ce989d18f0bdab103053
+¶util-linux-core¶2.37.4¶1.amzn2023.0.3¶x86_64¶util-linux-2.37.4-1.amzn2023.0.3.src.rpm¶1302535¶GPLv2 and GPLv2+ and LGPLv2+ and BSD with advertising and Public Domain¶Amazon Linux¶The most essential utilities from the util-linux suite.¶6e6bfc1b3bdce7016f7ec88a479ec2c5
+¶diffutils¶3.8¶1.amzn2023.0.2¶x86_64¶diffutils-3.8-1.amzn2023.0.2.src.rpm¶1505704¶GPLv3+¶Amazon Linux¶GNU collection of diff utilities¶abd1d31da270831b490d568146db502f
+¶libquadmath¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶333723¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶GCC __float128 shared support library¶465e706ae2e960e18d4b45ee7470ed59
+¶unzip¶6.0¶57.amzn2023.0.2¶x86_64¶unzip-6.0-57.amzn2023.0.2.src.rpm¶401323¶BSD¶Amazon Linux¶A utility for unpacking zip files¶8bb8ea09e4ee16fc9dd9e992f808ee07
+¶xz¶5.2.5¶9.amzn2023.0.2¶x86_64¶xz-5.2.5-9.amzn2023.0.2.src.rpm¶686139¶GPLv2+ and Public Domain¶Amazon Linux¶LZMA compression utilities¶e89f408c560a62e94e7374ef7c50a132
+¶kmod¶29¶2.amzn2023.0.5¶x86_64¶kmod-29-2.amzn2023.0.5.src.rpm¶217917¶GPLv2+¶Amazon Linux¶Linux kernel module management utilities¶e6f86fe8951738cfdd8806f02aa32655
+¶kmod-libs¶29¶2.amzn2023.0.5¶x86_64¶kmod-29-2.amzn2023.0.5.src.rpm¶130942¶LGPLv2+¶Amazon Linux¶Libraries to handle kernel module loading and unloading¶8b2bcd3d19678308eee24361e6c8c64d
+¶m4¶1.4.19¶2.amzn2023.0.2¶x86_64¶m4-1.4.19-2.amzn2023.0.2.src.rpm¶595630¶GPLv3+¶Amazon Linux¶GNU macro processor¶4b4608ec27f914abfb2c42db6fa1a541
+¶libwebp¶1.2.4¶1.amzn2023.0.4¶x86_64¶libwebp-1.2.4-1.amzn2023.0.4.src.rpm¶1068355¶BSD¶Amazon Linux¶Library and tools for the WebP graphics format¶70ed05c92ae1c2f1f31e0b2831c07910
+¶libfdisk¶2.37.4¶1.amzn2023.0.3¶x86_64¶util-linux-2.37.4-1.amzn2023.0.3.src.rpm¶369051¶LGPLv2+¶Amazon Linux¶Partitioning library for fdisk-like programs.¶84489b3ffa35c78ebc98ff132bb2e6eb
+¶zip¶3.0¶28.amzn2023.0.2¶x86_64¶zip-3.0-28.amzn2023.0.2.src.rpm¶711391¶BSD¶Amazon Linux¶A file compression and packaging utility compatible with PKZIP¶88567579d70d0ce6e15c3fd1ba948e25
+1¶grub2-common¶2.06¶61.amzn2023.0.7¶noarch¶grub2-2.06-61.amzn2023.0.7.src.rpm¶7830784¶GPLv3+¶Amazon Linux¶grub2 common layout¶fc61a826375a487f9e2f8040dda747c9
+1¶emacs-filesystem¶28.2¶3.amzn2023.0.6¶noarch¶emacs-28.2-3.amzn2023.0.6.src.rpm¶0¶GPLv3+ and CC0¶Amazon Linux¶Emacs filesystem layout¶579859b49f656437a8e150e9c6ba4ca4
+¶adobe-mappings-cmap¶20190730¶1.amzn2023.0.2¶noarch¶adobe-mappings-cmap-20190730-1.amzn2023.0.2.src.rpm¶15044965¶BSD¶Amazon Linux¶CMap resources for Adobe's character collections¶2271c583ae946b5544bcc60de265dace
+2¶tar¶1.34¶1.amzn2023.0.3¶x86_64¶tar-1.34-1.amzn2023.0.3.src.rpm¶3156509¶GPLv3+¶Amazon Linux¶GNU file archiving program¶932bb82e6fa69951c8f2f337a0f8e748
+¶libtool-ltdl¶2.4.7¶1.amzn2023.0.3¶x86_64¶libtool-2.4.7-1.amzn2023.0.3.src.rpm¶72248¶LGPLv2+¶Amazon Linux¶Runtime libraries for GNU Libtool Dynamic Module Loader¶3d823ed2c259938a8f8556504b808804
+¶efivar-libs¶38¶2.amzn2023.0.1¶x86_64¶efivar-38-2.amzn2023.0.1.src.rpm¶379226¶LGPL-2.1-only¶Amazon Linux¶Library to manage UEFI variables¶0667874cf0276d9f21944370654ec785
+¶cpio¶2.13¶13.amzn2023.0.2¶x86_64¶cpio-2.13-13.amzn2023.0.2.src.rpm¶1088283¶GPLv3+¶Amazon Linux¶A GNU archiving program¶cb03acde6f85ebb4858540154e296b8b
+¶libICE¶1.0.10¶6.amzn2023.0.2¶x86_64¶libICE-1.0.10-6.amzn2023.0.2.src.rpm¶174946¶MIT¶Amazon Linux¶X.Org X11 ICE runtime library¶326b01b66c11dab09888f48123c5baec
+¶libtextstyle¶0.21¶4.amzn2023.0.2¶x86_64¶gettext-0.21-4.amzn2023.0.2.src.rpm¶208128¶GPLv3+¶Amazon Linux¶Text styling library¶12f11c900074331211ccb4e1b56f1848
+¶gettext-libs¶0.21¶4.amzn2023.0.2¶x86_64¶gettext-0.21-4.amzn2023.0.2.src.rpm¶1024572¶LGPLv2+ and GPLv3+¶Amazon Linux¶Libraries for gettext¶601646149570165fb7837116bd28801f
+¶gettext¶0.21¶4.amzn2023.0.2¶x86_64¶gettext-0.21-4.amzn2023.0.2.src.rpm¶5308375¶GPLv3+ and LGPLv2+ and GFDL¶Amazon Linux¶GNU libraries and utilities for producing multi-lingual messages¶79f1b2d4eecd04be862fa7d9c3a76fc6
+¶jansson¶2.14¶0.amzn2023¶x86_64¶jansson-2.14-0.amzn2023.src.rpm¶87501¶MIT¶Amazon Linux¶C library for encoding, decoding and manipulating JSON data¶1759bc1c1bc5eeaa334cc398e297e461
+¶binutils¶2.39¶6.amzn2023.0.7¶x86_64¶binutils-2.39-6.amzn2023.0.7.src.rpm¶21502416¶GPLv3+¶Amazon Linux¶A GNU collection of binary utilities¶b687f291111e8e185aa54f6818134091
+¶libseccomp¶2.5.3¶1.amzn2023.0.2¶x86_64¶libseccomp-2.5.3-1.amzn2023.0.2.src.rpm¶175652¶LGPLv2¶Amazon Linux¶Enhanced seccomp library¶b3a2b8b8929711cd242afdce03fb9911
+¶libSM¶1.2.3¶8.amzn2023.0.2¶x86_64¶libSM-1.2.3-8.amzn2023.0.2.src.rpm¶95397¶MIT¶Amazon Linux¶X.Org X11 SM runtime library¶ed250bab5ee93851d6c78637a1ba5a59
+2¶mokutil¶0.6.0¶6.amzn2023¶x86_64¶mokutil-0.6.0-6.amzn2023.src.rpm¶101326¶GPLv3+¶Amazon Linux¶Tool to manage UEFI Secure Boot MoK Keys¶a4dcb6159737ca42dea2e9eb825f8241
+¶efivar¶38¶2.amzn2023.0.1¶x86_64¶efivar-38-2.amzn2023.0.1.src.rpm¶177056¶LGPL-2.1-only¶Amazon Linux¶Tools to manage UEFI variables¶397c57c00d11aa7d2707ac39477197ff
+¶adobe-mappings-cmap-deprecated¶20190730¶1.amzn2023.0.2¶noarch¶adobe-mappings-cmap-20190730-1.amzn2023.0.2.src.rpm¶596045¶BSD¶Amazon Linux¶Deprecated CMap resources for Adobe's character collections¶7683cc0d143ab7ee6b2c5efe98c67551
+¶libgfortran¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶3010814¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶Fortran runtime¶9f71c56b3939cd93babf6ec277e0f2b1
+¶cracklib¶2.9.6¶27.amzn2023.0.2¶x86_64¶cracklib-2.9.6-27.amzn2023.0.2.src.rpm¶252338¶LGPLv2+¶Amazon Linux¶A password-checking library¶58153146671405b1ec670084cfe2ea7b
+¶libserf¶1.3.9¶23.amzn2023.0.3¶x86_64¶libserf-1.3.9-23.amzn2023.0.3.src.rpm¶135766¶ASL 2.0¶Amazon Linux¶High-Performance Asynchronous HTTP Client Library¶fae85646dddc40d6ad4eac017f9c71f7
+¶cpp¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶28684539¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶The C Preprocessor¶f30ede94fae12a34eb19c8053fbb9b12
+¶nss-softokn-freebl¶3.90.0¶3.amzn2023.0.2¶x86_64¶nss-3.90.0-3.amzn2023.0.2.src.rpm¶784406¶MPLv2.0¶Amazon Linux¶Freebl library for the Network Security Services¶91252442c6388a615b40172ded34e502
+¶nss-softokn¶3.90.0¶3.amzn2023.0.2¶x86_64¶nss-3.90.0-3.amzn2023.0.2.src.rpm¶1303275¶MPLv2.0¶Amazon Linux¶Network Security Services Softoken Module¶c153e85c34e3b315578e304294e3aab2
+¶boost-thread¶1.75.0¶4.amzn2023.0.2¶x86_64¶boost-1.75.0-4.amzn2023.0.2.src.rpm¶123833¶Boost and MIT and Python¶Amazon Linux¶Run-time component of boost thread library¶008006593b3fae8051ee276ee34b8abc
+¶boost-filesystem¶1.75.0¶4.amzn2023.0.2¶x86_64¶boost-1.75.0-4.amzn2023.0.2.src.rpm¶126997¶Boost and MIT and Python¶Amazon Linux¶Run-time component of boost filesystem library¶7cfaa00b03c5eb50c7aa14fded74ac30
+¶procps-ng¶3.3.17¶1.amzn2023.0.2¶x86_64¶procps-ng-3.3.17-1.amzn2023.0.2.src.rpm¶1014271¶GPL+ and GPLv2 and GPLv2+ and GPLv3+ and LGPLv2+¶Amazon Linux¶System and process monitoring utilities¶7c49bd62faa047fcb7b43f3023296810
+1¶dbus-libs¶1.12.28¶1.amzn2023.0.1¶x86_64¶dbus-1.12.28-1.amzn2023.0.1.src.rpm¶374238¶(GPLv2+ or AFL) and GPLv2+¶Amazon Linux¶Libraries for accessing D-BUS¶65fc8cc1dc1a71827cf54b255cef18c3
+¶elfutils¶0.188¶3.amzn2023.0.2¶x86_64¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶2827986¶GPLv3+ and (GPLv2+ or LGPLv3+) and GFDL¶Amazon Linux¶A collection of utilities and DSOs to handle ELF files and DWARF data¶285dbb85f6eeb7bf02c8574d09ed5b31
+¶adobe-mappings-pdf¶20180407¶8.amzn2023.0.2¶noarch¶adobe-mappings-pdf-20180407-8.amzn2023.0.2.src.rpm¶4398414¶BSD¶Amazon Linux¶PDF mapping resources from Adobe¶62385af6c44450ec40cab0a3598251c3
+¶package-notes-srpm-macros¶0.4¶18.amzn2023.0.5¶noarch¶package-notes-0.4-18.amzn2023.0.5.src.rpm¶4713¶CC0¶Amazon Linux¶Generate a linker script to insert .note.package section¶f1d067222c53a3b57ee03434e4d95d1b
+¶rust-srpm-macros¶21¶42.amzn2023.0.2¶noarch¶rust-srpm-macros-21-42.amzn2023.0.2.src.rpm¶2447¶MIT¶Amazon Linux¶RPM macros for building Rust source packages¶d6eef3477db5350f42c086dacaffabfc
+¶ocaml-srpm-macros¶6¶6.amzn2023.0.2¶noarch¶ocaml-srpm-macros-6-6.amzn2023.0.2.src.rpm¶745¶GPLv2+¶Amazon Linux¶OCaml architecture macros¶dd318d694824e8da6040ec7bcdd10c67
+¶annobin-docs¶10.93¶1.amzn2023.0.1¶noarch¶annobin-10.93-1.amzn2023.0.1.src.rpm¶93473¶GPLv3+¶Amazon Linux¶Documentation and shell scripts for use with annobin¶255e06855326ab05410932f4dba56fd9
+¶efi-srpm-macros¶5¶4.amzn2023.0.5¶noarch¶efi-rpm-macros-5-4.amzn2023.0.5.src.rpm¶41109¶GPLv3+¶Amazon Linux¶Common SRPM Macros for building EFI-related packages¶8d487fdbcd2409dbcfb7c9881737e90b
+¶kernel-srpm-macros¶1.0¶14.amzn2023.0.2¶noarch¶kernel-srpm-macros-1.0-14.amzn2023.0.2.src.rpm¶1064¶MIT¶Amazon Linux¶RPM macros that list arches the full kernel is built on¶d434b140973a001ae2c4cf81d0c2ea5d
+¶libX11-common¶1.7.2¶3.amzn2023.0.3¶noarch¶libX11-1.7.2-3.amzn2023.0.3.src.rpm¶1336063¶MIT¶Amazon Linux¶Common data for libX11¶ebad5b2235bfe6bafc0ee02476669ba9
+¶ghc-srpm-macros¶1.5.0¶4.amzn2023.0.2¶noarch¶ghc-srpm-macros-1.5.0-4.amzn2023.0.2.src.rpm¶535¶GPLv2+¶Amazon Linux¶RPM macros for building Haskell source packages¶bbe5c6115698bedfff4372c75e42e37b
+¶perl-srpm-macros¶1¶39.amzn2023.0.2¶noarch¶perl-srpm-macros-1-39.amzn2023.0.2.src.rpm¶862¶GPLv3+¶Amazon Linux¶RPM macros for building Perl source package from source repository¶b1f5b4d58177516bba72634cca4d2cca
+¶xml-common¶0.6.3¶56.amzn2023.0.2¶noarch¶sgml-common-0.6.3-56.amzn2023.0.2.src.rpm¶80280¶GPL+¶Amazon Linux¶Common XML catalog and DTD files¶ae8d764c5ced763c75a26b7beb8dc04a
+¶pkgconf-m4¶1.8.0¶4.amzn2023.0.2¶noarch¶pkgconf-1.8.0-4.amzn2023.0.2.src.rpm¶14187¶GPLv2+ with exceptions¶Amazon Linux¶m4 macros for pkgconf¶9e33f9e11c57c6fe6f0f43ccab699814
+¶kbd-misc¶2.4.0¶2.amzn2023.0.3¶noarch¶kbd-2.4.0-2.amzn2023.0.3.src.rpm¶2573497¶GPLv2+¶Amazon Linux¶Data for kbd package¶eb16bbec2900205cbcef528f4ec27eb0
+¶openblas-srpm-macros¶2¶9.amzn2023.0.2¶noarch¶openblas-srpm-macros-2-9.amzn2023.0.2.src.rpm¶104¶MIT¶Amazon Linux¶OpenBLAS architecture macros¶a54191dbe9e320a37b0458634c7f5170
+¶xkeyboard-config¶2.33¶1.amzn2023.0.2¶noarch¶xkeyboard-config-2.33-1.amzn2023.0.2.src.rpm¶6083876¶MIT¶Amazon Linux¶X Keyboard Extension configuration data¶42514e2ae2692a0794ebeb3bfb8ae26f
+¶libxkbcommon¶1.3.0¶1.amzn2023.0.2¶x86_64¶libxkbcommon-1.3.0-1.amzn2023.0.2.src.rpm¶341458¶MIT¶Amazon Linux¶X.Org X11 XKB parsing library¶ae259491371b52d23e5860c5a3a2079d
+¶lua-srpm-macros¶1¶4.amzn2023.0.2¶noarch¶lua-rpm-macros-1-4.amzn2023.0.2.src.rpm¶1314¶MIT¶Amazon Linux¶RPM macros for building Lua source packages¶55a8ae6049bfa7cf232ccaf36dee8e3b
+¶gettext-common-devel¶0.21¶4.amzn2023.0.2¶noarch¶gettext-0.21-4.amzn2023.0.2.src.rpm¶407064¶GPLv3+¶Amazon Linux¶Common development files for gettext¶b738ac1961ca5fcf11678340f1fe3c5c
+¶gettext-devel¶0.21¶4.amzn2023.0.2¶x86_64¶gettext-0.21-4.amzn2023.0.2.src.rpm¶869515¶LGPLv2+ and GPLv3+ and GFDL¶Amazon Linux¶Development files for gettext¶7218c969bfe258c78a83c6e3339b354a
+1¶dbus-common¶1.12.28¶1.amzn2023.0.1¶noarch¶dbus-1.12.28-1.amzn2023.0.1.src.rpm¶11481¶(GPLv2+ or AFL) and GPLv2+¶Amazon Linux¶D-BUS message bus configuration¶8a5493d76a6e1ce1ffadff34aa7a217f
+¶glibc-headers-x86¶2.34¶52.amzn2023.0.3¶noarch¶glibc-2.34-52.amzn2023.0.3.src.rpm¶2165071¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Amazon Linux¶Additional internal header files for glibc-devel.¶cf92e8f3cc2f68c740e2b03a47b30013
+¶google-noto-fonts-common¶20201206¶2.amzn2023.0.2¶noarch¶google-noto-fonts-20201206-2.amzn2023.0.2.src.rpm¶15345¶OFL¶Amazon Linux¶Common files for Noto fonts¶0e97b6a21c494e113283646ed4df5559
+¶google-noto-sans-vf-fonts¶20201206¶2.amzn2023.0.2¶noarch¶google-noto-fonts-20201206-2.amzn2023.0.2.src.rpm¶1174095¶OFL¶Amazon Linux¶Noto Sans variable font¶e84c4de84f862887209884e9c2379f39
+¶langpacks-core-font-en¶3.0¶21.amzn2023.0.4¶noarch¶langpacks-3.0-21.amzn2023.0.4.src.rpm¶351¶GPLv2+¶Amazon Linux¶English core font meta-package¶a30d805d9278038f7bc86ff8708170cd
+¶google-droid-sans-fonts¶20200215¶9.amzn2023.0.2¶noarch¶google-droid-fonts-20200215-9.amzn2023.0.2.src.rpm¶6557602¶ASL 2.0¶Amazon Linux¶Droid Sans, a humanist sans-serif font family¶cc5253db938c0994b6e62b908d8b5e46
+¶qrencode-libs¶4.1.1¶2.amzn2023.0.2¶x86_64¶qrencode-4.1.1-2.amzn2023.0.2.src.rpm¶177364¶LGPLv2+¶Amazon Linux¶QR Code encoding library - Shared libraries¶55148d3345f2b7419269f13c0a024a82
+¶cyrus-sasl-lib¶2.1.27¶18.amzn2023.0.3¶x86_64¶cyrus-sasl-2.1.27-18.amzn2023.0.3.src.rpm¶2435712¶BSD with advertising¶Amazon Linux¶Shared libraries needed by applications which use Cyrus SASL¶bd2ef07446a0c5ffd07914784a31e36a
+¶libargon2¶20171227¶9.amzn2023.0.2¶x86_64¶argon2-20171227-9.amzn2023.0.2.src.rpm¶50715¶Public Domain or ASL 2.0¶Amazon Linux¶The password-hashing library¶9c873dc78476d23092b72ef8a2aabfe0
+¶info¶6.7¶10.amzn2023.0.2¶x86_64¶texinfo-6.7-10.amzn2023.0.2.src.rpm¶512354¶GPLv3+¶Amazon Linux¶A stand-alone TTY-based reader for GNU texinfo documentation¶4447b3380bd8a18f4e5ca5e5922cb9c5
+¶ed¶1.14.2¶10.amzn2023.0.2¶x86_64¶ed-1.14.2-10.amzn2023.0.2.src.rpm¶130027¶GPLv3+ and GFDL¶Amazon Linux¶The GNU line editor¶d00479dbbaa4ed7e05513ea476079e17
+¶patch¶2.7.6¶14.amzn2023.0.2¶x86_64¶patch-2.7.6-14.amzn2023.0.2.src.rpm¶265658¶GPLv3+¶Amazon Linux¶Utility for modifying/upgrading files¶f1bafe00aaa02feecb65bc47abeb5b9f
+¶ncurses¶6.2¶4.20200222.amzn2023.0.4¶x86_64¶ncurses-6.2-4.20200222.amzn2023.0.4.src.rpm¶619493¶MIT¶Amazon Linux¶Ncurses support utilities¶549c3048f2e9d6a0446c9747108016a4
+¶kernel-headers¶6.1.41¶63.114.amzn2023¶x86_64¶kernel-6.1.41-63.114.amzn2023.src.rpm¶6406561¶GPLv2 and Redistributable, no modification permitted¶Amazon Linux¶Header files for the Linux kernel for use by glibc¶33cd29895c862cc1ddae9dd84bb5e613
+¶libedit¶3.1¶38.20210714cvs.amzn2023.0.2¶x86_64¶libedit-3.1-38.20210714cvs.amzn2023.0.2.src.rpm¶261086¶BSD¶Amazon Linux¶The NetBSD Editline library¶19eff901839d2c4594dcb6d9487c03ad
+¶libpkgconf¶1.8.0¶4.amzn2023.0.2¶x86_64¶pkgconf-1.8.0-4.amzn2023.0.2.src.rpm¶76185¶ISC¶Amazon Linux¶Backend library for pkgconf¶dbb00f8e1193c575a36ddcee0cb7e519
+¶gc¶8.0.4¶5.amzn2023.0.2¶x86_64¶gc-8.0.4-5.amzn2023.0.2.src.rpm¶246856¶BSD¶Amazon Linux¶Garbage collector for C and C++¶7af8883d3f3d661d4778e8a0f4d7036a
+¶guile22¶2.2.7¶2.amzn2023.0.2¶x86_64¶guile22-2.2.7-2.amzn2023.0.2.src.rpm¶45862705¶LGPLv3+¶Amazon Linux¶A GNU implementation of Scheme for application extensibility¶a6ea5d26845bb2f9a7f585092593aea9
+1¶make¶4.3¶5.amzn2023.0.2¶x86_64¶make-4.3-5.amzn2023.0.2.src.rpm¶1729230¶GPLv3+¶Amazon Linux¶A GNU tool which simplifies the build process for users¶e5e0843631e56a8273ac2b1637ceb612
+¶pixman¶0.40.0¶3.amzn2023.0.3¶x86_64¶pixman-0.40.0-3.amzn2023.0.3.src.rpm¶764871¶MIT¶Amazon Linux¶Pixel manipulation library¶07911cddfe162451ec4327ce1a2a6ef9
+¶utf8proc¶2.6.1¶2.amzn2023.0.2¶x86_64¶utf8proc-2.6.1-2.amzn2023.0.2.src.rpm¶366910¶Unicode and MIT¶Amazon Linux¶Library for processing UTF-8 encoded Unicode strings¶bbeb269ec4fab264054c88138210dd6e
+¶subversion-libs¶1.14.2¶5.amzn2023.0.3¶x86_64¶subversion-1.14.2-5.amzn2023.0.3.src.rpm¶4808132¶ASL 2.0¶Amazon Linux¶Libraries for Subversion Version Control system¶bac052770cfae8124a776fa00ce7befb
+¶which¶2.21¶26.amzn2023.0.2¶x86_64¶which-2.21-26.amzn2023.0.2.src.rpm¶82535¶GPLv3¶Amazon Linux¶Displays where a particular program in your path is located¶6d610757973b45681835bca9e2c8ec86
+¶fribidi¶1.0.11¶3.amzn2023.0.2¶x86_64¶fribidi-1.0.11-3.amzn2023.0.2.src.rpm¶203095¶LGPLv2+ and UCD¶Amazon Linux¶Library implementing the Unicode Bidirectional Algorithm¶837aca1837bcabbf4ad4541095622d78
+¶shared-mime-info¶2.2¶2.amzn2023.0.1¶x86_64¶shared-mime-info-2.2-2.amzn2023.0.1.src.rpm¶5276117¶GPLv2+¶Amazon Linux¶Shared MIME information database¶3e6b66f55d2c6e925b6ec655d1446b78
+¶gdk-pixbuf2¶2.42.6¶1.amzn2023.0.2¶x86_64¶gdk-pixbuf2-2.42.6-1.amzn2023.0.2.src.rpm¶2614565¶LGPLv2+¶Amazon Linux¶An image loading library¶f7500575fc2d36ac985a5deba3e688c3
+¶zstd¶1.5.2¶1.amzn2023.0.3¶x86_64¶zstd-1.5.2-1.amzn2023.0.3.src.rpm¶1632424¶BSD and GPLv2¶Amazon Linux¶Zstd compression library¶91368db3eae5f4bb3950f68eeb1e4dd1
+¶fuse-libs¶2.9.9¶13.amzn2023.0.2¶x86_64¶fuse-2.9.9-13.amzn2023.0.2.src.rpm¶317758¶LGPLv2+¶Amazon Linux¶File System in Userspace (FUSE) v2 libraries¶1cf5580081b212595c8e3f1fe750f0bf
+¶libevent¶2.1.12¶3.amzn2023.0.3¶x86_64¶libevent-2.1.12-3.amzn2023.0.3.src.rpm¶932778¶BSD and ISC¶Amazon Linux¶Abstract asynchronous event notification library¶f6b6475db99c7edec05153d1850bb8b9
+¶avahi-libs¶0.8¶14.amzn2023.0.8¶x86_64¶avahi-0.8-14.amzn2023.0.8.src.rpm¶184718¶LGPLv2+¶Amazon Linux¶Libraries for avahi run-time use¶ca10295b0e6b9140691a595a3224d5ee
+¶jbig2dec-libs¶0.19¶4.amzn2023.0.1¶x86_64¶jbig2dec-0.19-4.amzn2023.0.1.src.rpm¶173347¶AGPLv3+¶Amazon Linux¶A decoder implementation of the JBIG2 image compression format¶2753b28bf3b386363776719134344a83
+¶libsemanage¶3.4¶5.amzn2023.0.2¶x86_64¶libsemanage-3.4-5.amzn2023.0.2.src.rpm¶308310¶LGPLv2+¶Amazon Linux¶SELinux binary policy manipulation library¶e8cf9d73b62a607bcb81b7f4fcb38ab2
+2¶shadow-utils¶4.9¶12.amzn2023.0.2¶x86_64¶shadow-utils-4.9-12.amzn2023.0.2.src.rpm¶3837446¶BSD and GPLv2+¶Amazon Linux¶Utilities for managing accounts and shadow password files¶83507a87f326de914fabba572a324ef3
+¶tpm2-tss¶3.2.2¶1.amzn2023¶x86_64¶tpm2-tss-3.2.2-1.amzn2023.src.rpm¶2263146¶BSD and TCGL¶Amazon Linux¶TPM2.0 Software Stack¶f4346dc0e1e9059205e178f7e5232b47
+¶dbus-broker¶32¶1.amzn2023.0.2¶x86_64¶dbus-broker-32-1.amzn2023.0.2.src.rpm¶401438¶ASL 2.0¶Amazon Linux¶Linux D-Bus Message Broker¶edfe4110aa692cea1b2f7cdd69fbf055
+1¶dbus¶1.12.28¶1.amzn2023.0.1¶x86_64¶dbus-1.12.28-1.amzn2023.0.1.src.rpm¶0¶(GPLv2+ or AFL) and GPLv2+¶Amazon Linux¶D-BUS message bus¶cb963f33cdbc7be74e9309ed327c63d3
+¶libutempter¶1.2.1¶4.amzn2023.0.2¶x86_64¶libutempter-1.2.1-4.amzn2023.0.2.src.rpm¶59649¶LGPLv2+¶Amazon Linux¶A privileged helper for utmp/wtmp updates¶ee4303a93a0cd8a5e36d87375b6fcf40
+¶sbsigntools¶0.9.4¶8.amzn2023.0.2¶x86_64¶sbsigntools-0.9.4-8.amzn2023.0.2.src.rpm¶279277¶GPLv3+¶Amazon Linux¶Signing utility for UEFI secure boot¶e606e3506c6697d797ca4a66c36f50fb
+¶libfontenc¶1.1.3¶15.amzn2023.0.2¶x86_64¶libfontenc-1.1.3-15.amzn2023.0.2.src.rpm¶64329¶MIT¶Amazon Linux¶X.Org X11 libfontenc runtime library¶6a06fa9d850d128d923e225e3b70dcfc
+¶nettle¶3.8¶1.amzn2023.0.2¶x86_64¶nettle-3.8-1.amzn2023.0.2.src.rpm¶789190¶LGPLv3+ or GPLv2+¶Amazon Linux¶A low-level cryptographic library¶4144a4bef6507464ae623fc73b471bc8
+¶gnutls¶3.8.0¶376.amzn2023.0.2¶x86_64¶gnutls-3.8.0-376.amzn2023.0.2.src.rpm¶3368245¶GPLv3+ and LGPLv2+¶Amazon Linux¶A TLS protocol implementation¶6815a70dbf34bae816185348c3acdec0
+1¶cups-libs¶2.3.3op2¶18.amzn2023.0.5¶x86_64¶cups-2.3.3op2-18.amzn2023.0.5.src.rpm¶688193¶LGPLv2 and zlib¶Amazon Linux¶CUPS printing system - libraries¶a59c6e83a457cd20a372ebf113cb65b5
+¶memstrack¶0.2.4¶2.amzn2023.0.3¶x86_64¶memstrack-0.2.4-2.amzn2023.0.3.src.rpm¶127372¶GPLv3¶Amazon Linux¶A memory allocation tracer, like a hot spot analyzer for memory allocation¶b96a7c24d60bc29957679391260e5871
+¶libdb¶5.3.28¶49.amzn2023.0.2¶x86_64¶libdb-5.3.28-49.amzn2023.0.2.src.rpm¶1931182¶BSD and LGPLv2 and Sleepycat¶Amazon Linux¶The Berkeley DB database library for C¶2f8cdd0a0d1568e45d20ede3f55728cf
+¶libstdc++-devel¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶13510064¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶Header files and libraries for C++ development¶eb7f118bf46add340bf6c922152c06b5
+¶bzip2¶1.0.8¶6.amzn2023.0.2¶x86_64¶bzip2-1.0.8-6.amzn2023.0.2.src.rpm¶96296¶BSD¶Amazon Linux¶A file compression utility¶a40ed5cbe4852185a6516844a3dba494
+¶less¶608¶2.amzn2023.0.1¶x86_64¶less-608-2.amzn2023.0.1.src.rpm¶379985¶GPLv3+ or BSD¶Amazon Linux¶A text file browser similar to more, but better¶4516a45c642cbf86e80da7c50cb245fb
+¶pigz¶2.5¶1.amzn2023.0.3¶x86_64¶pigz-2.5-1.amzn2023.0.3.src.rpm¶148554¶zlib¶Amazon Linux¶Parallel implementation of gzip¶720adba2e0bb59b2419c938b06a6b251
+¶graphite2¶1.3.14¶7.amzn2023.0.2¶x86_64¶graphite2-1.3.14-7.amzn2023.0.2.src.rpm¶205935¶(LGPLv2+ or GPLv2+ or MPLv1.1) and (Netscape or GPLv2+ or LGPLv2+)¶Amazon Linux¶Font rendering capabilities for complex non-Roman writing systems¶36ff095409b5e08e91250d11d3ba0df2
+¶xxhash-libs¶0.8.0¶3.amzn2023.0.2¶x86_64¶xxhash-0.8.0-3.amzn2023.0.2.src.rpm¶101166¶BSD¶Amazon Linux¶Extremely fast hash algorithm - library¶a66c0bcaf5c6eb98c22444e8f79f62cc
+¶gdb-minimal¶12.1¶5.amzn2023.0.3¶x86_64¶gdb-12.1-5.amzn2023.0.3.src.rpm¶13121100¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ and GPLv2+ with exceptions and GPL+ and LGPLv2+ and LGPLv3+ and BSD and Public Domain and GFDL¶Amazon Linux¶A GNU source-level debugger for C, C++, Fortran, Go and other languages (minimal version)¶b7069ca712fc04d392e89e0a4c877e99
+¶gdisk¶1.0.8¶1.amzn2023.0.2¶x86_64¶gdisk-1.0.8-1.amzn2023.0.2.src.rpm¶726615¶GPLv2¶Amazon Linux¶An fdisk-like partitioning tool for GPT disks¶6d4aae783d074f2557652abf79a13350
+¶libcbor¶0.7.0¶3.amzn2023.0.2¶x86_64¶libcbor-0.7.0-3.amzn2023.0.2.src.rpm¶99919¶MIT¶Amazon Linux¶A CBOR parsing library¶77f31f42960f8c9b56634bd284a1cefb
+¶tbb¶2020.3¶7.amzn2023.0.2¶x86_64¶tbb-2020.3-7.amzn2023.0.2.src.rpm¶501212¶ASL 2.0¶Amazon Linux¶The Threading Building Blocks library abstracts low-level threading details¶044e77b9145203354a15b36b2b538ea8
+¶dyninst¶10.2.1¶6.amzn2023.0.2¶x86_64¶dyninst-10.2.1-6.amzn2023.0.2.src.rpm¶12167335¶LGPLv2+¶Amazon Linux¶An API for Run-time Code Generation¶47c4c69efef9fa680594918ac4f58dea
+¶groff-base¶1.22.4¶7.amzn2023.0.2¶x86_64¶groff-1.22.4-7.amzn2023.0.2.src.rpm¶4049640¶GPLv3+ and GFDL and BSD and MIT¶Amazon Linux¶Parts of the groff formatting system required to display manual pages¶72fc9a2cf34d1c060f13e3629f0cc49c
+¶perl-Digest¶1.20¶1.amzn2023.0.2¶noarch¶perl-Digest-1.20-1.amzn2023.0.2.src.rpm¶36900¶GPL+ or Artistic¶Amazon Linux¶Modules that calculate message digests¶d52c8007b485c28515414c53972ed9e7
+¶perl-Digest-MD5¶2.58¶2.amzn2023.0.2¶x86_64¶perl-Digest-MD5-2.58-2.amzn2023.0.2.src.rpm¶61449¶(GPL+ or Artistic) and RSA¶Amazon Linux¶Perl interface to the MD5 algorithm¶da9490a7943b6d67a08bcdea9840c853
+0¶perl-B¶1.80¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶504988¶GPL+ or Artistic¶Amazon Linux¶Perl compiler backend¶1edd42209e61e0b053a77f78a46b8588
+0¶perl-FileHandle¶2.03¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶10530¶GPL+ or Artistic¶Amazon Linux¶Object methods for file handles¶d5ce0c2c58c07594281da0e5cfd671b9
+0¶perl-AutoLoader¶5.74¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶22036¶GPL+ or Artistic¶Amazon Linux¶Load subroutines only on demand¶f4139e68fbe65c6b0a494b97129ce32a
+¶perl-Data-Dumper¶2.174¶460.amzn2023.0.2¶x86_64¶perl-Data-Dumper-2.174-460.amzn2023.0.2.src.rpm¶111796¶GPL+ or Artistic¶Amazon Linux¶Stringify perl data structures, suitable for printing and eval¶6439f144325eb209c9ee8db7ba2753a3
+¶perl-libnet¶3.13¶2.amzn2023.0.2¶noarch¶perl-libnet-3.13-2.amzn2023.0.2.src.rpm¶299340¶GPL+ or Artistic¶Amazon Linux¶Perl clients for various network protocols¶f365306ab0b05a76951fbb77d3defffe
+¶perl-Net-SSLeay¶1.92¶2.amzn2023.0.2¶x86_64¶perl-Net-SSLeay-1.92-2.amzn2023.0.2.src.rpm¶1399917¶Artistic 2.0¶Amazon Linux¶Perl extension for using OpenSSL¶afe8b4beb2a9df8af80c6e3e73142e1c
+0¶perl-base¶2.27¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶13819¶GPL+ or Artistic¶Amazon Linux¶Establish an ISA relationship with base classes at compile time¶2b039d0c9f1190cad2e984eb12fe0bd1
+¶perl-URI¶5.09¶1.amzn2023.0.2¶noarch¶perl-URI-5.09-1.amzn2023.0.2.src.rpm¶216907¶GPL+ or Artistic¶Amazon Linux¶A Perl module implementing URI parsing and manipulation¶07da35b7318299ecc0835cc45903546e
+0¶perl-if¶0.60.800¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶6874¶GPL+ or Artistic¶Amazon Linux¶Use a Perl module if a condition holds¶2ab3d33b6e63a1e247480a11591dded5
+¶perl-Mozilla-CA¶20200520¶4.amzn2023.0.2¶noarch¶perl-Mozilla-CA-20200520-4.amzn2023.0.2.src.rpm¶5866¶MPLv2.0¶Amazon Linux¶Mozilla's CA certificate bundle in PEM format¶2f9f2fd0ff0d5209de25c863f039492b
+¶perl-Text-Tabs+Wrap¶2021.0726¶1.amzn2023.0.1¶noarch¶perl-Text-Tabs+Wrap-2021.0726-1.amzn2023.0.1.src.rpm¶22927¶TTWL¶Amazon Linux¶Expand tabs and do simple line wrapping¶a3e131c34dff11f9ca4c2d4a7a789dde
+1¶perl-Pod-Escapes¶1.07¶458.amzn2023.0.2¶noarch¶perl-Pod-Escapes-1.07-458.amzn2023.0.2.src.rpm¶25764¶GPL+ or Artistic¶Amazon Linux¶Resolve POD escape sequences¶9be8c3703e0a5e99d71d41d82d86e030
+¶perl-File-Path¶2.18¶2.amzn2023.0.2¶noarch¶perl-File-Path-2.18-2.amzn2023.0.2.src.rpm¶65333¶GPL+ or Artistic¶Amazon Linux¶Create or remove directory trees¶dad90e29494e2d8f8d0baf503da71245
+2¶perl-Time-Local¶1.300¶5.amzn2023.0.2¶noarch¶perl-Time-Local-1.300-5.amzn2023.0.2.src.rpm¶67344¶GPL+ or Artistic¶Amazon Linux¶Efficiently compute time from local and GMT time¶de01f1126a02ce14c123d342b8689949
+¶perl-IO-Socket-IP¶0.41¶3.amzn2023.0.2¶noarch¶perl-IO-Socket-IP-0.41-3.amzn2023.0.2.src.rpm¶100238¶GPL+ or Artistic¶Amazon Linux¶Drop-in replacement for IO::Socket::INET supporting both IPv4 and IPv6¶3ba10e7a779eae88e0f7631ca40f9c51
+¶perl-IO-Socket-SSL¶2.075¶1.amzn2023.0.2¶noarch¶perl-IO-Socket-SSL-2.075-1.amzn2023.0.2.src.rpm¶618439¶(GPL-1.0-or-later OR Artistic-1.0-Perl) AND MPL-2.0¶Amazon Linux¶Perl library for transparent SSL¶5a8d5d30630ff9bf627f1fef13900bb4
+0¶perl-POSIX¶1.94¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶240572¶GPL+ or Artistic¶Amazon Linux¶Perl interface to IEEE Std 1003.1¶f44f503cebeb02a7a44164479c2f8a49
+¶perl-Term-Cap¶1.17¶458.amzn2023.0.2¶noarch¶perl-Term-Cap-1.17-458.amzn2023.0.2.src.rpm¶29851¶GPL+ or Artistic¶Amazon Linux¶Perl termcap interface¶90d8eecc2bfce63441e1c69e6d39c875
+¶perl-Term-ANSIColor¶5.01¶459.amzn2023.0.2¶noarch¶perl-Term-ANSIColor-5.01-459.amzn2023.0.2.src.rpm¶100303¶GPL+ or Artistic¶Amazon Linux¶Color screen output using ANSI escape sequences¶0308af00e8fcc59a2ad3fca2c389f8fb
+0¶perl-IPC-Open3¶1.21¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶25045¶GPL+ or Artistic¶Amazon Linux¶Open a process for reading, writing, and error handling¶f5d8732113c6816c4fff666cb0bc41be
+0¶perl-subs¶1.03¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶3061¶GPL+ or Artistic¶Amazon Linux¶Perl pragma to predeclare subroutine names¶0031d3a9bd2bc7d024c51d1893622620
+0¶perl-Class-Struct¶0.66¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶26953¶GPL+ or Artistic¶Amazon Linux¶Declare struct-like data types as Perl classes¶7e84b139bd64a55212772f8988e30e54
+¶perl-HTTP-Tiny¶0.078¶1.amzn2023.0.3¶noarch¶perl-HTTP-Tiny-0.078-1.amzn2023.0.3.src.rpm¶154021¶GPL+ or Artistic¶Amazon Linux¶Small, simple, correct HTTP/1.1 client¶a742261c2dc9308997f815b01b37c9a4
+1¶perl-Pod-Simple¶3.42¶2.amzn2023.0.2¶noarch¶perl-Pod-Simple-3.42-2.amzn2023.0.2.src.rpm¶577286¶GPL+ or Artistic¶Amazon Linux¶Framework for parsing POD documentation¶49171bc8aaa61c5a05979f903296fed9
+1¶perl-File-Temp¶0.231.100¶2.amzn2023.0.2¶noarch¶perl-File-Temp-0.231.100-2.amzn2023.0.2.src.rpm¶166550¶GPL+ or Artistic¶Amazon Linux¶Return name and handle of a temporary file safely¶7af3a86d3d9889ced24062745ec18fee
+4¶perl-Socket¶2.032¶1.amzn2023.0.2¶x86_64¶perl-Socket-2.032-1.amzn2023.0.2.src.rpm¶125215¶GPL+ or Artistic¶Amazon Linux¶Networking constants and support functions¶312677cf873f455c1ede600c5c74b5d3
+0¶perl-SelectSaver¶1.02¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶3171¶GPL+ or Artistic¶Amazon Linux¶Save and restore selected file handle¶def625febc1bd8e15f6aa05750bea079
+0¶perl-Symbol¶1.08¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶7847¶GPL+ or Artistic¶Amazon Linux¶Manipulate Perl symbols and their names¶82e0e72addb7328dad19f2757f6e7bfe
+0¶perl-File-stat¶1.09¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶13949¶GPL+ or Artistic¶Amazon Linux¶By-name interface to Perl built-in stat functions¶35c84d826b3a3b83b778a9f2782972fc
+1¶perl-podlators¶4.14¶458.amzn2023.0.2¶noarch¶perl-podlators-4.14-458.amzn2023.0.2.src.rpm¶288742¶(GPL+ or Artistic) and FSFAP¶Amazon Linux¶Format POD source into various output formats¶aff8d4451f6733329a095715facd7960
+¶perl-Pod-Perldoc¶3.28.01¶459.amzn2023.0.3¶noarch¶perl-Pod-Perldoc-3.28.01-459.amzn2023.0.3.src.rpm¶170969¶GPL+ or Artistic¶Amazon Linux¶Look up Perl documentation in Pod format¶2a5b1ecf37dd850d34fc953517750ed0
+0¶perl-mro¶1.23¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶44035¶GPL+ or Artistic¶Amazon Linux¶Method resolution order¶fb917052ea65e92177c9848d821fd76e
+0¶perl-Fcntl¶1.13¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶30684¶GPL+ or Artistic¶Amazon Linux¶File operation options¶aced1333280068f64e7e9c1ff34ae56e
+0¶perl-overloading¶0.02¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶5894¶GPL+ or Artistic¶Amazon Linux¶Perl pragma to lexically control overloading¶4d290b6586f7f378caa7711de4a9394f
+¶perl-Text-ParseWords¶3.30¶458.amzn2023.0.2¶noarch¶perl-Text-ParseWords-3.30-458.amzn2023.0.2.src.rpm¶13101¶GPL+ or Artistic¶Amazon Linux¶Parse text into an array of tokens or array of arrays¶f0896225e209cb0e5f422cd4da8a1472
+4¶perl-Pod-Usage¶2.01¶2.amzn2023.0.2¶noarch¶perl-Pod-Usage-2.01-2.amzn2023.0.2.src.rpm¶87186¶GPL+ or Artistic¶Amazon Linux¶Print a usage message from embedded POD documentation¶486ba890af63ab7d6b2edf4c681459f1
+0¶perl-IO¶1.43¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶163695¶GPL+ or Artistic¶Amazon Linux¶Perl input/output modules¶1a7b022413558624ca01f4803cfa5343
+¶perl-MIME-Base64¶3.16¶2.amzn2023.0.2¶x86_64¶perl-MIME-Base64-3.16-2.amzn2023.0.2.src.rpm¶48073¶(GPL+ or Artistic) and MIT¶Amazon Linux¶Encoding and decoding of Base64 and quoted-printable strings¶2322b871e5a050bdc6706ef5415de30c
+1¶perl-Storable¶3.21¶458.amzn2023.0.2¶x86_64¶perl-Storable-3.21-458.amzn2023.0.2.src.rpm¶232524¶GPL+ or Artistic¶Amazon Linux¶Persistence for Perl data structures¶89f3306f48b8d03db3f27f8cd9d221e3
+4¶perl-Scalar-List-Utils¶1.56¶459.amzn2023.0.2¶x86_64¶perl-Scalar-List-Utils-1.56-459.amzn2023.0.2.src.rpm¶143555¶GPL+ or Artistic¶Amazon Linux¶A selection of general-utility scalar and list subroutines¶7b171fccd68e1ee4e71960c30a0c157a
+0¶perl-Errno¶1.30¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶9536¶GPL+ or Artistic¶Amazon Linux¶System errno constants¶5bba16c527688d9a1f18565eed35e3a5
+0¶perl-vars¶1.05¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶4927¶GPL+ or Artistic¶Amazon Linux¶Perl pragma to predeclare global variable names¶30241aae0d7086f59d36f6cdd73a1cce
+0¶perl-overload¶1.31¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶72822¶GPL+ or Artistic¶Amazon Linux¶Overloading Perl operations¶53b06a95209eba14b42e01c542010480
+0¶perl-Getopt-Std¶1.12¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶12107¶GPL+ or Artistic¶Amazon Linux¶Process single-character switches with switch clustering¶944527c861edefbe5dd1c02c86734888
+¶perl-constant¶1.33¶459.amzn2023.0.2¶noarch¶perl-constant-1.33-459.amzn2023.0.2.src.rpm¶27104¶GPL+ or Artistic¶Amazon Linux¶Perl pragma to declare constants¶1db17cdf74e2ee116e83bdda84897ecf
+1¶perl-parent¶0.238¶458.amzn2023.0.2¶noarch¶perl-parent-0.238-458.amzn2023.0.2.src.rpm¶9535¶GPL+ or Artistic¶Amazon Linux¶Establish an ISA relationship with base classes at compile time¶da909c0049ebf30d932f8cb9bdecd533
+0¶perl-File-Basename¶2.85¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶15339¶GPL+ or Artistic¶Amazon Linux¶Parse file paths into directory, file name, and suffix¶5ae76d276f12168058583c39682cb471
+1¶perl-Getopt-Long¶2.52¶2.amzn2023.0.2¶noarch¶perl-Getopt-Long-2.52-2.amzn2023.0.2.src.rpm¶139937¶GPLv2+ or Artistic¶Amazon Linux¶Extended processing of command line options¶4170e24c3e91d60410180b15325f8841
+0¶perl-NDBM_File¶1.15¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶30528¶GPL+ or Artistic¶Amazon Linux¶Tied access to ndbm files¶1c9d8855ee08baaddcf260344712e37c
+0¶perl-DynaLoader¶1.47¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶33065¶GPL+ or Artistic¶Amazon Linux¶Dynamically load C libraries into Perl code¶c67b2ab1a6f712c5fd70b74c6facc373
+¶perl-Carp¶1.50¶458.amzn2023.0.2¶noarch¶perl-Carp-1.50-458.amzn2023.0.2.src.rpm¶47889¶GPL+ or Artistic¶Amazon Linux¶Alternative warn and die for modules¶f0ce037638420a6642761de61ff909bc
+¶perl-Exporter¶5.74¶459.amzn2023.0.2¶noarch¶perl-Exporter-5.74-459.amzn2023.0.2.src.rpm¶55358¶GPL+ or Artistic¶Amazon Linux¶Implements default import method for modules¶4594950b1417df0d36548b0034ff0fc1
+¶perl-PathTools¶3.78¶459.amzn2023.0.2¶x86_64¶perl-PathTools-3.78-459.amzn2023.0.2.src.rpm¶182461¶(GPL+ or Artistic) and BSD¶Amazon Linux¶PathTools Perl module (Cwd, File::Spec)¶79491de4733b98cb6c2a929d43975845
+4¶perl-Encode¶3.15¶462.amzn2023.0.2¶x86_64¶perl-Encode-3.15-462.amzn2023.0.2.src.rpm¶10241565¶(GPL+ or Artistic) and Artistic 2.0 and UCD¶Amazon Linux¶Character encodings in Perl¶1d3bac8780026fb7dccfd6238e776984
+4¶perl-libs¶5.32.1¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶8992777¶(GPL+ or Artistic) and BSD and HSRL and MIT and UCD and Public domain¶Amazon Linux¶The libraries for the perl run-time¶b56958dfb4dad350a4daff85de33c705
+4¶perl-interpreter¶5.32.1¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶120590¶GPL+ or Artistic¶Amazon Linux¶Standalone executable Perl interpreter¶e31ff46beb9e64798dcc582059b7b06c
+0¶perl-File-Find¶1.37¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶39638¶GPL+ or Artistic¶Amazon Linux¶Traverse a directory tree¶1ef69d7151fdc6b91aea69bd7d13c82d
+1¶perl-threads¶2.25¶458.amzn2023.0.3¶x86_64¶perl-threads-2.25-458.amzn2023.0.3.src.rpm¶114481¶GPL+ or Artistic¶Amazon Linux¶Perl interpreter-based threads¶c41f4a3382e6e8a33ada3a3b8b6bb130
+0¶perl-File-Copy¶2.34¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶21088¶GPL+ or Artistic¶Amazon Linux¶Copy files or file handles¶24543ecb973f9e23aea3e9a49cdebd6f
+¶perl-threads-shared¶1.61¶458.amzn2023.0.2¶x86_64¶perl-threads-shared-1.61-458.amzn2023.0.2.src.rpm¶82195¶GPL+ or Artistic¶Amazon Linux¶Perl extension for sharing data structures between threads¶ae663294375e99d731c4b90741c36762
+¶perl-Thread-Queue¶3.14¶458.amzn2023.0.2¶noarch¶perl-Thread-Queue-3.14-458.amzn2023.0.2.src.rpm¶29827¶GPL+ or Artistic¶Amazon Linux¶Thread-safe queues¶f2f9234f79e0c742db8e9ba4df856e90
+¶perl-TermReadKey¶2.38¶9.amzn2023.0.2¶x86_64¶perl-TermReadKey-2.38-9.amzn2023.0.2.src.rpm¶66226¶(Copyright only) and (Artistic or GPL+)¶Amazon Linux¶A perl module for simple terminal control¶af484bd24dbc5aef696b74f7ff9ad563
+¶perl-XML-Parser¶2.46¶7.amzn2023.0.2¶x86_64¶perl-XML-Parser-2.46-7.amzn2023.0.2.src.rpm¶670601¶GPL+ or Artistic¶Amazon Linux¶Perl module for parsing XML documents¶1796031e672c0446a69942d207a19961
+0¶perl-lib¶0.65¶477.amzn2023.0.5¶x86_64¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶9672¶GPL+ or Artistic¶Amazon Linux¶Manipulate @INC at compile time¶ba372065867088329e2738de6e47c8da
+0¶perl-File-Compare¶1.100.600¶477.amzn2023.0.5¶noarch¶perl-5.32.1-477.amzn2023.0.5.src.rpm¶6696¶GPL+ or Artistic¶Amazon Linux¶Compare files or file handles¶84dba858dcea3ffe95856af67d69e626
+¶autoconf¶2.69¶36.amzn2023.0.3¶noarch¶autoconf-2.69-36.amzn2023.0.3.src.rpm¶2323383¶GPLv2+ and GFDL¶Amazon Linux¶A GNU tool for automatically configuring source code¶2eb3c938f7e3d7c07493467d55e1a461
+¶automake¶1.16.5¶9.amzn2023.0.3¶noarch¶automake-1.16.5-9.amzn2023.0.3.src.rpm¶1826462¶GPLv2+ and GFDL and Public Domain and MIT¶Amazon Linux¶A GNU tool for automatically creating Makefiles¶0785e53a29478681093f373165ebf873
+1¶perl-Error¶0.17029¶5.amzn2023.0.2¶noarch¶perl-Error-0.17029-5.amzn2023.0.2.src.rpm¶79692¶(GPL+ or Artistic) and MIT¶Amazon Linux¶Error/exception handling in an OO-ish way¶fb074998f6484ca0f83d5409dbb03f14
+¶dwz¶0.14¶6.amzn2023.0.2¶x86_64¶dwz-0.14-6.amzn2023.0.2.src.rpm¶281902¶GPLv2+ and GPLv3+¶Amazon Linux¶DWARF optimization and duplicate removal tool¶b58d9d6cce4260522e690ffa95264293
+¶pkgconf-pkg-config¶1.8.0¶4.amzn2023.0.2¶x86_64¶pkgconf-1.8.0-4.amzn2023.0.2.src.rpm¶989¶ISC¶Amazon Linux¶pkgconf shim to provide /usr/bin/pkg-config¶db7e927bbb2170c19425d0a97485c2d3
+¶pkgconf¶1.8.0¶4.amzn2023.0.2¶x86_64¶pkgconf-1.8.0-4.amzn2023.0.2.src.rpm¶81667¶ISC¶Amazon Linux¶Package compiler and linker metadata toolkit¶74cb2a4855941701e835604ef9228507
+¶go-srpm-macros¶3.1.0¶32.amzn2023.0.2¶noarch¶go-rpm-macros-3.1.0-32.amzn2023.0.2.src.rpm¶60838¶GPL-3.0-or-later¶Amazon Linux¶Source-stage rpm automation for Go packages¶bee07cbccb2606086147866c7798cc9d
+1¶fonts-srpm-macros¶2.0.5¶5.amzn2023.0.2¶noarch¶fonts-rpm-macros-2.0.5-5.amzn2023.0.2.src.rpm¶56503¶GPLv3+¶Amazon Linux¶Source-stage rpm automation for fonts packages¶0b0003abca33b651409c3d0b265be63c
+¶python-srpm-macros¶3.9¶41.amzn2023.0.5¶noarch¶python-rpm-macros-3.9-41.amzn2023.0.5.src.rpm¶42281¶MIT and Python and GPLv2+¶Amazon Linux¶RPM macros for building Python source packages¶3af55ac6039396025fd93c7776635752
+¶amazon-rpm-config¶228¶3.amzn2023.0.2¶noarch¶amazon-rpm-config-228-3.amzn2023.0.2.src.rpm¶193135¶GPL+¶Amazon Linux¶Amazon Linux specific rpm configuration files¶310eb8799597fc218ca20adcb8355ed6
+¶annobin-plugin-gcc¶10.93¶1.amzn2023.0.1¶x86_64¶annobin-10.93-1.amzn2023.0.1.src.rpm¶908683¶GPLv3+¶Amazon Linux¶annobin gcc plugin¶b1a5a757fbe889b5bca3b28ffe9b5a80
+¶gcc¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶88912932¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶Various compilers (C, C++, Objective-C, ...)¶d1c22574c2151af7aea83c3f0c4f0559
+¶glibc-devel¶2.34¶52.amzn2023.0.3¶x86_64¶glibc-2.34-52.amzn2023.0.3.src.rpm¶127608¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Amazon Linux¶Object files for development using standard C libraries.¶1d20456d026e780b2ee8d4d87edb70f0
+¶libxcrypt-devel¶4.4.33¶7.amzn2023¶x86_64¶libxcrypt-4.4.33-7.amzn2023.src.rpm¶30995¶LGPL-2.1-or-later AND BSD-3-Clause AND BSD-2-Clause AND BSD-2-Clause-FreeBSD AND 0BSD AND CC0-1.0 AND LicenseRef-Fedora-Public-Domain¶Amazon Linux¶Development files for libxcrypt¶f803d8f9f4f886d911ff85f862d6d303
+¶zlib-devel¶1.2.11¶33.amzn2023.0.4¶x86_64¶zlib-1.2.11-33.amzn2023.0.4.src.rpm¶141092¶zlib and Boost¶Amazon Linux¶Header files and libraries for Zlib development¶35f12d7ebd6cd89a6d833ae679a86cce
+¶elfutils-libelf-devel¶0.188¶3.amzn2023.0.2¶x86_64¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶34389¶GPLv2+ or LGPLv3+¶Amazon Linux¶Development support for libelf¶f0b1e67a284b32e8364d3809db87ee00
+¶libquadmath-devel¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶21134¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶GCC __float128 support¶0c47b96ca1ecedfae1064f22adb5b122
+¶libzstd-devel¶1.5.2¶1.amzn2023.0.3¶x86_64¶zstd-1.5.2-1.amzn2023.0.3.src.rpm¶178548¶BSD and GPLv2¶Amazon Linux¶Header files for Zstd library¶c2a059e4e804c7bc6e7cac26285e3c35
+¶elfutils-debuginfod-client-devel¶0.188¶3.amzn2023.0.2¶x86_64¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶9420¶GPLv2+ or LGPLv3+¶Amazon Linux¶Libraries and headers to build debuginfod client applications¶f6262b67fb5e5713b0bce855bce413f7
+¶xz-devel¶5.2.5¶9.amzn2023.0.2¶x86_64¶xz-5.2.5-9.amzn2023.0.2.src.rpm¶206635¶Public Domain¶Amazon Linux¶Devel libraries & headers for liblzma¶4979a3b5d3302b0e7d4e211f1d378ede
+¶elfutils-devel¶0.188¶3.amzn2023.0.2¶x86_64¶elfutils-0.188-3.amzn2023.0.2.src.rpm¶177918¶GPLv2+ or LGPLv3+¶Amazon Linux¶Development libraries to handle compiled objects¶62f61d6ae61847c6eac4b386fc0e24b8
+¶libeconf¶0.4.0¶1.amzn2023.0.3¶x86_64¶libeconf-0.4.0-1.amzn2023.0.3.src.rpm¶46387¶MIT¶Amazon Linux¶Enhanced config file parser library¶90622266747d4a252b85f4b616880808
+¶pam¶1.5.1¶8.amzn2023.0.3¶x86_64¶pam-1.5.1-8.amzn2023.0.3.src.rpm¶1947535¶BSD and GPLv2+¶Amazon Linux¶An extensible library which provides authentication for applications¶24920042c38a54e2c9ab27e611230f89
+¶libpwquality¶1.4.4¶6.amzn2023.0.2¶x86_64¶libpwquality-1.4.4-6.amzn2023.0.2.src.rpm¶416332¶BSD or GPLv2+¶Amazon Linux¶A library for password generation and password quality checking¶4ae03ba03473a60928bbb9493f1004dd
+¶util-linux¶2.37.4¶1.amzn2023.0.3¶x86_64¶util-linux-2.37.4-1.amzn2023.0.3.src.rpm¶11229908¶GPLv2 and GPLv2+ and LGPLv2+ and BSD with advertising and Public Domain¶Amazon Linux¶Collection of basic system utilities¶019d3e765ad38c9bad13759903dacb29
+¶openssh¶8.7p1¶8.amzn2023.0.7¶x86_64¶openssh-8.7p1-8.amzn2023.0.7.src.rpm¶1967438¶BSD¶Amazon Linux¶An open source implementation of SSH protocol version 2¶a132090257fc304fbe8a26f77e6ce0bb
+¶systemd-networkd¶252.4¶1161.amzn2023.0.4¶x86_64¶systemd-252.4-1161.amzn2023.0.4.src.rpm¶1985301¶LGPLv2+¶Amazon Linux¶System daemon that manages network configurations¶d240cec63b87e5dcc178c1470bd0a109
+¶systemd-resolved¶252.4¶1161.amzn2023.0.4¶x86_64¶systemd-252.4-1161.amzn2023.0.4.src.rpm¶623151¶LGPLv2+ and MIT and GPLv2+¶Amazon Linux¶Network Name Resolution manager¶7fdd86c9542f9ce918f7a1f927225288
+¶systemd-pam¶252.4¶1161.amzn2023.0.4¶x86_64¶systemd-252.4-1161.amzn2023.0.4.src.rpm¶971392¶LGPLv2+ and MIT and GPLv2+¶Amazon Linux¶systemd PAM module¶816d303f48d1c25d8fe068ab402aa87c
+¶cryptsetup-libs¶2.6.1¶1.amzn2023.0.1¶x86_64¶cryptsetup-2.6.1-1.amzn2023.0.1.src.rpm¶2173302¶GPLv2+ and LGPLv2+¶Amazon Linux¶Cryptsetup shared library¶5dbb855dc37d7b25a0450a22aab5f34e
+¶systemd¶252.4¶1161.amzn2023.0.4¶x86_64¶systemd-252.4-1161.amzn2023.0.4.src.rpm¶13536263¶LGPLv2+ and MIT and GPLv2+¶Amazon Linux¶System and Service Manager¶16a909e26705706a8c6ba24cbaf7e46a
+¶device-mapper-libs¶1.02.185¶1.amzn2023.0.4¶x86_64¶lvm2-2.03.16-1.amzn2023.0.4.src.rpm¶430281¶LGPLv2¶Amazon Linux¶Device-mapper shared library¶1bae7a1f52a3d816b99508b9042ab214
+¶device-mapper¶1.02.185¶1.amzn2023.0.4¶x86_64¶lvm2-2.03.16-1.amzn2023.0.4.src.rpm¶361910¶GPLv2¶Amazon Linux¶Device mapper utility¶b3213381530ed8e9e29a6ddf55eec1cd
+1¶grub2-tools-minimal¶2.06¶61.amzn2023.0.7¶x86_64¶grub2-2.06-61.amzn2023.0.7.src.rpm¶3237769¶GPLv3+¶Amazon Linux¶Support tools for GRUB.¶8e3285b199f29893cb9d1f9f479a332b
+¶kpartx¶0.8.7¶16.amzn2023.0.2¶x86_64¶device-mapper-multipath-0.8.7-16.amzn2023.0.2.src.rpm¶77587¶GPLv2¶Amazon Linux¶Partition device manager for device-mapper devices¶9b5d244ef23b26f1be5865f3df982cd4
+¶libkcapi¶1.4.0¶105.amzn2023.0.1¶x86_64¶libkcapi-1.4.0-105.amzn2023.0.1.src.rpm¶101536¶BSD or GPLv2¶Amazon Linux¶User space interface to the Linux Kernel Crypto API¶00c05cce7df18a325bc8db5c588aed6e
+¶libkcapi-hmaccalc¶1.4.0¶105.amzn2023.0.1¶x86_64¶libkcapi-1.4.0-105.amzn2023.0.1.src.rpm¶37845¶BSD or GPLv2¶Amazon Linux¶Drop-in replacements for hmaccalc provided by the libkcapi package¶679ca6569b5b9f4135558391a6ae7520
+¶kbd¶2.4.0¶2.amzn2023.0.3¶x86_64¶kbd-2.4.0-2.amzn2023.0.3.src.rpm¶1582436¶GPLv2+¶Amazon Linux¶Tools for configuring the console (keyboard, virtual terminals, etc.)¶63e1485d67f4c673030b35f4ef0484ba
+¶systemd-udev¶252.4¶1161.amzn2023.0.4¶x86_64¶systemd-252.4-1161.amzn2023.0.4.src.rpm¶10745751¶LGPLv2+¶Amazon Linux¶Rule-based device node and kernel event manager¶f36a74483a9e44f36a481f62fadabb36
+¶libfido2¶1.10.0¶2.amzn2023.0.2¶x86_64¶libfido2-1.10.0-2.amzn2023.0.2.src.rpm¶236686¶BSD¶Amazon Linux¶FIDO2 library¶59faa130b933f75905766620fce1b8f2
+¶openssh-clients¶8.7p1¶8.amzn2023.0.7¶x86_64¶openssh-8.7p1-8.amzn2023.0.7.src.rpm¶2155350¶BSD¶Amazon Linux¶An open source SSH client applications¶57559f528aed24deda3b0ae185301c35
+¶git-core¶2.40.1¶1.amzn2023.0.1¶x86_64¶git-2.40.1-1.amzn2023.0.1.src.rpm¶20400074¶BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT¶Amazon Linux¶Core package of git with minimal functionality¶712ac59a63ba6afb24c83cdb454a2359
+¶git-core-doc¶2.40.1¶1.amzn2023.0.1¶noarch¶git-2.40.1-1.amzn2023.0.1.src.rpm¶14501053¶BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT¶Amazon Linux¶Documentation files for git-core¶f36a3a627fb560e4a7aa664b3245050e
+¶git¶2.40.1¶1.amzn2023.0.1¶x86_64¶git-2.40.1-1.amzn2023.0.1.src.rpm¶87279¶BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT¶Amazon Linux¶Fast Version Control System¶b9372c4eaea486bb266bf583f1c35810
+¶perl-Git¶2.40.1¶1.amzn2023.0.1¶noarch¶git-2.40.1-1.amzn2023.0.1.src.rpm¶66673¶BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT¶Amazon Linux¶Perl interface to Git¶35c4d4e2b0c0c177e10392d9c5c7b4ca
+¶dracut¶055¶6.amzn2023.0.8¶x86_64¶dracut-055-6.amzn2023.0.8.src.rpm¶1217648¶GPLv2+ and LGPLv2+ and GPLv2¶Amazon Linux¶Initramfs generator using udev¶70a442b103c8cc67514a2b137d4c4253
+¶os-prober¶1.77¶7.amzn2023.0.3¶x86_64¶os-prober-1.77-7.amzn2023.0.3.src.rpm¶114277¶GPLv2+ and GPL+¶Amazon Linux¶Probes disks on the system for installed operating systems¶11163fb3b61ae4c8af94de8ef4740689
+1¶grub2-tools¶2.06¶61.amzn2023.0.7¶x86_64¶grub2-2.06-61.amzn2023.0.7.src.rpm¶8547718¶GPLv3+¶Amazon Linux¶Support tools for GRUB.¶a60df5838787fa9c5e6f8bd6d79d820c
+¶grubby¶8.40¶51.amzn2023.0.4¶x86_64¶grubby-8.40-51.amzn2023.0.4.src.rpm¶65154¶GPLv2+¶Amazon Linux¶Command line tool for updating bootloader configs¶0d692d27ba4a038fe362e568662f0878
+¶crypto-policies-scripts¶20220428¶1.gitdfb10ea.amzn2023.0.2¶noarch¶crypto-policies-20220428-1.gitdfb10ea.amzn2023.0.2.src.rpm¶296944¶LGPLv2+¶Amazon Linux¶Tool to switch between crypto policies¶c9b2477fc6a8df63052d1e14ac089070
+¶nss-sysinit¶3.90.0¶3.amzn2023.0.2¶x86_64¶nss-3.90.0-3.amzn2023.0.2.src.rpm¶18919¶MPLv2.0¶Amazon Linux¶System NSS Initialization¶72577fcaf3d3669c06f3c016d207f870
+¶nss¶3.90.0¶3.amzn2023.0.2¶x86_64¶nss-3.90.0-3.amzn2023.0.2.src.rpm¶1943277¶MPLv2.0¶Amazon Linux¶Network Security Services¶e2317f405e409316b38c20406a905667
+¶systemtap-devel¶4.8¶3.amzn2023.0.5¶x86_64¶systemtap-4.8-3.amzn2023.0.5.src.rpm¶9550386¶GPLv2+¶Amazon Linux¶Programmable system-wide instrumentation system - development headers, tools¶0fa26000b8646f63e8ce500fae9a4b2a
+¶systemtap-runtime¶4.8¶3.amzn2023.0.5¶x86_64¶systemtap-4.8-3.amzn2023.0.5.src.rpm¶1063884¶GPLv2+¶Amazon Linux¶Programmable system-wide instrumentation system - runtime¶effa714813dc642c5fd16046ae8e17f1
+¶systemtap-client¶4.8¶3.amzn2023.0.5¶x86_64¶systemtap-4.8-3.amzn2023.0.5.src.rpm¶11792773¶GPLv2+¶Amazon Linux¶Programmable system-wide instrumentation system - client¶56d090d1fe5b9c9db936774ba0ef6448
+¶libijs¶0.35¶13.amzn2023.0.2¶x86_64¶libijs-0.35-13.amzn2023.0.2.src.rpm¶67556¶AGPLv3+¶Amazon Linux¶IJS Raster Image Transport Protocol Library¶59ce1dc8a6ec80fe3aeb0651221a25b3
+¶libbrotli¶1.0.9¶4.amzn2023.0.2¶x86_64¶brotli-1.0.9-4.amzn2023.0.2.src.rpm¶789034¶MIT¶Amazon Linux¶Library for brotli lossless compression algorithm¶5c6b2f5168e46455a2d86c941fc642e9
+¶libpaper¶1.1.28¶2.amzn2023.0.2¶x86_64¶libpaper-1.1.28-2.amzn2023.0.2.src.rpm¶97044¶GPLv2¶Amazon Linux¶Library and tools for handling papersize¶cbf73afca4476317fbdee5a4db655210
+¶libXau¶1.0.9¶6.amzn2023.0.2¶x86_64¶libXau-1.0.9-6.amzn2023.0.2.src.rpm¶65072¶MIT¶Amazon Linux¶Sample Authorization Protocol for X¶14a64add752a8ad85ea0f1450a8721e6
+¶libxcb¶1.13.1¶7.amzn2023.0.2¶x86_64¶libxcb-1.13.1-7.amzn2023.0.2.src.rpm¶1143982¶MIT¶Amazon Linux¶A C binding to the X11 protocol¶74ee4771267d75bf8a897f88847a2363
+¶libX11¶1.7.2¶3.amzn2023.0.3¶x86_64¶libX11-1.7.2-3.amzn2023.0.3.src.rpm¶1372820¶MIT¶Amazon Linux¶Core X11 protocol client library¶455bdd59b92bf3f6eb6ee6dccbdd46ce
+¶libXrender¶0.9.10¶14.amzn2023.0.2¶x86_64¶libXrender-0.9.10-14.amzn2023.0.2.src.rpm¶51671¶MIT¶Amazon Linux¶X.Org X11 libXrender runtime library¶82956037dfcb2bb718910ee45ed6e87d
+¶libXt¶1.2.0¶4.amzn2023.0.2¶x86_64¶libXt-1.2.0-4.amzn2023.0.2.src.rpm¶453361¶MIT¶Amazon Linux¶X.Org X11 libXt runtime library¶8c8ba33640e4f7635360c4d38a104e91
+¶libXext¶1.3.4¶6.amzn2023.0.2¶x86_64¶libXext-1.3.4-6.amzn2023.0.2.src.rpm¶99948¶MIT¶Amazon Linux¶X.Org X11 libXext runtime library¶7febdb80fc55192707c1b5a175a70b8f
+¶cairo¶1.17.6¶2.amzn2023.0.1¶x86_64¶cairo-1.17.6-2.amzn2023.0.1.src.rpm¶1773363¶LGPLv2 or MPLv1.1¶Amazon Linux¶A 2D graphics library¶bfd5de55f50875ffc732cbc19f663b9a
+¶harfbuzz¶7.0.0¶2.amzn2023.0.1¶x86_64¶harfbuzz-7.0.0-2.amzn2023.0.1.src.rpm¶2350474¶MIT¶Amazon Linux¶Text shaping library¶ed09ce2a649eaa23a93d781add1201fb
+¶freetype¶2.13.0¶2.amzn2023.0.1¶x86_64¶freetype-2.13.0-2.amzn2023.0.1.src.rpm¶912863¶(FTL or GPLv2+) and BSD and MIT and Public Domain and zlib with acknowledgement¶Amazon Linux¶A free and portable font rendering engine¶7261b09ee44f7bb4545b2643044d40cc
+¶fontconfig¶2.13.94¶2.amzn2023.0.2¶x86_64¶fontconfig-2.13.94-2.amzn2023.0.2.src.rpm¶845733¶MIT and Public Domain and UCD¶Amazon Linux¶Font configuration and customization library¶4fe7b8b118c8f58a475e2cb5ad64dc40
+¶libXmu¶1.1.3¶6.amzn2023.0.2¶x86_64¶libXmu-1.1.3-6.amzn2023.0.2.src.rpm¶188826¶MIT¶Amazon Linux¶X.Org X11 libXmu/libXmuu runtime libraries¶698287d20b1b1b736ad2c8a7cf3e9281
+¶libXpm¶3.5.15¶2.amzn2023.0.1¶x86_64¶libXpm-3.5.15-2.amzn2023.0.1.src.rpm¶145639¶MIT¶Amazon Linux¶X.Org X11 libXpm runtime library¶75dcc91680fecec24f59dbd7e5de6269
+¶libXaw¶1.0.13¶17.amzn2023.0.2¶x86_64¶libXaw-1.0.13-17.amzn2023.0.2.src.rpm¶510143¶MIT¶Amazon Linux¶X Athena Widget Set¶50675bfb5cf60f12e516a019c340f222
+¶libXft¶2.3.3¶6.amzn2023.0.2¶x86_64¶libXft-2.3.3-6.amzn2023.0.2.src.rpm¶140220¶MIT¶Amazon Linux¶X.Org X11 libXft runtime library¶08e1e8c953485342e75ad26c6bda8a93
+¶urw-base35-p052-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶1557220¶AGPLv3 and GPLv2+¶Amazon Linux¶P052 font family [part of Level 2 Core Font Set]¶86f6e56700086232e2c0babe0ca87788
+¶urw-base35-d050000l-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶86336¶AGPLv3 and GPLv2+¶Amazon Linux¶D050000L font family [part of Level 2 Core Font Set]¶2f4f3ddfff75cc05f04c487a2d49aa46
+¶urw-base35-gothic-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶1216723¶AGPLv3 and GPLv2+¶Amazon Linux¶URW Gothic font family [part of Level 2 Core Font Set]¶9974b7c142bf27175f1845c20ab40d14
+¶urw-base35-bookman-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶1428570¶AGPLv3 and GPLv2+¶Amazon Linux¶URW Bookman font family [part of Level 2 Core Font Set]¶63a352aa4cbd500b7961771e81fe914f
+¶urw-base35-c059-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶1460397¶AGPLv3 and GPLv2+¶Amazon Linux¶C059 font family [part of Level 2 Core Font Set]¶5def2eb9e7f107d4f12e085b94678b1f
+¶urw-base35-nimbus-sans-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶2505850¶AGPLv3 and GPLv2+¶Amazon Linux¶Nimbus Sans font family [part of Level 2 Core Font Set]¶58e2565a4047dd8bf818d032cc04bc1a
+¶urw-base35-nimbus-roman-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶1429732¶AGPLv3 and GPLv2+¶Amazon Linux¶Nimbus Roman font family [part of Level 2 Core Font Set]¶f7ef2caae9063176b16ad7e8e828705f
+¶urw-base35-nimbus-mono-ps-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶1099808¶AGPLv3 and GPLv2+¶Amazon Linux¶Nimbus Mono PS font family [part of Level 2 Core Font Set]¶91055bd04e417469df0a14de716c2d3d
+¶urw-base35-standard-symbols-ps-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶45248¶AGPLv3 and GPLv2+¶Amazon Linux¶Standard Symbols PS font family [part of Level 2 Core Font Set]¶dc657cb3fcfc07a1d0df4a3bc4554224
+¶urw-base35-z003-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶400137¶AGPLv3 and GPLv2+¶Amazon Linux¶Z003 font family [part of Level 2 Core Font Set]¶de76fb8b6cf1066e529aae3d1805e1a9
+¶urw-base35-fonts¶20200910¶6.amzn2023.0.2¶noarch¶urw-base35-fonts-20200910-6.amzn2023.0.2.src.rpm¶5478¶AGPLv3 and GPLv2+¶Amazon Linux¶Core Font Set containing 35 freely distributable fonts from (URW)++¶43944a0d88a5ff5fa0d9358aab235364
+¶mkfontscale¶1.2.1¶2.amzn2023.0.3¶x86_64¶mkfontscale-1.2.1-2.amzn2023.0.3.src.rpm¶55015¶MIT¶Amazon Linux¶Tool to generate legacy X11 font system index files¶30bfed5347ae70c49a23f5f7766427f2
+¶xorg-x11-fonts-ISO8859-1-100dpi¶7.5¶31.amzn2023.0.2¶noarch¶xorg-x11-fonts-7.5-31.amzn2023.0.2.src.rpm¶1070851¶MIT and Lucida and Public Domain¶Amazon Linux¶A set of 100dpi ISO-8859-1 fonts for X¶b6880ba7c85cb3b744e8a59ab1700818
+¶cairo-gobject¶1.17.6¶2.amzn2023.0.1¶x86_64¶cairo-1.17.6-2.amzn2023.0.1.src.rpm¶44552¶LGPLv2 or MPLv1.1¶Amazon Linux¶GObject bindings for cairo¶c62909b7856f3bb3b54b6e22593d0002
+¶lcms2¶2.12¶1.amzn2023.0.3¶x86_64¶lcms2-2.12-1.amzn2023.0.3.src.rpm¶425068¶MIT¶Amazon Linux¶Color Management Engine¶f25b6f05e6fc83dbf77fc95c1cf51d9a
+¶jbigkit-libs¶2.1¶21.amzn2023.0.1¶x86_64¶jbigkit-2.1-21.amzn2023.0.1.src.rpm¶121111¶GPLv2+¶Amazon Linux¶JBIG1 lossless image compression library¶c3228ee3e88e7c8134ab0fec9cf5d3ba
+¶libtiff¶4.4.0¶4.amzn2023.0.12¶x86_64¶libtiff-4.4.0-4.amzn2023.0.12.src.rpm¶612841¶libtiff¶Amazon Linux¶Library of functions for manipulating TIFF format image files¶d00af470c57680e2a3b9457c575683ed
+¶gd¶2.3.3¶5.amzn2023.0.3¶x86_64¶gd-2.3.3-5.amzn2023.0.3.src.rpm¶434579¶MIT¶Amazon Linux¶A graphics library for quick creation of PNG or JPEG images¶ace723ec9ac65fea3f6e7a59c43bb6dc
+¶libdatrie¶0.2.13¶1.amzn2023.0.2¶x86_64¶libdatrie-0.2.13-1.amzn2023.0.2.src.rpm¶59649¶LGPLv2+¶Amazon Linux¶Implementation of Double-Array structure for representing trie¶1baaec3c846d03f5d9af80936cd9abee
+¶libthai¶0.1.28¶6.amzn2023.0.2¶x86_64¶libthai-0.1.28-6.amzn2023.0.2.src.rpm¶778762¶LGPLv2+¶Amazon Linux¶Thai language support routines¶fe153f558e51005b676ecb3f43d0c815
+¶pango¶1.48.10¶1.amzn2023.0.3¶x86_64¶pango-1.48.10-1.amzn2023.0.3.src.rpm¶914128¶LGPLv2+¶Amazon Linux¶System for layout and rendering of internationalized text¶e463b1ceed07d2d3c7b5d37696ade290
+¶librsvg2¶2.50.7¶1.amzn2023.0.3¶x86_64¶librsvg2-2.50.7-1.amzn2023.0.3.src.rpm¶10843075¶LGPLv2+¶Amazon Linux¶An SVG library based on cairo¶22e8538f6d772850f6d02601381ffd87
+¶openjpeg2¶2.4.0¶11.amzn2023.0.3¶x86_64¶openjpeg2-2.4.0-11.amzn2023.0.3.src.rpm¶402868¶BSD and MIT¶Amazon Linux¶C-Library for JPEG 2000¶f53309edb55554cebb8ceba0f94414b4
+¶libgs¶9.56.1¶7.amzn2023.0.3¶x86_64¶ghostscript-9.56.1-7.amzn2023.0.3.src.rpm¶25972656¶AGPLv3+¶Amazon Linux¶Library providing Ghostcript's core functionality¶c56d41efe1b2822e1ea9251fcc80f28a
+¶graphviz¶2.44.0¶25.amzn2023.0.6¶x86_64¶graphviz-2.44.0-25.amzn2023.0.6.src.rpm¶12270850¶EPL-1.0¶Amazon Linux¶Graph Visualization Tools¶c83b7863812c6b1524d4b2669bda2099
+2¶doxygen¶1.9.4¶1.amzn2023.0.3¶x86_64¶doxygen-1.9.4-1.amzn2023.0.3.src.rpm¶17969952¶GPL+¶Amazon Linux¶A documentation system for C/C++¶db8603d273d893915b5891bf64769acc
+¶systemtap¶4.8¶3.amzn2023.0.5¶x86_64¶systemtap-4.8-3.amzn2023.0.5.src.rpm¶0¶GPLv2+¶Amazon Linux¶Programmable system-wide instrumentation system¶4359c765a554c56c7ff24cb9b5a1a9f1
+¶subversion¶1.14.2¶5.amzn2023.0.3¶x86_64¶subversion-1.14.2-5.amzn2023.0.3.src.rpm¶5391280¶ASL 2.0¶Amazon Linux¶A Modern Concurrent Version Control System¶7af9d5c578d06a061b25b76dbc0c97a0
+¶gcc-gfortran¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶30686525¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶Fortran support¶9adcf627ffab12e6e9d2f8487fd4b055
+¶libtool¶2.4.7¶1.amzn2023.0.3¶x86_64¶libtool-2.4.7-1.amzn2023.0.3.src.rpm¶2775250¶GPLv2+ and LGPLv2+ and GFDL¶Amazon Linux¶The GNU Portable Library Tool¶3652761f0e5d5e6dc578a79eb2aab995
+¶gcc-c++¶11.3.1¶4.amzn2023.0.3¶x86_64¶gcc-11.3.1-4.amzn2023.0.3.src.rpm¶31739746¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶C++ support for GCC¶fa0386de55866bacefd9476c9b9c34a9
+¶rpm-build¶4.16.1.3¶12.amzn2023.0.6¶x86_64¶rpm-4.16.1.3-12.amzn2023.0.6.src.rpm¶240247¶GPLv2+¶Amazon Linux¶Scripts and executable programs used to build packages¶b9251efeedcd128b1b836f5fa934f3ae
+¶intltool¶0.51.0¶18.amzn2023.0.3¶noarch¶intltool-0.51.0-18.amzn2023.0.3.src.rpm¶173161¶GPLv2 with exceptions¶Amazon Linux¶Utility for internationalizing various kinds of data files¶5dfeea71c8e910821f831d4d47c2e9dd
+¶patchutils¶0.4.2¶5.amzn2023.0.2¶x86_64¶patchutils-0.4.2-5.amzn2023.0.2.src.rpm¶215232¶GPLv2+¶Amazon Linux¶A collection of programs for manipulating patch files¶e51a50efdaa017e575b921e556a77578
+¶amazon-linux-sb-keys¶2023.1¶1.amzn2023.0.3¶noarch¶amazon-linux-sb-keys-2023.1-1.amzn2023.0.3.src.rpm¶35299¶MIT¶Amazon Linux¶Amazon Linux Secure Boot keys and certificates¶c6d0e6f4f02f23706933f2572f8bb2ce
+¶cscope¶15.9¶15.amzn2023.0.3¶x86_64¶cscope-15.9-15.amzn2023.0.3.src.rpm¶1441721¶BSD and GPLv2+¶Amazon Linux¶C source code tree search and browse tool¶505fe369cc580298feb0e25b10e21853
+¶ctags¶5.9¶1.20210725.0.amzn2023.0.2¶x86_64¶ctags-5.9-1.20210725.0.amzn2023.0.2.src.rpm¶1947320¶GPLv2+¶Amazon Linux¶A C programming language indexing and/or cross-reference tool¶ef7e75f7d957e08b4acc6a9e0a9c2391
+¶flex¶2.6.4¶7.amzn2023.0.2¶x86_64¶flex-2.6.4-7.amzn2023.0.2.src.rpm¶932013¶BSD and LGPLv2+¶Amazon Linux¶A tool for generating scanners (text pattern recognizers)¶feb47368372c040b30f05e3106dc551a
+¶bison¶3.7.4¶2.amzn2023.0.2¶x86_64¶bison-3.7.4-2.amzn2023.0.2.src.rpm¶3287687¶GPLv3+¶Amazon Linux¶A GNU general-purpose parser generator¶d52a96b52de93c0451c958a74d951b88
+¶systemd-rpm-macros¶252.4¶1161.amzn2023.0.4¶noarch¶systemd-252.4-1161.amzn2023.0.4.src.rpm¶10250¶LGPLv2+ and MIT and GPLv2+¶Amazon Linux¶Macros that define paths and scriptlets related to systemd¶fa704f5826def43dbbb488c1e8f6860d
+¶rpm-sign¶4.16.1.3¶12.amzn2023.0.6¶x86_64¶rpm-4.16.1.3-12.amzn2023.0.6.src.rpm¶18580¶GPLv2+¶Amazon Linux¶Package signing support¶774b04bc3849e385c7f55d3ff062ffab
+¶diffstat¶1.64¶4.amzn2023.0.2¶x86_64¶diffstat-1.64-4.amzn2023.0.2.src.rpm¶78017¶MIT¶Amazon Linux¶A utility which provides statistics based on the output of diff¶1cef96858ec6cdf851f50511d943db7d
+¶indent¶2.2.12¶7.amzn2023.0.3¶x86_64¶indent-2.2.12-7.amzn2023.0.3.src.rpm¶486185¶GPLv3+ and BSD and Verbatim¶Amazon Linux¶A GNU program for formatting C code¶ebce55495baa9c04ee4964a05a842ec2
+¶byacc¶2.0.20210109¶2.amzn2023.0.3¶x86_64¶byacc-2.0.20210109-2.amzn2023.0.3.src.rpm¶282184¶Public Domain¶Amazon Linux¶Berkeley Yacc, a parser generator¶59289ac0c596020853663b583a6b0f39
+¶swig¶4.1.1¶4.amzn2023.0.3¶x86_64¶swig-4.1.1-4.amzn2023.0.3.src.rpm¶6223889¶GPL-3.0-or-later AND BSD-3-Clause¶Amazon Linux¶Connects C/C++/Objective C to some high-level programming languages¶915fd482804b0e5ab0eecb4145fe323a
+¶glibc-gconv-extra¶2.34¶52.amzn2023.0.3¶x86_64¶glibc-2.34-52.amzn2023.0.3.src.rpm¶8255588¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+ and GPLv2+ with exceptions and BSD and Inner-Net and ISC and Public Domain and GFDL¶Amazon Linux¶All iconv converter modules for glibc.¶2e808887b13fe1cbbde75cc96255e1de

@@ -1,0 +1,22 @@
+[
+  "/usr/bin/node",
+  "/usr/lib/.build-id",
+  "/usr/lib/.build-id/f7",
+  "/usr/lib/.build-id/f7/75f6f571b13306cacabf3767874e8f3be20b03",
+  "/usr/lib/dtrace",
+  "/usr/lib/dtrace/node.d",
+  "/usr/lib/node_modules",
+  "/usr/lib/rpm/fileattrs/nodejs_native.attr",
+  "/usr/lib/rpm/nodejs_native.req",
+  "/usr/share/doc/nodejs",
+  "/usr/share/doc/nodejs/AUTHORS",
+  "/usr/share/doc/nodejs/CHANGELOG.md",
+  "/usr/share/doc/nodejs/GOVERNANCE.md",
+  "/usr/share/doc/nodejs/README.md",
+  "/usr/share/doc/nodejs/onboarding.md",
+  "/usr/share/man/man1/node.1.gz",
+  "/usr/share/node",
+  "/usr/share/systemtap",
+  "/usr/share/systemtap/tapset",
+  "/usr/share/systemtap/tapset/node.stp"
+]

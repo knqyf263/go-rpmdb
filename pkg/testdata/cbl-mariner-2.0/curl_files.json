@@ -1,0 +1,56 @@
+[
+  {
+    "Path": "/usr/bin/curl",
+    "Mode": 33261,
+    "Digest": "7ef6b3fd854d4ed189dd0aab2ffcf5e6bd58018ff69b97e1b86e1df7b86f3df0",
+    "Size": 267672,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/bin/curl-config",
+    "Mode": 33261,
+    "Digest": "f044fcec45baaaaa7f2de43646719812a1fc75eb3582ae4c9bfc2fd0aa873afc",
+    "Size": 7515,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/licenses/curl",
+    "Mode": 16877,
+    "Digest": "",
+    "Size": 0,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 0
+  },
+  {
+    "Path": "/usr/share/licenses/curl/COPYING",
+    "Mode": 33188,
+    "Digest": "6fd1a1c008b5ef4c4741dd188c3f8af6944c14c25afa881eb064f98fb98358e7",
+    "Size": 1088,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 128
+  },
+  {
+    "Path": "/usr/share/man/man1/curl-config.1.gz",
+    "Mode": 33188,
+    "Digest": "e9346781b9d38f416138255182c0ff5818f09adaaf38f08abfd545fa149f77b6",
+    "Size": 1763,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  },
+  {
+    "Path": "/usr/share/man/man1/curl.1.gz",
+    "Mode": 33188,
+    "Digest": "6a937dea68ab20b8bf9d376bb68fcfe06608a4ddb7d7725986c7ad7451817912",
+    "Size": 47985,
+    "Username": "root",
+    "Groupname": "root",
+    "Flags": 2
+  }
+]

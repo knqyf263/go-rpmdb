@@ -1,0 +1,105 @@
+¶ncurses-base¶6.0¶8.20170212.amzn2.1.5¶noarch¶ncurses-6.0-8.20170212.amzn2.1.5.src.rpm¶267943¶MIT¶Amazon Linux¶Descriptions of common terminals¶72f2682bf9b9ba57b654c82541b90bf3
+¶basesystem¶10.0¶7.amzn2.0.1¶noarch¶basesystem-10.0-7.amzn2.0.1.src.rpm¶0¶Public Domain¶Amazon Linux¶The skeleton package which defines a simple Amazon Linux system¶d5cd01fe7b2e613d7bdc7d59f434e555
+¶glibc¶2.26¶63.amzn2¶x86_64¶glibc-2.26-63.amzn2.src.rpm¶13360711¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+¶Amazon Linux¶The GNU libc libraries¶26dd166d940687216c0fe157bb94c49b
+¶libstdc++¶7.3.1¶15.amzn2¶x86_64¶gcc-7.3.1-15.amzn2.src.rpm¶1769982¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶GNU Standard C++ Library¶71b66b82f8ed4b11467dd6c94cdf2976
+¶info¶5.1¶5.amzn2¶x86_64¶texinfo-5.1-5.amzn2.src.rpm¶494310¶GPLv3+¶Amazon Linux¶A stand-alone TTY-based reader for GNU texinfo documentation¶6036dfc4c53336873524488fe5002e4c
+¶xz-libs¶5.2.2¶1.amzn2.0.3¶x86_64¶xz-5.2.2-1.amzn2.0.3.src.rpm¶235791¶LGPLv2+¶Amazon Linux¶Libraries for decoding LZMA compression¶ec806652fc383c46dfb71dfc8ca9b569
+¶popt¶1.13¶16.amzn2.0.2¶x86_64¶popt-1.13-16.amzn2.0.2.src.rpm¶88460¶MIT¶Amazon Linux¶C library for parsing command line parameters¶c02f99f24f3a4bb86d307cf4e3609e2f
+¶chkconfig¶1.7.4¶1.amzn2.0.2¶x86_64¶chkconfig-1.7.4-1.amzn2.0.2.src.rpm¶779387¶GPLv2¶Amazon Linux¶A system tool for maintaining the /etc/rc*.d hierarchy¶319831087e25271e878170976c7aa68f
+¶libattr¶2.4.46¶12.amzn2.0.2¶x86_64¶attr-2.4.46-12.amzn2.0.2.src.rpm¶19816¶LGPLv2+¶Amazon Linux¶Dynamic library for extended attribute support¶af982fde74b4c52e53db6b41ebe87a62
+¶libxml2¶2.9.1¶6.amzn2.5.8¶x86_64¶libxml2-2.9.1-6.amzn2.5.8.src.rpm¶1636494¶MIT¶Amazon Linux¶Library providing XML and HTML support¶380439145c52fff47d2670ea4738acb3
+¶libcrypt¶2.26¶63.amzn2¶x86_64¶glibc-2.26-63.amzn2.src.rpm¶45597¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+¶Amazon Linux¶Password hashing library (non-NSS version)¶33effe3ad088feb36b8408c16074a66f
+¶keyutils-libs¶1.5.8¶3.amzn2.0.2¶x86_64¶keyutils-1.5.8-3.amzn2.0.2.src.rpm¶42066¶GPLv2+ and LGPLv2+¶Amazon Linux¶Key utilities library¶4aff48d8c9f97b21c61402d9d9840b22
+¶libdb-utils¶5.3.21¶24.amzn2.0.4¶x86_64¶libdb-5.3.21-24.amzn2.0.4.src.rpm¶320927¶BSD and LGPLv2 and Sleepycat¶Amazon Linux¶Command line tools for managing Berkeley DB databases¶c768f35f9cb55ece32887de9ac77450d
+1¶findutils¶4.5.11¶6.amzn2¶x86_64¶findutils-4.5.11-6.amzn2.src.rpm¶1838930¶GPLv3+¶Amazon Linux¶The GNU versions of find utilities (find and xargs)¶dccdb237e2370368b4c97c408fb73b82
+¶libidn2¶2.3.0¶1.amzn2¶x86_64¶libidn2-2.3.0-1.amzn2.src.rpm¶446670¶(GPLv2+ or LGPLv3+) and GPLv3+¶Amazon Linux¶Library to support IDNA2008 internationalized domain names¶8781435fe02a0c84a252e6a8b9a151fd
+¶libtasn1¶4.10¶1.amzn2.0.3¶x86_64¶libtasn1-4.10-1.amzn2.0.3.src.rpm¶420310¶GPLv3+ and LGPLv2+¶Amazon Linux¶The ASN.1 library used in GNUTLS¶6a981aa4813927816a935427dbe12f96
+1¶openssl-libs¶1.0.2k¶24.amzn2.0.7¶x86_64¶openssl-1.0.2k-24.amzn2.0.7.src.rpm¶3145428¶OpenSSL¶Amazon Linux¶A general purpose cryptography library with TLS implementation¶bb14e6613e378d5c5d7a55a1d4e42a02
+¶python¶2.7.18¶1.amzn2.0.6¶x86_64¶python-2.7.18-1.amzn2.0.6.src.rpm¶80866¶Python¶Amazon Linux¶An interpreted, interactive, object-oriented programming language¶72fc1e6d7dbd79f4a5f548b2150cd981
+¶python-iniparse¶0.4¶9.amzn2¶noarch¶python-iniparse-0.4-9.amzn2.src.rpm¶115166¶MIT¶Amazon Linux¶Python Module for Accessing and Modifying Configuration Data in INI files¶f7458aafcf07328adae7ba322cf0fb97
+¶glib2¶2.56.1¶9.amzn2.0.6¶x86_64¶glib2-2.56.1-9.amzn2.0.6.src.rpm¶12082817¶LGPLv2+¶Amazon Linux¶A library of handy utility functions¶441f3b3c0d2befa1900819c2b0cc4871
+¶nss-sysinit¶3.79.0¶4.amzn2.0.1¶x86_64¶nss-3.79.0-4.amzn2.0.1.src.rpm¶14015¶MPLv2.0¶Amazon Linux¶System NSS Initialization¶e82e07f23c184ffd688d89ec86809867
+¶curl¶8.0.1¶1.amzn2.0.1¶x86_64¶curl-8.0.1-1.amzn2.0.1.src.rpm¶747320¶MIT¶Amazon Linux¶A utility for getting files from remote servers (FTP, HTTP, and others)¶1bd9b3a0c145fe903ce65fece046cd59
+¶gnupg2¶2.0.22¶5.amzn2.0.5¶x86_64¶gnupg2-2.0.22-5.amzn2.0.5.src.rpm¶6578312¶GPLv3+¶Amazon Linux¶Utility for secure communication and data storage¶dcaec1cf460079def207c3b0f2952482
+¶python2-rpm¶4.11.3¶48.amzn2.0.3¶x86_64¶rpm-4.11.3-48.amzn2.0.3.src.rpm¶149704¶GPLv2+¶Amazon Linux¶Python 2 bindings for apps which will manipulate RPM packages¶088242a28072193cae10bb20b28953b4
+¶yum-plugin-ovl¶1.1.31¶46.amzn2.0.1¶noarch¶yum-utils-1.1.31-46.amzn2.0.1.src.rpm¶22399¶GPLv2+¶Amazon Linux¶Yum plugin to work around overlayfs issues¶c39c00494ee1cf1652a6eddbecb3f5a8
+2¶vim-minimal¶9.0.1592¶1.amzn2.0.1¶x86_64¶vim-9.0.1592-1.amzn2.0.1.src.rpm¶1436466¶Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0¶Amazon Linux¶A minimal version of the VIM editor¶a16f07b4795982809efa92dbae8dff5f
+¶tzdata¶2023c¶1.amzn2.0.1¶noarch¶tzdata-2023c-1.amzn2.0.1.src.rpm¶1777280¶Public Domain¶Amazon Linux¶Timezone data¶e41bf40c5d3dcefdf863f167f530d46a
+¶filesystem¶3.2¶25.amzn2.0.4¶x86_64¶filesystem-3.2-25.amzn2.0.4.src.rpm¶0¶Public Domain¶Amazon Linux¶The basic directory layout for a Linux system¶cbe6a498033d9ce077e518ff27f5a7f2
+¶glibc-common¶2.26¶63.amzn2¶x86_64¶glibc-2.26-63.amzn2.src.rpm¶3412158¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+¶Amazon Linux¶Common binaries and locale data for glibc¶c661037a21634ae7556c34e2e2c4834d
+¶libsepol¶2.5¶8.1.amzn2.0.2¶x86_64¶libsepol-2.5-8.1.amzn2.0.2.src.rpm¶678376¶LGPLv2+¶Amazon Linux¶SELinux binary policy manipulation library¶1fa1348aaa1bbe2445e04a8755b0deec
+¶zlib¶1.2.7¶19.amzn2.0.2¶x86_64¶zlib-1.2.7-19.amzn2.0.2.src.rpm¶181022¶zlib and Boost¶Amazon Linux¶The compression and decompression library¶49af5286f1cdbf6c0ed9d66a2d8b3610
+¶libdb¶5.3.21¶24.amzn2.0.4¶x86_64¶libdb-5.3.21-24.amzn2.0.4.src.rpm¶1796432¶BSD and LGPLv2 and Sleepycat¶Amazon Linux¶The Berkeley DB database library for C¶dd3b6e87d33d501e6c4d317a8f8df811
+¶libcap¶2.54¶1.amzn2.0.2¶x86_64¶libcap-2.54-1.amzn2.0.2.src.rpm¶169043¶BSD or GPLv2¶Amazon Linux¶Library for getting and setting POSIX.1e capabilities¶33934ab75aa11033062539ac0b6870cf
+¶libgpg-error¶1.12¶3.amzn2.0.3¶x86_64¶libgpg-error-1.12-3.amzn2.0.3.src.rpm¶350689¶LGPLv2+¶Amazon Linux¶Library for error values used by GnuPG components¶627d36123c310b3cae17b241230eb4cb
+¶libffi¶3.0.13¶18.amzn2.0.2¶x86_64¶libffi-3.0.13-18.amzn2.0.2.src.rpm¶47702¶MIT and Public Domain¶Amazon Linux¶A portable foreign function interface library¶0e6cb3903e3a43a5d57b4ccf8d4b2343
+¶libassuan¶2.1.0¶3.amzn2.0.2¶x86_64¶libassuan-2.1.0-3.amzn2.0.2.src.rpm¶155367¶LGPLv2+ and GPLv3+¶Amazon Linux¶GnuPG IPC library¶f02a57d69476bd9b73cda0142a2ecf94
+¶file-libs¶5.11¶36.amzn2.0.1¶x86_64¶file-5.11-36.amzn2.0.1.src.rpm¶3069070¶BSD¶Amazon Linux¶Libraries for applications using libmagic¶4677de710eebb32733d16c67444c3bd4
+¶expat¶2.1.0¶15.amzn2.0.2¶x86_64¶expat-2.1.0-15.amzn2.0.2.src.rpm¶232891¶MIT¶Amazon Linux¶An XML parser library¶9075b9d2265e488ee574f713cedd1204
+1¶gdbm¶1.13¶6.amzn2.0.2¶x86_64¶gdbm-1.13-6.amzn2.0.2.src.rpm¶446921¶GPLv3+¶Amazon Linux¶A GNU set of database routines which use extensible hashing¶75545ede3a19d8f68cb408317a4d1384
+¶cpio¶2.12¶11.amzn2¶x86_64¶cpio-2.12-11.amzn2.src.rpm¶950554¶GPLv3+¶Amazon Linux¶A GNU archiving program¶0424d3f911a9ba710335735fd290fa83
+¶libunistring¶0.9.3¶9.amzn2.0.2¶x86_64¶libunistring-0.9.3-9.amzn2.0.2.src.rpm¶1149705¶LGPLv3+¶Amazon Linux¶GNU Unicode string library¶950a12402cb9c17357c3443e403e13e2
+¶pth¶2.0.7¶23.amzn2.0.2¶x86_64¶pth-2.0.7-23.amzn2.0.2.src.rpm¶263667¶LGPLv2+¶Amazon Linux¶The GNU Portable Threads library¶aebfe45c88d371858a9bd51f42ce3dcf
+¶libverto¶0.2.5¶4.amzn2.0.2¶x86_64¶libverto-0.2.5-4.amzn2.0.2.src.rpm¶22996¶MIT¶Amazon Linux¶Main loop abstraction library¶f7b3291c57a168710227c6a6cd491b13
+¶python-libs¶2.7.18¶1.amzn2.0.6¶x86_64¶python-2.7.18-1.amzn2.0.6.src.rpm¶27435517¶Python¶Amazon Linux¶Runtime libraries for Python¶5cca3519693a109d544e85be22424d38
+¶pyliblzma¶0.5.3¶25.amzn2¶x86_64¶pyliblzma-0.5.3-25.amzn2.src.rpm¶193634¶LGPLv3+¶Amazon Linux¶Python bindings for lzma¶50f22041eb0bc48af9fa84a26e44c775
+¶libmount¶2.30.2¶2.amzn2.0.11¶x86_64¶util-linux-2.30.2-2.amzn2.0.11.src.rpm¶363122¶LGPLv2+¶Amazon Linux¶Device mounting library¶29dbee848d1d783a8ffb610c3c21fe40
+¶nss-pem¶1.0.3¶5.amzn2¶x86_64¶nss-pem-1.0.3-5.amzn2.src.rpm¶201307¶MPLv1.1¶Amazon Linux¶PEM file reader for Network Security Services (NSS)¶34c3acc3e650bc7ba7fc55e03669031c
+¶libcurl¶8.0.1¶1.amzn2.0.1¶x86_64¶curl-8.0.1-1.amzn2.0.1.src.rpm¶677152¶MIT¶Amazon Linux¶A library for getting files from web servers¶0c47722aad59cfde03774223dc83e630
+¶openldap¶2.4.44¶25.amzn2.0.7¶x86_64¶openldap-2.4.44-25.amzn2.0.7.src.rpm¶1004024¶OpenLDAP¶Amazon Linux¶LDAP support libraries¶3e58f3e0ba4499236ad0ffccb4cd5717
+¶rpm-build-libs¶4.11.3¶48.amzn2.0.3¶x86_64¶rpm-4.11.3-48.amzn2.0.3.src.rpm¶162392¶GPLv2+ and LGPLv2+ with exceptions¶Amazon Linux¶Libraries for building and signing RPM packages¶d7775f46db88e409c15f3c44f557fa95
+¶yum¶3.4.3¶158.amzn2.0.6¶noarch¶yum-3.4.3-158.amzn2.0.6.src.rpm¶5814893¶GPLv2+¶Amazon Linux¶RPM package installer/updater/manager¶299193fa506178699d0a2aaec174a0bf
+¶libmetalink¶0.1.3¶13.amzn2¶x86_64¶libmetalink-0.1.3-13.amzn2.src.rpm¶64432¶MIT¶Amazon Linux¶Metalink library written in C¶b07f2563ae47e104684c3900afe20e1e
+2¶vim-data¶9.0.1592¶1.amzn2.0.1¶noarch¶vim-9.0.1592-1.amzn2.0.1.src.rpm¶18066¶Vim AND LGPL-2.1-or-later AND MIT AND GPL-1.0-only AND (GPL-2.0-only OR Vim) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-or-later AND GPL-3.0-or-later AND OPUBL-1.0¶Amazon Linux¶Shared data for Vi and Vim¶1f32fd666443e338c22ed9eeb4140de2
+¶setup¶2.8.71¶10.amzn2.0.1¶noarch¶setup-2.8.71-10.amzn2.0.1.src.rpm¶698255¶Public Domain¶Amazon Linux¶A set of system configuration and setup files¶0800a17bb02a42f02541c2892d4ecb68
+¶glibc-minimal-langpack¶2.26¶63.amzn2¶x86_64¶glibc-2.26-63.amzn2.src.rpm¶0¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+¶Amazon Linux¶Minimal language packs for glibc.¶109e7e4d6ef64ccb4e0220e9fc33499b
+¶bash¶4.2.46¶34.amzn2¶x86_64¶bash-4.2.46-34.amzn2.src.rpm¶3639159¶GPLv3+¶Amazon Linux¶The GNU Bourne Again shell¶675c6a9f354a69fd44d2cf8379ea0142
+¶libselinux¶2.5¶12.amzn2.0.2¶x86_64¶libselinux-2.5-12.amzn2.0.2.src.rpm¶217610¶Public Domain¶Amazon Linux¶SELinux library and simple utilities¶954ef0208b12caa56715a3b2f7c277f8
+¶nss-util¶3.79.0¶1.amzn2¶x86_64¶nss-util-3.79.0-1.amzn2.src.rpm¶194800¶MPLv2.0¶Amazon Linux¶Network Security Services Utilities Library¶c17cec3a50361fa074a35349a3175fd4
+¶readline¶6.2¶10.amzn2.0.2¶x86_64¶readline-6.2-10.amzn2.0.2.src.rpm¶460368¶GPLv3+¶Amazon Linux¶A library for editing typed command lines¶54e40557d09a8a0c3bfd83e0b03c4b2b
+¶elfutils-libelf¶0.176¶2.amzn2.0.1¶x86_64¶elfutils-0.176-2.amzn2.0.1.src.rpm¶911958¶GPLv2+ or LGPLv3+¶Amazon Linux¶Library to read and write ELF files¶a2a7e6ec4b2b168834ed0441361ea176
+¶libcom_err¶1.42.9¶19.amzn2.0.1¶x86_64¶e2fsprogs-1.42.9-19.amzn2.0.1.src.rpm¶60337¶MIT¶Amazon Linux¶Common error description library¶2238843bb239f900ca3884081e448e55
+¶p11-kit¶0.23.22¶1.amzn2.0.1¶x86_64¶p11-kit-0.23.22-1.amzn2.0.1.src.rpm¶1581491¶BSD¶Amazon Linux¶Library for loading and sharing PKCS#11 modules¶8bae4bd27ab19be2b10abd1def4fa7d8
+¶sed¶4.2.2¶5.amzn2.0.2¶x86_64¶sed-4.2.2-5.amzn2.0.2.src.rpm¶601153¶GPLv3+¶Amazon Linux¶A GNU stream text editor¶65537e75100a96b0fd7981985a0534e2
+¶libuuid¶2.30.2¶2.amzn2.0.11¶x86_64¶util-linux-2.30.2-2.amzn2.0.11.src.rpm¶21664¶BSD¶Amazon Linux¶Universally unique ID library¶f6a506990ee599c88d042b9f4126de17
+¶libgcrypt¶1.5.3¶14.amzn2.0.3¶x86_64¶libgcrypt-1.5.3-14.amzn2.0.3.src.rpm¶584895¶LGPLv2+¶Amazon Linux¶A general-purpose cryptography library¶f129d303d595c18838ff09df03870b93
+¶nss-softokn¶3.79.0¶4.amzn2¶x86_64¶nss-softokn-3.79.0-4.amzn2.src.rpm¶1421782¶MPLv2.0¶Amazon Linux¶Network Security Services Softoken Module¶a64d455b88d17b85e005a5e2490b4324
+¶diffutils¶3.3¶5.amzn2¶x86_64¶diffutils-3.3-5.amzn2.src.rpm¶1056828¶GPLv3+¶Amazon Linux¶A GNU collection of diff utilities¶cb0867d0e65bec3dabb0cee3249744c2
+¶ncurses¶6.0¶8.20170212.amzn2.1.5¶x86_64¶ncurses-6.0-8.20170212.amzn2.1.5.src.rpm¶533028¶MIT¶Amazon Linux¶Ncurses support utilities¶ef0159d2f9941955853457c8f676b345
+¶ca-certificates¶2021.2.50¶72.amzn2.0.7¶noarch¶ca-certificates-2021.2.50-72.amzn2.0.7.src.rpm¶898754¶Public Domain¶Amazon Linux¶The Mozilla CA root certificate bundle¶98c500e25b7a0e3f7af0459eb42e5963
+¶krb5-libs¶1.15.1¶55.amzn2.2.5¶x86_64¶krb5-1.15.1-55.amzn2.2.5.src.rpm¶2157408¶MIT¶Amazon Linux¶The non-admin shared libraries used by Kerberos 5¶9ab65d1e7fe16ff8c1f39291543c74c7
+¶pyxattr¶0.5.1¶5.amzn2.0.2¶x86_64¶pyxattr-0.5.1-5.amzn2.0.2.src.rpm¶63298¶LGPLv2+¶Amazon Linux¶Extended attributes library wrapper for Python¶614efafa56e6136505bf6a09b2257d02
+¶libblkid¶2.30.2¶2.amzn2.0.11¶x86_64¶util-linux-2.30.2-2.amzn2.0.11.src.rpm¶298984¶LGPLv2+¶Amazon Linux¶Block device ID library¶8393fb0c2899cee62695a8ee33866b3f
+¶yum-metadata-parser¶1.1.4¶10.amzn2.0.2¶x86_64¶yum-metadata-parser-1.1.4-10.amzn2.0.2.src.rpm¶58701¶GPLv2¶Amazon Linux¶A fast metadata parser for yum¶7bdc1705d349f61a65015726852919a4
+¶nss-tools¶3.79.0¶4.amzn2.0.1¶x86_64¶nss-3.79.0-4.amzn2.0.1.src.rpm¶2250852¶MPLv2.0¶Amazon Linux¶Tools for the Network Security Services¶1b569e693bd08d022aa058ec811c4ef0
+¶rpm¶4.11.3¶48.amzn2.0.3¶x86_64¶rpm-4.11.3-48.amzn2.0.3.src.rpm¶2622536¶GPLv2+¶Amazon Linux¶The RPM package management system¶feccf9f01fe3adeb09c3a3b7a177a3f2
+¶pygpgme¶0.3¶9.amzn2.0.3¶x86_64¶pygpgme-0.3-9.amzn2.0.3.src.rpm¶97907¶LGPLv2+¶Amazon Linux¶Python module for working with OpenPGP messages¶3431794b9d26fccbb10aa3f010c581db
+¶python-urlgrabber¶3.10¶9.amzn2.0.1¶noarch¶python-urlgrabber-3.10-9.amzn2.0.1.src.rpm¶502813¶LGPLv2+¶Amazon Linux¶A high-level cross-protocol url-grabber¶32a916d3b5fb08f670322ae037e12cde
+¶amazon-linux-extras¶2.0.1¶1.amzn2¶noarch¶amazon-linux-extras-2.0.1-1.amzn2.src.rpm¶108133¶GPLv2¶Amazon Linux¶Command line tool for managing Amazon Linux Extras¶1409c6352df6fdacf407f53c33e061df
+¶gpg-pubkey¶c87f5b1a¶593863f8¶¶(none)¶0¶pubkey¶¶gpg(Amazon Linux <amazon-linux@amazon.com>)¶(none)
+1¶system-release¶2¶14.amzn2¶x86_64¶system-release-2-14.amzn2.src.rpm¶27761¶GPLv2¶Amazon Linux¶Amazon Linux release files¶3038e4b5fce09bb78240cd065ef38ecc
+¶libgcc¶7.3.1¶15.amzn2¶x86_64¶gcc-7.3.1-15.amzn2.src.rpm¶179192¶GPLv3+ and GPLv3+ with exceptions and GPLv2+ with exceptions and LGPLv2+ and BSD¶Amazon Linux¶GCC version 7 shared support library¶2610ddf36be290607a675c365e5d4c0e
+¶ncurses-libs¶6.0¶8.20170212.amzn2.1.5¶x86_64¶ncurses-6.0-8.20170212.amzn2.1.5.src.rpm¶865480¶MIT¶Amazon Linux¶Ncurses libraries¶796d27e8d2f1d1ae2049ff5142f90aaf
+¶pcre¶8.32¶17.amzn2.0.3¶x86_64¶pcre-8.32-17.amzn2.0.3.src.rpm¶1475360¶BSD¶Amazon Linux¶Perl-compatible regular expression library¶c97fca9a58d4ef203217129ad033925e
+¶nspr¶4.34.0¶3.1.amzn2¶x86_64¶nspr-4.34.0-3.1.amzn2.src.rpm¶283264¶MPLv2.0¶Amazon Linux¶Netscape Portable Runtime¶7cfc13ed38c67043a7b791febe01f002
+¶bzip2-libs¶1.0.6¶13.amzn2.0.3¶x86_64¶bzip2-1.0.6-13.amzn2.0.3.src.rpm¶70029¶BSD¶Amazon Linux¶Libraries for applications using bzip2¶a14c56e9d768a74c7db6212722015098
+¶lua¶5.1.4¶15.amzn2.0.2¶x86_64¶lua-5.1.4-15.amzn2.0.2.src.rpm¶631815¶MIT¶Amazon Linux¶Powerful light-weight programming language¶5040468c8014e6489da9342c24d04cd2
+¶sqlite¶3.7.17¶8.amzn2.1.2¶x86_64¶sqlite-3.7.17-8.amzn2.1.2.src.rpm¶793439¶Public Domain¶Amazon Linux¶Library that implements an embeddable SQL database engine¶9380dfba86ce8792572fedc74dc6fddb
+¶libacl¶2.2.51¶14.amzn2¶x86_64¶acl-2.2.51-14.amzn2.src.rpm¶37000¶LGPLv2+¶Amazon Linux¶Dynamic library for access control list support¶6d4ffe4e28af5d6bf9c6bc50ef4ecb5a
+¶grep¶2.20¶3.amzn2.0.2¶x86_64¶grep-2.20-3.amzn2.0.2.src.rpm¶1194971¶GPLv3+¶Amazon Linux¶Pattern matching utilities¶0fbe0a134668452e0b20be9ea1ef7c14
+¶libnghttp2¶1.41.0¶1.amzn2.0.1¶x86_64¶nghttp2-1.41.0-1.amzn2.0.1.src.rpm¶163540¶MIT¶Amazon Linux¶A library implementing the HTTP/2 protocol¶6f10e099ad85e3d4f4525e51048ad983
+¶pinentry¶0.8.1¶17.amzn2.0.2¶x86_64¶pinentry-0.8.1-17.amzn2.0.2.src.rpm¶159857¶GPLv2+¶Amazon Linux¶Collection of simple PIN or passphrase entry dialogs¶b8ecb8d8b485458190167157bb762a02
+¶nss-softokn-freebl¶3.79.0¶4.amzn2¶x86_64¶nss-softokn-3.79.0-4.amzn2.src.rpm¶779380¶MPLv2.0¶Amazon Linux¶Freebl library for the Network Security Services¶778f6664ebf24e1fd1e4458a3126fbaa
+¶gawk¶4.0.2¶4.amzn2.1.2¶x86_64¶gawk-4.0.2-4.amzn2.1.2.src.rpm¶2443338¶GPLv3+ and GPL and LGPLv3+ and LGPL and BSD¶Amazon Linux¶The GNU version of the awk text processing utility¶bd527581072901ea4b66025e04a5b8b4
+1¶gmp¶6.0.0¶15.amzn2.0.2¶x86_64¶gmp-6.0.0-15.amzn2.0.2.src.rpm¶656878¶LGPLv3+ or GPLv2+¶Amazon Linux¶A GNU arbitrary precision library¶b8c7bcf34b734beab4e390f4efdc22a0
+¶p11-kit-trust¶0.23.22¶1.amzn2.0.1¶x86_64¶p11-kit-0.23.22-1.amzn2.0.1.src.rpm¶416409¶BSD¶Amazon Linux¶System trust module from p11-kit¶09b65885ae05ed79d845c372fc674097
+¶coreutils¶8.22¶24.amzn2¶x86_64¶coreutils-8.22-24.amzn2.src.rpm¶14352745¶GPLv3+¶Amazon Linux¶A set of basic GNU tools commonly used in shell scripts¶2e8b28a07783ccc4e7cda4c7db1885bb
+¶libssh2¶1.4.3¶12.amzn2.2.4¶x86_64¶libssh2-1.4.3-12.amzn2.2.4.src.rpm¶337678¶BSD¶Amazon Linux¶A library implementing the SSH2 protocol¶f0724dcfde837e3b4e85dea0df8f23f6
+¶cyrus-sasl-lib¶2.1.26¶24.amzn2¶x86_64¶cyrus-sasl-2.1.26-24.amzn2.src.rpm¶392399¶BSD with advertising¶Amazon Linux¶Shared libraries needed by applications which use Cyrus SASL¶fde00d9caffbfb24f5d3e583c994f5c3
+¶shared-mime-info¶1.8¶4.amzn2¶x86_64¶shared-mime-info-1.8-4.amzn2.src.rpm¶2379325¶GPLv2+¶Amazon Linux¶Shared MIME information database¶fdffe88dd6ce8d20c9916cb057010377
+¶nss¶3.79.0¶4.amzn2.0.1¶x86_64¶nss-3.79.0-4.amzn2.0.1.src.rpm¶2497866¶MPLv2.0¶Amazon Linux¶Network Security Services¶dd9488c148d5e5ec8b44a1afaeaf6afb
+¶rpm-libs¶4.11.3¶48.amzn2.0.3¶x86_64¶rpm-4.11.3-48.amzn2.0.3.src.rpm¶594840¶GPLv2+ and LGPLv2+ with exceptions¶Amazon Linux¶Libraries for manipulating RPM packages¶a3b6eb85538e54661733915d79cee93f
+¶gpgme¶1.3.2¶5.amzn2.0.2¶x86_64¶gpgme-1.3.2-5.amzn2.0.2.src.rpm¶551398¶LGPLv2+¶Amazon Linux¶GnuPG Made Easy - high level crypto API¶ef455499b16c9310990ed661295e9bae
+¶python-pycurl¶7.19.0¶19.amzn2.0.2¶x86_64¶python-pycurl-7.19.0-19.amzn2.0.2.src.rpm¶241457¶LGPLv2+ or MIT¶Amazon Linux¶A Python interface to libcurl¶335aa2c10fa48a609071cd2896360905
+¶yum-plugin-priorities¶1.1.31¶46.amzn2.0.1¶noarch¶yum-utils-1.1.31-46.amzn2.0.1.src.rpm¶29155¶GPLv2+¶Amazon Linux¶plugin to give priorities to packages from different repos¶7088899bd777f1641e01511db7e20b13
+¶glibc-langpack-en¶2.26¶63.amzn2¶x86_64¶glibc-2.26-63.amzn2.src.rpm¶3548779¶LGPLv2+ and LGPLv2+ with exceptions and GPLv2+¶Amazon Linux¶Locale data for en¶4ad19f772253e71344de8f45c6ead645
