@@ -234,7 +234,7 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 			pkgInfo.InstallTime = installTime
 		case RPMTAG_SIGMD5:
 			// It is just string that we need to encode to hex
-			digest := bytes.TrimRight(ie.Data, "\x00")
+			digest := ie.Data
 			pkgInfo.SigMD5 = hex.EncodeToString(digest)
 		case RPMTAG_PGP:
 			type pgpSig struct {
