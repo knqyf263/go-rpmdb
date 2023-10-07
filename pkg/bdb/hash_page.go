@@ -2,6 +2,7 @@ package bdb
 
 import (
 	"bytes"
+	"context"
 	"encoding/binary"
 	"io"
 	"os"
@@ -31,7 +32,7 @@ func ParseHashPage(data []byte, swapped bool) (*HashPage, error) {
 	return &hashPage, nil
 }
 
-func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pageSize uint32, swapped bool) ([]byte, error) {
+func HashPageValueContent(ctx context.Context, db *os.File, pageData []byte, hashPageIndex uint16, pageSize uint32, swapped bool) ([]byte, error) {
 	// the first byte is the page type, so we can peek at it first before parsing further...
 	valuePageType := pageData[hashPageIndex]
 
@@ -50,6 +51,12 @@ func HashPageValueContent(db *os.File, pageData []byte, hashPageIndex uint16, pa
 	var hashValue []byte
 
 	for currentPageNo := entry.PageNo; currentPageNo != 0; {
+		select {
+		case <-ctx.Done():
+			return nil, xerrors.Errorf("timed out parsing hash page")
+		default:
+		}
+
 		pageStart := pageSize * currentPageNo
 
 		_, err := db.Seek(int64(pageStart), io.SeekStart)

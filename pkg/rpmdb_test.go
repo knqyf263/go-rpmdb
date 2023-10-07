@@ -1,7 +1,9 @@
 package rpmdb
 
 import (
+	"context"
 	"testing"
+	"time"
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
@@ -761,5 +763,18 @@ func TestRpmDB_Package(t *testing.T) {
 			err = db.Close()
 			require.NoError(t, err)
 		})
+	}
+}
+
+func TestTimeoutPackages(t *testing.T) {
+	db, err := Open("testdata/centos7-many/Packages")
+	require.NoError(t, err)
+	ctxTimesOut, cancelFunc := context.WithTimeout(context.Background(), 1*time.Microsecond)
+	defer cancelFunc()
+	_, err = db.ListPackagesWithContext(ctxTimesOut)
+	if err == nil {
+		t.Errorf("Expected timeout parsing hash page")
+	} else {
+		assert.Equal(t, "timed out parsing hash page", err.Error())
 	}
 }

@@ -2,6 +2,7 @@ package sqlite3
 
 import (
 	"bytes"
+	"context"
 	"database/sql"
 	"encoding/binary"
 	"os"
@@ -44,7 +45,7 @@ func Open(path string) (*SQLite3, error) {
 	return &SQLite3{db}, nil
 }
 
-func (db *SQLite3) Read() <-chan dbi.Entry {
+func (db *SQLite3) Read(ctx context.Context) <-chan dbi.Entry {
 	entries := make(chan dbi.Entry)
 
 	go func() {
