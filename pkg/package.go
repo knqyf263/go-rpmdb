@@ -5,7 +5,7 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
-	"path/filepath"
+	"path"
 	"strings"
 	"time"
 
@@ -401,7 +401,7 @@ func (p *PackageInfo) InstalledFileNames() ([]string, error) {
 	var filePaths []string
 	for i, baseName := range p.BaseNames {
 		dir := p.DirNames[p.DirIndexes[i]]
-		filePaths = append(filePaths, filepath.Join(dir, baseName))
+		filePaths = append(filePaths, path.Join(dir, baseName)) // should be slash-separated
 	}
 	return filePaths, nil
 }
