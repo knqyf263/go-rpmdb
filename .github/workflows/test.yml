@@ -1,18 +1,33 @@
-on: [push, pull_request]
 name: Test
+
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        include:
+          - os: windows-latest
+            shell: bash
+          - os: macos-latest
+            shell: bash
+
+    runs-on: ${{ matrix.os }}
+
     steps:
-    - name: Install Go
-      uses: actions/setup-go@v3
+    - name: Check out code
+      uses: actions/checkout@v4
+
+    - name: Set up Go
+      uses: actions/setup-go@v4
       with:
-        go-version: 1.18
-    - name: Checkout code
-      uses: actions/checkout@v3
-    - name: golangci-lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-        version: v1.46
+        go-version-file: go.mod
+
     - name: Test
-      run: go test ./...
+      run: |
+        go test -v ./...
