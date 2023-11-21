@@ -22,6 +22,7 @@ SOFTWARE.
 package ndb
 
 import (
+	"context"
 	"encoding/binary"
 	"fmt"
 	"io"
@@ -136,7 +137,7 @@ func (db *RpmNDB) Close() error {
 	return db.file.Close()
 }
 
-func (db *RpmNDB) Read() <-chan dbi.Entry {
+func (db *RpmNDB) Read(ctx context.Context) <-chan dbi.Entry {
 	entries := make(chan dbi.Entry)
 
 	go func() {
