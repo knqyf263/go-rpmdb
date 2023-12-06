@@ -1,6 +1,7 @@
 package rpmdb
 
 import (
+	"os"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -812,4 +813,14 @@ func TestRpmDB_Package(t *testing.T) {
 			require.NoError(t, err)
 		})
 	}
+}
+
+func TestNevra(t *testing.T) {
+	blob, err := os.ReadFile("testdata/blob.bin")
+	indexEntries, err := headerImport(blob)
+	require.NoError(t, err)
+	pkg, err := getNEVRA(indexEntries)
+	require.NoError(t, err)
+	_, err = pkg.InstalledFiles()
+	require.Error(t, err)
 }
