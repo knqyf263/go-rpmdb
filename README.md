@@ -25,6 +25,7 @@ func run() error {
 	if err != nil {
 		return err
 	}
+	defer db.Close()
 
 	fmt.Println("Packages:")
 	for _, pkg := range pkgList {
