@@ -119,6 +119,17 @@ func TestPackageList(t *testing.T) {
 			}
 		})
 	}
+
+	for _, tt := range tests {
+		allocs := testing.AllocsPerRun(10, func() {
+			db, err := Open(tt.file)
+			require.NoError(t, err)
+
+			_, err = db.ListPackages()
+			require.NoError(t, err)
+		})
+		t.Logf("Allocations per run %q: %f", tt.name, allocs)
+	}
 }
 
 func TestRpmDB_Package(t *testing.T) {
