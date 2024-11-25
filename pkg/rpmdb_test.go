@@ -10,8 +10,8 @@ import (
 	_ "github.com/glebarez/go-sqlite"
 )
 
-func TestPackageList(t *testing.T) {
-	tests := []struct {
+var (
+	packageTests = []struct {
 		name    string
 		file    string // Test input file
 		pkgList []*PackageInfo
@@ -87,8 +87,10 @@ func TestPackageList(t *testing.T) {
 			pkgList: Fedora35PlusMongoDBWithSQLite3(),
 		},
 	}
+)
 
-	for _, tt := range tests {
+func TestPackageList(t *testing.T) {
+	for _, tt := range packageTests {
 		t.Run(tt.name, func(t *testing.T) {
 			db, err := Open(tt.file)
 			require.NoError(t, err)
@@ -119,16 +121,23 @@ func TestPackageList(t *testing.T) {
 			}
 		})
 	}
+}
 
-	for _, tt := range tests {
-		allocs := testing.AllocsPerRun(10, func() {
-			db, err := Open(tt.file)
-			require.NoError(t, err)
-
-			_, err = db.ListPackages()
-			require.NoError(t, err)
+func BenchmarkRpmDB_Package(b *testing.B) {
+	for _, tt := range packageTests {
+		b.Run(tt.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				db, err := Open(tt.file)
+				if err != nil {
+					b.Fatal(err)
+				}
+				_, err = db.ListPackages()
+				if err != nil {
+					b.Fatal(err)
+				}
+			}
+			b.ReportAllocs()
 		})
-		t.Logf("Allocations per run %q: %f", tt.name, allocs)
 	}
 }
 
