@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"database/sql"
 	"encoding/binary"
+	"fmt"
 	"os"
 
 	dbi "github.com/knqyf263/go-rpmdb/pkg/db"
@@ -36,7 +37,8 @@ func Open(path string) (*SQLite3, error) {
 		return nil, ErrorInvalidSQLite3
 	}
 
-	db, err := sql.Open("sqlite", path)
+	// open sqlite3 database in read-only mode
+	db, err := sql.Open("sqlite", fmt.Sprintf("file:%s?mode=ro&immutable=1", path))
 	if err != nil {
 		return nil, xerrors.Errorf("failed to open sqlite3: %w", err)
 	}
