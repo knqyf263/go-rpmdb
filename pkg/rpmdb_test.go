@@ -1,6 +1,7 @@
 package rpmdb
 
 import (
+	"encoding/hex"
 	"os"
 	"testing"
 
@@ -86,6 +87,11 @@ var (
 			file:    "testdata/fedora35-plus-mongo/rpmdb.sqlite",
 			pkgList: Fedora35PlusMongoDBWithSQLite3(),
 		},
+		{
+			name:    "Rocky9 with SQLite3 style rpm database (newer signature format)",
+			file:    "testdata/rockylinux-9/rpmdb.sqlite",
+			pkgList: Rockylinux9WithSQLite3(),
+		},
 	}
 )
 
@@ -101,6 +107,7 @@ func TestPackageList(t *testing.T) {
 			// They are tested in another function.
 			for _, g := range got {
 				g.PGP = ""
+				g.RSAHeader = ""
 				g.DigestAlgorithm = 0
 				g.InstallTime = 0
 				g.BaseNames = nil
@@ -137,6 +144,56 @@ func BenchmarkRpmDB_Package(b *testing.B) {
 				}
 			}
 			b.ReportAllocs()
+		})
+	}
+}
+
+func Test_parseRSA(t *testing.T) {
+	tests := []struct {
+		name    string
+		ie      indexEntry
+		want    string
+		wantErr assert.ErrorAssertionFunc
+	}{
+		{
+			name: "older RSA header",
+			ie: indexEntry{
+				Data: func() []byte {
+					h := "89021503050058d3e39b0946fca2c105b9de0102b12a1000a2b3d347b51142e83b2de5e03ba9096f6330b72c140e46200d662b01c78534d14fab2ad4f07325119386830dd590219f27a22e420680283c500c40e6fba95404884b0a0abca8f198030ddc03653b7db2883b8230687e9e73d43eb5a24dbabfa48bbb3d1151ed264744e5e8ca169b0c4673a1440a9b99e53e693c9722f6423833cd7795e3044227fb922e21b7c007f03e923fae3f04d1ac2e8581e68c6790115b6dccfc02c8cb41681ed84785df086d6e26008c257d088a524ba2e7a7a5f41ad26b106c67b87fe48118b69662db612c23d2140059286f1ba7764627def6867ad0e11fe3a01fb1422dabe6f5cdf4cd876dc4fadfd2364bc3ba3758db94aaf3b82368cba65cf762287f713eb7ddc773acf93b083c739577a7eaf1f99e7dcbb8db1da050490e9fb67c838448db060a9e619d318c96f03e4363808d84ce29e8c102c290cc2bfab5746f3d9ddc9eb8b428f3ad2678abb2d46e846ddca7fc41322d76a97be6d416b4750f23320ec725e082be4496483b4cd3a3d2c515b3c8a6e27541139d809245140303877b84842ed2dd0454a78b2dfb7d6213784697077a8167942ebda5995a28d8256957e33e301706c35944ae05c7a54a4dd89be654d26cefa5cf0f616bbeaf317138371b09c5bbd5531f716020e553354ce5dbce3d9bb72f21e1857408dfd5a35250ff40f61ae1e25409ae9d21db76b8878341f4762a22be2189"
+					b, err := hex.DecodeString(h)
+					if err != nil {
+						t.Fatalf("failed to decode hex string: %v", err)
+					}
+					return b
+				}(),
+			},
+			want: "RSA/SHA1, Thu Mar 23 15:02:51 2017, Key ID 0946fca2c105b9de",
+		},
+		{
+			name: "newer RSA header",
+			ie: indexEntry{
+				Data: func() []byte {
+					h := "89024a04000108003416210421cb256ae16fc54c6e652949702d426d350d275d050262804369161c72656c656e6740726f636b796c696e75782e6f7267000a0910702d426d350d275dc8910ffd14f0f80297481fea648e7ba5a74bce10c5faccc2bbe588caece04be34d304a6a445538afc97a7033d43c983d27cc8f5ee515b2dd92f3e03354c413e55372a4d19386eb0f2354f9a26ee5fc2e56dfda49555e4a58b49279b70cd2036b04f28125f85942f640f2984e29e079f26bf6f76831d83d95983aa084a3e7b6327be2e23d0d799c4b4d1cfb36147ddfb782bf9df7b331d97f4f46b38f968b6130d87b0ef6bb0d424390fe34e38092babed37440569a93f55f50a2bdb58be0259f35badf7e728bd49824ed47f69fa53b6e26736bde4d8358d959b090e88054c3e179745dc7377e41b54b4e10223f4859e88162c7c5ec64b78d36cf8a914c1c2deb8c4f19a70d406e70756a89195d6aee488a9b40b9dbb76b2c38e528eb88d08ec35774a48ed9ce4e0dfac45cb7613ad5921f54c61d3aae5d7b3ab0e2e6ff867ac8f395b37af78b5c01022a4a4e62f7a99425fccb7439880cd6b393a3050b2e9512693bc36f6fe9de2921dda59710a1508965065244cf9f0f8cfc5bd554777f1a84d2249339234d62f2441249f617ad7df4fb01367a91d3a880e86fdb84bc6d03a127b44a28c6ceadef89e438db9640aa59b8a3f460b07272511f8187a5f3b163c8fd1caa61667401bce2ccdb1c176c46be10ef8033903132cca5889fa3661b2fba590c41fa1c104c08426677bdbf745a52ccd28f581960cf9d7e4ede3b9584aacb2f20ef93"
+					b, err := hex.DecodeString(h)
+					if err != nil {
+						t.Fatalf("failed to decode hex string: %v", err)
+					}
+					return b
+				}(),
+			},
+			want: "RSA/SHA256, Sun May 15 00:03:53 2022, Key ID 702d426d350d275d",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if tt.wantErr == nil {
+				tt.wantErr = assert.NoError
+			}
+			got, err := parsePGP(tt.ie)
+			if !tt.wantErr(t, err) {
+				return
+			}
+			assert.Equal(t, tt.want, got)
 		})
 	}
 }
@@ -213,6 +270,7 @@ func TestRpmDB_Package(t *testing.T) {
 				SigMD5:          "89e843d7979a50a26e2ea1924ef3e213",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
 				PGP:             "RSA/SHA1, Wed Jun 20 11:36:27 2018, Key ID 0946fca2c105b9de",
+				RSAHeader:       "RSA/SHA1, Wed Jun 20 11:36:27 2018, Key ID 0946fca2c105b9de",
 				InstallTime:     1538857091,
 				Provides: []string{
 					"ANSI_X3.110.so()(64bit)",
@@ -614,6 +672,7 @@ func TestRpmDB_Package(t *testing.T) {
 				Summary:         "JavaScript runtime",
 				SigMD5:          "bac7919c2369f944f9da510bbd01370b",
 				PGP:             "RSA/SHA256, Tue Jul  7 16:08:24 2020, Key ID 05b555b38483c65d",
+				RSAHeader:       "RSA/SHA256, Tue Jul  7 16:08:24 2020, Key ID 05b555b38483c65d",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
 				InstallTime:     1606911097,
 				Provides: []string{
@@ -711,6 +770,7 @@ func TestRpmDB_Package(t *testing.T) {
 				SigMD5:          "b5f5369ae91df3672fa3338669ec5ca2",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
 				PGP:             "RSA/SHA256, Thu Jan 27 09:02:11 2022, Key ID 0cd9fed33135ce90",
+				RSAHeader:       "RSA/SHA256, Thu Jan 27 09:02:11 2022, Key ID 0cd9fed33135ce90",
 				InstallTime:     1643279454,
 				Provides: []string{
 					"curl",
@@ -744,6 +804,48 @@ func TestRpmDB_Package(t *testing.T) {
 			wantInstalledFileNames: Mariner2CurlInstalledFileNames,
 		},
 		{
+			name:    "Rockylinux 9 bash",
+			pkgName: "hostname",
+			file:    "testdata/rockylinux-9/rpmdb.sqlite",
+			want: &PackageInfo{
+				Name:            "hostname",
+				Version:         "3.23",
+				Release:         "6.el9",
+				Arch:            "aarch64",
+				Size:            91672,
+				SourceRpm:       "hostname-3.23-6.el9.src.rpm",
+				License:         "GPLv2+",
+				Vendor:          "Rocky Enterprise Software Foundation",
+				Summary:         "Utility to set/show the host name or domain name",
+				SigMD5:          "8d8cdc55f002f536f30631f92b73d81f",
+				DigestAlgorithm: PGPHASHALGO_SHA256,
+				PGP:             "", // this is legacy at this point
+				RSAHeader:       "RSA/SHA256, Sat May 14 23:43:48 2022, Key ID 702d426d350d275d",
+				InstallTime:     1700432743,
+				Provides: []string{
+					"hostname",
+					"hostname(aarch-64)",
+				},
+				Requires: []string{"/bin/sh",
+					"/bin/sh",
+					"/usr/bin/bash",
+					"ld-linux-aarch64.so.1()(64bit)",
+					"ld-linux-aarch64.so.1(GLIBC_2.17)(64bit)",
+					"libc.so.6()(64bit)",
+					"libc.so.6(GLIBC_2.17)(64bit)",
+					"libc.so.6(GLIBC_2.33)(64bit)",
+					"libc.so.6(GLIBC_2.34)(64bit)",
+					"rpmlib(CompressedFileNames)",
+					"rpmlib(FileDigests)",
+					"rpmlib(PayloadFilesHavePrefix)",
+					"rpmlib(PayloadIsZstd)",
+					"rtld(GNU_HASH)",
+				},
+			},
+			wantInstalledFiles:     Rockylinux9HostnameFiles,
+			wantInstalledFileNames: Rockylinux9HostnameFileNames,
+		},
+		{
 			name:    "libuuid",
 			pkgName: "libuuid",
 			file:    "testdata/libuuid/Packages",
@@ -760,6 +862,7 @@ func TestRpmDB_Package(t *testing.T) {
 				SigMD5:          "c1e561f13d39aee443a1f00258fba000",
 				DigestAlgorithm: PGPHASHALGO_SHA256,
 				PGP:             "RSA/SHA256, Mon Apr  3 18:10:39 2023, Key ID 199e2f91fd431d51",
+				RSAHeader:       "RSA/SHA256, Mon Apr  3 18:10:39 2023, Key ID 199e2f91fd431d51",
 				InstallTime:     1696444673,
 				Provides: []string{
 					"libuuid",
