@@ -338,7 +338,7 @@ func parsePGP(ie indexEntry) (string, error) {
 		return decodePGPSig(version, r)
 	}
 
-	return "", fmt.Errorf("unknown signature type: %d", signatureType)
+	return "", nil
 }
 
 func decodePGPSig(version uint8, r io.Reader) (string, error) {
