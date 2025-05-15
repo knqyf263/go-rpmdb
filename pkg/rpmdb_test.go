@@ -183,6 +183,24 @@ func Test_parseRSA(t *testing.T) {
 			},
 			want: "RSA/SHA256, Sun May 15 00:03:53 2022, Key ID 702d426d350d275d",
 		},
+		{
+			// $ curl -O https://download.postgresql.org/pub/repos/yum/14/redhat/rhel-9-x86_64/postgresql14-server-14.10-1PGDG.rhel9.x86_64.rpm
+			// $ rpm -ivh --nodeps --force postgresql14-server-14.10-1PGDG.rhel9.x86_64.rpm
+			// $ rpm -q --qf '%{NAME}-%{VERSION}-%{RELEASE} %{RSAHEADER:pgpsig}\n' postgresql14-server-14.10-1PGDG.rhel9.x86_64
+			//   postgresql14-server-14.10-1PGDG.rhel9 RSA/SHA256, Tue Jan  2 16:45:56 2024, Key ID 40bca2b408b40d20
+			name: "example from rocky9 postgresql server",
+			ie: indexEntry{
+				Data: func() []byte {
+					h := "8901b304000108001d162104d4bf08ae67a0b4c7a1dbccd240bca2b408b40d20050265943dc4000a091040bca2b408b40d203b270bff71678ffeb190833a19a82112f59eee64cba186ab454d4526e0b3c8797e723f6916daff1b1f18cbf53c0da5d398a3a42065e79e5ca939f721652f38400dd4cac1107a902b1dae880649437ad0242444f3f07115172cae0a207b7cf8340af2f4a94976325f1dc165d5c2a564be322c4e130adb6217e7138b689f08898c407b223aa1ff8f8d592f31eba2256c02fae70ce4022d688a487972646b8bf1b518b5d6549c1e60fd812134422d9fdb41cf799f5eab80e48b4ab7cff84362dc867ed1af1416dd78e92bcc59217de7064b9a015d94a5097788689b9b6fbdeea679cfe4a6947f73dc3a6c810f2cb999d279b01564422d1500fc1bd8bd1eefa2d60660127ffef24067354660f93c0faf81f4edd599dd7e4b77fe4bff6c7a0ea83530c817c38d1f2364175883c6ef7b6dec86ad282bdd5138b8597567db96810c4ed6454a4ab1d98f0425dcd8892a5d46ed9289cb3ae3e1f1e2663d3e8188e873428f6cf7163563ed3860edc4fee81522389508847e692e2d13310eb4b40f7fdd7eb364a0b2dc"
+					b, err := hex.DecodeString(h)
+					if err != nil {
+						t.Fatalf("failed to decode hex string: %v", err)
+					}
+					return b
+				}(),
+			},
+			want: "RSA/SHA256, Tue Jan  2 16:45:56 2024, Key ID 40bca2b408b40d20",
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {

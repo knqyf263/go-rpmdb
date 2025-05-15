@@ -5,6 +5,7 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
+	"io"
 	"path"
 	"strings"
 	"time"
@@ -261,44 +262,45 @@ func getNEVRA(indexEntries []indexEntry) (*PackageInfo, error) {
 	return pkgInfo, nil
 }
 
+type pgpSig struct {
+	_          [3]byte
+	Date       int32
+	KeyID      [8]byte
+	PubKeyAlgo uint8
+	HashAlgo   uint8
+}
+
+type textSig struct {
+	_          [2]byte
+	PubKeyAlgo uint8
+	HashAlgo   uint8
+	_          [4]byte
+	Date       int32
+	_          [4]byte
+	KeyID      [8]byte
+}
+
+type pgp4Sig struct {
+	_          [2]byte
+	PubKeyAlgo uint8
+	HashAlgo   uint8
+	_          [17]byte
+	KeyID      [8]byte
+	_          [2]byte
+	Date       int32
+}
+
+var pubKeyLookup = map[uint8]string{
+	0x01: "RSA",
+}
+var hashLookup = map[uint8]string{
+	0x02: "SHA1",
+	0x08: "SHA256",
+}
+
 func parsePGP(ie indexEntry) (string, error) {
-	type pgpSig struct {
-		_          [3]byte
-		Date       int32
-		KeyID      [8]byte
-		PubKeyAlgo uint8
-		HashAlgo   uint8
-	}
-
-	type textSig struct {
-		_          [2]byte
-		PubKeyAlgo uint8
-		HashAlgo   uint8
-		_          [4]byte
-		Date       int32
-		_          [4]byte
-		KeyID      [8]byte
-	}
-
-	type pgp4Sig struct {
-		_          [2]byte
-		PubKeyAlgo uint8
-		HashAlgo   uint8
-		_          [17]byte
-		KeyID      [8]byte
-		_          [2]byte
-		Date       int32
-	}
-
-	pubKeyLookup := map[uint8]string{
-		0x01: "RSA",
-	}
-	hashLookup := map[uint8]string{
-		0x02: "SHA1",
-		0x08: "SHA256",
-	}
-
 	var tag, signatureType, version uint8
+
 	r := bytes.NewReader(ie.Data)
 	err := binary.Read(r, binary.BigEndian, &tag)
 	if err != nil {
@@ -313,9 +315,6 @@ func parsePGP(ie indexEntry) (string, error) {
 		return "", err
 	}
 
-	var pubKeyAlgo, hashAlgo, pkgDate string
-	var keyId [8]byte
-
 	switch signatureType {
 	case 0x01:
 		switch version {
@@ -323,49 +322,52 @@ func parsePGP(ie indexEntry) (string, error) {
 			sig := textSig{}
 			err = binary.Read(r, binary.BigEndian, &sig)
 			if err != nil {
-				return "", xerrors.Errorf("invalid PGP signature on decode: %w", err)
+				return "", fmt.Errorf("invalid PGP signature on decode: %w", err)
 			}
-			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-			hashAlgo = hashLookup[sig.HashAlgo]
-			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-			keyId = sig.KeyID
+
+			pubKeyAlgo := pubKeyLookup[sig.PubKeyAlgo]
+			hashAlgo := hashLookup[sig.HashAlgo]
+			pkgDate := time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+			keyId := sig.KeyID
+
+			return fmt.Sprintf("%s/%s, %s, Key ID %x", pubKeyAlgo, hashAlgo, pkgDate, keyId), nil
 		default:
-			sig := pgpSig{}
-			err = binary.Read(r, binary.BigEndian, &sig)
-			if err != nil {
-				return "", xerrors.Errorf("invalid PGP signature on decode: %w", err)
-			}
-			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-			hashAlgo = hashLookup[sig.HashAlgo]
-			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-			keyId = sig.KeyID
+			return decodePGPSig(version, r)
 		}
 	case 0x02:
-		switch {
-		case version > 0x15:
-			sig := pgp4Sig{}
-			err = binary.Read(r, binary.BigEndian, &sig)
-			if err != nil {
-				return "", xerrors.Errorf("invalid PGP v4 signature on decode: %w", err)
-			}
-			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-			hashAlgo = hashLookup[sig.HashAlgo]
-			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-			keyId = sig.KeyID
-
-		default:
-			sig := pgpSig{}
-			err = binary.Read(r, binary.BigEndian, &sig)
-			if err != nil {
-				return "", xerrors.Errorf("invalid PGP signature on decode: %w", err)
-			}
-			pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
-			hashAlgo = hashLookup[sig.HashAlgo]
-			pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
-			keyId = sig.KeyID
-		}
+		return decodePGPSig(version, r)
 	}
 
+	return "", fmt.Errorf("unknown signature type: %d", signatureType)
+}
+
+func decodePGPSig(version uint8, r io.Reader) (string, error) {
+	var pubKeyAlgo, hashAlgo, pkgDate string
+	var keyId [8]byte
+
+	switch {
+	case version > 0x15:
+		sig := pgp4Sig{}
+		err := binary.Read(r, binary.BigEndian, &sig)
+		if err != nil {
+			return "", fmt.Errorf("invalid PGP v4 signature on decode: %w", err)
+		}
+		pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+		hashAlgo = hashLookup[sig.HashAlgo]
+		pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+		keyId = sig.KeyID
+
+	default:
+		sig := pgpSig{}
+		err := binary.Read(r, binary.BigEndian, &sig)
+		if err != nil {
+			return "", fmt.Errorf("invalid PGP signature on decode: %w", err)
+		}
+		pubKeyAlgo = pubKeyLookup[sig.PubKeyAlgo]
+		hashAlgo = hashLookup[sig.HashAlgo]
+		pkgDate = time.Unix(int64(sig.Date), 0).UTC().Format("Mon Jan _2 15:04:05 2006")
+		keyId = sig.KeyID
+	}
 	return fmt.Sprintf("%s/%s, %s, Key ID %x", pubKeyAlgo, hashAlgo, pkgDate, keyId), nil
 }
 
