@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"log"
 
-	rpmdb "github.com/knqyf263/go-rpmdb/pkg"
+	rpmdb "github.com/anchore/go-rpmdb/pkg"
 )
 
 func main() {
